@@ -30,5 +30,5 @@ void SniperTurret::CreateBullet() {
             new FireBullet(Position + bulletDir * 36, bulletDir, angle, this));
     }
 
-    AudioHelper::PlayAudio("sniper.wav");
+    AudioHelper::PlayAudio("gun.wav");
 }
