@@ -9,10 +9,10 @@
 #include "Scene/PlayScene.hpp"
 #include "Enemy/Enemy.hpp"
 
-const int SniperTurret::Price = 120;
+const int SniperTurret::Price = 150;
 
 SniperTurret::SniperTurret(float x, float y)
-    : Turret("play/tower-base.png", "play/turret-3.png", x, y, 500, Price, 1.5) {
+    : Turret("play/tower-base.png", "play/turret-3.png", x, y, 500, Price, 0.8) {
     Anchor.y += 8.0f / GetBitmapHeight();
 }
 
@@ -30,5 +30,5 @@ void SniperTurret::CreateBullet() {
             new FireBullet(Position + bulletDir * 36, bulletDir, angle, this));
     }
 
-    AudioHelper::PlayAudio("sniper.wav");
+    AudioHelper::PlayAudio("gun.wav");
 }
