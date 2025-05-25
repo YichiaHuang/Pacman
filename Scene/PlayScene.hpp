@@ -8,6 +8,7 @@
 
 #include "Engine/IScene.hpp"
 #include "Engine/Point.hpp"
+#include "Tool/Tool.hpp"
 
 class Turret;
 namespace Engine {
@@ -19,11 +20,6 @@ namespace Engine {
 
 class PlayScene final : public Engine::IScene {
 private:
-    enum TileType {
-        TILE_DIRT,
-        TILE_FLOOR,
-        TILE_OCCUPIED,
-    };
     ALLEGRO_SAMPLE_ID bgmId;
     std::shared_ptr<ALLEGRO_SAMPLE_INSTANCE> deathBGMInstance;
     bool WinTriggered = false;
@@ -34,6 +30,11 @@ protected:
     int SpeedMult;
 
 public:
+    enum TileType {
+            TILE_DIRT,
+            TILE_FLOOR,
+            TILE_OCCUPIED,
+        };
     static bool DebugMode;
     static const std::vector<Engine::Point> directions;
     static const int MapWidth, MapHeight;
@@ -82,6 +83,7 @@ public:
     void UIBtnClicked(int id);
     bool CheckSpaceValid(int x, int y);
     std::vector<std::vector<int>> CalculateBFSDistance();
+    Tool* currentTool = nullptr;
     // void ModifyReadMapTiles();
 };
 #endif   // PLAYSCENE_HPP
