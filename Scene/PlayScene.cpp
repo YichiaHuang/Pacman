@@ -26,6 +26,8 @@
 #include "UI/Animation/DirtyEffect.hpp"
 #include "UI/Animation/Plane.hpp"
 #include "UI/Component/Label.hpp"
+#include "Tool/Tool.hpp"
+#include "Tool/ShovelTool.hpp"
 
 // TODO HACKATHON-4 (1/3): Trace how the game handles keyboard input.
 // TODO HACKATHON-4 (2/3): Find the cheat code sequence in this file.
@@ -86,6 +88,10 @@ void PlayScene::Terminate() {
     AudioHelper::StopSample(deathBGMInstance);
     deathBGMInstance = std::shared_ptr<ALLEGRO_SAMPLE_INSTANCE>();
     IScene::Terminate();
+    if (currentTool) {
+        delete currentTool;
+        currentTool = nullptr;
+    }
 }
 void PlayScene::Update(float deltaTime) {
     // If we use deltaTime directly, then we might have Bullet-through-paper problem.
@@ -212,13 +218,28 @@ void PlayScene::Draw() const {
     }
 }
 void PlayScene::OnMouseDown(int button, int mx, int my) {
+    int gx = mx / BlockSize;
+    int gy = my / BlockSize;
+
+    if ((button & 1) && currentTool) {
+        if (gx >= 0 && gx < MapWidth && gy >= 0 && gy < MapHeight) {
+            currentTool->Use(gx, gy);
+        }
+        // 工具用完後清除（如要持續使用可拿掉這兩行）
+        delete currentTool;
+        currentTool = nullptr;
+        return;
+    }
+
     if ((button & 1) && !imgTarget->Visible && preview) {
         // Cancel turret construct.
         UIGroup->RemoveObject(preview->GetObjectIterator());
         preview = nullptr;
     }
+
     IScene::OnMouseDown(button, mx, my);
 }
+
 void PlayScene::OnMouseMove(int mx, int my) {
     IScene::OnMouseMove(mx, my);
     const int x = mx / BlockSize;
@@ -400,6 +421,20 @@ void PlayScene::ConstructUI() {
         1446, 136, SniperTurret::Price);
     btn->SetOnClickCallback(std::bind(&PlayScene::UIBtnClicked, this, 2));
     UIGroup->AddNewControlObject(btn);
+
+    // Button 4: ShovelTool
+    auto* shovelBtn = new TurretButton("play/floor.png", "play/floor.png",
+        Engine::Sprite("play/shovel.png", 1522, 136, 0, 0, 0, 0),
+        Engine::Sprite("play/shovel.png", 1522, 136 - 8, 0, 0, 0, 0),
+        1522, 136, 0);  // 價格填 0
+
+    shovelBtn->SetOnClickCallback([this]() {
+        if (currentTool) delete currentTool;
+        currentTool = new ShovelTool(this);
+        Engine::LOG(Engine::INFO) << "Shovel Tool activated.";
+    });
+
+    UIGroup->AddNewControlObject(shovelBtn);
 
 
     int w = Engine::GameEngine::GetInstance().GetScreenSize().x;

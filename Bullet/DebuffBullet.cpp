@@ -22,15 +22,21 @@ DebuffBullet::DebuffBullet(Engine::Point pos, Engine::Point dir, float rot, Turr
 
 void DebuffBullet::ApplyDebuff() {
     if (TargetTurret) {
-        TargetTurret->slowTimer = 3.0f;
-        TargetTurret->cooldownModifier = 2.0f;
+        TargetTurret->slowTimer = 3.0f;// 3秒內被減速
+        TargetTurret->cooldownModifier = 2.0f;// 發射冷卻時間變成 2 倍
 
         // 視覺效果：紅色閃爍三次（異步處理以避免主線程阻塞）
+        /*
+        使用 lambda 函式 + thread 非同步控制砲塔的閃爍。
+        al_map_rgba(...) 設定 Tint 為紅色或白色，達到閃爍視覺效果。
+        sleep_for(100ms)：每次紅白交錯閃爍 100 毫秒，共閃三次。
+        detach()：背景執行，不會阻塞主執行緒。
+        */
         std::thread([turret = TargetTurret]() {
             for (int i = 0; i < 3; ++i) {
-                turret->Tint = al_map_rgba(255, 0, 0, 255);
+                turret->Tint = al_map_rgba(255, 0, 0, 255);//red
                 std::this_thread::sleep_for(std::chrono::milliseconds(100));
-                turret->Tint = al_map_rgba(255, 255, 255, 255);
+                turret->Tint = al_map_rgba(255, 255, 255, 255);//original color
                 std::this_thread::sleep_for(std::chrono::milliseconds(100));
             }
         }).detach();

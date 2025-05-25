@@ -103,6 +103,10 @@ add_executable(2025_I2P2_TowerDefense
     UI/Component/Slider.hpp
     UI/Component/TextBox.cpp
     UI/Component/TextBox.hpp
+
+    Tool/Tool.hpp
+    Tool/ShovelTool.cpp
+    Tool/ShovelTool.hpp
     
     main.cpp
 )
