@@ -29,5 +29,8 @@ public:
     void Update(float deltaTime) override;
     void Draw() const override;
     int GetPrice() const;
+    float slowTimer = 0;           // 減速狀態持續時間（秒）
+    float cooldownModifier = 1.0f; // 冷卻倍率，預設為 1（正常）
+    
 };
 #endif   // TURRET_HPP

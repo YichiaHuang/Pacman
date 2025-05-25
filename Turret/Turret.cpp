@@ -63,11 +63,17 @@ void Turret::Update(float deltaTime) {
             rotation = ((abs(radian) - maxRotateRadian) * originRotation + maxRotateRadian * targetRotation) / radian;
         // Add 90 degrees (PI/2 radian), since we assume the image is oriented upward.
         Rotation = atan2(rotation.y, rotation.x) + ALLEGRO_PI / 2;
-        // Shoot reload.
+        // 處理減速計時器
+        if (slowTimer > 0) {
+            slowTimer -= deltaTime;
+        } else {
+            cooldownModifier = 1.0f;  // 恢復正常
+        }
+
+        // 根據倍率調整冷卻時間
         reload -= deltaTime;
         if (reload <= 0) {
-            // shoot.
-            reload = coolDown;
+            reload = coolDown * cooldownModifier;
             CreateBullet();
         }
     }
