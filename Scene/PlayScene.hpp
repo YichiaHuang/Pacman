@@ -60,6 +60,7 @@ public:
     Engine::Image *imgTarget;
     Engine::Sprite *dangerIndicator;
     Turret *preview;
+    Engine::Image* shovelPreview;
     std::vector<std::vector<TileType>> mapState;
     std::vector<std::vector<int>> mapDistance;
     std::list<std::pair<int, float>> enemyWaveData;
