@@ -85,6 +85,9 @@ public:
     bool CheckSpaceValid(int x, int y);
     std::vector<std::vector<int>> CalculateBFSDistance();
     Tool* currentTool = nullptr;
+    bool paused = false;
+    Engine::Label* pauseLabel = nullptr;
+
     // void ModifyReadMapTiles();
 };
 #endif   // PLAYSCENE_HPP

@@ -59,8 +59,6 @@ void PlayScene::Initialize() {
     lives = 10;
     money = 150;
     SpeedMult = 1;
-    currentTool = nullptr; // Initialize currentTool
-    shovelPreview = nullptr; // Initialize shovelPreview
     // Add groups from bottom to top.
     AddNewObject(TileMapGroup = new Group());
     AddNewObject(GroundEffectGroup = new Group());
@@ -94,15 +92,17 @@ void PlayScene::Terminate() {
         delete currentTool;
         currentTool = nullptr;
     }
-    if (shovelPreview) {
-        UIGroup->RemoveObject(shovelPreview->GetObjectIterator());
-        delete shovelPreview;
-        shovelPreview = nullptr;
-    }
 }
 void PlayScene::Update(float deltaTime) {
     // If we use deltaTime directly, then we might have Bullet-through-paper problem.
     // Reference: Bullet-Through-Paper
+    if (paused) {
+        if (preview) {
+            preview->Position = Engine::GameEngine::GetInstance().GetMousePosition();
+            preview->Update(deltaTime);  // 保持滑鼠預覽可動
+        }
+        return;
+    }
     if (SpeedMult == 0)
         deathCountDown = -1;
     else if (deathCountDown != -1)
@@ -207,11 +207,6 @@ void PlayScene::Update(float deltaTime) {
         // To keep responding when paused.
         preview->Update(deltaTime);
     }
-    if (shovelPreview && currentTool && dynamic_cast<ShovelTool*>(currentTool)) {
-        shovelPreview->Position = Engine::GameEngine::GetInstance().GetMousePosition();
-        // To keep responding when paused.
-        // shovelPreview->Update(deltaTime); // Image doesn't have Update, but if it's a Sprite later
-    }
 }
 void PlayScene::Draw() const {
     IScene::Draw();
@@ -237,12 +232,9 @@ void PlayScene::OnMouseDown(int button, int mx, int my) {
         if (gx >= 0 && gx < MapWidth && gy >= 0 && gy < MapHeight) {
             currentTool->Use(gx, gy);
         }
-        // For shovel, we want to keep it active until another tool is selected or cancelled.
-        if (!dynamic_cast<ShovelTool*>(currentTool)) {
-            delete currentTool;
-            currentTool = nullptr;
-        }
-        // If shovel was used, it remains active. Preview should still be visible.
+        // 工具用完後清除（如要持續使用可拿掉這兩行）
+        delete currentTool;
+        currentTool = nullptr;
         return;
     }
 
@@ -252,17 +244,6 @@ void PlayScene::OnMouseDown(int button, int mx, int my) {
         preview = nullptr;
     }
 
-    // If a click happens and it's not for using a tool or placing a turret,
-    // and if the shovel is the current tool, deselect it.
-    if ((button & 1) && currentTool && dynamic_cast<ShovelTool*>(currentTool)) {
-        // Clicked outside of tool usage, consider deselecting shovel or handle based on game logic
-        // For now, let's assume a click elsewhere might deselect it or it's handled by selecting another tool.
-        // If shovelPreview is visible, a click might mean to stop showing it,
-        // unless the click was on a valid target for the shovel.
-        // This part might need more refined logic based on desired UX.
-    }
-
-
     IScene::OnMouseDown(button, mx, my);
 }
 
@@ -270,15 +251,6 @@ void PlayScene::OnMouseMove(int mx, int my) {
     IScene::OnMouseMove(mx, my);
     const int x = mx / BlockSize;
     const int y = my / BlockSize;
-
-    if (currentTool && dynamic_cast<ShovelTool*>(currentTool)) {
-        imgTarget->Visible = false; // Shovel doesn't use imgTarget in the same way
-        if (shovelPreview) {
-            shovelPreview->Position = Engine::GameEngine::GetInstance().GetMousePosition();
-        }
-        return;
-    }
-
     if (!preview || x < 0 || x >= MapWidth || y < 0 || y >= MapHeight) {
         imgTarget->Visible = false;
         return;
@@ -360,6 +332,17 @@ void PlayScene::OnKeyDown(int keyCode) {
     else if(keyCode == ALLEGRO_KEY_E){
         //Hotkey for SniperTurret
         UIBtnClicked(2);
+    }
+    else if (keyCode == ALLEGRO_KEY_R) {
+        if (currentTool) delete currentTool;
+        currentTool = new ShovelTool(this);
+        Engine::LOG(Engine::INFO) << "Shovel Tool activated by R key.";
+    }
+    else if (keyCode == ALLEGRO_KEY_SPACE) {
+        paused = !paused;
+        if (pauseLabel)
+            pauseLabel->Visible = paused;
+        Engine::LOG(Engine::INFO) << (paused ? "Game paused." : "Game resumed.");
     }
     else if (keyCode >= ALLEGRO_KEY_0 && keyCode <= ALLEGRO_KEY_9) {
         // Hotkey for Speed up.
@@ -464,34 +447,9 @@ void PlayScene::ConstructUI() {
         1522, 136, 0);  // 價格填 0
 
     shovelBtn->SetOnClickCallback([this]() {
-        if (preview) { // If a turret is being previewed, cancel it
-            UIGroup->RemoveObject(preview->GetObjectIterator());
-            delete preview;
-            preview = nullptr;
-        }
-        if (currentTool && !dynamic_cast<ShovelTool*>(currentTool)) {
-            delete currentTool; // Delete other tools
-            currentTool = nullptr;
-        }
-
-        if (!currentTool) { // Activate shovel tool only if no tool or other tool was active
-            currentTool = new ShovelTool(this);
-            Engine::LOG(Engine::INFO) << "Shovel Tool activated.";
-            if (!shovelPreview) {
-                shovelPreview = new Engine::Image("play/shovel.png", 0, 0, 32, 32); // Adjust size as needed
-                UIGroup->AddNewObject(shovelPreview);
-            }
-            shovelPreview->Visible = true;
-            shovelPreview->Position = Engine::GameEngine::GetInstance().GetMousePosition();
-            imgTarget->Visible = false; // Hide turret placement target
-        } else if (dynamic_cast<ShovelTool*>(currentTool)) { // If shovel is already active, deactivate it
-            delete currentTool;
-            currentTool = nullptr;
-            if (shovelPreview) {
-                shovelPreview->Visible = false;
-            }
-            Engine::LOG(Engine::INFO) << "Shovel Tool deactivated.";
-        }
+        if (currentTool) delete currentTool;
+        currentTool = new ShovelTool(this);
+        Engine::LOG(Engine::INFO) << "Shovel Tool activated.";
     });
 
     UIGroup->AddNewControlObject(shovelBtn);
@@ -503,18 +461,15 @@ void PlayScene::ConstructUI() {
     dangerIndicator = new Engine::Sprite("play/benjamin.png", w - shift, h - shift);
     dangerIndicator->Tint.a = 0;
     UIGroup->AddNewObject(dangerIndicator);
+
+    pauseLabel = new Engine::Label("PAUSED", "pirulen.ttf", 60, 640, 360);
+    pauseLabel->Anchor = Engine::Point(0.5, 0.5);
+    pauseLabel->Visible = false;
+    UIGroup->AddNewObject(pauseLabel);
+
 }
 
 void PlayScene::UIBtnClicked(int id) {
-    // If shovel is active, deactivate it
-    if (currentTool && dynamic_cast<ShovelTool*>(currentTool)) {
-        delete currentTool;
-        currentTool = nullptr;
-        if (shovelPreview) {
-            shovelPreview->Visible = false;
-        }
-    }
-
     Turret *next_preview = nullptr;
     if (id == 0 && money >= MachineGunTurret::Price)
         next_preview = new MachineGunTurret(0, 0);
