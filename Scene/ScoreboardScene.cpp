@@ -30,16 +30,19 @@ void ScoreboardScene::Initialize() {
         AddNewObject(label);
     }
 
+    //Prev Button
     auto* btn = new Engine::ImageButton("stage-select/dirt.png", "stage-select/floor.png", halfW - 200, h - 120, 150, 60);
     btn->SetOnClickCallback([this]() { PrevPageOnClick(); });
     AddNewControlObject(btn);
     AddNewObject(new Engine::Label("Prev", "pirulen.ttf", 32, halfW - 125, h - 90, 0, 0, 0, 255, 0.5, 0.5));
 
+    //Next Button
     btn = new Engine::ImageButton("stage-select/dirt.png", "stage-select/floor.png", halfW + 50, h - 120, 150, 60);
     btn->SetOnClickCallback([this]() { NextPageOnClick(); });
     AddNewControlObject(btn);
     AddNewObject(new Engine::Label("Next", "pirulen.ttf", 32, halfW + 125, h - 90, 0, 0, 0, 255, 0.5, 0.5));
-
+   
+    //Back Button
     btn = new Engine::ImageButton("win/dirt.png", "win/floor.png", halfW - 75, h - 220, 150, 60);
     btn->SetOnClickCallback([this]() { BackOnClick(); });
     AddNewControlObject(btn);
@@ -49,7 +52,7 @@ void ScoreboardScene::Initialize() {
 }
 
 void ScoreboardScene::Terminate() {
-    entryLabels.clear();  // 保險清除記錄，避免重疊
+    entryLabels.clear();
     IScene::Terminate();
 }
 

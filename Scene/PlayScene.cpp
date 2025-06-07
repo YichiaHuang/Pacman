@@ -330,15 +330,17 @@ void PlayScene::OnKeyDown(int keyCode) {
         UIBtnClicked(1);
     }
     else if(keyCode == ALLEGRO_KEY_E){
-        //Hotkey for SniperTurret
+        //Hotkey for SniperTurret.
         UIBtnClicked(2);
     }
     else if (keyCode == ALLEGRO_KEY_R) {
+        //Hotkey for ShovelTool.
         if (currentTool) delete currentTool;
         currentTool = new ShovelTool(this);
         Engine::LOG(Engine::INFO) << "Shovel Tool activated by R key.";
     }
     else if (keyCode == ALLEGRO_KEY_SPACE) {
+        //Hotkey for Pause/Resume.
         paused = !paused;
         if (pauseLabel)
             pauseLabel->Visible = paused;
@@ -444,7 +446,7 @@ void PlayScene::ConstructUI() {
     auto* shovelBtn = new TurretButton("play/floor.png", "play/floor.png",
         Engine::Sprite("play/shovel.png", 1522, 136, 0, 0, 0, 0),
         Engine::Sprite("play/shovel.png", 1522, 136 - 8, 0, 0, 0, 0),
-        1522, 136, 0);  // 價格填 0
+        1522, 136, 0);
 
     shovelBtn->SetOnClickCallback([this]() {
         if (currentTool) delete currentTool;
@@ -462,6 +464,7 @@ void PlayScene::ConstructUI() {
     dangerIndicator->Tint.a = 0;
     UIGroup->AddNewObject(dangerIndicator);
 
+    // Pause label
     pauseLabel = new Engine::Label("PAUSED", "pirulen.ttf", 60, 640, 360);
     pauseLabel->Anchor = Engine::Point(0.5, 0.5);
     pauseLabel->Visible = false;
