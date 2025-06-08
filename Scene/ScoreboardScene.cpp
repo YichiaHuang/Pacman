@@ -173,7 +173,7 @@ void ScoreboardScene::Initialize() {
     int halfH = h / 2;
     Engine::ImageButton *btn;
 
-    AddNewObject(new Engine::Label("ScoreBoard", "pirulen.ttf", 80, halfW, halfH / 5 + 50, 10, 155, 155, 255, 0.5, 0.5));
+    AddNewObject(new Engine::Label("ScoreBoard", "prstartk.ttf", 80, halfW, halfH / 5 + 50, 10, 155, 155, 255, 0.5, 0.5));
     
 
    
@@ -183,20 +183,20 @@ void ScoreboardScene::Initialize() {
     btn = new Engine::ImageButton( "stage-select/floor.png", "stage-select/bott.png", halfW - 200, halfH * 7 / 4 - 50, 400, 100);
     btn->SetOnClickCallback(std::bind(&ScoreboardScene::BackOnClick, this, 1));
     AddNewControlObject(btn);
-    AddNewObject(new Engine::Label("Back", "pirulen.ttf", 48, halfW, halfH * 7 / 4, 0, 0, 0, 255, 0.5, 0.5));
+    AddNewObject(new Engine::Label("Back", "prstartk.ttf", 48, halfW, halfH * 7 / 4, 0, 0, 0, 255, 0.5, 0.5));
 
 
     
     btn = new Engine::ImageButton( "stage-select/floor.png", "stage-select/bott.png", halfW - 200-450, halfH * 7 / 4 - 50, 400, 100);
     btn->SetOnClickCallback(std::bind(&ScoreboardScene::PrevPage, this));
     AddNewControlObject(btn);
-    AddNewObject(new Engine::Label("Prev", "pirulen.ttf", 48, halfW-450, halfH * 7 / 4, 0, 0, 0, 255, 0.5, 0.5));
+    AddNewObject(new Engine::Label("Prev", "prstartk.ttf", 48, halfW-450, halfH * 7 / 4, 0, 0, 0, 255, 0.5, 0.5));
 
     // 銝?????
     btn = new Engine::ImageButton( "stage-select/floor.png", "stage-select/bott.png", halfW - 200+450, halfH * 7 / 4 - 50, 400, 100);
     btn->SetOnClickCallback(std::bind(&ScoreboardScene::NextPage, this));
     AddNewControlObject(btn);
-    AddNewObject(new Engine::Label("Next", "pirulen.ttf", 48, halfW+450, halfH * 7 / 4, 0, 0, 0, 255, 0.5, 0.5));
+    AddNewObject(new Engine::Label("Next", "prstartk.ttf", 48, halfW+450, halfH * 7 / 4, 0, 0, 0, 255, 0.5, 0.5));
 }
 void ScoreboardScene::Terminate() {
     IScene::Terminate();
@@ -295,7 +295,7 @@ void ScoreboardScene::DisplayScores() {
     // 憿舐內??璅?
     std::string pageInfo = "Page " + std::to_string(currentPage + 1) + 
                          " of " + std::to_string((sortedScores.size() + scoresPerPage - 1) / scoresPerPage);
-    pageLabel = new Engine::Label(pageInfo, "pirulen.ttf", 32, halfW, startY - 40, 200, 200, 255, 255, 0.5, 0.5);
+    pageLabel = new Engine::Label(pageInfo, "prstartk.ttf", 32, halfW, startY - 40, 200, 200, 255, 255, 0.5, 0.5);
     AddNewObject(pageLabel);
 
     // 憿舐內?嗅???????
@@ -311,7 +311,7 @@ void ScoreboardScene::DisplayScores() {
                                 std::get<2>(scoreTuple); // ??
 
         Engine::Label* label = new Engine::Label(
-        scoreText, "pirulen.ttf", 36,
+        scoreText, "prstartk.ttf", 36,
         halfW, startY + (i - startIdx) * 50,
         255, 255, 255, 255, 0.5, 0.5);
 
@@ -322,7 +322,7 @@ void ScoreboardScene::DisplayScores() {
     // 憒?瘝??嚗＊蝷箸?蝷箄???
     if (sortedScores.empty()) {
         AddNewObject(new Engine::Label(
-            "No scores recorded yet!", "pirulen.ttf", 36, 
+            "No scores recorded yet!", "prstartk.ttf", 36, 
             halfW, startY, 255, 255, 255, 255, 0.5, 0.5));
     }
 }

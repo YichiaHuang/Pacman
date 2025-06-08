@@ -92,8 +92,8 @@ void WinScene::Initialize() {
     int h = Engine::GameEngine::GetInstance().GetScreenSize().y;
     int halfW = w / 2;
     int halfH = h / 2;
-    AddNewObject(new Engine::Image("win/benjamin-sad.png", halfW, halfH, 0, 0, 0.5, 0.5));
-    AddNewObject(new Engine::Label("You Win!", "pirulen.ttf", 48, halfW, halfH / 4 - 10, 255, 255, 255, 255, 0.5, 0.5));
+    AddNewObject(new Engine::Image("ghost/pacman-ghosts.png", halfW, halfH, 0, 0, 0.5, 0.5));
+    AddNewObject(new Engine::Label("You Win!", "prstartk.ttf", 48, halfW, halfH / 4 - 10, 255, 255, 255, 255, 0.5, 0.5));
     Engine::ImageButton *btn;
     btn = new Engine::ImageButton("win/dirt.png", "win/floor.png", halfW - 200, halfH * 7 / 4 - 50, 400, 100);
     /*btn->SetOnClickCallback(std::bind(&WinScene::BackOnClick, this, 2));
@@ -103,7 +103,7 @@ void WinScene::Initialize() {
 
     playerName = "";
     int nameInputY = halfH / 4 + 60;    
-    nameLabel = new Engine::Label("Name: ", "pirulen.ttf", 36, halfW, nameInputY, 255, 255, 150, 255, 0.5, 0.5);
+    nameLabel = new Engine::Label("Name: ", "prstartk.ttf", 36, halfW, nameInputY, 255, 255, 150, 255, 0.5, 0.5);
     AddNewObject(nameLabel);
     
 }
