@@ -56,10 +56,10 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\User\OneDrive\Desktop\Pacman
+CMAKE_SOURCE_DIR = C:\2025_I2P2_TowerDefense-main
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\User\OneDrive\Desktop\Pacman\build
+CMAKE_BINARY_DIR = C:\2025_I2P2_TowerDefense-main\build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -86,9 +86,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\User\OneDrive\Desktop\Pacman\build\CMakeFiles C:\Users\User\OneDrive\Desktop\Pacman\build\\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\2025_I2P2_TowerDefense-main\build\CMakeFiles C:\2025_I2P2_TowerDefense-main\build\\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\User\OneDrive\Desktop\Pacman\build\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\2025_I2P2_TowerDefense-main\build\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -655,6 +655,30 @@ Scene/LoseScene.s: Scene/LoseScene.cpp.s
 Scene/LoseScene.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/LoseScene.cpp.s
 .PHONY : Scene/LoseScene.cpp.s
+
+Scene/MotionScene.obj: Scene/MotionScene.cpp.obj
+.PHONY : Scene/MotionScene.obj
+
+# target to build an object file
+Scene/MotionScene.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/MotionScene.cpp.obj
+.PHONY : Scene/MotionScene.cpp.obj
+
+Scene/MotionScene.i: Scene/MotionScene.cpp.i
+.PHONY : Scene/MotionScene.i
+
+# target to preprocess a source file
+Scene/MotionScene.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/MotionScene.cpp.i
+.PHONY : Scene/MotionScene.cpp.i
+
+Scene/MotionScene.s: Scene/MotionScene.cpp.s
+.PHONY : Scene/MotionScene.s
+
+# target to generate assembly for a file
+Scene/MotionScene.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/MotionScene.cpp.s
+.PHONY : Scene/MotionScene.cpp.s
 
 Scene/PlayScene.obj: Scene/PlayScene.cpp.obj
 .PHONY : Scene/PlayScene.obj
@@ -1235,6 +1259,9 @@ help:
 	@echo ... Scene/LoseScene.obj
 	@echo ... Scene/LoseScene.i
 	@echo ... Scene/LoseScene.s
+	@echo ... Scene/MotionScene.obj
+	@echo ... Scene/MotionScene.i
+	@echo ... Scene/MotionScene.s
 	@echo ... Scene/PlayScene.obj
 	@echo ... Scene/PlayScene.i
 	@echo ... Scene/PlayScene.s

@@ -1,1 +1,1 @@
--IC:/Users/User/OneDrive/Desktop/Pacman/. -IC:/Users/User/OneDrive/Desktop/Pacman/Resource -IC:/allegro/include
+-I"C:/2025_I2P2_TowerDefense-main/." -I"C:/2025_I2P2_TowerDefense-main/Resource" -IC:/allegro/include

@@ -46,6 +46,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/2025_I2P2_TowerDefense.dir/Engine/Sprite.cpp.obj.d"
   "CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/LoseScene.cpp.obj"
   "CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/LoseScene.cpp.obj.d"
+  "CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/MotionScene.cpp.obj"
+  "CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/MotionScene.cpp.obj.d"
   "CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/PlayScene.cpp.obj"
   "CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/PlayScene.cpp.obj.d"
   "CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/ScoreboardScene.cpp.obj"

@@ -1,4 +1,4 @@
-#include <iostream>
+/*#include <iostream>
 #include <fstream> 
 #include <algorithm>
 #include <ctime>
@@ -137,5 +137,192 @@ void ScoreboardScene::PrevPageOnClick() {
     if (currentPage > 0) {
         currentPage--;
         UpdatePage();
+    }
+}
+*/
+
+
+
+#include <allegro5/allegro_audio.h>
+#include <functional>
+#include <memory>
+#include <string>
+//newwwww
+#include <fstream>
+#include <vector>
+#include <algorithm>
+
+#include "Engine/AudioHelper.hpp"
+#include "Engine/GameEngine.hpp"
+#include "Engine/Point.hpp"
+#include "Engine/Resources.hpp"
+#include "PlayScene.hpp"
+#include "Scene/StartScene.h"
+#include "UI/Component/ImageButton.hpp"
+#include "UI/Component/Label.hpp"
+#include "UI/Component/Slider.hpp"
+#include "Scene/ScoreboardScene.hpp"
+
+
+void ScoreboardScene::Initialize() {
+    
+
+    int w = Engine::GameEngine::GetInstance().GetScreenSize().x;
+    int h = Engine::GameEngine::GetInstance().GetScreenSize().y;
+    int halfW = w / 2;
+    int halfH = h / 2;
+    Engine::ImageButton *btn;
+
+    AddNewObject(new Engine::Label("ScoreBoard", "pirulen.ttf", 80, halfW, halfH / 5 + 50, 10, 155, 155, 255, 0.5, 0.5));
+    
+
+   
+    DisplayScores();
+
+
+    btn = new Engine::ImageButton( "stage-select/floor.png", "stage-select/bott.png", halfW - 200, halfH * 7 / 4 - 50, 400, 100);
+    btn->SetOnClickCallback(std::bind(&ScoreboardScene::BackOnClick, this, 1));
+    AddNewControlObject(btn);
+    AddNewObject(new Engine::Label("Back", "pirulen.ttf", 48, halfW, halfH * 7 / 4, 0, 0, 0, 255, 0.5, 0.5));
+
+
+    
+    btn = new Engine::ImageButton( "stage-select/floor.png", "stage-select/bott.png", halfW - 200-450, halfH * 7 / 4 - 50, 400, 100);
+    btn->SetOnClickCallback(std::bind(&ScoreboardScene::PrevPage, this));
+    AddNewControlObject(btn);
+    AddNewObject(new Engine::Label("Prev", "pirulen.ttf", 48, halfW-450, halfH * 7 / 4, 0, 0, 0, 255, 0.5, 0.5));
+
+    // 銝?????
+    btn = new Engine::ImageButton( "stage-select/floor.png", "stage-select/bott.png", halfW - 200+450, halfH * 7 / 4 - 50, 400, 100);
+    btn->SetOnClickCallback(std::bind(&ScoreboardScene::NextPage, this));
+    AddNewControlObject(btn);
+    AddNewObject(new Engine::Label("Next", "pirulen.ttf", 48, halfW+450, halfH * 7 / 4, 0, 0, 0, 255, 0.5, 0.5));
+}
+void ScoreboardScene::Terminate() {
+    IScene::Terminate();
+}
+
+void ScoreboardScene::BackOnClick(int stage) {
+    currentPage = 0; // ?蔭?嗅??
+    sortedScores.clear();
+
+    // 皜??? Label
+    for (auto& label : scoreLabels) {
+        RemoveObject(label->GetObjectIterator());
+    }
+    scoreLabels.clear();
+
+    // 皜????璅?
+    if (pageLabel) {
+        RemoveObject(pageLabel->GetObjectIterator());
+        pageLabel = nullptr;
+    }
+    Engine::GameEngine::GetInstance().ChangeScene("stage-select");
+}
+//newwwww
+void ScoreboardScene::PrevPage() {
+    if (currentPage > 0) {
+        currentPage--;
+        DisplayScores();
+    }
+}
+
+void ScoreboardScene::NextPage() {
+    if ((currentPage + 1) * scoresPerPage < sortedScores.size()) {
+        currentPage++;
+        DisplayScores();
+    }
+}
+
+
+
+std::vector<std::tuple<std::string, int, std::string>> ScoreboardScene::LoadAndSortScores() {
+    std::vector<std::tuple<std::string, int, std::string>> scores;
+    std::ifstream scoreFile("C:\\2025_I2P2_TowerDefense-main\\Resource\\scoreboard.txt");
+
+    if (scoreFile.is_open()) {
+        std::string line;
+        while (std::getline(scoreFile, line)) {
+            size_t firstDelim = line.find('|');
+            size_t secondDelim = line.find('|', firstDelim + 1);
+            if (firstDelim != std::string::npos && secondDelim != std::string::npos) {
+                try {
+                    std::string name = line.substr(0, firstDelim);
+                    int score = std::stoi(line.substr(firstDelim + 1, secondDelim - firstDelim - 1));
+                    std::string time = line.substr(secondDelim + 1);
+                    scores.emplace_back(name, score, time);
+                } catch (...) {
+                    // 敹賜?澆??航炊??
+                }
+            }
+        }
+        scoreFile.close();
+    }
+
+    // ???貊擃雿?摨?
+    std::sort(scores.begin(), scores.end(), [](const auto& a, const auto& b) {
+        return std::get<1>(a) > std::get<1>(b);
+    });
+
+    return scores;
+}
+
+
+
+void ScoreboardScene::DisplayScores() {
+    // 皜???憿舐內
+    for (auto& label : scoreLabels) {
+        RemoveObject(label->GetObjectIterator());
+    }
+    scoreLabels.clear();
+
+    // 皜????璅?
+    if (pageLabel) {
+        RemoveObject(pageLabel->GetObjectIterator());
+        pageLabel = nullptr;
+    }
+
+    // 頛銝行?摨???
+    
+    sortedScores = LoadAndSortScores();
+    
+
+    int w = Engine::GameEngine::GetInstance().GetScreenSize().x;
+    int h = Engine::GameEngine::GetInstance().GetScreenSize().y;
+    int halfW = w / 2;
+    int startY = h / 4 + 50;
+
+    // 憿舐內??璅?
+    std::string pageInfo = "Page " + std::to_string(currentPage + 1) + 
+                         " of " + std::to_string((sortedScores.size() + scoresPerPage - 1) / scoresPerPage);
+    pageLabel = new Engine::Label(pageInfo, "pirulen.ttf", 32, halfW, startY - 40, 200, 200, 255, 255, 0.5, 0.5);
+    AddNewObject(pageLabel);
+
+    // 憿舐內?嗅???????
+    int startIdx = currentPage * scoresPerPage;
+    int endIdx = std::min(startIdx + scoresPerPage, (int)sortedScores.size());
+
+    
+   for (int i = startIdx; i < endIdx; i++) {
+        const auto& scoreTuple = sortedScores[i];
+        std::string scoreText = std::to_string(i + 1) + ". " +
+                                std::get<0>(scoreTuple) + "  " + // ??
+                                std::to_string(std::get<1>(scoreTuple)) + " " + // ?
+                                std::get<2>(scoreTuple); // ??
+
+        Engine::Label* label = new Engine::Label(
+        scoreText, "pirulen.ttf", 36,
+        halfW, startY + (i - startIdx) * 50,
+        255, 255, 255, 255, 0.5, 0.5);
+
+        AddNewObject(label);
+        scoreLabels.push_back(label);
+    }
+
+    // 憒?瘝??嚗＊蝷箸?蝷箄???
+    if (sortedScores.empty()) {
+        AddNewObject(new Engine::Label(
+            "No scores recorded yet!", "pirulen.ttf", 36, 
+            halfW, startY, 255, 255, 255, 255, 0.5, 0.5));
     }
 }

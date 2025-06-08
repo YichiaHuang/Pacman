@@ -4,7 +4,7 @@
 #include <allegro5/allegro_audio.h>
 #include "UI/Component/TextBox.hpp"
 
-class WinScene final : public Engine::IScene {
+/*class WinScene final : public Engine::IScene {
 private:
     float ticks;
     ALLEGRO_SAMPLE_ID bgmId;
@@ -16,6 +16,24 @@ public:
     void Terminate() override;
     void Update(float deltaTime) override;
     void BackOnClick(int stage);
+};*/
+class WinScene final : public Engine::IScene {
+private:
+    float ticks;
+    ALLEGRO_SAMPLE_ID bgmId;
+    
+
+public:
+    explicit WinScene() = default;
+    void Initialize() override;
+    void Terminate() override;
+    void Update(float deltaTime) override;
+    void BackOnClick(int stage);
+    void SaveScoreToFile(int score);
+    int score=0;
+    std::string playerName;
+    Engine::Label* nameLabel = nullptr;
+    void OnKeyDown(int keyCode) override;
 };
 
 #endif   // WINSCENE_HPP

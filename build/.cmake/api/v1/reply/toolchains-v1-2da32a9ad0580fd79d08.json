@@ -38,7 +38,7 @@
 						"kernel32"
 					]
 				},
-				"path" : "c:/llvm-mingw-20240417-msvcrt-x86_64/bin/clang.exe",
+				"path" : "C:/llvm-mingw-20240417-msvcrt-x86_64/bin/clang.exe",
 				"version" : "18.1.4"
 			},
 			"language" : "C",
@@ -86,7 +86,7 @@
 						"kernel32"
 					]
 				},
-				"path" : "c:/llvm-mingw-20240417-msvcrt-x86_64/bin/clang++.exe",
+				"path" : "C:/llvm-mingw-20240417-msvcrt-x86_64/bin/clang++.exe",
 				"version" : "18.1.4"
 			},
 			"language" : "CXX",
