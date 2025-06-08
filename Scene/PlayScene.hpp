@@ -8,7 +8,7 @@
 
 #include "Engine/IScene.hpp"
 #include "Engine/Point.hpp"
-#include "Tool/Tool.hpp"
+
 
 class Turret;
 namespace Engine {
@@ -71,20 +71,20 @@ public:
     void Terminate() override;
     void Update(float deltaTime) override;
     void Draw() const override;
-    void OnMouseDown(int button, int mx, int my) override;
-    void OnMouseMove(int mx, int my) override;
-    void OnMouseUp(int button, int mx, int my) override;
-    void OnKeyDown(int keyCode) override;
+    //void OnMouseDown(int button, int mx, int my) override;
+    //void OnMouseMove(int mx, int my) override;
+    //void OnMouseUp(int button, int mx, int my) override;
+    //void OnKeyDown(int keyCode) override;
     void Hit();
-    int GetMoney() const;
-    void EarnMoney(int money);
+    int GetMoney() const{return money;}
+    //void EarnMoney(int money);
     void ReadMap();
-    void ReadEnemyWave();
+    //void ReadEnemyWave();
     void ConstructUI();
-    void UIBtnClicked(int id);
-    bool CheckSpaceValid(int x, int y);
-    std::vector<std::vector<int>> CalculateBFSDistance();
-    Tool* currentTool = nullptr;
+    //void UIBtnClicked(int id);
+    //bool CheckSpaceValid(int x, int y);
+    //std::vector<std::vector<int>> CalculateBFSDistance();
+ 
     bool paused = false;
     Engine::Label* pauseLabel = nullptr;
 
