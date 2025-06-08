@@ -4,19 +4,32 @@
 [INFO] There are total 16 supported mouse buttons
 [INFO] Allegro5 initialized
 [INFO] Game begin
+[INFO] Loaded Resource<font>: Resource/fonts/prstartk.ttf with size 80
+[INFO] Game initialized
+[INFO] Game start event loop
 [INFO] Loaded Resource<image>: Resource/images/start/Pacman_logo.png scaled to 800x500
 [INFO] Loaded Resource<image>: Resource/images/stage-select/dirt.png scaled to 400x100
 [INFO] Loaded Resource<image>: Resource/images/stage-select/dirt.png
 [INFO] Loaded Resource<image>: Resource/images/stage-select/floor.png
 [INFO] Loaded Resource<font>: Resource/fonts/prstartk.ttf with size 48
-[INFO] Game initialized
-[INFO] Game start event loop
+[INFO] Changed to start scene
+[INFO] Loaded Resource<font>: Resource/fonts/prstartk.ttf with size 64
+[INFO] Loaded Resource<font>: Resource/fonts/prstartk.ttf with size 32
+[INFO] Loaded Resource<image>: Resource/images/stage-select/dirt.png scaled to 200x70
+[INFO] Loaded Resource<font>: Resource/fonts/prstartk.ttf with size 36
+[INFO] Changed to info scene
+[INFO] Changed to start scene
 [INFO] Game Terminating...
 [INFO] Game terminated
 [INFO] Game end
+[INFO] Destroyed Resource<image>: stage-select/dirt.png?200x70
 [INFO] Destroyed Resource<image>: stage-select/floor.png
 [INFO] Destroyed Resource<image>: stage-select/dirt.png?400x100
 [INFO] Destroyed Resource<image>: stage-select/dirt.png
 [INFO] Destroyed Resource<image>: start/Pacman_logo.png?800x500
 [INFO] Destroyed Resource<image>: icon.jpg
+[INFO] Destroyed Resource<font>: prstartk.ttf?36
+[INFO] Destroyed Resource<font>: prstartk.ttf?32
+[INFO] Destroyed Resource<font>: prstartk.ttf?64
 [INFO] Destroyed Resource<font>: prstartk.ttf?48
+[INFO] Destroyed Resource<font>: prstartk.ttf?80

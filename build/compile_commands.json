@@ -175,6 +175,12 @@
 },
 {
   "directory": "C:/Users/User/OneDrive/Desktop/Pacman/build",
+  "command": "c:\\llvm-mingw-20240417-msvcrt-x86_64\\bin\\clang++.exe  @CMakeFiles/2025_I2P2_TowerDefense.dir/includes_CXX.rsp -g -o CMakeFiles\\2025_I2P2_TowerDefense.dir\\Scene\\InfoScene.cpp.obj -c C:\\Users\\User\\OneDrive\\Desktop\\Pacman\\Scene\\InfoScene.cpp",
+  "file": "C:/Users/User/OneDrive/Desktop/Pacman/Scene/InfoScene.cpp",
+  "output": "CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/InfoScene.cpp.obj"
+},
+{
+  "directory": "C:/Users/User/OneDrive/Desktop/Pacman/build",
   "command": "c:\\llvm-mingw-20240417-msvcrt-x86_64\\bin\\clang++.exe  @CMakeFiles/2025_I2P2_TowerDefense.dir/includes_CXX.rsp -g -o CMakeFiles\\2025_I2P2_TowerDefense.dir\\Turret\\LaserTurret.cpp.obj -c C:\\Users\\User\\OneDrive\\Desktop\\Pacman\\Turret\\LaserTurret.cpp",
   "file": "C:/Users/User/OneDrive/Desktop/Pacman/Turret/LaserTurret.cpp",
   "output": "CMakeFiles/2025_I2P2_TowerDefense.dir/Turret/LaserTurret.cpp.obj"

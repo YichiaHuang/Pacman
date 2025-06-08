@@ -632,6 +632,30 @@ Engine/Sprite.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Engine/Sprite.cpp.s
 .PHONY : Engine/Sprite.cpp.s
 
+Scene/InfoScene.obj: Scene/InfoScene.cpp.obj
+.PHONY : Scene/InfoScene.obj
+
+# target to build an object file
+Scene/InfoScene.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/InfoScene.cpp.obj
+.PHONY : Scene/InfoScene.cpp.obj
+
+Scene/InfoScene.i: Scene/InfoScene.cpp.i
+.PHONY : Scene/InfoScene.i
+
+# target to preprocess a source file
+Scene/InfoScene.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/InfoScene.cpp.i
+.PHONY : Scene/InfoScene.cpp.i
+
+Scene/InfoScene.s: Scene/InfoScene.cpp.s
+.PHONY : Scene/InfoScene.s
+
+# target to generate assembly for a file
+Scene/InfoScene.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/InfoScene.cpp.s
+.PHONY : Scene/InfoScene.cpp.s
+
 Scene/LoseScene.obj: Scene/LoseScene.cpp.obj
 .PHONY : Scene/LoseScene.obj
 
@@ -1256,6 +1280,9 @@ help:
 	@echo ... Engine/Sprite.obj
 	@echo ... Engine/Sprite.i
 	@echo ... Engine/Sprite.s
+	@echo ... Scene/InfoScene.obj
+	@echo ... Scene/InfoScene.i
+	@echo ... Scene/InfoScene.s
 	@echo ... Scene/LoseScene.obj
 	@echo ... Scene/LoseScene.i
 	@echo ... Scene/LoseScene.s

@@ -913,4 +913,5 @@ CMakeFiles/2025_I2P2_TowerDefense.dir/main.cpp.obj: \
   C:/Users/User/OneDrive/Desktop/Pacman/Scene/StartScene.h \
   C:/Users/User/OneDrive/Desktop/Pacman/Scene/SettingsScene.hpp \
   C:/Users/User/OneDrive/Desktop/Pacman/Scene/ScoreboardScene.hpp \
-  C:/Users/User/OneDrive/Desktop/Pacman/Scene/MotionScene.hpp
+  C:/Users/User/OneDrive/Desktop/Pacman/Scene/MotionScene.hpp \
+  C:/Users/User/OneDrive/Desktop/Pacman/Scene/InfoScene.hpp
