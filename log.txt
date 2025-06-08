@@ -8,7 +8,7 @@
 [INFO] Loaded Resource<image>: Resource/images/stage-select/dirt.png scaled to 400x100
 [INFO] Loaded Resource<image>: Resource/images/stage-select/dirt.png
 [INFO] Loaded Resource<image>: Resource/images/stage-select/floor.png
-[INFO] Loaded Resource<font>: Resource/fonts/pirulen.ttf with size 48
+[INFO] Loaded Resource<font>: Resource/fonts/prstartk.ttf with size 48
 [INFO] Game initialized
 [INFO] Game start event loop
 [INFO] Game Terminating...
@@ -19,4 +19,4 @@
 [INFO] Destroyed Resource<image>: stage-select/dirt.png
 [INFO] Destroyed Resource<image>: start/Pacman_logo.png?800x500
 [INFO] Destroyed Resource<image>: icon.jpg
-[INFO] Destroyed Resource<font>: pirulen.ttf?48
+[INFO] Destroyed Resource<font>: prstartk.ttf?48
