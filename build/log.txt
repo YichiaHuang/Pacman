@@ -1,7 +1,7 @@
 [INFO] Game Initializing...
 [INFO] Loaded Resource<image>: Resource/images/icon.jpg
 [INFO] Loaded window icon from: icon.jpg
-[INFO] There are total 2 supported mouse buttons
+[INFO] There are total 16 supported mouse buttons
 [INFO] Allegro5 initialized
 [INFO] Game begin
 [INFO] Loaded Resource<font>: Resource/fonts/prstartk.ttf with size 80
@@ -13,128 +13,40 @@
 [INFO] Loaded Resource<image>: Resource/images/stage-select/floor.png
 [INFO] Loaded Resource<font>: Resource/fonts/prstartk.ttf with size 48
 [INFO] Changed to start scene
-[INFO] Loaded Resource<font>: Resource/fonts/prstartk.ttf with size 40
+[INFO] Loaded Resource<image>: Resource/images/stage-select/slider.png
+[INFO] Loaded Resource<image>: Resource/images/stage-select/slider-blue.png
+[INFO] Loaded Resource<image>: Resource/images/stage-select/bar.png scaled to 190x4
+[INFO] Loaded Resource<image>: Resource/images/stage-select/end.png
+[INFO] Loaded Resource<font>: Resource/fonts/prstartk.ttf with size 28
 [INFO] Loaded Resource<audio>: Resource/audios/select.ogg
 [INFO] Created<sample_instance>: Resource/audios/select.ogg
-[INFO] Changed to stage-select scene
+[INFO] Changed to settings scene
 [INFO] stopped audio (sample)
-[INFO] Loaded Resource<image>: Resource/images/play/dirt.png scaled to 64x64
-[INFO] Loaded Resource<image>: Resource/images/play/floor.png scaled to 64x64
-[INFO] Loaded Resource<image>: Resource/images/play/sand.png scaled to 320x832
-[INFO] Loaded Resource<font>: Resource/fonts/prstartk.ttf with size 32
-[INFO] Loaded Resource<font>: Resource/fonts/prstartk.ttf with size 24
-[INFO] Loaded Resource<image>: Resource/images/play/tower-base.png
-[INFO] Loaded Resource<image>: Resource/images/play/turret-1.png
-[INFO] Loaded Resource<image>: Resource/images/play/floor.png
-[INFO] Loaded Resource<image>: Resource/images/play/dirt.png
-[INFO] Loaded Resource<image>: Resource/images/play/turret-2.png
-[INFO] Loaded Resource<image>: Resource/images/play/turret-3.png
-[INFO] Loaded Resource<image>: Resource/images/play/shovel.png
-[INFO] Loaded Resource<image>: Resource/images/play/benjamin.png
-[INFO] Loaded Resource<font>: Resource/fonts/prstartk.ttf with size 60
-[INFO] Loaded Resource<image>: Resource/images/play/target.png
-[INFO] Loaded Resource<audio>: Resource/audios/astronomia.ogg
-[INFO] Created<sample_instance>: Resource/audios/astronomia.ogg
-[INFO] Loaded Resource<image>: Resource/images/lose/benjamin-happy.png
-[INFO] Loaded Resource<audio>: Resource/audios/play.ogg
-[INFO] Changed to play scene
-[INFO] Loaded Resource<image>: Resource/images/play/enemy-1.png
-[INFO] Space (7, 1) is valid for turret.
-[INFO] Space (11, 1) is valid for turret.
-[INFO] Space (15, 1) is valid for turret.
-[INFO] Pressed key: 216
-[INFO] Loaded Resource<image>: Resource/images/play/bullet-1.png
-[INFO] Loaded Resource<audio>: Resource/audios/gun.wav
-[INFO] Pressed key: 36
-[INFO] Loaded Resource<image>: Resource/images/play/dirty-1.png
-[INFO] Loaded Resource<image>: Resource/images/play/explosion-1.png
-[INFO] Loaded Resource<image>: Resource/images/play/explosion-2.png
-[INFO] Loaded Resource<image>: Resource/images/play/explosion-3.png
-[INFO] Loaded Resource<image>: Resource/images/play/explosion-4.png
-[INFO] Loaded Resource<image>: Resource/images/play/explosion-5.png
-[INFO] Loaded Resource<image>: Resource/images/play/dirty-3.png
-[INFO] Loaded Resource<image>: Resource/images/play/dirty-2.png
-[INFO] Loaded Resource<audio>: Resource/audios/explosion.wav
-[INFO] Loaded Resource<image>: Resource/images/play/enemy-2.png
-[INFO] Space (14, 5) is valid for turret.
-[INFO] Space (8, 5) is valid for turret.
-[INFO] Loaded Resource<image>: Resource/images/play/enemy-4.png
-[INFO] Loaded Resource<image>: Resource/images/play/bullet-8.png
-[INFO] Space (2, 5) is valid for turret.
-[INFO] Loaded Resource<image>: Resource/images/play/enemy-3.png
-[INFO] Loaded Resource<image>: Resource/images/play/enemy-3-head.png
-[INFO] Space (7, 7) is valid for turret.
-[INFO] Space (2, 8) is valid for turret.
-[INFO] Space (2, 10) is valid for turret.
-[INFO] Loaded Resource<image>: Resource/images/play/bullet-2.png
-[INFO] Loaded Resource<audio>: Resource/audios/laser.wav
-[INFO] All enemies cleared. Will trigger WinScene next frame.
-[INFO] All enemies cleared. Will trigger WinScene next frame.
-[INFO] All enemies cleared. Will trigger WinScene next frame.
-[INFO] All enemies cleared. Will trigger WinScene next frame.
-[INFO] WinTriggered = true, switching to win-scene.
-[INFO] stopped audio (bgm)
-[INFO] Loaded Resource<image>: Resource/images/ghost/pacman-ghosts.png
-[INFO] Loaded Resource<image>: Resource/images/win/dirt.png scaled to 400x100
-[INFO] Loaded Resource<image>: Resource/images/win/dirt.png
-[INFO] Loaded Resource<image>: Resource/images/win/floor.png
-[INFO] Loaded Resource<font>: Resource/fonts/prstartk.ttf with size 36
-[INFO] Changed to win-scene scene
-[INFO] stopped audio (bgm)
+[INFO] Changed to start scene
+[INFO] Loaded Resource<font>: Resource/fonts/prstartk.ttf with size 40
 [INFO] Created<sample_instance>: Resource/audios/select.ogg
 [INFO] Changed to stage-select scene
-[INFO] Game Terminating...
 [INFO] stopped audio (sample)
+[INFO] Changed to start scene
+[INFO] Created<sample_instance>: Resource/audios/select.ogg
+[INFO] Changed to stage-select scene
+[INFO] stopped audio (sample)
+[INFO] Changed to start scene
+[INFO] Game Terminating...
 [INFO] Game terminated
 [INFO] Game end
-[INFO] Destroyed Resource<image>: play/bullet-2.png
-[INFO] Destroyed Resource<image>: play/bullet-8.png
-[INFO] Destroyed Resource<image>: play/dirty-2.png
-[INFO] Destroyed Resource<image>: play/dirty-3.png
-[INFO] Destroyed Resource<image>: play/explosion-5.png
-[INFO] Destroyed Resource<image>: play/explosion-4.png
-[INFO] Destroyed Resource<image>: start/Pacman_logo.png?800x500
-[INFO] Destroyed Resource<image>: play/explosion-2.png
-[INFO] Destroyed Resource<image>: play/dirty-1.png
-[INFO] Destroyed Resource<image>: play/bullet-1.png
-[INFO] Destroyed Resource<image>: play/enemy-4.png
-[INFO] Destroyed Resource<image>: play/sand.png?320x832
-[INFO] Destroyed Resource<image>: lose/benjamin-happy.png
-[INFO] Destroyed Resource<image>: play/shovel.png
-[INFO] Destroyed Resource<image>: play/turret-3.png
-[INFO] Destroyed Resource<image>: play/explosion-1.png
-[INFO] Destroyed Resource<image>: play/enemy-1.png
-[INFO] Destroyed Resource<image>: play/dirt.png
-[INFO] Destroyed Resource<image>: icon.jpg
-[INFO] Destroyed Resource<image>: play/floor.png
-[INFO] Destroyed Resource<image>: play/target.png
-[INFO] Destroyed Resource<image>: play/turret-2.png
-[INFO] Destroyed Resource<image>: ghost/pacman-ghosts.png
-[INFO] Destroyed Resource<image>: stage-select/dirt.png
-[INFO] Destroyed Resource<image>: stage-select/dirt.png?400x100
-[INFO] Destroyed Resource<image>: win/dirt.png?400x100
-[INFO] Destroyed Resource<image>: play/enemy-2.png
-[INFO] Destroyed Resource<image>: play/tower-base.png
-[INFO] Destroyed Resource<image>: play/enemy-3-head.png
+[INFO] Destroyed Resource<image>: stage-select/bar.png?190x4
+[INFO] Destroyed Resource<image>: stage-select/slider-blue.png
 [INFO] Destroyed Resource<image>: stage-select/floor.png
-[INFO] Destroyed Resource<image>: play/floor.png?64x64
-[INFO] Destroyed Resource<image>: play/enemy-3.png
-[INFO] Destroyed Resource<image>: play/turret-1.png
-[INFO] Destroyed Resource<image>: play/dirt.png?64x64
-[INFO] Destroyed Resource<image>: play/explosion-3.png
-[INFO] Destroyed Resource<image>: play/benjamin.png
-[INFO] Destroyed Resource<font>: prstartk.ttf?24
-[INFO] Destroyed Resource<font>: prstartk.ttf?32
-[INFO] Destroyed Resource<font>: prstartk.ttf?36
+[INFO] Destroyed Resource<image>: stage-select/slider.png
+[INFO] Destroyed Resource<image>: stage-select/dirt.png?400x100
+[INFO] Destroyed Resource<image>: stage-select/dirt.png
+[INFO] Destroyed Resource<image>: start/Pacman_logo.png?800x500
+[INFO] Destroyed Resource<image>: stage-select/end.png
+[INFO] Destroyed Resource<image>: icon.jpg
 [INFO] Destroyed Resource<font>: prstartk.ttf?40
-[INFO] Destroyed Resource<font>: prstartk.ttf?60
+[INFO] Destroyed Resource<font>: prstartk.ttf?28
 [INFO] Destroyed Resource<font>: prstartk.ttf?48
 [INFO] Destroyed Resource<font>: prstartk.ttf?80
-[INFO] Destroyed<sample_instance>: astronomia.ogg
 [INFO] Destroyed<sample_instance>: select.ogg
-[INFO] Destroyed Resource<audio>: laser.wav
 [INFO] Destroyed Resource<audio>: select.ogg
-[INFO] Destroyed Resource<audio>: gun.wav
-[INFO] Destroyed Resource<audio>: play.ogg
-[INFO] Destroyed Resource<audio>: explosion.wav
-[INFO] Destroyed Resource<audio>: astronomia.ogg
