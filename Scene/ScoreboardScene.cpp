@@ -18,14 +18,14 @@ void ScoreboardScene::Initialize() {
     int h = Engine::GameEngine::GetInstance().GetScreenSize().y;
     int halfW = w / 2;
 
-    AddNewObject(new Engine::Label("Scoreboard", "pirulen.ttf", 48, halfW, 40, 255, 255, 255, 255, 0.5, 0.5));
+    AddNewObject(new Engine::Label("Scoreboard", "prstartk.ttf", 48, halfW, 40, 255, 255, 255, 255, 0.5, 0.5));
 
     LoadScoreboard();
-    pageLabel = new Engine::Label("Page 1", "pirulen.ttf", 28, halfW, 100, 255, 255, 255, 255, 0.5, 0.5);
+    pageLabel = new Engine::Label("Page 1", "prstartk.ttf", 28, halfW, 100, 255, 255, 255, 255, 0.5, 0.5);
     AddNewObject(pageLabel);
 
     for (int i = 0; i < entriesPerPage; ++i) {
-        auto label = new Engine::Label("", "pirulen.ttf", 28, halfW, 180 + i * 60, 255, 255, 255, 255, 0.5, 0.5);
+        auto label = new Engine::Label("", "prstartk.ttf", 28, halfW, 180 + i * 60, 255, 255, 255, 255, 0.5, 0.5);
         entryLabels.push_back(label);
         AddNewObject(label);
     }
@@ -34,19 +34,19 @@ void ScoreboardScene::Initialize() {
     auto* btn = new Engine::ImageButton("stage-select/dirt.png", "stage-select/floor.png", halfW - 200, h - 120, 150, 60);
     btn->SetOnClickCallback([this]() { PrevPageOnClick(); });
     AddNewControlObject(btn);
-    AddNewObject(new Engine::Label("Prev", "pirulen.ttf", 32, halfW - 125, h - 90, 0, 0, 0, 255, 0.5, 0.5));
+    AddNewObject(new Engine::Label("Prev", "prstartk.ttf", 32, halfW - 125, h - 90, 0, 0, 0, 255, 0.5, 0.5));
 
     //Next Button
     btn = new Engine::ImageButton("stage-select/dirt.png", "stage-select/floor.png", halfW + 50, h - 120, 150, 60);
     btn->SetOnClickCallback([this]() { NextPageOnClick(); });
     AddNewControlObject(btn);
-    AddNewObject(new Engine::Label("Next", "pirulen.ttf", 32, halfW + 125, h - 90, 0, 0, 0, 255, 0.5, 0.5));
+    AddNewObject(new Engine::Label("Next", "prstartk.ttf", 32, halfW + 125, h - 90, 0, 0, 0, 255, 0.5, 0.5));
    
     //Back Button
     btn = new Engine::ImageButton("win/dirt.png", "win/floor.png", halfW - 75, h - 220, 150, 60);
     btn->SetOnClickCallback([this]() { BackOnClick(); });
     AddNewControlObject(btn);
-    AddNewObject(new Engine::Label("Back", "pirulen.ttf", 32, halfW, h - 190, 0, 0, 0, 255, 0.5, 0.5));
+    AddNewObject(new Engine::Label("Back", "prstartk.ttf", 32, halfW, h - 190, 0, 0, 0, 255, 0.5, 0.5));
 
     UpdatePage();
 }

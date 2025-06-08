@@ -19,15 +19,15 @@ void WinScene::Initialize() {
     int halfW = w / 2;
     int halfH = h / 2;
     AddNewObject(new Engine::Image("win/benjamin-sad.png", halfW, halfH, 0, 0, 0.5, 0.5));
-    AddNewObject(new Engine::Label("You Win!", "pirulen.ttf", 48, halfW, halfH / 4 - 10, 255, 255, 255, 255, 0.5, 0.5));
+    AddNewObject(new Engine::Label("You Win!", "prstartk.ttf", 48, halfW, halfH / 4 - 10, 255, 255, 255, 255, 0.5, 0.5));
     Engine::ImageButton *btn;
     btn = new Engine::ImageButton("win/dirt.png", "win/floor.png", halfW - 200, halfH * 7 / 4 - 50, 400, 100);
     btn->SetOnClickCallback(std::bind(&WinScene::BackOnClick, this, 2));
     AddNewControlObject(btn);
-    AddNewObject(new Engine::Label("Back", "pirulen.ttf", 48, halfW, halfH * 7 / 4, 0, 0, 0, 255, 0.5, 0.5));
+    AddNewObject(new Engine::Label("Back", "prstartk.ttf", 48, halfW, halfH * 7 / 4, 0, 0, 0, 255, 0.5, 0.5));
     bgmId = AudioHelper::PlayAudio("win.wav");
 
-    // ALLEGRO_FONT* font = Engine::Resources::GetInstance().GetFont("pirulen.ttf", 32).get();
+    // ALLEGRO_FONT* font = Engine::Resources::GetInstance().GetFont("prstartk.ttf", 32).get();
     // nameBox = new Engine::TextBox("Enter your name", font, halfW - 150, halfH, 300, 50);
 
     // AddNewControlObject(nameBox);
