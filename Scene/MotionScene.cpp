@@ -51,7 +51,7 @@ void MotionScene::Initialize() {
     int halfH = h / 2;
     Engine::ImageButton *btn;
 
-    AddNewObject(new Engine::Label("Push Enter to Play", "prstartk.ttf", 80, halfW, halfH / 2 + 50, 10, 155, 155, 255, 0.5, 0.5));
+    AddNewObject(new Engine::Label("Press Enter to Play", "prstartk.ttf", 80, halfW, halfH / 2 + 50, 10, 155, 155, 255, 0.5, 0.5));
     animationBitmap = al_load_bitmap("Resource/images/cool.png");
 if (!animationBitmap) {
     std::cerr << "Failed to load animation.png\n";

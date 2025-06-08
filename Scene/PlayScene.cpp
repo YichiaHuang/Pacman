@@ -70,23 +70,24 @@ void PlayScene::Initialize() {
     // Should support buttons.
     AddNewControlObject(UIGroup = new Group());
     ReadMap();
-    ReadEnemyWave();
+    //ReadEnemyWave();
+    
     mapDistance = CalculateBFSDistance();
     ConstructUI();
     imgTarget = new Engine::Image("play/target.png", 0, 0);
     imgTarget->Visible = false;
     preview = nullptr;
     UIGroup->AddNewObject(imgTarget);
-    // Preload Lose Scene
+    /*// Preload Lose Scene
     deathBGMInstance = Engine::Resources::GetInstance().GetSampleInstance("astronomia.ogg");
     Engine::Resources::GetInstance().GetBitmap("lose/benjamin-happy.png");
     // Start BGM.
-    bgmId = AudioHelper::PlayBGM("play.ogg");
+    bgmId = AudioHelper::PlayBGM("play.ogg");*/
 }
 void PlayScene::Terminate() {
-    AudioHelper::StopBGM(bgmId);
-    AudioHelper::StopSample(deathBGMInstance);
-    deathBGMInstance = std::shared_ptr<ALLEGRO_SAMPLE_INSTANCE>();
+    //AudioHelper::StopBGM(bgmId);
+    //AudioHelper::StopSample(deathBGMInstance);
+    //deathBGMInstance = std::shared_ptr<ALLEGRO_SAMPLE_INSTANCE>();
     IScene::Terminate();
     if (currentTool) {
         delete currentTool;
@@ -113,6 +114,7 @@ void PlayScene::Update(float deltaTime) {
         Engine::GameEngine::GetInstance().ChangeScene("win-scene");
     return;
     }
+    /*
     // Calculate danger zone.
     std::vector<float> reachEndTimes;
     for (auto &it : EnemyGroup->GetObjects()) {
@@ -169,6 +171,7 @@ void PlayScene::Update(float deltaTime) {
                 delete imgTarget;*/
                 // Win.
                 //Engine::GameEngine::GetInstance().ChangeScene("win-scene");
+                /*
                 Engine::LOG(Engine::INFO) << "All enemies cleared. Will trigger WinScene next frame.";
                 WinTriggered = true;
             }
@@ -206,7 +209,7 @@ void PlayScene::Update(float deltaTime) {
         preview->Position = Engine::GameEngine::GetInstance().GetMousePosition();
         // To keep responding when paused.
         preview->Update(deltaTime);
-    }
+    }*/
 }
 void PlayScene::Draw() const {
     IScene::Draw();
@@ -260,7 +263,7 @@ void PlayScene::OnMouseMove(int mx, int my) {
     imgTarget->Position.y = y * BlockSize;
 }
 void PlayScene::OnMouseUp(int button, int mx, int my) {
-    IScene::OnMouseUp(button, mx, my);
+    /*IScene::OnMouseUp(button, mx, my);
     if (!imgTarget->Visible)
         return;
     const int x = mx / BlockSize;
@@ -302,10 +305,10 @@ void PlayScene::OnMouseUp(int button, int mx, int my) {
         else{
             Engine::LOG(Engine::INFO) << "Target grid is already occupied.";
         }
-    }
+    }*/
 }
 void PlayScene::OnKeyDown(int keyCode) {
-    IScene::OnKeyDown(keyCode);
+    /*IScene::OnKeyDown(keyCode);
     Engine::LOG(Engine::INFO) << "Pressed key: " << keyCode;
     if (keyCode == ALLEGRO_KEY_TAB) {
         DebugMode = !DebugMode;
@@ -349,24 +352,25 @@ void PlayScene::OnKeyDown(int keyCode) {
     else if (keyCode >= ALLEGRO_KEY_0 && keyCode <= ALLEGRO_KEY_9) {
         // Hotkey for Speed up.
         SpeedMult = keyCode - ALLEGRO_KEY_0;
-    }
+    }*/
 }
 void PlayScene::Hit() {
-    lives--;
+    /*lives--;
     UILives->Text = std::string("Life ") + std::to_string(lives);
     if (lives <= 0) {
         Engine::GameEngine::GetInstance().ChangeScene("lose");
-    }
+    }*/
 }
 int PlayScene::GetMoney() const {
     return money;
 }
 void PlayScene::EarnMoney(int money) {
-    this->money += money;
-    UIMoney->Text = std::string("$") + std::to_string(this->money);
+    /*this->money += money;
+    UIMoney->Text = std::string("$") + std::to_string(this->money);*/
 }
 void PlayScene::ReadMap() {
-    std::string filename = std::string("Resource/map") + std::to_string(MapId) + ".txt";
+    //std::string filename = std::string("Resource/map") + std::to_string(MapId) + ".txt";
+    std::string filename = std::string("Resource/test_map.txt");
     // Read map file.
     char c;
     std::vector<bool> mapData;
@@ -374,7 +378,8 @@ void PlayScene::ReadMap() {
     while (fin >> c) {
         switch (c) {
             case '0': mapData.push_back(false); break;
-            case '1': mapData.push_back(true); break;
+            case '1': mapData.push_back(false); break;
+            case '2': mapData.push_back(true); break;  // For testing, treat '2' as '1'.
             case '\n':
             case '\r':
                 if (static_cast<int>(mapData.size()) / MapWidth != 0)
@@ -394,13 +399,13 @@ void PlayScene::ReadMap() {
             const int num = mapData[i * MapWidth + j];
             mapState[i][j] = num ? TILE_FLOOR : TILE_DIRT;
             if (num)
-                TileMapGroup->AddNewObject(new Engine::Image("play/floor.png", j * BlockSize, i * BlockSize, BlockSize, BlockSize));
+                TileMapGroup->AddNewObject(new Engine::Image("play/wall_test.png", j * BlockSize, i * BlockSize, BlockSize, BlockSize));
             else
-                TileMapGroup->AddNewObject(new Engine::Image("play/dirt.png", j * BlockSize, i * BlockSize, BlockSize, BlockSize));
+                TileMapGroup->AddNewObject(new Engine::Image("play/floor_2.png", j * BlockSize, i * BlockSize, BlockSize, BlockSize));
         }
     }
 }
-void PlayScene::ReadEnemyWave() {
+/*void PlayScene::ReadEnemyWave() {
     std::string filename = std::string("Resource/enemy") + std::to_string(MapId) + ".txt";
     // Read enemy file.
     float type, wait, repeat;
@@ -411,15 +416,16 @@ void PlayScene::ReadEnemyWave() {
             enemyWaveData.emplace_back(type, wait);
     }
     fin.close();
-}
+}*/
 void PlayScene::ConstructUI() {
     // Background
-    UIGroup->AddNewObject(new Engine::Image("play/sand.png", 1280, 0, 320, 832));
+    UIGroup->AddNewObject(new Engine::Image("play/floor.png", 1280, 0, 320, 832));
     // Text
     UIGroup->AddNewObject(new Engine::Label(std::string("Stage ") + std::to_string(MapId), "prstartk.ttf", 32, 1294, 0));
     UIGroup->AddNewObject(UIMoney = new Engine::Label(std::string("$") + std::to_string(money), "prstartk.ttf", 24, 1294, 48));
     UIGroup->AddNewObject(UILives = new Engine::Label(std::string("Life ") + std::to_string(lives), "prstartk.ttf", 24, 1294, 88));
     TurretButton *btn;
+    /*
     // Button 1
     btn = new TurretButton("play/floor.png", "play/dirt.png",
                            Engine::Sprite("play/tower-base.png", 1294, 136, 0, 0, 0, 0),
@@ -463,17 +469,17 @@ void PlayScene::ConstructUI() {
     dangerIndicator = new Engine::Sprite("play/benjamin.png", w - shift, h - shift);
     dangerIndicator->Tint.a = 0;
     UIGroup->AddNewObject(dangerIndicator);
-
+    
     // Pause label
     pauseLabel = new Engine::Label("PAUSED", "prstartk.ttf", 60, 640, 360);
     pauseLabel->Anchor = Engine::Point(0.5, 0.5);
     pauseLabel->Visible = false;
-    UIGroup->AddNewObject(pauseLabel);
+    UIGroup->AddNewObject(pauseLabel);*/
 
 }
 
 void PlayScene::UIBtnClicked(int id) {
-    Turret *next_preview = nullptr;
+    /*Turret *next_preview = nullptr;
     if (id == 0 && money >= MachineGunTurret::Price)
         next_preview = new MachineGunTurret(0, 0);
     else if (id == 1 && money >= LaserTurret::Price)
@@ -492,12 +498,12 @@ void PlayScene::UIBtnClicked(int id) {
     preview->Enabled = false;
     preview->Preview = true;
     UIGroup->AddNewObject(preview);
-    OnMouseMove(Engine::GameEngine::GetInstance().GetMousePosition().x, Engine::GameEngine::GetInstance().GetMousePosition().y);
+    OnMouseMove(Engine::GameEngine::GetInstance().GetMousePosition().x, Engine::GameEngine::GetInstance().GetMousePosition().y);*/
 }
 
 
 bool PlayScene::CheckSpaceValid(int x, int y) {
-    if (x < 0 || x >= MapWidth || y < 0 || y >= MapHeight){
+    /*if (x < 0 || x >= MapWidth || y < 0 || y >= MapHeight){
         Engine::LOG(Engine::INFO) << "Coordinate out of bounds.";
         return false;
     }
@@ -528,7 +534,7 @@ bool PlayScene::CheckSpaceValid(int x, int y) {
     for (auto &it : EnemyGroup->GetObjects())
         dynamic_cast<Enemy *>(it)->UpdatePath(mapDistance);
     Engine::LOG(Engine::INFO) << "Space (" << x << ", " << y << ") is valid for turret.";
-    return true;
+    return true;*/
 }
 std::vector<std::vector<int>> PlayScene::CalculateBFSDistance() {
     // Reverse BFS to find path.
