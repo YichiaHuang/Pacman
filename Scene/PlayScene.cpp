@@ -20,8 +20,8 @@
 #include "UI/Animation/DirtyEffect.hpp"
 #include "Scene/PlayScene.hpp"
 #include "UI/Component/Label.hpp"
-
-
+#include "Dot/Dot.hpp"
+#include "Pacman/Pacman.hpp"
 // TODO HACKATHON-4 (1/3): Trace how the game handles keyboard input.
 // TODO HACKATHON-4 (2/3): Find the cheat code sequence in this file.
 // TODO HACKATHON-4 (3/3): When the cheat code is entered, a plane should be spawned and added to the scene.
@@ -57,6 +57,9 @@ void PlayScene::Initialize() {
     AddNewObject(GroundEffectGroup = new Group());
     AddNewObject(DebugIndicatorGroup = new Group());
     AddNewObject(TowerGroup = new Group());
+
+    AddNewObject(DotsGroup = new Group());
+
     AddNewObject(EnemyGroup = new Group());
     AddNewObject(BulletGroup = new Group());
     AddNewObject(EffectGroup = new Group());
@@ -76,6 +79,10 @@ void PlayScene::Initialize() {
     Engine::Resources::GetInstance().GetBitmap("lose/benjamin-happy.png");
     // Start BGM.
     bgmId = AudioHelper::PlayBGM("play.ogg");*/
+    
+    player = new Pacman(1 * BlockSize + BlockSize / 2, 1 * BlockSize + BlockSize / 2);
+    AddNewObject(player);
+    
 }
 void PlayScene::Terminate() {
     //AudioHelper::StopBGM(bgmId);
@@ -87,7 +94,42 @@ void PlayScene::Terminate() {
 void PlayScene::Update(float deltaTime) {
     // If we use deltaTime directly, then we might have Bullet-through-paper problem.
     // Reference: Bullet-Through-Paper
+     
+        int dx = 0, dy = 0;
+        if (keyPressed.count(ALLEGRO_KEY_UP)) {
+                dx = 0; dy = -1;
+        } else if (keyPressed.count(ALLEGRO_KEY_DOWN)) {
+                dx = 0; dy = 1;
+        } else if (keyPressed.count(ALLEGRO_KEY_LEFT)) {
+                dx = -1; dy = 0;
+        } else if (keyPressed.count(ALLEGRO_KEY_RIGHT)) {
+                dx = 1; dy = 0;
+        }
+
+        if (dx != 0 || dy != 0) {
+            // 取得目前在地圖上的格子座標
+            int gridX = static_cast<int>(player->Position.y) / PlayScene::BlockSize;
+            int gridY = static_cast<int>(player->Position.x) / PlayScene::BlockSize;
+
+            int targetX = gridX + dy;
+            int targetY = gridY + dx;
+
+            // 檢查是否在邊界內，且不是牆壁
+            if (targetX >= 0 && targetX < PlayScene::MapHeight &&
+                targetY >= 0 && targetY < PlayScene::MapWidth &&
+                map_dot[targetX][targetY] != -1) {
+                player->MoveDirection(dx, dy);
+            }
+        }
     
+
+    
+
+
+
+
+    DotsGroup->Update(deltaTime);
+    player->Update(deltaTime);
     if (SpeedMult == 0)
         deathCountDown = -1;
     else if (deathCountDown != -1)
@@ -124,13 +166,22 @@ void PlayScene::ReadMap() {
     std::string filename = std::string("Resource/test_map.txt");
     // Read map file.
     char c;
-    std::vector<bool> mapData;
+    std::vector<int> mapData;
     std::ifstream fin(filename);
+    
     while (fin >> c) {
         switch (c) {
-            case '0': mapData.push_back(false); break;
-            case '1': mapData.push_back(false); break;
-            case '2': mapData.push_back(true); break;  // For testing, treat '2' as '1'.
+            case '0': 
+                mapData.push_back(0); 
+                break;
+            case '1': 
+                mapData.push_back(1); 
+                
+                break;
+            case '2': 
+                mapData.push_back(2); 
+                
+                break;  // For testing, treat '2' as '1'.
             case '\n':
             case '\r':
                 if (static_cast<int>(mapData.size()) / MapWidth != 0)
@@ -148,13 +199,40 @@ void PlayScene::ReadMap() {
     for (int i = 0; i < MapHeight; i++) {
         for (int j = 0; j < MapWidth; j++) {
             const int num = mapData[i * MapWidth + j];
-            mapState[i][j] = num ? TILE_FLOOR : TILE_DIRT;
-            if (num)
+            if(num==0||num==1)
+            {
+                map_dot[i][j]=0;
+                if(num==1)
+                    map_dot[i][j]=1;
+            }
+            else if(num==2)
+            {
+                
+                map_dot[i][j]=-1;
+            }
+            
+            //mapState[i][j] = num ? TILE_FLOOR : TILE_DIRT;
+            if (num==2)
                 TileMapGroup->AddNewObject(new Engine::Image("play/wall_test.png", j * BlockSize, i * BlockSize, BlockSize, BlockSize));
             else
                 TileMapGroup->AddNewObject(new Engine::Image("play/floor_2.png", j * BlockSize, i * BlockSize, BlockSize, BlockSize));
         }
     }
+    Dot* dot;
+    for(int i=0; i<13; i++)
+    {
+        for(int j=0; j<20; j++)
+        {
+            //std::cout<<map_dot[i][j]<<" ";
+            if(map_dot[i][j] == 1)
+            {
+                DotsGroup->AddNewObject(dot=new Dot(j*BlockSize+BlockSize/2, i*BlockSize+BlockSize/2));
+            }
+            
+        }   
+        //std::cout<<std::endl;
+    }
+
 }
 
 void PlayScene::ConstructUI() {
@@ -168,3 +246,12 @@ void PlayScene::ConstructUI() {
 }
 
 
+void PlayScene::OnKeyDown(int keyCode) {
+    IScene::OnKeyDown(keyCode);
+    keyPressed.insert(keyCode);  // 記下按下的鍵
+}
+
+void PlayScene::OnKeyUp(int keyCode) {
+    IScene::OnKeyUp(keyCode);    // 注意這邊呼叫的是 OnKeyUp，不是 OnKeyDown
+    keyPressed.erase(keyCode);   // 移除放開的鍵
+}

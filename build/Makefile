@@ -128,6 +128,30 @@ depend:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/build
 .PHONY : 2025_I2P2_TowerDefense/fast
 
+Dot/Dot.obj: Dot/Dot.cpp.obj
+.PHONY : Dot/Dot.obj
+
+# target to build an object file
+Dot/Dot.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/Dot.cpp.obj
+.PHONY : Dot/Dot.cpp.obj
+
+Dot/Dot.i: Dot/Dot.cpp.i
+.PHONY : Dot/Dot.i
+
+# target to preprocess a source file
+Dot/Dot.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/Dot.cpp.i
+.PHONY : Dot/Dot.cpp.i
+
+Dot/Dot.s: Dot/Dot.cpp.s
+.PHONY : Dot/Dot.s
+
+# target to generate assembly for a file
+Dot/Dot.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/Dot.cpp.s
+.PHONY : Dot/Dot.cpp.s
+
 Engine/Allegro5Exception.obj: Engine/Allegro5Exception.cpp.obj
 .PHONY : Engine/Allegro5Exception.obj
 
@@ -415,6 +439,30 @@ Engine/Sprite.s: Engine/Sprite.cpp.s
 Engine/Sprite.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Engine/Sprite.cpp.s
 .PHONY : Engine/Sprite.cpp.s
+
+Pacman/Pacman.obj: Pacman/Pacman.cpp.obj
+.PHONY : Pacman/Pacman.obj
+
+# target to build an object file
+Pacman/Pacman.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Pacman/Pacman.cpp.obj
+.PHONY : Pacman/Pacman.cpp.obj
+
+Pacman/Pacman.i: Pacman/Pacman.cpp.i
+.PHONY : Pacman/Pacman.i
+
+# target to preprocess a source file
+Pacman/Pacman.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Pacman/Pacman.cpp.i
+.PHONY : Pacman/Pacman.cpp.i
+
+Pacman/Pacman.s: Pacman/Pacman.cpp.s
+.PHONY : Pacman/Pacman.s
+
+# target to generate assembly for a file
+Pacman/Pacman.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Pacman/Pacman.cpp.s
+.PHONY : Pacman/Pacman.cpp.s
 
 Scene/InfoScene.obj: Scene/InfoScene.cpp.obj
 .PHONY : Scene/InfoScene.obj
@@ -833,6 +881,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... 2025_I2P2_TowerDefense
+	@echo ... Dot/Dot.obj
+	@echo ... Dot/Dot.i
+	@echo ... Dot/Dot.s
 	@echo ... Engine/Allegro5Exception.obj
 	@echo ... Engine/Allegro5Exception.i
 	@echo ... Engine/Allegro5Exception.s
@@ -869,6 +920,9 @@ help:
 	@echo ... Engine/Sprite.obj
 	@echo ... Engine/Sprite.i
 	@echo ... Engine/Sprite.s
+	@echo ... Pacman/Pacman.obj
+	@echo ... Pacman/Pacman.i
+	@echo ... Pacman/Pacman.s
 	@echo ... Scene/InfoScene.obj
 	@echo ... Scene/InfoScene.i
 	@echo ... Scene/InfoScene.s

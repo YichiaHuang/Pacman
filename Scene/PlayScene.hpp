@@ -5,9 +5,10 @@
 #include <memory>
 #include <utility>
 #include <vector>
-
+#include <set>
 #include "Engine/IScene.hpp"
 #include "Engine/Point.hpp"
+#include "Pacman/Pacman.hpp"    
 
 
 class Turret;
@@ -28,7 +29,7 @@ protected:
     int lives;
     int money;
     int SpeedMult;
-
+    std::set<int> keyPressed; 
 public:
     enum TileType {
             TILE_DIRT,
@@ -51,6 +52,9 @@ public:
     Group *GroundEffectGroup;
     Group *DebugIndicatorGroup;
     Group *BulletGroup;
+
+    Group *DotsGroup;
+
     Group *TowerGroup;
     Group *EnemyGroup;
     Group *EffectGroup;
@@ -74,7 +78,8 @@ public:
     //void OnMouseDown(int button, int mx, int my) override;
     //void OnMouseMove(int mx, int my) override;
     //void OnMouseUp(int button, int mx, int my) override;
-    //void OnKeyDown(int keyCode) override;
+    void OnKeyDown(int keyCode) override;
+    void OnKeyUp(int keyCode) override;
     void Hit();
     int GetMoney() const{return money;}
     //void EarnMoney(int money);
@@ -87,7 +92,10 @@ public:
  
     bool paused = false;
     Engine::Label* pauseLabel = nullptr;
-
+    int map_dot[30][30]={0};
     // void ModifyReadMapTiles();
+    Pacman* player;
+  
+    
 };
 #endif   // PLAYSCENE_HPP

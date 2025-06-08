@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "C:/2025_I2P2_TowerDefense-main/Dot/Dot.cpp" "CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/Dot.cpp.obj" "gcc" "CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/Dot.cpp.obj.d"
   "C:/2025_I2P2_TowerDefense-main/Engine/Allegro5Exception.cpp" "CMakeFiles/2025_I2P2_TowerDefense.dir/Engine/Allegro5Exception.cpp.obj" "gcc" "CMakeFiles/2025_I2P2_TowerDefense.dir/Engine/Allegro5Exception.cpp.obj.d"
   "C:/2025_I2P2_TowerDefense-main/Engine/AudioHelper.cpp" "CMakeFiles/2025_I2P2_TowerDefense.dir/Engine/AudioHelper.cpp.obj" "gcc" "CMakeFiles/2025_I2P2_TowerDefense.dir/Engine/AudioHelper.cpp.obj.d"
   "C:/2025_I2P2_TowerDefense-main/Engine/Collider.cpp" "CMakeFiles/2025_I2P2_TowerDefense.dir/Engine/Collider.cpp.obj" "gcc" "CMakeFiles/2025_I2P2_TowerDefense.dir/Engine/Collider.cpp.obj.d"
@@ -20,6 +21,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/2025_I2P2_TowerDefense-main/Engine/Point.cpp" "CMakeFiles/2025_I2P2_TowerDefense.dir/Engine/Point.cpp.obj" "gcc" "CMakeFiles/2025_I2P2_TowerDefense.dir/Engine/Point.cpp.obj.d"
   "C:/2025_I2P2_TowerDefense-main/Engine/Resources.cpp" "CMakeFiles/2025_I2P2_TowerDefense.dir/Engine/Resources.cpp.obj" "gcc" "CMakeFiles/2025_I2P2_TowerDefense.dir/Engine/Resources.cpp.obj.d"
   "C:/2025_I2P2_TowerDefense-main/Engine/Sprite.cpp" "CMakeFiles/2025_I2P2_TowerDefense.dir/Engine/Sprite.cpp.obj" "gcc" "CMakeFiles/2025_I2P2_TowerDefense.dir/Engine/Sprite.cpp.obj.d"
+  "C:/2025_I2P2_TowerDefense-main/Pacman/Pacman.cpp" "CMakeFiles/2025_I2P2_TowerDefense.dir/Pacman/Pacman.cpp.obj" "gcc" "CMakeFiles/2025_I2P2_TowerDefense.dir/Pacman/Pacman.cpp.obj.d"
   "C:/2025_I2P2_TowerDefense-main/Scene/InfoScene.cpp" "CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/InfoScene.cpp.obj" "gcc" "CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/InfoScene.cpp.obj.d"
   "C:/2025_I2P2_TowerDefense-main/Scene/LoseScene.cpp" "CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/LoseScene.cpp.obj" "gcc" "CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/LoseScene.cpp.obj.d"
   "C:/2025_I2P2_TowerDefense-main/Scene/MotionScene.cpp" "CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/MotionScene.cpp.obj" "gcc" "CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/MotionScene.cpp.obj.d"

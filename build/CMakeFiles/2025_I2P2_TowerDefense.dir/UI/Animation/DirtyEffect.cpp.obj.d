@@ -905,4 +905,7 @@ CMakeFiles/2025_I2P2_TowerDefense.dir/UI/Animation/DirtyEffect.cpp.obj: \
   C:/2025_I2P2_TowerDefense-main/./Engine/IControl.hpp \
   C:/2025_I2P2_TowerDefense-main/./Engine/IScene.hpp \
   C:/2025_I2P2_TowerDefense-main/./Scene/PlayScene.hpp \
-  C:/allegro/include/allegro5/allegro_audio.h
+  C:/allegro/include/allegro5/allegro_audio.h \
+  C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/set \
+  C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/__tree \
+  C:/2025_I2P2_TowerDefense-main/./Pacman/Pacman.hpp
