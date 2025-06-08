@@ -14,6 +14,12 @@ public:
     void Update(float deltaTime) override;
     void MoveDirection(int dx, int dy);
     void CheckCollisionWithDots();
+    int animationFrame = 0;
+    float animationTimer = 0;
+    const int totalFrames = 3;
+    const float frameDuration = 0.1f; // 每幀顯示 0.1 秒
+    int dotsEaten = 0;
+
 
 private:
     float Speed;

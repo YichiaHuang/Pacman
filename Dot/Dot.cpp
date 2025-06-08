@@ -9,7 +9,7 @@
 #include "Engine/Point.hpp"
 #include "Engine/Sprite.hpp"
 #include "Dot.hpp"
-
+#include "Scene/PlayScene.hpp"
 
 
 Dot::Dot(float x, float y) :

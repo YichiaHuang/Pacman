@@ -18,11 +18,17 @@
 #include <allegro5/allegro_primitives.h>
 
 Pacman::Pacman(float x, float y) :
-    Engine::Sprite("play/enemy-9.png", x, y, 32, 32, 0.5, 0.5),
+    Engine::Sprite("pacman/pac_test.png", x, y, 32, 32, 0.5, 0.5),
     Speed(150), gridX(x / PlayScene::BlockSize), gridY(y / PlayScene::BlockSize), moveDirX(0), moveDirY(0) {
 }
 
 void Pacman::Update(float deltaTime) {
+    
+    
+    
+    
+    
+    
     if (moving) {
         Engine::Point direction = targetPosition - Position;
         float distance = direction.Magnitude();
@@ -78,7 +84,11 @@ void Pacman::CheckCollisionWithDots() {
         if (dot && !dot->IsEaten) {
             float dist = std::hypot(Position.x - dot->Position.x, Position.y - dot->Position.y);
             if (dist < 16) {
-                dot->OnEaten();
+                if(dot->Visible){
+                    dot->OnEaten();
+                    dotsEaten++;
+                }
+                
             }
         }
     }

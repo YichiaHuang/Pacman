@@ -3,13 +3,19 @@
 
 CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/Dot.cpp.obj
  C:/2025_I2P2_TowerDefense-main/Dot/Dot.cpp
+ C:/2025_I2P2_TowerDefense-main/Engine/Group.hpp
+ C:/2025_I2P2_TowerDefense-main/Engine/IControl.hpp
  C:/2025_I2P2_TowerDefense-main/Engine/IObject.hpp
+ C:/2025_I2P2_TowerDefense-main/Engine/IScene.hpp
  C:/2025_I2P2_TowerDefense-main/Engine/Point.hpp
  C:/2025_I2P2_TowerDefense-main/Engine/Sprite.hpp
+ C:/2025_I2P2_TowerDefense-main/Pacman/Pacman.hpp
+ C:/2025_I2P2_TowerDefense-main/Scene/PlayScene.hpp
  C:/2025_I2P2_TowerDefense-main/UI/Component/Image.hpp
  C:/2025_I2P2_TowerDefense-main/Dot/Dot.hpp
  C:/allegro/include/allegro5/alcompat.h
  C:/allegro/include/allegro5/allegro.h
+ C:/allegro/include/allegro5/allegro_audio.h
  C:/allegro/include/allegro5/allegro_primitives.h
  C:/allegro/include/allegro5/altime.h
  C:/allegro/include/allegro5/base.h
@@ -621,6 +627,7 @@ CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/Dot.cpp.obj
  C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/__thread/id.h
  C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/__thread/poll_with_backoff.h
  C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/__threading_support
+ C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/__tree
  C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/__tuple/make_tuple_types.h
  C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/__tuple/pair_like.h
  C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/__tuple/sfinae_helpers.h
@@ -835,6 +842,7 @@ CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/Dot.cpp.obj
  C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/optional
  C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/random
  C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/ratio
+ C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/set
  C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/stddef.h
  C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/stdexcept
  C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/stdint.h

@@ -50,7 +50,7 @@ void PlayScene::Initialize() {
     ticks = 0;
     deathCountDown = -1;
     lives = 10;
-    money = 150;
+    money = 0;
     SpeedMult = 1;
     // Add groups from bottom to top.
     AddNewObject(TileMapGroup = new Group());
@@ -94,7 +94,10 @@ void PlayScene::Terminate() {
 void PlayScene::Update(float deltaTime) {
     // If we use deltaTime directly, then we might have Bullet-through-paper problem.
     // Reference: Bullet-Through-Paper
-     
+        money = player->dotsEaten; // 每吃一個點數增加10
+
+        UIMoney->Text = std::string("$") + std::to_string(money);
+
         int dx = 0, dy = 0;
         if (keyPressed.count(ALLEGRO_KEY_UP)) {
                 dx = 0; dy = -1;
@@ -121,6 +124,7 @@ void PlayScene::Update(float deltaTime) {
                 player->MoveDirection(dx, dy);
             }
         }
+        
     
 
     
