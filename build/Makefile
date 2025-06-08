@@ -152,6 +152,30 @@ Dot/Dot.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/Dot.cpp.s
 .PHONY : Dot/Dot.cpp.s
 
+Dot/NormalDot.obj: Dot/NormalDot.cpp.obj
+.PHONY : Dot/NormalDot.obj
+
+# target to build an object file
+Dot/NormalDot.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/NormalDot.cpp.obj
+.PHONY : Dot/NormalDot.cpp.obj
+
+Dot/NormalDot.i: Dot/NormalDot.cpp.i
+.PHONY : Dot/NormalDot.i
+
+# target to preprocess a source file
+Dot/NormalDot.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/NormalDot.cpp.i
+.PHONY : Dot/NormalDot.cpp.i
+
+Dot/NormalDot.s: Dot/NormalDot.cpp.s
+.PHONY : Dot/NormalDot.s
+
+# target to generate assembly for a file
+Dot/NormalDot.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/NormalDot.cpp.s
+.PHONY : Dot/NormalDot.cpp.s
+
 Engine/Allegro5Exception.obj: Engine/Allegro5Exception.cpp.obj
 .PHONY : Engine/Allegro5Exception.obj
 
@@ -884,6 +908,9 @@ help:
 	@echo ... Dot/Dot.obj
 	@echo ... Dot/Dot.i
 	@echo ... Dot/Dot.s
+	@echo ... Dot/NormalDot.obj
+	@echo ... Dot/NormalDot.i
+	@echo ... Dot/NormalDot.s
 	@echo ... Engine/Allegro5Exception.obj
 	@echo ... Engine/Allegro5Exception.i
 	@echo ... Engine/Allegro5Exception.s

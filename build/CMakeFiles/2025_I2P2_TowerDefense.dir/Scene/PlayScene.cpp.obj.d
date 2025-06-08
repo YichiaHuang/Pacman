@@ -913,4 +913,5 @@ CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/PlayScene.cpp.obj: \
   C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/__tree \
   C:/2025_I2P2_TowerDefense-main/./Pacman/Pacman.hpp \
   C:/2025_I2P2_TowerDefense-main/./UI/Component/Label.hpp \
-  C:/2025_I2P2_TowerDefense-main/./Dot/Dot.hpp
+  C:/2025_I2P2_TowerDefense-main/./Dot/Dot.hpp \
+  C:/2025_I2P2_TowerDefense-main/./Dot/NormalDot.hpp

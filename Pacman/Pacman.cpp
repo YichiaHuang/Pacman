@@ -24,11 +24,6 @@ Pacman::Pacman(float x, float y) :
 
 void Pacman::Update(float deltaTime) {
     
-    
-    
-    
-    
-    
     if (moving) {
         Engine::Point direction = targetPosition - Position;
         float distance = direction.Magnitude();

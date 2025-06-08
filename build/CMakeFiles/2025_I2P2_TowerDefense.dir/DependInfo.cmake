@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/2025_I2P2_TowerDefense-main/Dot/Dot.cpp" "CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/Dot.cpp.obj" "gcc" "CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/Dot.cpp.obj.d"
+  "C:/2025_I2P2_TowerDefense-main/Dot/NormalDot.cpp" "CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/NormalDot.cpp.obj" "gcc" "CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/NormalDot.cpp.obj.d"
   "C:/2025_I2P2_TowerDefense-main/Engine/Allegro5Exception.cpp" "CMakeFiles/2025_I2P2_TowerDefense.dir/Engine/Allegro5Exception.cpp.obj" "gcc" "CMakeFiles/2025_I2P2_TowerDefense.dir/Engine/Allegro5Exception.cpp.obj.d"
   "C:/2025_I2P2_TowerDefense-main/Engine/AudioHelper.cpp" "CMakeFiles/2025_I2P2_TowerDefense.dir/Engine/AudioHelper.cpp.obj" "gcc" "CMakeFiles/2025_I2P2_TowerDefense.dir/Engine/AudioHelper.cpp.obj.d"
   "C:/2025_I2P2_TowerDefense-main/Engine/Collider.cpp" "CMakeFiles/2025_I2P2_TowerDefense.dir/Engine/Collider.cpp.obj" "gcc" "CMakeFiles/2025_I2P2_TowerDefense.dir/Engine/Collider.cpp.obj.d"

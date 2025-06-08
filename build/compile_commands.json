@@ -7,6 +7,12 @@
 },
 {
   "directory": "C:/2025_I2P2_TowerDefense-main/build",
+  "command": "C:\\llvm-mingw-20240417-msvcrt-x86_64\\bin\\clang++.exe  @CMakeFiles/2025_I2P2_TowerDefense.dir/includes_CXX.rsp -g -o CMakeFiles\\2025_I2P2_TowerDefense.dir\\Dot\\NormalDot.cpp.obj -c C:\\2025_I2P2_TowerDefense-main\\Dot\\NormalDot.cpp",
+  "file": "C:/2025_I2P2_TowerDefense-main/Dot/NormalDot.cpp",
+  "output": "CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/NormalDot.cpp.obj"
+},
+{
+  "directory": "C:/2025_I2P2_TowerDefense-main/build",
   "command": "C:\\llvm-mingw-20240417-msvcrt-x86_64\\bin\\clang++.exe  @CMakeFiles/2025_I2P2_TowerDefense.dir/includes_CXX.rsp -g -o CMakeFiles\\2025_I2P2_TowerDefense.dir\\Pacman\\Pacman.cpp.obj -c C:\\2025_I2P2_TowerDefense-main\\Pacman\\Pacman.cpp",
   "file": "C:/2025_I2P2_TowerDefense-main/Pacman/Pacman.cpp",
   "output": "CMakeFiles/2025_I2P2_TowerDefense.dir/Pacman/Pacman.cpp.obj"

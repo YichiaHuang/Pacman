@@ -12,8 +12,8 @@
 #include "Scene/PlayScene.hpp"
 
 
-Dot::Dot(float x, float y) :
-    Engine::Sprite("play/dot.png", x, y, 32, 32, 0.5, 0.5),
+Dot::Dot(std::string img, float x, float y) :
+    Engine::Sprite(img, x, y, 32, 32, 0.5, 0.5),
     IsEaten(false),
     time(0.0f),
     baseY(y) {

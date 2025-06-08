@@ -22,6 +22,7 @@
 #include "UI/Component/Label.hpp"
 #include "Dot/Dot.hpp"
 #include "Pacman/Pacman.hpp"
+#include "Dot/NormalDot.hpp"
 // TODO HACKATHON-4 (1/3): Trace how the game handles keyboard input.
 // TODO HACKATHON-4 (2/3): Find the cheat code sequence in this file.
 // TODO HACKATHON-4 (3/3): When the cheat code is entered, a plane should be spawned and added to the scene.
@@ -230,7 +231,7 @@ void PlayScene::ReadMap() {
             //std::cout<<map_dot[i][j]<<" ";
             if(map_dot[i][j] == 1)
             {
-                DotsGroup->AddNewObject(dot=new Dot(j*BlockSize+BlockSize/2, i*BlockSize+BlockSize/2));
+                DotsGroup->AddNewObject(dot=new NormalDot(j*BlockSize+BlockSize/2, i*BlockSize+BlockSize/2));
             }
             
         }   

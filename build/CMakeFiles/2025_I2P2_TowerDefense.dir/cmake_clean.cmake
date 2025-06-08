@@ -4,6 +4,8 @@ file(REMOVE_RECURSE
   "2025_I2P2_TowerDefense.pdb"
   "CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/Dot.cpp.obj"
   "CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/Dot.cpp.obj.d"
+  "CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/NormalDot.cpp.obj"
+  "CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/NormalDot.cpp.obj.d"
   "CMakeFiles/2025_I2P2_TowerDefense.dir/Engine/Allegro5Exception.cpp.obj"
   "CMakeFiles/2025_I2P2_TowerDefense.dir/Engine/Allegro5Exception.cpp.obj.d"
   "CMakeFiles/2025_I2P2_TowerDefense.dir/Engine/AudioHelper.cpp.obj"
