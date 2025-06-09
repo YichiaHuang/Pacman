@@ -95,6 +95,67 @@ void Ghost::setDir() {
     }
 }
 
+void Ghost::escape() {
+    vector<Engine::Point> nbrs;
+    static const int dxs[4] = {-1, 1, 0, 0};
+    static const int dys[4] = {0, 0, -1, 1};
+    Engine::Point prevPos;
+    prevPos.x = moveDirX;
+    prevPos.y = moveDirY;
+    for(int i = 0; i < 4; i++) {
+        Point nbr;
+        nbr.x = dxs[i];
+        nbr.y = dys[i];
+        auto& scene = dynamic_cast<PlayScene&>(*Engine::GameEngine::GetInstance().GetActiveScene());
+        if (scene.map_dot[int(nbr.y)][int(nbr.x)] != -1) {
+            if (!(nbr.x == prevPos.x && nbr.y == prevPos.y)) {
+                nbrs.push_back(nbr);
+            }
+        }
+    }
+
+    if (nbrs.empty()) {
+        for(int i = 0; i < 4; i++) {
+            Point nbr;
+            nbr.x = dxs[i];
+            nbr.y = dys[i];
+            auto& scene = dynamic_cast<PlayScene&>(*Engine::GameEngine::GetInstance().GetActiveScene());
+            if (scene.map_dot[int(nbr.y)][int(nbr.x)] != -1) {
+                nbrs.push_back(nbr);
+            }
+        }
+    }
+
+    int nowDis = INT_MIN;
+    Point chosen = Point(0, 0);
+    if (!nbrs.empty()) {
+        for(Point& c: nbrs) {
+            Engine::Point nextPos = Engine::Point(Position.x + c.x, Position.y + c.y);
+            int d = bfs(nextPos, pacmanPos);
+            if (d > nowDis) {
+                nowDis = d;
+                chosen = c;
+            }
+        }
+    }
+    moveDirX = chosen.x;
+    moveDirY = chosen.y;
+
+    if (moveDirX == 1 && moveDirY == 0) {
+        faceDir = RIGHT;
+        tickCount_y = 2;
+    } else if (moveDirX == -1 && moveDirY == 0) {
+        faceDir = LEFT;
+        tickCount_y = 1;
+    } else if (moveDirX == 0 && moveDirY == 1) {
+        faceDir = UP;
+        tickCount_y = 3;
+    } else if (moveDirX == 0 && moveDirY == -1) {
+        faceDir = DOWN;
+        tickCount_y = 0;
+    }
+}
+
 int bfs(Engine::Point A, Engine::Point B) {
     auto& scene = dynamic_cast<PlayScene&>(*Engine::GameEngine::GetInstance().GetActiveScene());
     int vis[50][50], dist[50][50];
@@ -136,7 +197,14 @@ void Ghost::Update(float deltaTime) {
     if (distToCenter < 2.0f) {
         Position.x = blockCenterX;
         Position.y = blockCenterY;
-        setDir();
+        if(frightenedTimer == 0) {
+            setDir();
+        }
+        else {
+            // If frightened, move away from Pacman
+            escape();
+            frightenedTimer -= deltaTime;
+        }
         gridX += moveDirX;
         gridY += moveDirY;
     }
