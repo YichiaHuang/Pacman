@@ -17,9 +17,18 @@
 using namespace std;
 using namespace Engine;
 
+int bfs(Engine::Point A, Engine::Point B);
+
 Ghost::Ghost(float x, float y)
     : x(x), y(y), Position(x, y), gridX(x / PlayScene::BlockSize),
      gridY(y / PlayScene::BlockSize), moveDirX(0), moveDirY(0), Speed(150) {}
+
+Ghost::~Ghost() {
+    if (spriteSheet) {
+        al_destroy_bitmap(spriteSheet);
+        spriteSheet = nullptr;
+    }
+}
 
 void Ghost::setPacmanPos(const Engine::Point &pos) {
     pacmanPos = pos;
@@ -60,7 +69,8 @@ void Ghost::setDir() {
     Point chosen = Point(0, 0);
     if (!nbrs.empty()) {
         for(Point& c: nbrs) {
-            int d = bfs(Position + c, targetPos);
+            Engine::Point nextPos = Engine::Point(Position.x + c.x, Position.y + c.y);
+            int d = bfs(nextPos, targetPos);
             if (d < nowDis) {
                 nowDis = d;
                 chosen = c;

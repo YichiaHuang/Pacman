@@ -1,5 +1,6 @@
 #ifndef BLINKY_HPP
 #define BLINKY_HPP
+#include "Ghost.hpp"
 #include <list>
 #include <string>
 #include <vector>

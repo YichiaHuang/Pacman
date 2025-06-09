@@ -23,6 +23,11 @@
 #include "Dot/Dot.hpp"
 #include "Pacman/Pacman.hpp"
 #include "Dot/NormalDot.hpp"
+#include "Ghost/Blinky.hpp"
+#include "Ghost/Inky.hpp"
+#include "Ghost/Pinky.hpp"
+#include "Ghost/Clyde.hpp"
+
 // TODO HACKATHON-4 (1/3): Trace how the game handles keyboard input.
 // TODO HACKATHON-4 (2/3): Find the cheat code sequence in this file.
 // TODO HACKATHON-4 (3/3): When the cheat code is entered, a plane should be spawned and added to the scene.
@@ -44,6 +49,9 @@ const std::vector<int> PlayScene::code = {
 Engine::Point PlayScene::GetClientSize() {
     return Engine::Point(MapWidth * BlockSize, MapHeight * BlockSize);
 }
+
+std::vector<Ghost*> ghostList;
+
 void PlayScene::Initialize() {
     opening = true;
     openingTimer = 0;
@@ -82,7 +90,16 @@ void PlayScene::Initialize() {
     preview = nullptr;
     UIGroup->AddNewObject(imgTarget);
 
+<<<<<<< HEAD
 
+=======
+    // Add four ghosts in the corners
+    AddNewObject(new Blinky(1 * BlockSize + BlockSize / 2, 1 * BlockSize + BlockSize / 2)); // top-left
+    AddNewObject(new Pinky(18 * BlockSize + BlockSize / 2, 1 * BlockSize + BlockSize / 2)); // top-right
+    AddNewObject(new Inky(1 * BlockSize + BlockSize / 2, 11 * BlockSize + BlockSize / 2));  // bottom-left
+    AddNewObject(new Clyde(18 * BlockSize + BlockSize / 2, 11 * BlockSize + BlockSize / 2)); // bottom-right
+    for (auto g : ghostList) AddNewObject(g);
+>>>>>>> 363fafba9a7767b55191800d7381a761de41470a
 }
 
 
@@ -109,7 +126,7 @@ void PlayScene::Update(float deltaTime) {
                 UIGroup->RemoveObject(playerOneLabel->GetObjectIterator());
             if (readyLabel)
                 UIGroup->RemoveObject(readyLabel->GetObjectIterator());
-            player = new Pacman(1 * BlockSize + BlockSize / 2, 1 * BlockSize + BlockSize / 2);
+            player = new Pacman(10 * BlockSize + BlockSize / 2, 6 * BlockSize + BlockSize / 2 - 64);
         } else {
             return;
         }

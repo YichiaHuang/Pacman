@@ -52,6 +52,16 @@ add_executable(2025_I2P2_TowerDefense
     Engine/Sprite.cpp
     Engine/Sprite.hpp
     
+    Ghost/Ghost.cpp
+    Ghost/Ghost.hpp
+    Ghost/Blinky.cpp
+    Ghost/Blinky.hpp
+    Ghost/Inky.cpp
+    Ghost/Inky.hpp
+    Ghost/Pinky.cpp
+    Ghost/Pinky.hpp
+    Ghost/Clyde.cpp
+    Ghost/Clyde.hpp
 
     # TODO HACKATHON-2 (3/3): Add the new scene source files here
     Scene/LoseScene.cpp
