@@ -132,7 +132,7 @@ void PlayScene::Update(float deltaTime) {
     if (player) {
         player->Update(deltaTime);
     }
-    
+    //ghost
     if(ghost_1){
         //ghost_1->setPacmanPos(player->GetPosition());
         ghost_1->Update(deltaTime);
@@ -149,6 +149,8 @@ void PlayScene::Update(float deltaTime) {
         //ghost_4->setPacmanPos(player->GetPosition());
         //ghost_4->Update(deltaTime);
     }
+    //ghost
+
     // If we use deltaTime directly, then we might have Bullet-through-paper problem.
     // Reference: Bullet-Through-Paper
         money = player->money; 
