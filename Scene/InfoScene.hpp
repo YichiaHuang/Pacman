@@ -19,7 +19,7 @@ private:
     float ticks = 0;
     int ghostFrame = 0;
     float ghostFrameDuration = 0.3f;
-
+    float lastFrameSwitch = 0;
     static constexpr int frameW = 14;
     static constexpr int frameH = 14;
 };
