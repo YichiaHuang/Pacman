@@ -57,7 +57,7 @@ void PlayScene::Initialize() {
     lives = 10;
     money = 0;
     SpeedMult = 1;
-
+    total_dot = 0;
     AddNewObject(TileMapGroup = new Group());
     AddNewObject(GroundEffectGroup = new Group());
     AddNewObject(DebugIndicatorGroup = new Group());
@@ -116,7 +116,11 @@ void PlayScene::Update(float deltaTime) {
     }
     // If we use deltaTime directly, then we might have Bullet-through-paper problem.
     // Reference: Bullet-Through-Paper
-        money = player->dotsEaten; // 每吃一個點數增加10
+        money = player->dotsEaten; 
+
+        if(money==total_dot){
+            WinTriggered=true;
+        }
 
         UIMoney->Text = std::string("$") + std::to_string(money);
 
@@ -224,9 +228,16 @@ void PlayScene::ReadMap() {
             const int num = mapData[i * MapWidth + j];
             if(num==0||num==1)
             {
-                map_dot[i][j]=0;
-                if(num==1)
+                
+                if(num==1){
                     map_dot[i][j]=1;
+                    total_dot++;
+                }
+                else if(num==0)
+                {
+                    map_dot[i][j]=0;
+                }
+                    
             }
             else if(num==2)
             {
@@ -246,14 +257,12 @@ void PlayScene::ReadMap() {
     {
         for(int j=0; j<20; j++)
         {
-            //std::cout<<map_dot[i][j]<<" ";
             if(map_dot[i][j] == 1)
             {
                 DotsGroup->AddNewObject(dot=new NormalDot(j*BlockSize+BlockSize/2, i*BlockSize+BlockSize/2));
             }
             
         }   
-        //std::cout<<std::endl;
     }
 
 }
@@ -288,6 +297,6 @@ void PlayScene::OnKeyDown(int keyCode) {
 }
 
 void PlayScene::OnKeyUp(int keyCode) {
-    IScene::OnKeyUp(keyCode);    // 注意這邊呼叫的是 OnKeyUp，不是 OnKeyDown
+    IScene::OnKeyUp(keyCode);    
     keyPressed.erase(keyCode);   // 移除放開的鍵
 }

@@ -100,7 +100,7 @@ public:
     int map_dot[30][30]={0};
     // void ModifyReadMapTiles();
     Pacman* player;
-    
+    int total_dot;
   
     
 };
