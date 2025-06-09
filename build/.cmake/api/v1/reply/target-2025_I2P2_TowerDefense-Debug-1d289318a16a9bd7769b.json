@@ -37,13 +37,13 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 100,
+				"line" : 101,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 102,
+				"line" : 103,
 				"parent" : 0
 			},
 			{
@@ -61,7 +61,7 @@
 			{
 				"command" : 4,
 				"file" : 0,
-				"line" : 99,
+				"line" : 100,
 				"parent" : 0
 			}
 		]
@@ -79,11 +79,11 @@
 			[
 				{
 					"backtrace" : 4,
-					"path" : "C:/2025_I2P2_TowerDefense-main/."
+					"path" : "C:/Users/User/OneDrive/Desktop/Pacman/."
 				},
 				{
 					"backtrace" : 5,
-					"path" : "C:/2025_I2P2_TowerDefense-main/Resource"
+					"path" : "C:/Users/User/OneDrive/Desktop/Pacman/Resource"
 				},
 				{
 					"backtrace" : 6,

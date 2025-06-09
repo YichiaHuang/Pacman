@@ -45,6 +45,10 @@ Engine::Point PlayScene::GetClientSize() {
     return Engine::Point(MapWidth * BlockSize, MapHeight * BlockSize);
 }
 void PlayScene::Initialize() {
+    opening = true;
+    openingTimer = 0;
+    startSound = AudioHelper::PlaySample("Pacman/start-game.wav", false, AudioHelper::SFXVolume);
+
     WinTriggered = false;
     mapState.clear();
     keyStrokes.clear();
@@ -53,37 +57,34 @@ void PlayScene::Initialize() {
     lives = 10;
     money = 0;
     SpeedMult = 1;
-    // Add groups from bottom to top.
+
     AddNewObject(TileMapGroup = new Group());
     AddNewObject(GroundEffectGroup = new Group());
     AddNewObject(DebugIndicatorGroup = new Group());
-    AddNewObject(TowerGroup = new Group());
-
     AddNewObject(DotsGroup = new Group());
-
     AddNewObject(EnemyGroup = new Group());
-    AddNewObject(BulletGroup = new Group());
     AddNewObject(EffectGroup = new Group());
-    // Should support buttons.
-    AddNewControlObject(UIGroup = new Group());
+
     ReadMap();
-    //ReadEnemyWave();
-    
-    //mapDistance = CalculateBFSDistance();
     ConstructUI();
+
+    int w = Engine::GameEngine::GetInstance().GetScreenSize().x;
+    int h = Engine::GameEngine::GetInstance().GetScreenSize().y;
+
+    playerOneLabel = new Engine::Label("PLAYER ONE", "prstartk.ttf", 64, w / 2, h / 2 - 80, 255, 255, 0, 255, 0.5, 0.5);
+    readyLabel     = new Engine::Label("READY!",     "prstartk.ttf", 64, w / 2, h / 2 + 30, 0, 255, 255, 255, 0.5, 0.5);
+
+    UIGroup->AddNewObject(playerOneLabel);
+    UIGroup->AddNewObject(readyLabel);
+
     imgTarget = new Engine::Image("play/target.png", 0, 0);
     imgTarget->Visible = false;
     preview = nullptr;
     UIGroup->AddNewObject(imgTarget);
-    /*// Preload Lose Scene
-    deathBGMInstance = Engine::Resources::GetInstance().GetSampleInstance("astronomia.ogg");
-    Engine::Resources::GetInstance().GetBitmap("lose/benjamin-happy.png");
-    // Start BGM.
-    bgmId = AudioHelper::PlayBGM("play.ogg");*/
-    
-    player = new Pacman(1 * BlockSize + BlockSize / 2, 1 * BlockSize + BlockSize / 2);
-    
 }
+
+
+
 void PlayScene::Terminate() {
     //AudioHelper::StopBGM(bgmId);
     //AudioHelper::StopSample(deathBGMInstance);
@@ -92,6 +93,25 @@ void PlayScene::Terminate() {
     
 }
 void PlayScene::Update(float deltaTime) {
+    if (opening) {
+        openingTimer += deltaTime;
+        if (openingTimer >= 2.0f) {
+            opening = false;
+
+            // 移除文字
+            if (playerOneLabel)
+                UIGroup->RemoveObject(playerOneLabel->GetObjectIterator());
+            if (readyLabel)
+                UIGroup->RemoveObject(readyLabel->GetObjectIterator());
+            player = new Pacman(1 * BlockSize + BlockSize / 2, 1 * BlockSize + BlockSize / 2);
+        } else {
+            return;
+        }
+    }
+    
+    if (player) {
+        player->Update(deltaTime);
+    }
     // If we use deltaTime directly, then we might have Bullet-through-paper problem.
     // Reference: Bullet-Through-Paper
         money = player->dotsEaten; // 每吃一個點數增加10
@@ -124,16 +144,9 @@ void PlayScene::Update(float deltaTime) {
                 player->MoveDirection(dx, dy);
             }
         }
-        
     
-
-    
-
-
-
 
     DotsGroup->Update(deltaTime);
-    player->Update(deltaTime);
     if (SpeedMult == 0)
         deathCountDown = -1;
     else if (deathCountDown != -1)
@@ -148,7 +161,10 @@ void PlayScene::Update(float deltaTime) {
 }
 void PlayScene::Draw() const {
     IScene::Draw();
-    player->Draw();
+    if (!opening && player) {
+        player->Draw(); // 開場時不畫 pacman
+    }
+
     if (DebugMode) {
         // Draw reverse BFS distance on all reachable blocks.
         for (int i = 0; i < MapHeight; i++) {
@@ -241,6 +257,8 @@ void PlayScene::ReadMap() {
 }
 
 void PlayScene::ConstructUI() {
+     UIGroup = new Group();
+    AddNewObject(UIGroup);
     // Background
     UIGroup->AddNewObject(new Engine::Image("play/floor.png", 1280, 0, 320, 832));
     // Text

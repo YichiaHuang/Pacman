@@ -24,6 +24,11 @@ private:
     ALLEGRO_SAMPLE_ID bgmId;
     std::shared_ptr<ALLEGRO_SAMPLE_INSTANCE> deathBGMInstance;
     bool WinTriggered = false;
+    bool opening = true;
+    float openingTimer = 0;
+    std::shared_ptr<ALLEGRO_SAMPLE_INSTANCE> startSound;
+    Engine::Label* playerOneLabel = nullptr;
+    Engine::Label* readyLabel = nullptr;
 
 protected:
     int lives;
@@ -51,11 +56,10 @@ public:
     Group *TileMapGroup;
     Group *GroundEffectGroup;
     Group *DebugIndicatorGroup;
-    Group *BulletGroup;
+
 
     Group *DotsGroup;
 
-    Group *TowerGroup;
     Group *EnemyGroup;
     Group *EffectGroup;
     Group *UIGroup;
