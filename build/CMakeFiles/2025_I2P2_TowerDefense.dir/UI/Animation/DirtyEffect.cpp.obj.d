@@ -908,4 +908,8 @@ CMakeFiles/2025_I2P2_TowerDefense.dir/UI/Animation/DirtyEffect.cpp.obj: \
   C:/allegro/include/allegro5/allegro_audio.h \
   C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/set \
   C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/__tree \
-  C:/2025_I2P2_TowerDefense-main/./Pacman/Pacman.hpp
+  C:/2025_I2P2_TowerDefense-main/./Pacman/Pacman.hpp \
+  C:/2025_I2P2_TowerDefense-main/./Slot/SlotMachine.hpp \
+  C:/2025_I2P2_TowerDefense-main/./UI/Component/ImageButton.hpp \
+  C:/2025_I2P2_TowerDefense-main/./UI/Component/Label.hpp \
+  C:/allegro/include/allegro5/allegro_font.h

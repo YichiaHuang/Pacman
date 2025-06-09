@@ -30,6 +30,10 @@
 [INFO] Loaded Resource<font>: Resource/fonts/prstartk.ttf with size 64
 [INFO] Loaded Resource<image>: Resource/images/play/target.png
 [INFO] Changed to play scene
+[INFO] Loaded Resource<image>: Resource/images/play/floor_test.png scaled to 185x80
+[INFO] Loaded Resource<image>: Resource/images/play/floor_test.png
+[INFO] Loaded Resource<image>: Resource/images/stage-select/bott.png
+[INFO] Loaded Resource<font>: Resource/fonts/prstartk.ttf with size 20
 [INFO] WinTriggered = true, switching to win-scene.
 [INFO] Loaded Resource<image>: Resource/images/ghost/pacman-ghosts.png
 [INFO] Loaded Resource<image>: Resource/images/win/dirt.png scaled to 400x100
@@ -42,30 +46,27 @@
 [INFO] Changed to stage-select scene
 [INFO] stopped audio (sample)
 [INFO] Loaded Resource<image>: Resource/images/stage-select/floor.png scaled to 400x100
-[INFO] Loaded Resource<image>: Resource/images/stage-select/bott.png
 [INFO] Changed to scoreboard scene
-[INFO] Created<sample_instance>: Resource/audios/select.ogg
-[INFO] Changed to stage-select scene
-[INFO] stopped audio (sample)
-[INFO] Created<sample_instance>: Resource/audios/Pacman/start-game.wav
-[INFO] Changed to play scene
 [INFO] Game Terminating...
 [INFO] Game terminated
 [INFO] Game end
-[INFO] Destroyed Resource<image>: stage-select/bott.png
 [INFO] Destroyed Resource<image>: win/dirt.png?400x100
 [INFO] Destroyed Resource<image>: stage-select/floor.png?400x100
 [INFO] Destroyed Resource<image>: ghost/pacman-ghosts.png
+[INFO] Destroyed Resource<image>: stage-select/bott.png
+[INFO] Destroyed Resource<image>: play/floor_test.png
 [INFO] Destroyed Resource<image>: icon.jpg
 [INFO] Destroyed Resource<image>: stage-select/floor.png
 [INFO] Destroyed Resource<image>: play/target.png
 [INFO] Destroyed Resource<image>: play/dot.png?32x32
 [INFO] Destroyed Resource<image>: start/Pacman_logo.png?800x500
 [INFO] Destroyed Resource<image>: play/wall_test.png?64x64
+[INFO] Destroyed Resource<image>: play/floor_test.png?185x80
 [INFO] Destroyed Resource<image>: play/floor_2.png?64x64
 [INFO] Destroyed Resource<image>: stage-select/dirt.png?400x100
 [INFO] Destroyed Resource<image>: stage-select/dirt.png
 [INFO] Destroyed Resource<image>: play/floor.png?320x832
+[INFO] Destroyed Resource<font>: prstartk.ttf?20
 [INFO] Destroyed Resource<font>: prstartk.ttf?64
 [INFO] Destroyed Resource<font>: prstartk.ttf?72
 [INFO] Destroyed Resource<font>: prstartk.ttf?24

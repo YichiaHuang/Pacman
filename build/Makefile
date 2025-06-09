@@ -704,6 +704,30 @@ Scene/WinScene.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/WinScene.cpp.s
 .PHONY : Scene/WinScene.cpp.s
 
+Slot/SlotMachine.obj: Slot/SlotMachine.cpp.obj
+.PHONY : Slot/SlotMachine.obj
+
+# target to build an object file
+Slot/SlotMachine.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Slot/SlotMachine.cpp.obj
+.PHONY : Slot/SlotMachine.cpp.obj
+
+Slot/SlotMachine.i: Slot/SlotMachine.cpp.i
+.PHONY : Slot/SlotMachine.i
+
+# target to preprocess a source file
+Slot/SlotMachine.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Slot/SlotMachine.cpp.i
+.PHONY : Slot/SlotMachine.cpp.i
+
+Slot/SlotMachine.s: Slot/SlotMachine.cpp.s
+.PHONY : Slot/SlotMachine.s
+
+# target to generate assembly for a file
+Slot/SlotMachine.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Slot/SlotMachine.cpp.s
+.PHONY : Slot/SlotMachine.cpp.s
+
 UI/Animation/DirtyEffect.obj: UI/Animation/DirtyEffect.cpp.obj
 .PHONY : UI/Animation/DirtyEffect.obj
 
@@ -977,6 +1001,9 @@ help:
 	@echo ... Scene/WinScene.obj
 	@echo ... Scene/WinScene.i
 	@echo ... Scene/WinScene.s
+	@echo ... Slot/SlotMachine.obj
+	@echo ... Slot/SlotMachine.i
+	@echo ... Slot/SlotMachine.s
 	@echo ... UI/Animation/DirtyEffect.obj
 	@echo ... UI/Animation/DirtyEffect.i
 	@echo ... UI/Animation/DirtyEffect.s

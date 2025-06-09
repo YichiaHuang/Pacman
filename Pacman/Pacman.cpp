@@ -136,6 +136,7 @@ void Pacman::CheckCollisionWithDots() {
             if (dist < 16 && dot->Visible) {
                 dot->OnEaten();
                 dotsEaten++;
+                money++;
             }
         }
     }

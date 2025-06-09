@@ -24,6 +24,9 @@ add_executable(2025_I2P2_TowerDefense
     Pacman/Pacman.cpp
     Pacman/Pacman.hpp
 
+    Slot/SlotMachine.cpp
+    Slot/SlotMachine.hpp
+
     Engine/Allegro5Exception.cpp
     Engine/Allegro5Exception.hpp
     Engine/AudioHelper.cpp

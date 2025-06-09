@@ -892,14 +892,16 @@ CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/PlayScene.cpp.obj: \
   C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/__filesystem/path_iterator.h \
   C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/__filesystem/recursive_directory_iterator.h \
   C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/__filesystem/u8path.h \
+  C:/2025_I2P2_TowerDefense-main/./UI/Component/ImageButton.hpp \
+  C:/2025_I2P2_TowerDefense-main/./Engine/IControl.hpp \
+  C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/list \
+  C:/2025_I2P2_TowerDefense-main/./UI/Component/Image.hpp \
+  C:/2025_I2P2_TowerDefense-main/./Engine/IObject.hpp \
+  C:/2025_I2P2_TowerDefense-main/./Engine/Point.hpp \
   C:/2025_I2P2_TowerDefense-main/./Engine/AudioHelper.hpp \
   C:/allegro/include/allegro5/allegro_audio.h \
   C:/2025_I2P2_TowerDefense-main/./Engine/GameEngine.hpp \
-  C:/2025_I2P2_TowerDefense-main/./Engine/Point.hpp \
   C:/2025_I2P2_TowerDefense-main/./Engine/Group.hpp \
-  C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/list \
-  C:/2025_I2P2_TowerDefense-main/./Engine/IControl.hpp \
-  C:/2025_I2P2_TowerDefense-main/./Engine/IObject.hpp \
   C:/2025_I2P2_TowerDefense-main/./Engine/LOG.hpp \
   C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/iostream \
   C:/2025_I2P2_TowerDefense-main/./Engine/Resources.hpp \
@@ -907,11 +909,11 @@ CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/PlayScene.cpp.obj: \
   C:/2025_I2P2_TowerDefense-main/./Engine/IScene.hpp \
   C:/2025_I2P2_TowerDefense-main/./UI/Animation/DirtyEffect.hpp \
   C:/2025_I2P2_TowerDefense-main/./Engine/Sprite.hpp \
-  C:/2025_I2P2_TowerDefense-main/./UI/Component/Image.hpp \
   C:/2025_I2P2_TowerDefense-main/./Scene/PlayScene.hpp \
   C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/set \
   C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/__tree \
   C:/2025_I2P2_TowerDefense-main/./Pacman/Pacman.hpp \
+  C:/2025_I2P2_TowerDefense-main/./Slot/SlotMachine.hpp \
   C:/2025_I2P2_TowerDefense-main/./UI/Component/Label.hpp \
   C:/2025_I2P2_TowerDefense-main/./Dot/Dot.hpp \
   C:/2025_I2P2_TowerDefense-main/./Dot/NormalDot.hpp

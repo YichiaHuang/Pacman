@@ -50,6 +50,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/StartScene.cpp.obj.d"
   "CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/WinScene.cpp.obj"
   "CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/WinScene.cpp.obj.d"
+  "CMakeFiles/2025_I2P2_TowerDefense.dir/Slot/SlotMachine.cpp.obj"
+  "CMakeFiles/2025_I2P2_TowerDefense.dir/Slot/SlotMachine.cpp.obj.d"
   "CMakeFiles/2025_I2P2_TowerDefense.dir/UI/Animation/DirtyEffect.cpp.obj"
   "CMakeFiles/2025_I2P2_TowerDefense.dir/UI/Animation/DirtyEffect.cpp.obj.d"
   "CMakeFiles/2025_I2P2_TowerDefense.dir/UI/Animation/ExplosionEffect.cpp.obj"

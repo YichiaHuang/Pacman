@@ -857,9 +857,13 @@ CMakeFiles/2025_I2P2_TowerDefense.dir/Pacman/Pacman.cpp.obj: \
   C:/2025_I2P2_TowerDefense-main/./Engine/IControl.hpp \
   C:/2025_I2P2_TowerDefense-main/./Engine/IObject.hpp \
   C:/2025_I2P2_TowerDefense-main/./Pacman/Pacman.hpp \
+  C:/2025_I2P2_TowerDefense-main/./Slot/SlotMachine.hpp \
+  C:/2025_I2P2_TowerDefense-main/./UI/Component/ImageButton.hpp \
+  C:/2025_I2P2_TowerDefense-main/./UI/Component/Image.hpp \
+  C:/2025_I2P2_TowerDefense-main/./UI/Component/Label.hpp \
+  C:/allegro/include/allegro5/allegro_font.h \
   C:/2025_I2P2_TowerDefense-main/./Dot/Dot.hpp \
   C:/2025_I2P2_TowerDefense-main/./Engine/Sprite.hpp \
-  C:/2025_I2P2_TowerDefense-main/./UI/Component/Image.hpp \
   C:/2025_I2P2_TowerDefense-main/./Engine/GameEngine.hpp \
   C:/allegro/include/allegro5/allegro_primitives.h \
   C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/iostream \

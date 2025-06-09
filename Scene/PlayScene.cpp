@@ -9,7 +9,7 @@
 #include <vector>
 
 
-
+#include "UI/Component/ImageButton.hpp"
 #include "Engine/AudioHelper.hpp"
 #include "Engine/GameEngine.hpp"
 #include "Engine/Group.hpp"
@@ -81,7 +81,10 @@ void PlayScene::Initialize() {
     imgTarget->Visible = false;
     preview = nullptr;
     UIGroup->AddNewObject(imgTarget);
+
+
 }
+
 
 
 
@@ -89,6 +92,7 @@ void PlayScene::Terminate() {
     //AudioHelper::StopBGM(bgmId);
     //AudioHelper::StopSample(deathBGMInstance);
     //deathBGMInstance = std::shared_ptr<ALLEGRO_SAMPLE_INSTANCE>();
+    
     IScene::Terminate();
     
 }
@@ -116,9 +120,9 @@ void PlayScene::Update(float deltaTime) {
     }
     // If we use deltaTime directly, then we might have Bullet-through-paper problem.
     // Reference: Bullet-Through-Paper
-        money = player->dotsEaten; 
+        money = player->money; 
 
-        if(money==total_dot){
+        if(player->dotsEaten==total_dot){
             WinTriggered=true;
         }
 
@@ -161,12 +165,48 @@ void PlayScene::Update(float deltaTime) {
     if (WinTriggered) {
         Engine::LOG(Engine::INFO) << "WinTriggered = true, switching to win-scene.";
         Engine::GameEngine::GetInstance().ChangeScene("win-scene");
-    return;
+        return;
+    }
+
+    if(slot_yet&&!opening)
+    {
+        //slot
+        slot_yet=0;
+        Engine::ImageButton *btn;
+        btn = new Engine::ImageButton("play/floor_test.png", "stage-select/bott.png", 1350, 700, 185, 80);
+        btn->SetOnClickCallback(std::bind(&PlayScene::SlotOnClick, this, 1));
+        AddNewControlObject(btn);   // 這樣 button 可以點
+        AddNewObject(new Engine::Label("10 Dots!", "prstartk.ttf", 20, 1450, 740, 0, 0, 0, 255, 0.5, 0.5));
+
+        slotMachine = new SlotMachine(1345, 600);
+     
+    //slot
+    }
+
+    //slot
+    if(slot_mode&&slotMachine)
+        slotMachine->Update(deltaTime);
+    if(slot_mode&&slotMachine->allStopped)
+    {
+        if(slotMachine->jackpot){
+            player->money+=1000;
+            //UIMoney->Text = std::string("$") + std::to_string(money);
+            slotMachine->jackpot=false;
+        }
+        slot_mode=false;
     }
    
 }
 void PlayScene::Draw() const {
     IScene::Draw();
+    //slot
+    
+    
+    if(!opening&&slotMachine)
+        slotMachine->Draw();
+    
+    
+    
     if (!opening && player) {
         player->Draw(); // 開場時不畫 pacman
     }
@@ -282,6 +322,9 @@ void PlayScene::ConstructUI() {
     pauseLabel = new Engine::Label("PAUSED", "prstartk.ttf", 72, w / 2-150, h / 2, 255, 255, 255, 255, 0.5, 0.5);
     pauseLabel->Visible = false;
     UIGroup->AddNewObject(pauseLabel);
+
+
+
 }
 
 
@@ -299,4 +342,16 @@ void PlayScene::OnKeyDown(int keyCode) {
 void PlayScene::OnKeyUp(int keyCode) {
     IScene::OnKeyUp(keyCode);    
     keyPressed.erase(keyCode);   // 移除放開的鍵
+}
+//slot
+void PlayScene::SlotOnClick(int stage){
+    if(!slot_mode){
+        if(player->money>=10){
+            player->money-=10;
+            slotMachine->StartSpin();
+            slot_mode= true;
+        } 
+    }
+    
+    
 }

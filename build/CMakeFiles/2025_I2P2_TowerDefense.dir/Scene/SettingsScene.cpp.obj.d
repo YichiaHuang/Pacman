@@ -860,8 +860,9 @@ CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/SettingsScene.cpp.obj: \
   C:/2025_I2P2_TowerDefense-main/./Engine/IControl.hpp \
   C:/2025_I2P2_TowerDefense-main/./Engine/IObject.hpp \
   C:/2025_I2P2_TowerDefense-main/./Pacman/Pacman.hpp \
-  C:/2025_I2P2_TowerDefense-main/./Scene/SettingsScene.hpp \
+  C:/2025_I2P2_TowerDefense-main/./Slot/SlotMachine.hpp \
   C:/2025_I2P2_TowerDefense-main/./UI/Component/ImageButton.hpp \
   C:/2025_I2P2_TowerDefense-main/./UI/Component/Image.hpp \
   C:/2025_I2P2_TowerDefense-main/./UI/Component/Label.hpp \
+  C:/2025_I2P2_TowerDefense-main/./Scene/SettingsScene.hpp \
   C:/2025_I2P2_TowerDefense-main/./UI/Component/Slider.hpp

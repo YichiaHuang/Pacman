@@ -922,8 +922,9 @@ CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/WinScene.cpp.obj: \
   C:/2025_I2P2_TowerDefense-main/./Engine/IControl.hpp \
   C:/2025_I2P2_TowerDefense-main/./Engine/IObject.hpp \
   C:/2025_I2P2_TowerDefense-main/./Pacman/Pacman.hpp \
-  C:/2025_I2P2_TowerDefense-main/./UI/Component/Image.hpp \
+  C:/2025_I2P2_TowerDefense-main/./Slot/SlotMachine.hpp \
   C:/2025_I2P2_TowerDefense-main/./UI/Component/ImageButton.hpp \
+  C:/2025_I2P2_TowerDefense-main/./UI/Component/Image.hpp \
   C:/2025_I2P2_TowerDefense-main/./UI/Component/Label.hpp \
   C:/allegro/include/allegro5/allegro_font.h \
   C:/2025_I2P2_TowerDefense-main/Scene/WinScene.hpp \

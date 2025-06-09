@@ -15,7 +15,7 @@ public:
     Engine::Point GetPosition() const { return Position; }
     int animationDirection = 1;
     int dotsEaten = 0;
-
+    int money=0;
 private:
     float Speed;
     float x, y;
@@ -35,6 +35,7 @@ private:
 
     enum Direction { RIGHT = 0, LEFT, UP, DOWN };
     Direction faceDir = RIGHT;
+    
 };
 
 #endif

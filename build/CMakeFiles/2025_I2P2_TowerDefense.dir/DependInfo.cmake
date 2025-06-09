@@ -32,6 +32,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/2025_I2P2_TowerDefense-main/Scene/StageSelectScene.cpp" "CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/StageSelectScene.cpp.obj" "gcc" "CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/StageSelectScene.cpp.obj.d"
   "C:/2025_I2P2_TowerDefense-main/Scene/StartScene.cpp" "CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/StartScene.cpp.obj" "gcc" "CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/StartScene.cpp.obj.d"
   "C:/2025_I2P2_TowerDefense-main/Scene/WinScene.cpp" "CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/WinScene.cpp.obj" "gcc" "CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/WinScene.cpp.obj.d"
+  "C:/2025_I2P2_TowerDefense-main/Slot/SlotMachine.cpp" "CMakeFiles/2025_I2P2_TowerDefense.dir/Slot/SlotMachine.cpp.obj" "gcc" "CMakeFiles/2025_I2P2_TowerDefense.dir/Slot/SlotMachine.cpp.obj.d"
   "C:/2025_I2P2_TowerDefense-main/UI/Animation/DirtyEffect.cpp" "CMakeFiles/2025_I2P2_TowerDefense.dir/UI/Animation/DirtyEffect.cpp.obj" "gcc" "CMakeFiles/2025_I2P2_TowerDefense.dir/UI/Animation/DirtyEffect.cpp.obj.d"
   "C:/2025_I2P2_TowerDefense-main/UI/Animation/ExplosionEffect.cpp" "CMakeFiles/2025_I2P2_TowerDefense.dir/UI/Animation/ExplosionEffect.cpp.obj" "gcc" "CMakeFiles/2025_I2P2_TowerDefense.dir/UI/Animation/ExplosionEffect.cpp.obj.d"
   "C:/2025_I2P2_TowerDefense-main/UI/Component/Image.cpp" "CMakeFiles/2025_I2P2_TowerDefense.dir/UI/Component/Image.cpp.obj" "gcc" "CMakeFiles/2025_I2P2_TowerDefense.dir/UI/Component/Image.cpp.obj.d"

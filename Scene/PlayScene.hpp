@@ -9,8 +9,9 @@
 #include "Engine/IScene.hpp"
 #include "Engine/Point.hpp"
 #include "Pacman/Pacman.hpp"    
-
-
+#include "Slot/SlotMachine.hpp"
+#include "UI/Component/ImageButton.hpp"
+#include "UI/Component/Label.hpp"
 class Turret;
 namespace Engine {
     class Group;
@@ -101,7 +102,10 @@ public:
     // void ModifyReadMapTiles();
     Pacman* player;
     int total_dot;
-  
+    void SlotOnClick(int stage);
+    SlotMachine* slotMachine;
+    bool slot_mode=false;
+    bool slot_yet=true;
     
 };
 #endif   // PLAYSCENE_HPP
