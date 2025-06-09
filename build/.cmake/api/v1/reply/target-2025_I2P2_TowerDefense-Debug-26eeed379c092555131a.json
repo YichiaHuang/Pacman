@@ -37,13 +37,13 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 101,
+				"line" : 111,
 				"parent" : 0
 			},
 			{
 				"command" : 2,
 				"file" : 0,
-				"line" : 103,
+				"line" : 113,
 				"parent" : 0
 			},
 			{
@@ -61,7 +61,7 @@
 			{
 				"command" : 4,
 				"file" : 0,
-				"line" : 100,
+				"line" : 110,
 				"parent" : 0
 			}
 		]
@@ -79,11 +79,11 @@
 			[
 				{
 					"backtrace" : 4,
-					"path" : "C:/2025_I2P2_TowerDefense-main/."
+					"path" : "C:/Users/User/OneDrive/Desktop/Pacman/."
 				},
 				{
 					"backtrace" : 5,
-					"path" : "C:/2025_I2P2_TowerDefense-main/Resource"
+					"path" : "C:/Users/User/OneDrive/Desktop/Pacman/Resource"
 				},
 				{
 					"backtrace" : 6,
@@ -132,7 +132,12 @@
 				56,
 				58,
 				60,
-				62
+				62,
+				64,
+				66,
+				68,
+				70,
+				72
 			]
 		}
 	],
@@ -210,7 +215,12 @@
 				56,
 				58,
 				60,
-				62
+				62,
+				64,
+				66,
+				68,
+				70,
+				72
 			]
 		},
 		{
@@ -247,7 +257,12 @@
 				55,
 				57,
 				59,
-				61
+				61,
+				63,
+				65,
+				67,
+				69,
+				71
 			]
 		}
 	],
@@ -416,6 +431,61 @@
 		{
 			"backtrace" : 1,
 			"path" : "Engine/Sprite.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Ghost/Ghost.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Ghost/Ghost.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Ghost/Blinky.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Ghost/Blinky.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Ghost/Inky.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Ghost/Inky.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Ghost/Pinky.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Ghost/Pinky.hpp",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Ghost/Clyde.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "Ghost/Clyde.hpp",
 			"sourceGroupIndex" : 1
 		},
 		{

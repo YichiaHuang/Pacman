@@ -6,15 +6,17 @@
 
 #include "Engine/Point.hpp"
 #include "Engine/Sprite.hpp"
+#include "Engine/IObject.hpp"
 
-class Ghost {
+class Ghost : public Engine::IObject{
 public:
     Ghost(float x, float y);
-    ~Ghost();
-    void Update(float deltaTime);
-    void Draw() const;
+    virtual ~Ghost();
+    virtual void Update(float deltaTime) override;
+    virtual void Draw() const override;
     void setDir();
     void setPacmanPos(const Engine::Point &pos);
+    //virtual const char* GetSpriteName() const = 0;
     Engine::Point GetPosition() const { return Position; }
     int animationDirection = 1;
 
@@ -32,8 +34,8 @@ protected:
     float animationTimer = 0;
     const int totalFrames = 2;
     const float frameDuration = 0.1f;
-    const int frameW = 33;
-    const int frameH = 34;
+    const int frameW = 14;
+    const int frameH = 14;
 
     enum Direction { RIGHT = 0, LEFT, UP, DOWN };
     Direction faceDir = RIGHT;

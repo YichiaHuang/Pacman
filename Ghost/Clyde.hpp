@@ -1,5 +1,6 @@
-#ifndef CYLDE_HPP
+#ifndef CLYDE_HPP
 #define CLYDE_HPP
+
 #include <list>
 #include <string>
 #include <vector>

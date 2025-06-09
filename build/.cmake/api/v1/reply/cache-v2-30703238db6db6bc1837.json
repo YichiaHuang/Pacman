@@ -11,7 +11,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/2025_I2P2_TowerDefense-main/build"
+			"value" : "C:/Users/User/OneDrive/Desktop/Pacman/build"
 		},
 		{
 			"name" : "2025_I2P2_TowerDefense_IS_TOP_LEVEL",
@@ -35,7 +35,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/2025_I2P2_TowerDefense-main"
+			"value" : "C:/Users/User/OneDrive/Desktop/Pacman"
 		},
 		{
 			"name" : "CMAKE_ADDR2LINE",
@@ -91,7 +91,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "c:/2025_I2P2_TowerDefense-main/build"
+			"value" : "c:/Users/User/OneDrive/Desktop/Pacman/build"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -191,11 +191,11 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "CXX compiler"
+					"value" : "No help, variable specified on the command line."
 				}
 			],
-			"type" : "STRING",
-			"value" : "C:/llvm-mingw-20240417-msvcrt-x86_64/bin/clang++.exe"
+			"type" : "FILEPATH",
+			"value" : "c:/llvm-mingw-20240417-msvcrt-x86_64/bin/clang++.exe"
 		},
 		{
 			"name" : "CMAKE_CXX_COMPILER_AR",
@@ -351,11 +351,11 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "C compiler"
+					"value" : "No help, variable specified on the command line."
 				}
 			],
-			"type" : "STRING",
-			"value" : "C:/llvm-mingw-20240417-msvcrt-x86_64/bin/clang.exe"
+			"type" : "FILEPATH",
+			"value" : "c:/llvm-mingw-20240417-msvcrt-x86_64/bin/clang.exe"
 		},
 		{
 			"name" : "CMAKE_C_COMPILER_AR",
@@ -655,7 +655,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/2025_I2P2_TowerDefense-main/build/CMakeFiles/pkgRedirects"
+			"value" : "C:/Users/User/OneDrive/Desktop/Pacman/build/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -727,7 +727,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/2025_I2P2_TowerDefense-main"
+			"value" : "C:/Users/User/OneDrive/Desktop/Pacman"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",

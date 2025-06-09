@@ -56,10 +56,10 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\2025_I2P2_TowerDefense-main
+CMAKE_SOURCE_DIR = C:\Users\User\OneDrive\Desktop\Pacman
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\2025_I2P2_TowerDefense-main\build
+CMAKE_BINARY_DIR = C:\Users\User\OneDrive\Desktop\Pacman\build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -86,9 +86,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\2025_I2P2_TowerDefense-main\build\CMakeFiles C:\2025_I2P2_TowerDefense-main\build\\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\User\OneDrive\Desktop\Pacman\build\CMakeFiles C:\Users\User\OneDrive\Desktop\Pacman\build\\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\2025_I2P2_TowerDefense-main\build\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\User\OneDrive\Desktop\Pacman\build\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -463,6 +463,126 @@ Engine/Sprite.s: Engine/Sprite.cpp.s
 Engine/Sprite.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Engine/Sprite.cpp.s
 .PHONY : Engine/Sprite.cpp.s
+
+Ghost/Blinky.obj: Ghost/Blinky.cpp.obj
+.PHONY : Ghost/Blinky.obj
+
+# target to build an object file
+Ghost/Blinky.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Ghost/Blinky.cpp.obj
+.PHONY : Ghost/Blinky.cpp.obj
+
+Ghost/Blinky.i: Ghost/Blinky.cpp.i
+.PHONY : Ghost/Blinky.i
+
+# target to preprocess a source file
+Ghost/Blinky.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Ghost/Blinky.cpp.i
+.PHONY : Ghost/Blinky.cpp.i
+
+Ghost/Blinky.s: Ghost/Blinky.cpp.s
+.PHONY : Ghost/Blinky.s
+
+# target to generate assembly for a file
+Ghost/Blinky.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Ghost/Blinky.cpp.s
+.PHONY : Ghost/Blinky.cpp.s
+
+Ghost/Clyde.obj: Ghost/Clyde.cpp.obj
+.PHONY : Ghost/Clyde.obj
+
+# target to build an object file
+Ghost/Clyde.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Ghost/Clyde.cpp.obj
+.PHONY : Ghost/Clyde.cpp.obj
+
+Ghost/Clyde.i: Ghost/Clyde.cpp.i
+.PHONY : Ghost/Clyde.i
+
+# target to preprocess a source file
+Ghost/Clyde.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Ghost/Clyde.cpp.i
+.PHONY : Ghost/Clyde.cpp.i
+
+Ghost/Clyde.s: Ghost/Clyde.cpp.s
+.PHONY : Ghost/Clyde.s
+
+# target to generate assembly for a file
+Ghost/Clyde.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Ghost/Clyde.cpp.s
+.PHONY : Ghost/Clyde.cpp.s
+
+Ghost/Ghost.obj: Ghost/Ghost.cpp.obj
+.PHONY : Ghost/Ghost.obj
+
+# target to build an object file
+Ghost/Ghost.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Ghost/Ghost.cpp.obj
+.PHONY : Ghost/Ghost.cpp.obj
+
+Ghost/Ghost.i: Ghost/Ghost.cpp.i
+.PHONY : Ghost/Ghost.i
+
+# target to preprocess a source file
+Ghost/Ghost.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Ghost/Ghost.cpp.i
+.PHONY : Ghost/Ghost.cpp.i
+
+Ghost/Ghost.s: Ghost/Ghost.cpp.s
+.PHONY : Ghost/Ghost.s
+
+# target to generate assembly for a file
+Ghost/Ghost.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Ghost/Ghost.cpp.s
+.PHONY : Ghost/Ghost.cpp.s
+
+Ghost/Inky.obj: Ghost/Inky.cpp.obj
+.PHONY : Ghost/Inky.obj
+
+# target to build an object file
+Ghost/Inky.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Ghost/Inky.cpp.obj
+.PHONY : Ghost/Inky.cpp.obj
+
+Ghost/Inky.i: Ghost/Inky.cpp.i
+.PHONY : Ghost/Inky.i
+
+# target to preprocess a source file
+Ghost/Inky.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Ghost/Inky.cpp.i
+.PHONY : Ghost/Inky.cpp.i
+
+Ghost/Inky.s: Ghost/Inky.cpp.s
+.PHONY : Ghost/Inky.s
+
+# target to generate assembly for a file
+Ghost/Inky.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Ghost/Inky.cpp.s
+.PHONY : Ghost/Inky.cpp.s
+
+Ghost/Pinky.obj: Ghost/Pinky.cpp.obj
+.PHONY : Ghost/Pinky.obj
+
+# target to build an object file
+Ghost/Pinky.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Ghost/Pinky.cpp.obj
+.PHONY : Ghost/Pinky.cpp.obj
+
+Ghost/Pinky.i: Ghost/Pinky.cpp.i
+.PHONY : Ghost/Pinky.i
+
+# target to preprocess a source file
+Ghost/Pinky.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Ghost/Pinky.cpp.i
+.PHONY : Ghost/Pinky.cpp.i
+
+Ghost/Pinky.s: Ghost/Pinky.cpp.s
+.PHONY : Ghost/Pinky.s
+
+# target to generate assembly for a file
+Ghost/Pinky.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Ghost/Pinky.cpp.s
+.PHONY : Ghost/Pinky.cpp.s
 
 Pacman/Pacman.obj: Pacman/Pacman.cpp.obj
 .PHONY : Pacman/Pacman.obj
@@ -947,6 +1067,21 @@ help:
 	@echo ... Engine/Sprite.obj
 	@echo ... Engine/Sprite.i
 	@echo ... Engine/Sprite.s
+	@echo ... Ghost/Blinky.obj
+	@echo ... Ghost/Blinky.i
+	@echo ... Ghost/Blinky.s
+	@echo ... Ghost/Clyde.obj
+	@echo ... Ghost/Clyde.i
+	@echo ... Ghost/Clyde.s
+	@echo ... Ghost/Ghost.obj
+	@echo ... Ghost/Ghost.i
+	@echo ... Ghost/Ghost.s
+	@echo ... Ghost/Inky.obj
+	@echo ... Ghost/Inky.i
+	@echo ... Ghost/Inky.s
+	@echo ... Ghost/Pinky.obj
+	@echo ... Ghost/Pinky.i
+	@echo ... Ghost/Pinky.s
 	@echo ... Pacman/Pacman.obj
 	@echo ... Pacman/Pacman.i
 	@echo ... Pacman/Pacman.s

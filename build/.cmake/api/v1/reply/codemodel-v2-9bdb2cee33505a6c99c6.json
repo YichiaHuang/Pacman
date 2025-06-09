@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "2025_I2P2_TowerDefense::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-2025_I2P2_TowerDefense-Debug-15967413e50f5dca5d1b.json",
+					"jsonFile" : "target-2025_I2P2_TowerDefense-Debug-26eeed379c092555131a.json",
 					"name" : "2025_I2P2_TowerDefense",
 					"projectIndex" : 0
 				}
@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/2025_I2P2_TowerDefense-main/build",
-		"source" : "C:/2025_I2P2_TowerDefense-main"
+		"build" : "C:/Users/User/OneDrive/Desktop/Pacman/build",
+		"source" : "C:/Users/User/OneDrive/Desktop/Pacman"
 	},
 	"version" : 
 	{
