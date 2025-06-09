@@ -9,7 +9,7 @@ SlotMachine::SlotMachine(float x, float y) : x(x+15), y(y) {
     spriteSheet_0 = al_load_bitmap("Resource/images/play/slot_test.png");
     spriteSheet_1 = al_load_bitmap("Resource/images/play/slot_test.png");
     spriteSheet_2 = al_load_bitmap("Resource/images/play/slot_test.png");
-    background = al_load_bitmap("Resource/images/play/machine.png");
+    background = al_load_bitmap("Resource/images/play/machi.png");
     if (!spriteSheet_0) {
         std::cerr << "Failed to load slot.png\n";
     }
@@ -37,7 +37,7 @@ void SlotMachine::StartSpin(){
         least[i] = 3; // 每個輪軸至少轉動3次
     }
 
-    int c=rand() % 2;//50% 機率決定是否轉動
+    int c=rand() % 5;//20% 機率決定是否轉動
 
     if(c==0){//win
         jackpot = true; // 設置中獎狀態

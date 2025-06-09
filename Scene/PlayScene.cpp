@@ -90,16 +90,13 @@ void PlayScene::Initialize() {
     preview = nullptr;
     UIGroup->AddNewObject(imgTarget);
 
-<<<<<<< HEAD
 
-=======
     // Add four ghosts in the corners
     AddNewObject(new Blinky(1 * BlockSize + BlockSize / 2, 1 * BlockSize + BlockSize / 2)); // top-left
     AddNewObject(new Pinky(18 * BlockSize + BlockSize / 2, 1 * BlockSize + BlockSize / 2)); // top-right
     AddNewObject(new Inky(1 * BlockSize + BlockSize / 2, 11 * BlockSize + BlockSize / 2));  // bottom-left
     AddNewObject(new Clyde(18 * BlockSize + BlockSize / 2, 11 * BlockSize + BlockSize / 2)); // bottom-right
     for (auto g : ghostList) AddNewObject(g);
->>>>>>> 363fafba9a7767b55191800d7381a761de41470a
 }
 
 
