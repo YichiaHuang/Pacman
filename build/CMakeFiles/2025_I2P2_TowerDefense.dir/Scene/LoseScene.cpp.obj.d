@@ -863,4 +863,6 @@ CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/LoseScene.cpp.obj: \
   C:/2025_I2P2_TowerDefense-main/./UI/Component/ImageButton.hpp \
   C:/2025_I2P2_TowerDefense-main/./UI/Component/Image.hpp \
   C:/2025_I2P2_TowerDefense-main/./UI/Component/Label.hpp \
-  C:/allegro/include/allegro5/allegro_font.h
+  C:/allegro/include/allegro5/allegro_font.h \
+  C:/2025_I2P2_TowerDefense-main/./Ghost/Ghost.hpp \
+  C:/2025_I2P2_TowerDefense-main/./Engine/Sprite.hpp

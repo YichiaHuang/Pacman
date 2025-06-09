@@ -9,6 +9,7 @@ CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/Dot.cpp.obj
  C:/2025_I2P2_TowerDefense-main/Engine/IScene.hpp
  C:/2025_I2P2_TowerDefense-main/Engine/Point.hpp
  C:/2025_I2P2_TowerDefense-main/Engine/Sprite.hpp
+ C:/2025_I2P2_TowerDefense-main/Ghost/Ghost.hpp
  C:/2025_I2P2_TowerDefense-main/Pacman/Pacman.hpp
  C:/2025_I2P2_TowerDefense-main/Scene/PlayScene.hpp
  C:/2025_I2P2_TowerDefense-main/Slot/SlotMachine.hpp
@@ -929,6 +930,7 @@ CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/NormalDot.cpp.obj
  C:/2025_I2P2_TowerDefense-main/Engine/IScene.hpp
  C:/2025_I2P2_TowerDefense-main/Engine/Point.hpp
  C:/2025_I2P2_TowerDefense-main/Engine/Sprite.hpp
+ C:/2025_I2P2_TowerDefense-main/Ghost/Ghost.hpp
  C:/2025_I2P2_TowerDefense-main/Pacman/Pacman.hpp
  C:/2025_I2P2_TowerDefense-main/Scene/PlayScene.hpp
  C:/2025_I2P2_TowerDefense-main/Slot/SlotMachine.hpp
@@ -12690,6 +12692,7 @@ CMakeFiles/2025_I2P2_TowerDefense.dir/Ghost/Ghost.cpp.obj
  C:/2025_I2P2_TowerDefense-main/Engine/LOG.hpp
  C:/2025_I2P2_TowerDefense-main/Engine/Point.hpp
  C:/2025_I2P2_TowerDefense-main/Engine/Sprite.hpp
+ C:/2025_I2P2_TowerDefense-main/Ghost/Ghost.hpp
  C:/2025_I2P2_TowerDefense-main/Pacman/Pacman.hpp
  C:/2025_I2P2_TowerDefense-main/Scene/PlayScene.hpp
  C:/2025_I2P2_TowerDefense-main/Slot/SlotMachine.hpp
@@ -15433,6 +15436,7 @@ CMakeFiles/2025_I2P2_TowerDefense.dir/Pacman/Pacman.cpp.obj
  C:/2025_I2P2_TowerDefense-main/Engine/IScene.hpp
  C:/2025_I2P2_TowerDefense-main/Engine/Point.hpp
  C:/2025_I2P2_TowerDefense-main/Engine/Sprite.hpp
+ C:/2025_I2P2_TowerDefense-main/Ghost/Ghost.hpp
  C:/2025_I2P2_TowerDefense-main/Pacman/Pacman.hpp
  C:/2025_I2P2_TowerDefense-main/Scene/PlayScene.hpp
  C:/2025_I2P2_TowerDefense-main/Slot/SlotMachine.hpp
@@ -17224,6 +17228,8 @@ CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/LoseScene.cpp.obj
  C:/2025_I2P2_TowerDefense-main/Engine/IObject.hpp
  C:/2025_I2P2_TowerDefense-main/Engine/IScene.hpp
  C:/2025_I2P2_TowerDefense-main/Engine/Point.hpp
+ C:/2025_I2P2_TowerDefense-main/Engine/Sprite.hpp
+ C:/2025_I2P2_TowerDefense-main/Ghost/Ghost.hpp
  C:/2025_I2P2_TowerDefense-main/Pacman/Pacman.hpp
  C:/2025_I2P2_TowerDefense-main/Slot/SlotMachine.hpp
  C:/2025_I2P2_TowerDefense-main/UI/Component/Image.hpp
@@ -18095,6 +18101,8 @@ CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/MotionScene.cpp.obj
  C:/2025_I2P2_TowerDefense-main/Engine/IScene.hpp
  C:/2025_I2P2_TowerDefense-main/Engine/Point.hpp
  C:/2025_I2P2_TowerDefense-main/Engine/Resources.hpp
+ C:/2025_I2P2_TowerDefense-main/Engine/Sprite.hpp
+ C:/2025_I2P2_TowerDefense-main/Ghost/Ghost.hpp
  C:/2025_I2P2_TowerDefense-main/Pacman/Pacman.hpp
  C:/2025_I2P2_TowerDefense-main/Scene/MotionScene.hpp
  C:/2025_I2P2_TowerDefense-main/Scene/StartScene.h
@@ -19962,6 +19970,8 @@ CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/ScoreboardScene.cpp.obj
  C:/2025_I2P2_TowerDefense-main/Engine/IScene.hpp
  C:/2025_I2P2_TowerDefense-main/Engine/Point.hpp
  C:/2025_I2P2_TowerDefense-main/Engine/Resources.hpp
+ C:/2025_I2P2_TowerDefense-main/Engine/Sprite.hpp
+ C:/2025_I2P2_TowerDefense-main/Ghost/Ghost.hpp
  C:/2025_I2P2_TowerDefense-main/Pacman/Pacman.hpp
  C:/2025_I2P2_TowerDefense-main/Scene/ScoreboardScene.hpp
  C:/2025_I2P2_TowerDefense-main/Scene/StartScene.h
@@ -20882,6 +20892,8 @@ CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/SettingsScene.cpp.obj
  C:/2025_I2P2_TowerDefense-main/Engine/IScene.hpp
  C:/2025_I2P2_TowerDefense-main/Engine/Point.hpp
  C:/2025_I2P2_TowerDefense-main/Engine/Resources.hpp
+ C:/2025_I2P2_TowerDefense-main/Engine/Sprite.hpp
+ C:/2025_I2P2_TowerDefense-main/Ghost/Ghost.hpp
  C:/2025_I2P2_TowerDefense-main/Pacman/Pacman.hpp
  C:/2025_I2P2_TowerDefense-main/Scene/SettingsScene.hpp
  C:/2025_I2P2_TowerDefense-main/Slot/SlotMachine.hpp
@@ -21754,6 +21766,8 @@ CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/StageSelectScene.cpp.obj
  C:/2025_I2P2_TowerDefense-main/Engine/IScene.hpp
  C:/2025_I2P2_TowerDefense-main/Engine/Point.hpp
  C:/2025_I2P2_TowerDefense-main/Engine/Resources.hpp
+ C:/2025_I2P2_TowerDefense-main/Engine/Sprite.hpp
+ C:/2025_I2P2_TowerDefense-main/Ghost/Ghost.hpp
  C:/2025_I2P2_TowerDefense-main/Pacman/Pacman.hpp
  C:/2025_I2P2_TowerDefense-main/Slot/SlotMachine.hpp
  C:/2025_I2P2_TowerDefense-main/UI/Component/Image.hpp
@@ -22626,6 +22640,8 @@ CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/StartScene.cpp.obj
  C:/2025_I2P2_TowerDefense-main/Engine/IScene.hpp
  C:/2025_I2P2_TowerDefense-main/Engine/Point.hpp
  C:/2025_I2P2_TowerDefense-main/Engine/Resources.hpp
+ C:/2025_I2P2_TowerDefense-main/Engine/Sprite.hpp
+ C:/2025_I2P2_TowerDefense-main/Ghost/Ghost.hpp
  C:/2025_I2P2_TowerDefense-main/Pacman/Pacman.hpp
  C:/2025_I2P2_TowerDefense-main/Scene/StartScene.h
  C:/2025_I2P2_TowerDefense-main/Slot/SlotMachine.hpp
@@ -23498,6 +23514,8 @@ CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/WinScene.cpp.obj
  C:/2025_I2P2_TowerDefense-main/Engine/IObject.hpp
  C:/2025_I2P2_TowerDefense-main/Engine/IScene.hpp
  C:/2025_I2P2_TowerDefense-main/Engine/Point.hpp
+ C:/2025_I2P2_TowerDefense-main/Engine/Sprite.hpp
+ C:/2025_I2P2_TowerDefense-main/Ghost/Ghost.hpp
  C:/2025_I2P2_TowerDefense-main/Pacman/Pacman.hpp
  C:/2025_I2P2_TowerDefense-main/Slot/SlotMachine.hpp
  C:/2025_I2P2_TowerDefense-main/UI/Component/Image.hpp
@@ -25315,6 +25333,7 @@ CMakeFiles/2025_I2P2_TowerDefense.dir/UI/Animation/DirtyEffect.cpp.obj
  C:/2025_I2P2_TowerDefense-main/Engine/IScene.hpp
  C:/2025_I2P2_TowerDefense-main/Engine/Point.hpp
  C:/2025_I2P2_TowerDefense-main/Engine/Sprite.hpp
+ C:/2025_I2P2_TowerDefense-main/Ghost/Ghost.hpp
  C:/2025_I2P2_TowerDefense-main/Pacman/Pacman.hpp
  C:/2025_I2P2_TowerDefense-main/Scene/PlayScene.hpp
  C:/2025_I2P2_TowerDefense-main/Slot/SlotMachine.hpp
@@ -26235,6 +26254,7 @@ CMakeFiles/2025_I2P2_TowerDefense.dir/UI/Animation/ExplosionEffect.cpp.obj
  C:/2025_I2P2_TowerDefense-main/Engine/Point.hpp
  C:/2025_I2P2_TowerDefense-main/Engine/Resources.hpp
  C:/2025_I2P2_TowerDefense-main/Engine/Sprite.hpp
+ C:/2025_I2P2_TowerDefense-main/Ghost/Ghost.hpp
  C:/2025_I2P2_TowerDefense-main/Pacman/Pacman.hpp
  C:/2025_I2P2_TowerDefense-main/Scene/PlayScene.hpp
  C:/2025_I2P2_TowerDefense-main/Slot/SlotMachine.hpp
@@ -31357,6 +31377,8 @@ CMakeFiles/2025_I2P2_TowerDefense.dir/main.cpp.obj
  C:/2025_I2P2_TowerDefense-main/Engine/IObject.hpp
  C:/2025_I2P2_TowerDefense-main/Engine/IScene.hpp
  C:/2025_I2P2_TowerDefense-main/Engine/Point.hpp
+ C:/2025_I2P2_TowerDefense-main/Engine/Sprite.hpp
+ C:/2025_I2P2_TowerDefense-main/Ghost/Ghost.hpp
  C:/2025_I2P2_TowerDefense-main/Pacman/Pacman.hpp
  C:/2025_I2P2_TowerDefense-main/Slot/SlotMachine.hpp
  C:/2025_I2P2_TowerDefense-main/UI/Component/Image.hpp

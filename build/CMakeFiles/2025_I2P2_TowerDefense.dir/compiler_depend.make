@@ -8,6 +8,7 @@ CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/Dot.cpp.obj: C:/2025_I2P2_TowerDefense
   C:/2025_I2P2_TowerDefense-main/Engine/IScene.hpp \
   C:/2025_I2P2_TowerDefense-main/Engine/Point.hpp \
   C:/2025_I2P2_TowerDefense-main/Engine/Sprite.hpp \
+  C:/2025_I2P2_TowerDefense-main/Ghost/Ghost.hpp \
   C:/2025_I2P2_TowerDefense-main/Pacman/Pacman.hpp \
   C:/2025_I2P2_TowerDefense-main/Scene/PlayScene.hpp \
   C:/2025_I2P2_TowerDefense-main/Slot/SlotMachine.hpp \
@@ -927,6 +928,7 @@ CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/NormalDot.cpp.obj: C:/2025_I2P2_TowerD
   C:/2025_I2P2_TowerDefense-main/Engine/IScene.hpp \
   C:/2025_I2P2_TowerDefense-main/Engine/Point.hpp \
   C:/2025_I2P2_TowerDefense-main/Engine/Sprite.hpp \
+  C:/2025_I2P2_TowerDefense-main/Ghost/Ghost.hpp \
   C:/2025_I2P2_TowerDefense-main/Pacman/Pacman.hpp \
   C:/2025_I2P2_TowerDefense-main/Scene/PlayScene.hpp \
   C:/2025_I2P2_TowerDefense-main/Slot/SlotMachine.hpp \
@@ -12673,6 +12675,7 @@ CMakeFiles/2025_I2P2_TowerDefense.dir/Ghost/Ghost.cpp.obj: C:/2025_I2P2_TowerDef
   C:/2025_I2P2_TowerDefense-main/Engine/LOG.hpp \
   C:/2025_I2P2_TowerDefense-main/Engine/Point.hpp \
   C:/2025_I2P2_TowerDefense-main/Engine/Sprite.hpp \
+  C:/2025_I2P2_TowerDefense-main/Ghost/Ghost.hpp \
   C:/2025_I2P2_TowerDefense-main/Pacman/Pacman.hpp \
   C:/2025_I2P2_TowerDefense-main/Scene/PlayScene.hpp \
   C:/2025_I2P2_TowerDefense-main/Slot/SlotMachine.hpp \
@@ -15413,6 +15416,7 @@ CMakeFiles/2025_I2P2_TowerDefense.dir/Pacman/Pacman.cpp.obj: C:/2025_I2P2_TowerD
   C:/2025_I2P2_TowerDefense-main/Engine/IScene.hpp \
   C:/2025_I2P2_TowerDefense-main/Engine/Point.hpp \
   C:/2025_I2P2_TowerDefense-main/Engine/Sprite.hpp \
+  C:/2025_I2P2_TowerDefense-main/Ghost/Ghost.hpp \
   C:/2025_I2P2_TowerDefense-main/Pacman/Pacman.hpp \
   C:/2025_I2P2_TowerDefense-main/Scene/PlayScene.hpp \
   C:/2025_I2P2_TowerDefense-main/Slot/SlotMachine.hpp \
@@ -17202,6 +17206,8 @@ CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/LoseScene.cpp.obj: C:/2025_I2P2_Towe
   C:/2025_I2P2_TowerDefense-main/Engine/IObject.hpp \
   C:/2025_I2P2_TowerDefense-main/Engine/IScene.hpp \
   C:/2025_I2P2_TowerDefense-main/Engine/Point.hpp \
+  C:/2025_I2P2_TowerDefense-main/Engine/Sprite.hpp \
+  C:/2025_I2P2_TowerDefense-main/Ghost/Ghost.hpp \
   C:/2025_I2P2_TowerDefense-main/Pacman/Pacman.hpp \
   C:/2025_I2P2_TowerDefense-main/Slot/SlotMachine.hpp \
   C:/2025_I2P2_TowerDefense-main/UI/Component/Image.hpp \
@@ -18072,6 +18078,8 @@ CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/MotionScene.cpp.obj: C:/2025_I2P2_To
   C:/2025_I2P2_TowerDefense-main/Engine/IScene.hpp \
   C:/2025_I2P2_TowerDefense-main/Engine/Point.hpp \
   C:/2025_I2P2_TowerDefense-main/Engine/Resources.hpp \
+  C:/2025_I2P2_TowerDefense-main/Engine/Sprite.hpp \
+  C:/2025_I2P2_TowerDefense-main/Ghost/Ghost.hpp \
   C:/2025_I2P2_TowerDefense-main/Pacman/Pacman.hpp \
   C:/2025_I2P2_TowerDefense-main/Scene/MotionScene.hpp \
   C:/2025_I2P2_TowerDefense-main/Scene/StartScene.h \
@@ -19937,6 +19945,8 @@ CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/ScoreboardScene.cpp.obj: C:/2025_I2P
   C:/2025_I2P2_TowerDefense-main/Engine/IScene.hpp \
   C:/2025_I2P2_TowerDefense-main/Engine/Point.hpp \
   C:/2025_I2P2_TowerDefense-main/Engine/Resources.hpp \
+  C:/2025_I2P2_TowerDefense-main/Engine/Sprite.hpp \
+  C:/2025_I2P2_TowerDefense-main/Ghost/Ghost.hpp \
   C:/2025_I2P2_TowerDefense-main/Pacman/Pacman.hpp \
   C:/2025_I2P2_TowerDefense-main/Scene/ScoreboardScene.hpp \
   C:/2025_I2P2_TowerDefense-main/Scene/StartScene.h \
@@ -20856,6 +20866,8 @@ CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/SettingsScene.cpp.obj: C:/2025_I2P2_
   C:/2025_I2P2_TowerDefense-main/Engine/IScene.hpp \
   C:/2025_I2P2_TowerDefense-main/Engine/Point.hpp \
   C:/2025_I2P2_TowerDefense-main/Engine/Resources.hpp \
+  C:/2025_I2P2_TowerDefense-main/Engine/Sprite.hpp \
+  C:/2025_I2P2_TowerDefense-main/Ghost/Ghost.hpp \
   C:/2025_I2P2_TowerDefense-main/Pacman/Pacman.hpp \
   C:/2025_I2P2_TowerDefense-main/Scene/SettingsScene.hpp \
   C:/2025_I2P2_TowerDefense-main/Slot/SlotMachine.hpp \
@@ -21727,6 +21739,8 @@ CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/StageSelectScene.cpp.obj: C:/2025_I2
   C:/2025_I2P2_TowerDefense-main/Engine/IScene.hpp \
   C:/2025_I2P2_TowerDefense-main/Engine/Point.hpp \
   C:/2025_I2P2_TowerDefense-main/Engine/Resources.hpp \
+  C:/2025_I2P2_TowerDefense-main/Engine/Sprite.hpp \
+  C:/2025_I2P2_TowerDefense-main/Ghost/Ghost.hpp \
   C:/2025_I2P2_TowerDefense-main/Pacman/Pacman.hpp \
   C:/2025_I2P2_TowerDefense-main/Slot/SlotMachine.hpp \
   C:/2025_I2P2_TowerDefense-main/UI/Component/Image.hpp \
@@ -22598,6 +22612,8 @@ CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/StartScene.cpp.obj: C:/2025_I2P2_Tow
   C:/2025_I2P2_TowerDefense-main/Engine/IScene.hpp \
   C:/2025_I2P2_TowerDefense-main/Engine/Point.hpp \
   C:/2025_I2P2_TowerDefense-main/Engine/Resources.hpp \
+  C:/2025_I2P2_TowerDefense-main/Engine/Sprite.hpp \
+  C:/2025_I2P2_TowerDefense-main/Ghost/Ghost.hpp \
   C:/2025_I2P2_TowerDefense-main/Pacman/Pacman.hpp \
   C:/2025_I2P2_TowerDefense-main/Scene/StartScene.h \
   C:/2025_I2P2_TowerDefense-main/Slot/SlotMachine.hpp \
@@ -23469,6 +23485,8 @@ CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/WinScene.cpp.obj: C:/2025_I2P2_Tower
   C:/2025_I2P2_TowerDefense-main/Engine/IObject.hpp \
   C:/2025_I2P2_TowerDefense-main/Engine/IScene.hpp \
   C:/2025_I2P2_TowerDefense-main/Engine/Point.hpp \
+  C:/2025_I2P2_TowerDefense-main/Engine/Sprite.hpp \
+  C:/2025_I2P2_TowerDefense-main/Ghost/Ghost.hpp \
   C:/2025_I2P2_TowerDefense-main/Pacman/Pacman.hpp \
   C:/2025_I2P2_TowerDefense-main/Slot/SlotMachine.hpp \
   C:/2025_I2P2_TowerDefense-main/UI/Component/Image.hpp \
@@ -25284,6 +25302,7 @@ CMakeFiles/2025_I2P2_TowerDefense.dir/UI/Animation/DirtyEffect.cpp.obj: C:/2025_
   C:/2025_I2P2_TowerDefense-main/Engine/IScene.hpp \
   C:/2025_I2P2_TowerDefense-main/Engine/Point.hpp \
   C:/2025_I2P2_TowerDefense-main/Engine/Sprite.hpp \
+  C:/2025_I2P2_TowerDefense-main/Ghost/Ghost.hpp \
   C:/2025_I2P2_TowerDefense-main/Pacman/Pacman.hpp \
   C:/2025_I2P2_TowerDefense-main/Scene/PlayScene.hpp \
   C:/2025_I2P2_TowerDefense-main/Slot/SlotMachine.hpp \
@@ -26203,6 +26222,7 @@ CMakeFiles/2025_I2P2_TowerDefense.dir/UI/Animation/ExplosionEffect.cpp.obj: C:/2
   C:/2025_I2P2_TowerDefense-main/Engine/Point.hpp \
   C:/2025_I2P2_TowerDefense-main/Engine/Resources.hpp \
   C:/2025_I2P2_TowerDefense-main/Engine/Sprite.hpp \
+  C:/2025_I2P2_TowerDefense-main/Ghost/Ghost.hpp \
   C:/2025_I2P2_TowerDefense-main/Pacman/Pacman.hpp \
   C:/2025_I2P2_TowerDefense-main/Scene/PlayScene.hpp \
   C:/2025_I2P2_TowerDefense-main/Slot/SlotMachine.hpp \
@@ -31319,6 +31339,8 @@ CMakeFiles/2025_I2P2_TowerDefense.dir/main.cpp.obj: C:/2025_I2P2_TowerDefense-ma
   C:/2025_I2P2_TowerDefense-main/Engine/IObject.hpp \
   C:/2025_I2P2_TowerDefense-main/Engine/IScene.hpp \
   C:/2025_I2P2_TowerDefense-main/Engine/Point.hpp \
+  C:/2025_I2P2_TowerDefense-main/Engine/Sprite.hpp \
+  C:/2025_I2P2_TowerDefense-main/Ghost/Ghost.hpp \
   C:/2025_I2P2_TowerDefense-main/Pacman/Pacman.hpp \
   C:/2025_I2P2_TowerDefense-main/Slot/SlotMachine.hpp \
   C:/2025_I2P2_TowerDefense-main/UI/Component/Image.hpp \
@@ -32286,6 +32308,30 @@ C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/__compare/weak_order.h:
 
 C:/2025_I2P2_TowerDefense-main/Engine/Group.hpp:
 
+C:/allegro/include/allegro5/system.h:
+
+C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/__algorithm/partition.h:
+
+C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/__format/formatter_floating_point.h:
+
+C:/llvm-mingw-20240417-msvcrt-x86_64/include/stdlib.h:
+
+C:/allegro/include/allegro5/platform/astdint.h:
+
+C:/allegro/include/allegro5/keyboard.h:
+
+C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/__type_traits/add_rvalue_reference.h:
+
+C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/__compare/ordering.h:
+
+C:/2025_I2P2_TowerDefense-main/Dot/Dot.hpp:
+
+C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/__type_traits/enable_if.h:
+
+C:/2025_I2P2_TowerDefense-main/Ghost/Ghost.hpp:
+
+C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/__bit/bit_width.h:
+
 C:/2025_I2P2_TowerDefense-main/Engine/IControl.hpp:
 
 C:/2025_I2P2_TowerDefense-main/Engine/IObject.hpp:
@@ -32295,6 +32341,14 @@ C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/math.h:
 C:/allegro/include/allegro5/base.h:
 
 C:/2025_I2P2_TowerDefense-main/Engine/IScene.hpp:
+
+C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/__algorithm/in_found_result.h:
+
+C:/2025_I2P2_TowerDefense-main/Scene/MotionScene.hpp:
+
+C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/__algorithm/ranges_copy_if.h:
+
+C:/2025_I2P2_TowerDefense-main/Engine/Point.hpp:
 
 C:/allegro/include/allegro5/path.h:
 
@@ -32311,14 +32365,6 @@ C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/__algorithm/stable_sort.h:
 C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/__iterator/istreambuf_iterator.h:
 
 C:/allegro/include/allegro5/keycodes.h:
-
-C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/__algorithm/in_found_result.h:
-
-C:/2025_I2P2_TowerDefense-main/Scene/MotionScene.hpp:
-
-C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/__algorithm/ranges_copy_if.h:
-
-C:/2025_I2P2_TowerDefense-main/Engine/Point.hpp:
 
 C:/allegro/include/allegro5/tls.h:
 
@@ -32345,26 +32391,6 @@ C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/cstdlib:
 C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/__filesystem/file_status.h:
 
 C:/2025_I2P2_TowerDefense-main/UI/Component/Label.hpp:
-
-C:/allegro/include/allegro5/system.h:
-
-C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/__algorithm/partition.h:
-
-C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/__format/formatter_floating_point.h:
-
-C:/llvm-mingw-20240417-msvcrt-x86_64/include/stdlib.h:
-
-C:/allegro/include/allegro5/platform/astdint.h:
-
-C:/allegro/include/allegro5/keyboard.h:
-
-C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/__type_traits/add_rvalue_reference.h:
-
-C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/__compare/ordering.h:
-
-C:/2025_I2P2_TowerDefense-main/Dot/Dot.hpp:
-
-C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/__type_traits/enable_if.h:
 
 C:/allegro/include/allegro5/alcompat.h:
 
@@ -33204,9 +33230,9 @@ C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/memory:
 
 C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/__algorithm/ranges_stable_partition.h:
 
-C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/__math/trigonometric_functions.h:
-
 C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/__atomic/check_memory_order.h:
+
+C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/__math/trigonometric_functions.h:
 
 C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/__algorithm/ranges_stable_sort.h:
 
@@ -33429,10 +33455,6 @@ C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/__fwd/pair.h:
 C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/__bit/bit_log2.h:
 
 C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/__format/formatter_pointer.h:
-
-C:/2025_I2P2_TowerDefense-main/Ghost/Ghost.hpp:
-
-C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/__bit/bit_width.h:
 
 C:/llvm-mingw-20240417-msvcrt-x86_64/include/c++/v1/format:
 

@@ -82,12 +82,16 @@ void Ghost::setDir() {
 
     if (moveDirX == 1 && moveDirY == 0) {
         faceDir = RIGHT;
+        tickCount_y = 2;
     } else if (moveDirX == -1 && moveDirY == 0) {
         faceDir = LEFT;
+        tickCount_y = 1;
     } else if (moveDirX == 0 && moveDirY == 1) {
         faceDir = UP;
+        tickCount_y = 3;
     } else if (moveDirX == 0 && moveDirY == -1) {
         faceDir = DOWN;
+        tickCount_y = 0;
     }
 }
 
@@ -155,6 +159,14 @@ void Ghost::Update(float deltaTime) {
     }
     int frameOffset = (animationDirection == 1) ? 0 : 1;
     animationFrame = baseFrame + frameOffset;
+
+
+    tick++;
+    if(tick>=10)
+    {
+        tick=0;
+        tickCount_x=(tickCount_x+1)%2;
+    }
 }
 
 void Ghost::Draw() const {
@@ -167,11 +179,11 @@ void Ghost::Draw() const {
 
     al_draw_tinted_scaled_rotated_bitmap_region(
         spriteSheet,
-        sx, sy, frameW, frameH,                       // region in source
+        tickCount_x*frameW, tickCount_y*frameH, frameW, frameH,                       // region in source
         al_map_rgba(255, 255, 255, 255),              // no tint
         cx, cy,                                       // rotation center
         drawX, drawY,                                 // destination
-        1.0, 1.0,                                     // scaleX, scaleY
+        3.0, 3.0,                                     // scaleX, scaleY
         0,
         0
     );

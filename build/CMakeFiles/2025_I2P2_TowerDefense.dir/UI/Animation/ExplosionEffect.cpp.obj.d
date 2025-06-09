@@ -864,4 +864,5 @@ CMakeFiles/2025_I2P2_TowerDefense.dir/UI/Animation/ExplosionEffect.cpp.obj: \
   C:/2025_I2P2_TowerDefense-main/./Pacman/Pacman.hpp \
   C:/2025_I2P2_TowerDefense-main/./Slot/SlotMachine.hpp \
   C:/2025_I2P2_TowerDefense-main/./UI/Component/ImageButton.hpp \
-  C:/2025_I2P2_TowerDefense-main/./UI/Component/Label.hpp
+  C:/2025_I2P2_TowerDefense-main/./UI/Component/Label.hpp \
+  C:/2025_I2P2_TowerDefense-main/./Ghost/Ghost.hpp

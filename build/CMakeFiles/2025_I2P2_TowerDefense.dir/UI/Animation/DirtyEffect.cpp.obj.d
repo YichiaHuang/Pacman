@@ -912,4 +912,5 @@ CMakeFiles/2025_I2P2_TowerDefense.dir/UI/Animation/DirtyEffect.cpp.obj: \
   C:/2025_I2P2_TowerDefense-main/./Slot/SlotMachine.hpp \
   C:/2025_I2P2_TowerDefense-main/./UI/Component/ImageButton.hpp \
   C:/2025_I2P2_TowerDefense-main/./UI/Component/Label.hpp \
-  C:/allegro/include/allegro5/allegro_font.h
+  C:/allegro/include/allegro5/allegro_font.h \
+  C:/2025_I2P2_TowerDefense-main/./Ghost/Ghost.hpp

@@ -88,7 +88,7 @@ void PlayScene::Initialize() {
     imgTarget = new Engine::Image("play/target.png", 0, 0);
     imgTarget->Visible = false;
     preview = nullptr;
-    UIGroup->AddNewObject(imgTarget);
+    /*UIGroup->AddNewObject(imgTarget);
 
 
     // Add four ghosts in the corners
@@ -96,7 +96,7 @@ void PlayScene::Initialize() {
     AddNewObject(new Pinky(18 * BlockSize + BlockSize / 2, 1 * BlockSize + BlockSize / 2)); // top-right
     AddNewObject(new Inky(1 * BlockSize + BlockSize / 2, 11 * BlockSize + BlockSize / 2));  // bottom-left
     AddNewObject(new Clyde(18 * BlockSize + BlockSize / 2, 11 * BlockSize + BlockSize / 2)); // bottom-right
-    for (auto g : ghostList) AddNewObject(g);
+    for (auto g : ghostList) AddNewObject(g);*/
 }
 
 
@@ -131,6 +131,23 @@ void PlayScene::Update(float deltaTime) {
     
     if (player) {
         player->Update(deltaTime);
+    }
+    
+    if(ghost_1){
+        //ghost_1->setPacmanPos(player->GetPosition());
+        ghost_1->Update(deltaTime);
+    }
+    if(ghost_2){
+        //ghost_2->setPacmanPos(player->GetPosition());
+        //ghost_2->Update(deltaTime);
+    }
+    if(ghost_3){
+        //ghost_3->setPacmanPos(player->GetPosition());
+        //ghost_3->Update(deltaTime);
+    }
+    if(ghost_4){
+        //ghost_4->setPacmanPos(player->GetPosition());
+        //ghost_4->Update(deltaTime);
     }
     // If we use deltaTime directly, then we might have Bullet-through-paper problem.
     // Reference: Bullet-Through-Paper
@@ -193,6 +210,14 @@ void PlayScene::Update(float deltaTime) {
         AddNewObject(new Engine::Label("10 Dots!", "prstartk.ttf", 20, 1450, 740, 0, 0, 0, 255, 0.5, 0.5));
 
         slotMachine = new SlotMachine(1345, 600);
+        
+        //ghost
+        ghost_1= new Blinky(1 * BlockSize + BlockSize / 2, 1 * BlockSize + BlockSize / 2);
+        ghost_2= new Pinky(18 * BlockSize + BlockSize / 2, 1 * BlockSize + BlockSize / 2);
+        ghost_3= new Inky(1 * BlockSize + BlockSize / 2, 11 * BlockSize + BlockSize / 2);
+        ghost_4= new Clyde(18 * BlockSize + BlockSize / 2, 11 * BlockSize + BlockSize / 2);
+        
+        //ghost
      
     //slot
     }
@@ -219,7 +244,12 @@ void PlayScene::Draw() const {
     if(!opening&&slotMachine)
         slotMachine->Draw();
     
-    
+    if(!opening) {
+        ghost_1->Draw(); 
+        ghost_2->Draw();
+        ghost_3->Draw();
+        ghost_4->Draw();
+    }
     
     if (!opening && player) {
         player->Draw(); // 開場時不畫 pacman

@@ -12,6 +12,7 @@
 #include "Slot/SlotMachine.hpp"
 #include "UI/Component/ImageButton.hpp"
 #include "UI/Component/Label.hpp"
+#include "Ghost/Ghost.hpp"
 class Turret;
 namespace Engine {
     class Group;
@@ -106,6 +107,9 @@ public:
     SlotMachine* slotMachine;
     bool slot_mode=false;
     bool slot_yet=true;
-    
+    Ghost* ghost_1;
+    Ghost* ghost_2;
+    Ghost* ghost_3;
+    Ghost* ghost_4;
 };
 #endif   // PLAYSCENE_HPP

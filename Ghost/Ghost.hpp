@@ -39,5 +39,9 @@ protected:
 
     enum Direction { RIGHT = 0, LEFT, UP, DOWN };
     Direction faceDir = RIGHT;
+
+    int tick=0;
+    int tickCount_x = 0;
+    int tickCount_y = 0;
 };
 #endif // GHOST_HPP

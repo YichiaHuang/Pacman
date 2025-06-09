@@ -915,10 +915,10 @@ CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/PlayScene.cpp.obj: \
   C:/2025_I2P2_TowerDefense-main/./Pacman/Pacman.hpp \
   C:/2025_I2P2_TowerDefense-main/./Slot/SlotMachine.hpp \
   C:/2025_I2P2_TowerDefense-main/./UI/Component/Label.hpp \
+  C:/2025_I2P2_TowerDefense-main/./Ghost/Ghost.hpp \
   C:/2025_I2P2_TowerDefense-main/./Dot/Dot.hpp \
   C:/2025_I2P2_TowerDefense-main/./Dot/NormalDot.hpp \
   C:/2025_I2P2_TowerDefense-main/./Ghost/Blinky.hpp \
-  C:/2025_I2P2_TowerDefense-main/./Ghost/Ghost.hpp \
   C:/2025_I2P2_TowerDefense-main/./Ghost/Inky.hpp \
   C:/2025_I2P2_TowerDefense-main/./Ghost/Pinky.hpp \
   C:/2025_I2P2_TowerDefense-main/./Ghost/Clyde.hpp

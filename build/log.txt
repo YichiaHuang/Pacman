@@ -41,7 +41,6 @@
 [INFO] Destroyed Resource<image>: play/floor_test.png
 [INFO] Destroyed Resource<image>: icon.jpg
 [INFO] Destroyed Resource<image>: stage-select/floor.png
-[INFO] Destroyed Resource<image>: play/target.png
 [INFO] Destroyed Resource<image>: play/dot.png?32x32
 [INFO] Destroyed Resource<image>: start/Pacman_logo.png?800x500
 [INFO] Destroyed Resource<image>: play/wall_test.png?64x64

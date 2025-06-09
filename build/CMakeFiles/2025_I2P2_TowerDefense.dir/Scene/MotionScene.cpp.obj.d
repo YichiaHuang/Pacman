@@ -911,6 +911,8 @@ CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/MotionScene.cpp.obj: \
   C:/2025_I2P2_TowerDefense-main/./UI/Component/ImageButton.hpp \
   C:/2025_I2P2_TowerDefense-main/./UI/Component/Image.hpp \
   C:/2025_I2P2_TowerDefense-main/./UI/Component/Label.hpp \
+  C:/2025_I2P2_TowerDefense-main/./Ghost/Ghost.hpp \
+  C:/2025_I2P2_TowerDefense-main/./Engine/Sprite.hpp \
   C:/2025_I2P2_TowerDefense-main/./Scene/StartScene.h \
   C:/2025_I2P2_TowerDefense-main/./UI/Component/Slider.hpp \
   C:/2025_I2P2_TowerDefense-main/./Scene/MotionScene.hpp \
