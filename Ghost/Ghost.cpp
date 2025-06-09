@@ -144,23 +144,6 @@ void Ghost::Update(float deltaTime) {
     Position.x += moveDirX * Speed * deltaTime;
     Position.y += moveDirY * Speed * deltaTime;
 
-    int baseFrame = 0;
-    switch (faceDir) {
-        case RIGHT: baseFrame = 0; break;
-        case LEFT:  baseFrame = 2; break;
-        case UP:    baseFrame = 4; break;
-        case DOWN:  baseFrame = 6; break;
-    }
-
-    animationTimer += deltaTime;
-    if (animationTimer >= frameDuration) {
-        animationTimer -= frameDuration;
-        animationDirection *= -1;
-    }
-    int frameOffset = (animationDirection == 1) ? 0 : 1;
-    animationFrame = baseFrame + frameOffset;
-
-
     tick++;
     if(tick>=10)
     {
@@ -170,8 +153,9 @@ void Ghost::Update(float deltaTime) {
 }
 
 void Ghost::Draw() const {
-    int sx = animationFrame * frameW;
-    int sy = 0;
+
+    int sx = tickCount_x * frameW;
+    int sy = tickCount_y * frameH;
     float cx = frameW / 2.0f;
     float cy = frameH / 2.0f;
     float drawX = Position.x;
@@ -179,7 +163,7 @@ void Ghost::Draw() const {
 
     al_draw_tinted_scaled_rotated_bitmap_region(
         spriteSheet,
-        tickCount_x*frameW, tickCount_y*frameH, frameW, frameH,                       // region in source
+        tickCount_x * frameW, tickCount_y * frameH, frameW, frameH,                       // region in source
         al_map_rgba(255, 255, 255, 255),              // no tint
         cx, cy,                                       // rotation center
         drawX, drawY,                                 // destination
