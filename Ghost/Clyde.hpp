@@ -10,7 +10,7 @@
 
 class Clyde: public Ghost {
     public:
-        Clyde(float x, float y, float speed);;
-        void setTargetPos() override;
+        Clyde(float x, float y);
+        void setTargetPos();
 };
 #endif

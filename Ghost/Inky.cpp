@@ -1,10 +1,17 @@
 #include <string>
+#include <allegro5/allegro.h>
+#include <allegro5/allegro_image.h>
+#include <iostream>
 
 #include "Inky.hpp"
 #include "Engine/Point.hpp"
 
-Inky::Inky(float x, float y, float speed)
-    : Ghost("inky.png", x, y, speed) {
+Inky::Inky(float x, float y)
+    : Ghost(x, y) {
+    spriteSheet = al_load_bitmap("Resource/images/ghost/blue_ghost.png");
+    if (!spriteSheet) {
+        std::cerr << "Failed to load inky.png\n";
+    }
 }
 
 void Inky::setTargetPos(Engine::Point pacmanDir,

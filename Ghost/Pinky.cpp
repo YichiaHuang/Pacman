@@ -1,10 +1,17 @@
 #include <string>
+#include <allegro5/allegro.h>
+#include <allegro5/allegro_image.h>
+#include <iostream>
 
 #include "Pinky.hpp"
 #include "Engine/Point.hpp"
 
-Pinky::Pinky(float x, float y, float speed)
-    : Ghost("pinky.png", x, y, speed) {
+Pinky::Pinky(float x, float y)
+    : Ghost(x, y) {
+    spriteSheet = al_load_bitmap("Resource/images/ghost/pink_ghost.png");
+    if (!spriteSheet) {
+        std::cerr << "Failed to load pinky.png\n";
+    }
 }
 
 void Pinky::setTargetPos(Engine::Point pacmanDir) {
@@ -17,8 +24,8 @@ void Pinky::setTargetPos(Engine::Point pacmanDir) {
         targetPos.y = 0;
     }
 
-    const int MAP_WIDTH = 32;
-    const int MAP_HEIGHT = 28;
+    const int MAP_WIDTH = 20;
+    const int MAP_HEIGHT = 13;
 
     if (targetPos.x >= MAP_WIDTH) { //MAP_WIDTH
         targetPos.x = MAP_WIDTH - 1;

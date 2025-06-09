@@ -10,7 +10,7 @@
 
 class Blinky: public Ghost {
     public:
-        Blinky(float x, float y, float speed);;
-        void setTargetPos() override;
+        Blinky(float x, float y);
+        void setTargetPos();
 };
 #endif

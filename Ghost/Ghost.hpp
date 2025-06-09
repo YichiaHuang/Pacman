@@ -7,19 +7,35 @@
 #include "Engine/Point.hpp"
 #include "Engine/Sprite.hpp"
 
-class Ghost: public Engine::Sprite {
-    public:
-        Ghost(std::string img, float x, float y, float speed);
-        void setPacmanPos(const Engine::Point& pos);
-        virtual void setTargetPos();
-        enum TileType {
-            TILE_WALL,
-            TILE_FLOOR,
-        };
-        void move(std::vector<std::vector<TileType>> mapState);
-    protected:
-        Engine::Point pacmanPos;
-        Engine::Point targetPos;
-        Engine::Point pos;
+class Ghost {
+public:
+    Ghost(float x, float y);
+    ~Ghost();
+    void Update(float deltaTime);
+    void Draw() const;
+    void setDir();
+    void setPacmanPos(const Engine::Point &pos);
+    Engine::Point GetPosition() const { return Position; }
+    int animationDirection = 1;
+
+protected:
+    float Speed;
+    float x, y;
+    Engine::Point Position;
+    Engine::Point targetPos;
+    Engine::Point pacmanPos;
+    int moveDirX, moveDirY;
+    int gridX, gridY;
+
+    ALLEGRO_BITMAP* spriteSheet = nullptr;
+    int animationFrame = 0;
+    float animationTimer = 0;
+    const int totalFrames = 2;
+    const float frameDuration = 0.1f;
+    const int frameW = 33;
+    const int frameH = 34;
+
+    enum Direction { RIGHT = 0, LEFT, UP, DOWN };
+    Direction faceDir = RIGHT;
 };
 #endif // GHOST_HPP

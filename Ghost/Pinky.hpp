@@ -10,7 +10,7 @@
 
 class Pinky: public Ghost {
     public:
-        Pinky(float x, float y, float speed);;
+        Pinky(float x, float y);
         void setTargetPos(Engine::Point pacmanDir);
 };
 #endif
