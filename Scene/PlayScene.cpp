@@ -71,8 +71,8 @@ void PlayScene::Initialize() {
     int w = Engine::GameEngine::GetInstance().GetScreenSize().x;
     int h = Engine::GameEngine::GetInstance().GetScreenSize().y;
 
-    playerOneLabel = new Engine::Label("PLAYER ONE", "prstartk.ttf", 64, w / 2, h / 2 - 80, 255, 255, 0, 255, 0.5, 0.5);
-    readyLabel     = new Engine::Label("READY!",     "prstartk.ttf", 64, w / 2, h / 2 + 30, 0, 255, 255, 255, 0.5, 0.5);
+    playerOneLabel = new Engine::Label("PLAYER ONE", "prstartk.ttf", 64, w / 2-150, h / 2 - 80, 255, 255, 0, 255, 0.5, 0.5);
+    readyLabel     = new Engine::Label("READY!",     "prstartk.ttf", 64, w / 2-150, h / 2 + 30, 0, 255, 255, 255, 0.5, 0.5);
 
     UIGroup->AddNewObject(playerOneLabel);
     UIGroup->AddNewObject(readyLabel);
@@ -93,6 +93,8 @@ void PlayScene::Terminate() {
     
 }
 void PlayScene::Update(float deltaTime) {
+    if (paused) return;
+
     if (opening) {
         openingTimer += deltaTime;
         if (openingTimer >= 2.0f) {
@@ -266,12 +268,23 @@ void PlayScene::ConstructUI() {
     UIGroup->AddNewObject(UIMoney = new Engine::Label(std::string("$") + std::to_string(money), "prstartk.ttf", 24, 1294, 48));
     UIGroup->AddNewObject(UILives = new Engine::Label(std::string("Life ") + std::to_string(lives), "prstartk.ttf", 24, 1294, 88));
     
+    int w = Engine::GameEngine::GetInstance().GetScreenSize().x;
+    int h = Engine::GameEngine::GetInstance().GetScreenSize().y;
+    pauseLabel = new Engine::Label("PAUSED", "prstartk.ttf", 72, w / 2-150, h / 2, 255, 255, 255, 255, 0.5, 0.5);
+    pauseLabel->Visible = false;
+    UIGroup->AddNewObject(pauseLabel);
 }
 
 
 void PlayScene::OnKeyDown(int keyCode) {
     IScene::OnKeyDown(keyCode);
     keyPressed.insert(keyCode);  // 記下按下的鍵
+
+    if (!opening && keyCode == ALLEGRO_KEY_SPACE) {
+        paused = !paused;
+        if (pauseLabel)
+            pauseLabel->Visible = paused;
+    }
 }
 
 void PlayScene::OnKeyUp(int keyCode) {

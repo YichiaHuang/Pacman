@@ -29,6 +29,8 @@ private:
     std::shared_ptr<ALLEGRO_SAMPLE_INSTANCE> startSound;
     Engine::Label* playerOneLabel = nullptr;
     Engine::Label* readyLabel = nullptr;
+    bool paused = false;
+    Engine::Label* pauseLabel = nullptr;
 
 protected:
     int lives;
@@ -94,8 +96,7 @@ public:
     //bool CheckSpaceValid(int x, int y);
     //std::vector<std::vector<int>> CalculateBFSDistance();
  
-    bool paused = false;
-    Engine::Label* pauseLabel = nullptr;
+    
     int map_dot[30][30]={0};
     // void ModifyReadMapTiles();
     Pacman* player;

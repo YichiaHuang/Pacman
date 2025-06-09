@@ -26,6 +26,7 @@
 [INFO] Loaded Resource<image>: Resource/images/play/floor.png scaled to 320x832
 [INFO] Loaded Resource<font>: Resource/fonts/prstartk.ttf with size 32
 [INFO] Loaded Resource<font>: Resource/fonts/prstartk.ttf with size 24
+[INFO] Loaded Resource<font>: Resource/fonts/prstartk.ttf with size 72
 [INFO] Loaded Resource<font>: Resource/fonts/prstartk.ttf with size 64
 [INFO] Loaded Resource<image>: Resource/images/play/target.png
 [INFO] Changed to play scene
@@ -43,6 +44,7 @@
 [INFO] Destroyed Resource<image>: start/Pacman_logo.png?800x500
 [INFO] Destroyed Resource<image>: icon.jpg
 [INFO] Destroyed Resource<font>: prstartk.ttf?64
+[INFO] Destroyed Resource<font>: prstartk.ttf?72
 [INFO] Destroyed Resource<font>: prstartk.ttf?24
 [INFO] Destroyed Resource<font>: prstartk.ttf?32
 [INFO] Destroyed Resource<font>: prstartk.ttf?40
