@@ -82,7 +82,6 @@ void PlayScene::Initialize() {
     bgmId = AudioHelper::PlayBGM("play.ogg");*/
     
     player = new Pacman(1 * BlockSize + BlockSize / 2, 1 * BlockSize + BlockSize / 2);
-    AddNewObject(player);
     
 }
 void PlayScene::Terminate() {
@@ -112,8 +111,8 @@ void PlayScene::Update(float deltaTime) {
 
         if (dx != 0 || dy != 0) {
             // 取得目前在地圖上的格子座標
-            int gridX = static_cast<int>(player->Position.y) / PlayScene::BlockSize;
-            int gridY = static_cast<int>(player->Position.x) / PlayScene::BlockSize;
+            int gridX = static_cast<int>(player->GetPosition().y) / PlayScene::BlockSize;
+            int gridY = static_cast<int>(player->GetPosition().x) / PlayScene::BlockSize;
 
             int targetX = gridX + dy;
             int targetY = gridY + dx;
@@ -149,6 +148,7 @@ void PlayScene::Update(float deltaTime) {
 }
 void PlayScene::Draw() const {
     IScene::Draw();
+    player->Draw();
     if (DebugMode) {
         // Draw reverse BFS distance on all reachable blocks.
         for (int i = 0; i < MapHeight; i++) {
