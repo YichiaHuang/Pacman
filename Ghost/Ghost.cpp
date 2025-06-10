@@ -250,7 +250,7 @@ void Ghost::setDir() {
     Engine::Point chosen(0, 0);
     for (auto& c : nbrs) {
         Engine::Point nextPos(gridX + c.x, gridY + c.y);
-        int d = bfs(nextPos, pacmanPos);  // pacmanPos 必須已經是 grid 座標
+        int d = bfs(nextPos, targetPos);  // pacmanPos 必須已經是 grid 座標
         if (d < nowDis) {
             nowDis = d;
             chosen = c;
