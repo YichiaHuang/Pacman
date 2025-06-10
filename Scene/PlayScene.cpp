@@ -388,18 +388,21 @@ void PlayScene::ReadMap() {
         }
     }
     Dot* dot;
+    
     for(int i=0; i<3; i++)
     {
         random[i]=rand()%total_dot;
+        
         if(i>0)
         {
             for(int j=0; j<i; j++)
             {
                 if(random[i]==random[j]){
                     i--;
-                    continue;
+                    break;
                 }
             }
+            
         }
         
     }
