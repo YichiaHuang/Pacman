@@ -393,19 +393,15 @@ void PlayScene::ReadMap() {
         random[i]=rand()%total_dot;
         if(i>0)
         {
-            if(random[i-1]==random[i])
-            {                
-                i--;
-                continue;
+            for(int j=0; j<i; j++)
+            {
+                if(random[i]==random[j]){
+                    i--;
+                    continue;
+                }
             }
         }
-        if(i==2)
-        {
-            if(random[2]==random[0]){
-                i--;
-                continue;
-            }
-        }
+        
     }
     
     int k=0;
