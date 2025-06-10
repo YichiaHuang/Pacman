@@ -17,11 +17,11 @@ public:
     int dotsEaten = 0;
     int money=0;
 
-    
+    Engine::Point Position;
 private:
     float Speed;
     float x, y;
-    Engine::Point Position;
+    
     Engine::Point targetPosition;
     int gridX, gridY;
     int moveDirX, moveDirY;

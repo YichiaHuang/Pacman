@@ -34,11 +34,21 @@
 [INFO] Loaded Resource<image>: Resource/images/play/floor_test.png
 [INFO] Loaded Resource<image>: Resource/images/stage-select/bott.png
 [INFO] Loaded Resource<font>: Resource/fonts/prstartk.ttf with size 20
+[INFO] Game Over, switching to game-over scene.
+[INFO] Loaded Resource<image>: Resource/images/lose/GameOver.png scaled to 600x600
+[INFO] Loaded Resource<image>: Resource/images/win/dirt.png scaled to 400x100
+[INFO] Loaded Resource<image>: Resource/images/win/dirt.png
+[INFO] Loaded Resource<image>: Resource/images/win/floor.png
+[INFO] Changed to lose scene
 [INFO] Game Terminating...
 [INFO] Game terminated
 [INFO] Game end
+[INFO] Destroyed Resource<image>: win/dirt.png?400x100
+[INFO] Destroyed Resource<image>: lose/GameOver.png?600x600
 [INFO] Destroyed Resource<image>: stage-select/bott.png
+[INFO] Destroyed Resource<image>: win/dirt.png
 [INFO] Destroyed Resource<image>: play/floor_test.png
+[INFO] Destroyed Resource<image>: win/floor.png
 [INFO] Destroyed Resource<image>: icon.jpg
 [INFO] Destroyed Resource<image>: stage-select/floor.png
 [INFO] Destroyed Resource<image>: play/target.png

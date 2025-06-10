@@ -107,9 +107,9 @@ public:
     SlotMachine* slotMachine;
     bool slot_mode=false;
     bool slot_yet=true;
-    Ghost* ghost_1;
-    Ghost* ghost_2;
+    Ghost* ghost[4];
+    /*Ghost* ghost_2;
     Ghost* ghost_3;
-    Ghost* ghost_4;
+    Ghost* ghost_4;*/
 };
 #endif   // PLAYSCENE_HPP

@@ -62,7 +62,7 @@ void PlayScene::Initialize() {
     keyStrokes.clear();
     ticks = 0;
     deathCountDown = -1;
-    lives = 10;
+    lives = 3;
     money = 0;
     SpeedMult = 1;
     total_dot = 0;
@@ -115,6 +115,8 @@ void PlayScene::Terminate() {
 void PlayScene::Update(float deltaTime) {
     if (paused) return;
 
+    
+
     if (opening) {
         openingTimer += deltaTime;
         if (openingTimer >= 2.0f) {
@@ -135,7 +137,7 @@ void PlayScene::Update(float deltaTime) {
         player->Update(deltaTime);
     }
     //ghost
-    if(ghost_1){
+    /*if(ghost_1){
         ghost_1->setPacmanPos(player->GetPosition());
         ghost_1->Update(deltaTime);
     }
@@ -150,6 +152,28 @@ void PlayScene::Update(float deltaTime) {
     if(ghost_4){
         ghost_4->setPacmanPos(player->GetPosition());
         ghost_4->Update(deltaTime);
+    }*/
+    for(int i=0; i<4; i++){
+        if(ghost[i]){
+            ghost[i]->setPacmanPos(player->GetPosition());
+            ghost[i]->Update(deltaTime);
+        }
+    }
+
+    for(int i=0; i<4; i++){
+        if(ghost[i]){
+            if(ghost[i]->caughtPacman==true){
+                ghost[i]->caughtPacman=false;
+                lives--;
+            }
+            
+        }
+    }
+    UILives ->Text =std::string("Life ") + std::to_string(lives);
+    if(lives == 0) {
+        Engine::LOG(Engine::INFO) << "Game Over, switching to game-over scene.";
+        Engine::GameEngine::GetInstance().ChangeScene("lose");
+        return;
     }
     //ghost
 
@@ -203,6 +227,8 @@ void PlayScene::Update(float deltaTime) {
         return;
     }
 
+    
+
     if(slot_yet&&!opening)
     {
         //slot
@@ -216,10 +242,10 @@ void PlayScene::Update(float deltaTime) {
         slotMachine = new SlotMachine(1345, 600);
         
         //ghost
-        ghost_1= new Blinky(1 * BlockSize + BlockSize / 2, 1 * BlockSize + BlockSize / 2);
-        ghost_2= new Pinky(18 * BlockSize + BlockSize / 2, 1 * BlockSize + BlockSize / 2);
-        ghost_3= new Inky(1 * BlockSize + BlockSize / 2, 11 * BlockSize + BlockSize / 2);
-        ghost_4= new Clyde(18 * BlockSize + BlockSize / 2, 11 * BlockSize + BlockSize / 2);
+        ghost[0]= new Blinky(1 * BlockSize + BlockSize / 2, 1 * BlockSize + BlockSize / 2);
+        ghost[1]= new Pinky(18 * BlockSize + BlockSize / 2, 1 * BlockSize + BlockSize / 2);
+        ghost[2]= new Inky(1 * BlockSize + BlockSize / 2, 11 * BlockSize + BlockSize / 2);
+        ghost[3]= new Clyde(18 * BlockSize + BlockSize / 2, 11 * BlockSize + BlockSize / 2);
         
         //ghost
      
@@ -249,10 +275,10 @@ void PlayScene::Draw() const {
         slotMachine->Draw();
     
     if(!opening) {
-        ghost_1->Draw(); 
-        ghost_2->Draw();
-        ghost_3->Draw();
-        ghost_4->Draw();
+        for(int i=0; i<4; i++){
+            ghost[i]->Draw();
+        }
+       
     }
     
     if (!opening && player) {

@@ -297,6 +297,21 @@ void Ghost::Update(float deltaTime) {
         tick = 0;
         tickCount_x = (tickCount_x + 1) % 2;
     }
+
+    // 檢查是否與 Pacman 接觸
+    auto& scene = dynamic_cast<PlayScene&>(*Engine::GameEngine::GetInstance().GetActiveScene());
+    float pacX = scene.player->Position.x;
+    float pacY = scene.player->Position.y;
+    float distToPacman = std::hypot(Position.x - pacX, Position.y - pacY);
+
+    if (distToPacman < 16.0f&&coldown>100) { // 調整閾值以適應角色大小
+        caughtPacman = true;
+        coldown=0;
+    }
+    
+        coldown++;
+        
+    
 }
 void Ghost::setPacmanPos(const Engine::Point &pos) {
     // 傳入前請確保 pacmanPos 是格子座標

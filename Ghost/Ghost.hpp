@@ -21,6 +21,7 @@ public:
     Engine::Point GetPosition() const { return Position; }
     int animationDirection = 1;
 
+    bool caughtPacman = false;
 protected:
     float Speed;
     float x, y;
@@ -45,5 +46,6 @@ protected:
     int tick=0;
     int tickCount_x = 0;
     int tickCount_y = 0;
+    int coldown = 200;
 };
 #endif // GHOST_HPP
