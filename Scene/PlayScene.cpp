@@ -88,9 +88,11 @@ void PlayScene::Initialize() {
     imgTarget = new Engine::Image("play/target.png", 0, 0);
     imgTarget->Visible = false;
     preview = nullptr;
-    /*UIGroup->AddNewObject(imgTarget);
-
-
+    
+    UIGroup->AddNewObject(imgTarget);
+    keyPressed.clear();
+    slot_yet=1;
+    /*
     // Add four ghosts in the corners
     AddNewObject(new Blinky(1 * BlockSize + BlockSize / 2, 1 * BlockSize + BlockSize / 2)); // top-left
     AddNewObject(new Pinky(18 * BlockSize + BlockSize / 2, 1 * BlockSize + BlockSize / 2)); // top-right
@@ -134,20 +136,20 @@ void PlayScene::Update(float deltaTime) {
     }
     //ghost
     if(ghost_1){
-        //ghost_1->setPacmanPos(player->GetPosition());
+        ghost_1->setPacmanPos(player->GetPosition());
         ghost_1->Update(deltaTime);
     }
     if(ghost_2){
-        //ghost_2->setPacmanPos(player->GetPosition());
-        //ghost_2->Update(deltaTime);
+        ghost_2->setPacmanPos(player->GetPosition());
+        ghost_2->Update(deltaTime);
     }
     if(ghost_3){
-        //ghost_3->setPacmanPos(player->GetPosition());
-        //ghost_3->Update(deltaTime);
+        ghost_3->setPacmanPos(player->GetPosition());
+        ghost_3->Update(deltaTime);
     }
     if(ghost_4){
-        //ghost_4->setPacmanPos(player->GetPosition());
-        //ghost_4->Update(deltaTime);
+        ghost_4->setPacmanPos(player->GetPosition());
+        ghost_4->Update(deltaTime);
     }
     //ghost
 

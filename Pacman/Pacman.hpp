@@ -16,6 +16,8 @@ public:
     int animationDirection = 1;
     int dotsEaten = 0;
     int money=0;
+
+    
 private:
     float Speed;
     float x, y;
