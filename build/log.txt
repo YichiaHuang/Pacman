@@ -34,24 +34,9 @@
 [INFO] Loaded Resource<image>: Resource/images/play/floor_test.png
 [INFO] Loaded Resource<image>: Resource/images/stage-select/bott.png
 [INFO] Loaded Resource<font>: Resource/fonts/prstartk.ttf with size 20
-[INFO] WinTriggered = true, switching to win-scene.
-[INFO] Loaded Resource<image>: Resource/images/ghost/pacman-ghosts.png
-[INFO] Loaded Resource<image>: Resource/images/win/dirt.png scaled to 400x100
-[INFO] Loaded Resource<image>: Resource/images/win/dirt.png
-[INFO] Loaded Resource<image>: Resource/images/win/floor.png
-[INFO] Loaded Resource<font>: Resource/fonts/prstartk.ttf with size 36
-[INFO] Changed to win-scene scene
-[INFO] stopped audio (bgm)
-[INFO] Created<sample_instance>: Resource/audios/Pacman/intermission.wav
-[INFO] Changed to stage-select scene
-[INFO] stopped audio (sample)
-[INFO] Created<sample_instance>: Resource/audios/Pacman/start-game.wav
-[INFO] Changed to play scene
 [INFO] Game Terminating...
 [INFO] Game terminated
 [INFO] Game end
-[INFO] Destroyed Resource<image>: win/dirt.png?400x100
-[INFO] Destroyed Resource<image>: ghost/pacman-ghosts.png
 [INFO] Destroyed Resource<image>: stage-select/bott.png
 [INFO] Destroyed Resource<image>: play/floor_test.png
 [INFO] Destroyed Resource<image>: icon.jpg
@@ -70,7 +55,6 @@
 [INFO] Destroyed Resource<font>: prstartk.ttf?72
 [INFO] Destroyed Resource<font>: prstartk.ttf?24
 [INFO] Destroyed Resource<font>: prstartk.ttf?32
-[INFO] Destroyed Resource<font>: prstartk.ttf?36
 [INFO] Destroyed Resource<font>: prstartk.ttf?40
 [INFO] Destroyed Resource<font>: prstartk.ttf?48
 [INFO] Destroyed Resource<font>: prstartk.ttf?80
