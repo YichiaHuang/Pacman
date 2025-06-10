@@ -15,6 +15,7 @@ public:
     virtual void Update(float deltaTime) override;
     virtual void Draw() const override;
     void setDir();
+    void escape();
     void setPacmanPos(const Engine::Point &pos);
     //virtual const char* GetSpriteName() const = 0;
     Engine::Point GetPosition() const { return Position; }
@@ -23,6 +24,7 @@ public:
 protected:
     float Speed;
     float x, y;
+    float frightenedTimer = 0;
     Engine::Point Position;
     Engine::Point targetPos;
     Engine::Point pacmanPos;
