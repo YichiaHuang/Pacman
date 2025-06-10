@@ -153,10 +153,15 @@ void PlayScene::Update(float deltaTime) {
         ghost_4->setPacmanPos(player->GetPosition());
         ghost_4->Update(deltaTime);
     }*/
+    if(player->get_hit&&red_coldown>5)
+    {
+        player->get_hit=false;
+    }
     for(int i=0; i<4; i++){
         if(ghost[i]){
             ghost[i]->setPacmanPos(player->GetPosition());
             ghost[i]->Update(deltaTime);
+            
         }
     }
 
@@ -165,10 +170,13 @@ void PlayScene::Update(float deltaTime) {
             if(ghost[i]->caughtPacman==true){
                 ghost[i]->caughtPacman=false;
                 lives--;
+                player->get_hit=true;
+                red_coldown=0;
             }
             
         }
     }
+    red_coldown++;
     UILives ->Text =std::string("Life ") + std::to_string(lives);
     if(lives == 0) {
         Engine::LOG(Engine::INFO) << "Game Over, switching to game-over scene.";

@@ -18,6 +18,7 @@ public:
     int money=0;
 
     Engine::Point Position;
+    bool get_hit=false;
 private:
     float Speed;
     float x, y;

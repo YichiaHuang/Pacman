@@ -108,8 +108,6 @@ public:
     bool slot_mode=false;
     bool slot_yet=true;
     Ghost* ghost[4];
-    /*Ghost* ghost_2;
-    Ghost* ghost_3;
-    Ghost* ghost_4;*/
+    int red_coldown = 0;
 };
 #endif   // PLAYSCENE_HPP

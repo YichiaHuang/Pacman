@@ -13,6 +13,7 @@ Pacman::Pacman(float x, float y)
     if (!spriteSheet) {
         std::cerr << "Failed to load pac.png\n";
     }
+    get_hit=false;
 }
 
 Pacman::~Pacman() {
@@ -83,17 +84,30 @@ void Pacman::Draw() const {
         default:
             break;
     }
-
-    al_draw_tinted_scaled_rotated_bitmap_region(
+    if(!get_hit){
+        al_draw_tinted_scaled_rotated_bitmap_region(
+            spriteSheet,
+            sx, sy, frameW, frameH,                       // region in source
+            al_map_rgba(255, 255, 255, 255),              // no tint
+            cx, cy,                                       // rotation center
+            drawX, drawY,                                 // destination
+            1.0, 1.0,                                     // scaleX, scaleY
+           angle,
+            flags
+        );
+    }
+    else{
+        al_draw_tinted_scaled_rotated_bitmap_region(
         spriteSheet,
         sx, sy, frameW, frameH,                       // region in source
-        al_map_rgba(255, 255, 255, 255),              // no tint
+        al_map_rgba(255, 0, 0, 255),              // no tint
         cx, cy,                                       // rotation center
         drawX, drawY,                                 // destination
         1.0, 1.0,                                     // scaleX, scaleY
         angle,
         flags
     );
+    }
 }
 
 
