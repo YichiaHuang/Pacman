@@ -10,10 +10,12 @@
 class Dot : public Engine::Sprite {
 public:
     bool IsEaten;
-    Dot(std::string img, float x, float y);
+    Dot(std::string img, float x, float y, int money, int effect);
     void OnEaten();
     void Update(float deltaTime) override;
     float time;
     int baseY;
+    int money;
+    int effect;
 };
 #endif

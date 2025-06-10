@@ -22,6 +22,7 @@ public:
     int animationDirection = 1;
 
     bool caughtPacman = false;
+    bool pause_mode = false;
 protected:
     float Speed;
     float x, y;
@@ -47,5 +48,6 @@ protected:
     int tickCount_x = 0;
     int tickCount_y = 0;
     int coldown = 200;
+    
 };
 #endif // GHOST_HPP

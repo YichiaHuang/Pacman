@@ -22,6 +22,13 @@ Pacman::~Pacman() {
 }
 
 void Pacman::Update(float deltaTime) {
+    if(speed_mode)
+        Speed_coldown++;
+    if(speed_mode&&Speed_coldown>100){
+        Speed=150;
+        Speed_coldown=0;
+        speed_mode=false;
+    }
     if (moving) {
         Engine::Point direction = targetPosition - Position;
         float distance = direction.Magnitude();
@@ -139,6 +146,7 @@ void Pacman::MoveDirection(int dx, int dy) {
     else if (dy == -1) faceDir = DOWN;
 
     moving = true;
+    
 }
 
 void Pacman::CheckCollisionWithDots() {
@@ -149,9 +157,23 @@ void Pacman::CheckCollisionWithDots() {
             float dist = std::hypot(Position.x - dot->Position.x, Position.y - dot->Position.y);
             if (dist < 16 && dot->Visible) {
                 dot->OnEaten();
-                dotsEaten++;
-                money++;
+                
+                if(dot->effect==0)
+                    dotsEaten++;
+                
+                money+= dot->money;
+                
+                if(dot->effect==1){
+                    Speed=200;
+                    Speed_coldown=0;
+                    speed_mode=true;
+                }
+                else if(dot->effect==2){
+                    pause=true;
+                }
+                 
             }
         }
     }
+    
 }

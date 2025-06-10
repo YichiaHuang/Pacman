@@ -277,6 +277,9 @@ void Ghost::setDir() {
 
 
 void Ghost::Update(float deltaTime) {
+    if(pause_mode){
+        return;
+    }
     float centerX = gridX * PlayScene::BlockSize + PlayScene::BlockSize / 2;
     float centerY = gridY * PlayScene::BlockSize + PlayScene::BlockSize / 2;
     float distToCenter = std::hypot(Position.x - centerX, Position.y - centerY);

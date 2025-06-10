@@ -13,6 +13,24 @@
 },
 {
   "directory": "C:/2025_I2P2_TowerDefense-main/build",
+  "command": "C:\\llvm-mingw-20240417-msvcrt-x86_64\\bin\\clang++.exe  @CMakeFiles/2025_I2P2_TowerDefense.dir/includes_CXX.rsp -g -o CMakeFiles\\2025_I2P2_TowerDefense.dir\\Dot\\Ice.cpp.obj -c C:\\2025_I2P2_TowerDefense-main\\Dot\\Ice.cpp",
+  "file": "C:/2025_I2P2_TowerDefense-main/Dot/Ice.cpp",
+  "output": "CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/Ice.cpp.obj"
+},
+{
+  "directory": "C:/2025_I2P2_TowerDefense-main/build",
+  "command": "C:\\llvm-mingw-20240417-msvcrt-x86_64\\bin\\clang++.exe  @CMakeFiles/2025_I2P2_TowerDefense.dir/includes_CXX.rsp -g -o CMakeFiles\\2025_I2P2_TowerDefense.dir\\Dot\\Speed.cpp.obj -c C:\\2025_I2P2_TowerDefense-main\\Dot\\Speed.cpp",
+  "file": "C:/2025_I2P2_TowerDefense-main/Dot/Speed.cpp",
+  "output": "CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/Speed.cpp.obj"
+},
+{
+  "directory": "C:/2025_I2P2_TowerDefense-main/build",
+  "command": "C:\\llvm-mingw-20240417-msvcrt-x86_64\\bin\\clang++.exe  @CMakeFiles/2025_I2P2_TowerDefense.dir/includes_CXX.rsp -g -o CMakeFiles\\2025_I2P2_TowerDefense.dir\\Dot\\Star.cpp.obj -c C:\\2025_I2P2_TowerDefense-main\\Dot\\Star.cpp",
+  "file": "C:/2025_I2P2_TowerDefense-main/Dot/Star.cpp",
+  "output": "CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/Star.cpp.obj"
+},
+{
+  "directory": "C:/2025_I2P2_TowerDefense-main/build",
   "command": "C:\\llvm-mingw-20240417-msvcrt-x86_64\\bin\\clang++.exe  @CMakeFiles/2025_I2P2_TowerDefense.dir/includes_CXX.rsp -g -o CMakeFiles\\2025_I2P2_TowerDefense.dir\\Pacman\\Pacman.cpp.obj -c C:\\2025_I2P2_TowerDefense-main\\Pacman\\Pacman.cpp",
   "file": "C:/2025_I2P2_TowerDefense-main/Pacman/Pacman.cpp",
   "output": "CMakeFiles/2025_I2P2_TowerDefense.dir/Pacman/Pacman.cpp.obj"

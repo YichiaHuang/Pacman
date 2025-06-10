@@ -19,6 +19,7 @@ public:
 
     Engine::Point Position;
     bool get_hit=false;
+    bool pause = false;
 private:
     float Speed;
     float x, y;
@@ -38,6 +39,8 @@ private:
 
     enum Direction { RIGHT = 0, LEFT, UP, DOWN };
     Direction faceDir = RIGHT;
+    int Speed_coldown=0;
+    bool speed_mode = false;
     
 };
 

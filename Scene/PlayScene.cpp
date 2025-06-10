@@ -27,6 +27,9 @@
 #include "Ghost/Inky.hpp"
 #include "Ghost/Pinky.hpp"
 #include "Ghost/Clyde.hpp"
+#include "Dot/Ice.hpp"
+#include "Dot/Speed.hpp"
+#include "Dot/Star.hpp"
 
 // TODO HACKATHON-4 (1/3): Trace how the game handles keyboard input.
 // TODO HACKATHON-4 (2/3): Find the cheat code sequence in this file.
@@ -53,6 +56,7 @@ Engine::Point PlayScene::GetClientSize() {
 std::vector<Ghost*> ghostList;
 
 void PlayScene::Initialize() {
+    std::srand(std::time(nullptr)); 
     opening = true;
     openingTimer = 0;
     startSound = AudioHelper::PlaySample("Pacman/start-game.wav", false, AudioHelper::SFXVolume);
@@ -115,8 +119,31 @@ void PlayScene::Terminate() {
 void PlayScene::Update(float deltaTime) {
     if (paused) return;
 
+    if(!opening){
+        if(player->pause)
+        {
+            for(int i = 0; i < 4; i++) {
+                if (ghost[i]) {
+                    ghost[i]->pause_mode = true;
+                }
+            }
+            player->pause = false;
+            pause_coldown = 0;
+        }
+        if(pause_coldown < 110)
+        {
+            pause_coldown++;
+        }
+        if(pause_coldown > 100 && ghost[0]->pause_mode)
+        {
+            for(int i = 0; i < 4; i++) {
+               if (ghost[i]) {
+                    ghost[i]->pause_mode = false;
+                }
+            }
+        }
+    }
     
-
     if (opening) {
         openingTimer += deltaTime;
         if (openingTimer >= 2.0f) {
@@ -136,23 +163,7 @@ void PlayScene::Update(float deltaTime) {
     if (player) {
         player->Update(deltaTime);
     }
-    //ghost
-    /*if(ghost_1){
-        ghost_1->setPacmanPos(player->GetPosition());
-        ghost_1->Update(deltaTime);
-    }
-    if(ghost_2){
-        ghost_2->setPacmanPos(player->GetPosition());
-        ghost_2->Update(deltaTime);
-    }
-    if(ghost_3){
-        ghost_3->setPacmanPos(player->GetPosition());
-        ghost_3->Update(deltaTime);
-    }
-    if(ghost_4){
-        ghost_4->setPacmanPos(player->GetPosition());
-        ghost_4->Update(deltaTime);
-    }*/
+    
     if(player->get_hit&&red_coldown>5)
     {
         player->get_hit=false;
@@ -176,7 +187,9 @@ void PlayScene::Update(float deltaTime) {
             
         }
     }
-    red_coldown++;
+    if(red_coldown < 10)
+        red_coldown++;
+        
     UILives ->Text =std::string("Life ") + std::to_string(lives);
     if(lives == 0) {
         Engine::LOG(Engine::INFO) << "Game Over, switching to game-over scene.";
@@ -375,17 +388,57 @@ void PlayScene::ReadMap() {
         }
     }
     Dot* dot;
+    for(int i=0; i<3; i++)
+    {
+        random[i]=rand()%total_dot;
+        if(i>0)
+        {
+            if(random[i-1]==random[i])
+            {                
+                i--;
+                continue;
+            }
+        }
+        if(i==2)
+        {
+            if(random[2]==random[0]){
+                i--;
+                continue;
+            }
+        }
+    }
+    
+    int k=0;
     for(int i=0; i<13; i++)
     {
         for(int j=0; j<20; j++)
         {
+            
+            
             if(map_dot[i][j] == 1)
             {
-                DotsGroup->AddNewObject(dot=new NormalDot(j*BlockSize+BlockSize/2, i*BlockSize+BlockSize/2));
+                if(k==random[0]){
+                    DotsGroup->AddNewObject(dot=new Star(j*BlockSize+BlockSize/2, i*BlockSize+BlockSize/2));
+                    
+                }
+                else if(k==random[1]){
+                    DotsGroup->AddNewObject(dot=new Speed(j*BlockSize+BlockSize/2, i*BlockSize+BlockSize/2));
+                    
+                }
+                else if(k==random[2]){
+                    DotsGroup->AddNewObject(dot=new Ice(j*BlockSize+BlockSize/2, i*BlockSize+BlockSize/2));
+                   
+                }  
+                else{
+                    DotsGroup->AddNewObject(dot=new NormalDot(j*BlockSize+BlockSize/2, i*BlockSize+BlockSize/2));
+                }
+                
+                k++;
             }
             
         }   
     }
+    total_dot-=3; // 減去三個item
 
 }
 

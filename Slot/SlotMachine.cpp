@@ -6,6 +6,7 @@
 #include <allegro5/allegro_primitives.h>
 
 SlotMachine::SlotMachine(float x, float y) : x(x+15), y(y) {
+    std::srand(std::time(nullptr)); 
     spriteSheet_0 = al_load_bitmap("Resource/images/play/slot_test.png");
     spriteSheet_1 = al_load_bitmap("Resource/images/play/slot_test.png");
     spriteSheet_2 = al_load_bitmap("Resource/images/play/slot_test.png");
@@ -37,7 +38,7 @@ void SlotMachine::StartSpin(){
         least[i] = 3; // 每個輪軸至少轉動3次
     }
 
-    int c=rand() % 5;//20% 機率決定是否轉動
+    int c=rand() % 4;//25% 機率
 
     if(c==0){//win
         jackpot = true; // 設置中獎狀態

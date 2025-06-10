@@ -16,5 +16,7 @@ public:
     void Update(float deltaTime) override;
     float time;
     int baseY;
+    int money;
+    int effect;
 };
 #endif

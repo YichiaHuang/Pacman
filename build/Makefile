@@ -152,6 +152,30 @@ Dot/Dot.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/Dot.cpp.s
 .PHONY : Dot/Dot.cpp.s
 
+Dot/Ice.obj: Dot/Ice.cpp.obj
+.PHONY : Dot/Ice.obj
+
+# target to build an object file
+Dot/Ice.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/Ice.cpp.obj
+.PHONY : Dot/Ice.cpp.obj
+
+Dot/Ice.i: Dot/Ice.cpp.i
+.PHONY : Dot/Ice.i
+
+# target to preprocess a source file
+Dot/Ice.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/Ice.cpp.i
+.PHONY : Dot/Ice.cpp.i
+
+Dot/Ice.s: Dot/Ice.cpp.s
+.PHONY : Dot/Ice.s
+
+# target to generate assembly for a file
+Dot/Ice.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/Ice.cpp.s
+.PHONY : Dot/Ice.cpp.s
+
 Dot/NormalDot.obj: Dot/NormalDot.cpp.obj
 .PHONY : Dot/NormalDot.obj
 
@@ -175,6 +199,54 @@ Dot/NormalDot.s: Dot/NormalDot.cpp.s
 Dot/NormalDot.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/NormalDot.cpp.s
 .PHONY : Dot/NormalDot.cpp.s
+
+Dot/Speed.obj: Dot/Speed.cpp.obj
+.PHONY : Dot/Speed.obj
+
+# target to build an object file
+Dot/Speed.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/Speed.cpp.obj
+.PHONY : Dot/Speed.cpp.obj
+
+Dot/Speed.i: Dot/Speed.cpp.i
+.PHONY : Dot/Speed.i
+
+# target to preprocess a source file
+Dot/Speed.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/Speed.cpp.i
+.PHONY : Dot/Speed.cpp.i
+
+Dot/Speed.s: Dot/Speed.cpp.s
+.PHONY : Dot/Speed.s
+
+# target to generate assembly for a file
+Dot/Speed.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/Speed.cpp.s
+.PHONY : Dot/Speed.cpp.s
+
+Dot/Star.obj: Dot/Star.cpp.obj
+.PHONY : Dot/Star.obj
+
+# target to build an object file
+Dot/Star.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/Star.cpp.obj
+.PHONY : Dot/Star.cpp.obj
+
+Dot/Star.i: Dot/Star.cpp.i
+.PHONY : Dot/Star.i
+
+# target to preprocess a source file
+Dot/Star.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/Star.cpp.i
+.PHONY : Dot/Star.cpp.i
+
+Dot/Star.s: Dot/Star.cpp.s
+.PHONY : Dot/Star.s
+
+# target to generate assembly for a file
+Dot/Star.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/Star.cpp.s
+.PHONY : Dot/Star.cpp.s
 
 Engine/Allegro5Exception.obj: Engine/Allegro5Exception.cpp.obj
 .PHONY : Engine/Allegro5Exception.obj
@@ -1052,9 +1124,18 @@ help:
 	@echo ... Dot/Dot.obj
 	@echo ... Dot/Dot.i
 	@echo ... Dot/Dot.s
+	@echo ... Dot/Ice.obj
+	@echo ... Dot/Ice.i
+	@echo ... Dot/Ice.s
 	@echo ... Dot/NormalDot.obj
 	@echo ... Dot/NormalDot.i
 	@echo ... Dot/NormalDot.s
+	@echo ... Dot/Speed.obj
+	@echo ... Dot/Speed.i
+	@echo ... Dot/Speed.s
+	@echo ... Dot/Star.obj
+	@echo ... Dot/Star.i
+	@echo ... Dot/Star.s
 	@echo ... Engine/Allegro5Exception.obj
 	@echo ... Engine/Allegro5Exception.i
 	@echo ... Engine/Allegro5Exception.s

@@ -921,4 +921,7 @@ CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/PlayScene.cpp.obj: \
   C:/2025_I2P2_TowerDefense-main/./Ghost/Blinky.hpp \
   C:/2025_I2P2_TowerDefense-main/./Ghost/Inky.hpp \
   C:/2025_I2P2_TowerDefense-main/./Ghost/Pinky.hpp \
-  C:/2025_I2P2_TowerDefense-main/./Ghost/Clyde.hpp
+  C:/2025_I2P2_TowerDefense-main/./Ghost/Clyde.hpp \
+  C:/2025_I2P2_TowerDefense-main/./Dot/Ice.hpp \
+  C:/2025_I2P2_TowerDefense-main/./Dot/Speed.hpp \
+  C:/2025_I2P2_TowerDefense-main/./Dot/Star.hpp
