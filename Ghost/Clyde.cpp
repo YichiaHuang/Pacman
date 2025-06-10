@@ -5,6 +5,7 @@
 
 #include "Clyde.hpp"
 #include "Engine/Point.hpp"
+#include "Scene/PlayScene.hpp"
 
 Clyde::Clyde(float x, float y)
     : Ghost(x, y) {
@@ -12,10 +13,15 @@ Clyde::Clyde(float x, float y)
 }
 
 void Clyde::setTargetPos() {
-    int manhattanDis = abs(pacmanPos.x - Position.x) + abs(pacmanPos.y - Position.y);
+    int gx = Position.x / PlayScene::BlockSize;
+    int gy = Position.y / PlayScene::BlockSize;
+    int px = pacmanPos.x;
+    int py = pacmanPos.y;
+
+    int manhattanDis = abs(px - gx) + abs(py - gy);
     if (manhattanDis > 8) {
         targetPos = pacmanPos;
     } else {
-        targetPos = Engine::Point(0, 0); //can change to left or right bottom corner 
+        targetPos = Engine::Point(1, 1);
     }
 }

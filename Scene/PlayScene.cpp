@@ -168,13 +168,32 @@ void PlayScene::Update(float deltaTime) {
     {
         player->get_hit=false;
     }
-    for(int i=0; i<4; i++){
-        if(ghost[i]){
+    for (int i = 0; i < 4; i++) {
+        if (ghost[i]) {
             ghost[i]->setPacmanPos(player->GetPosition());
+
+            Engine::Point pacmanDir(0, 0);
+            if (keyPressed.count(ALLEGRO_KEY_UP)) pacmanDir = Engine::Point(0, -1);
+            else if (keyPressed.count(ALLEGRO_KEY_DOWN)) pacmanDir = Engine::Point(0, 1);
+            else if (keyPressed.count(ALLEGRO_KEY_LEFT)) pacmanDir = Engine::Point(-1, 0);
+            else if (keyPressed.count(ALLEGRO_KEY_RIGHT)) pacmanDir = Engine::Point(1, 0);
+
+            // 分別呼叫各自的 setTargetPos
+            if (auto* g = dynamic_cast<Blinky*>(ghost[i])) {
+                g->setTargetPos();
+            } else if (auto* g = dynamic_cast<Pinky*>(ghost[i])) {
+                g->setTargetPos(pacmanDir);
+            } else if (auto* g = dynamic_cast<Inky*>(ghost[i])) {
+                if (ghost[0])
+                    g->setTargetPos(pacmanDir, ghost[0]->GetPosition());
+            } else if (auto* g = dynamic_cast<Clyde*>(ghost[i])) {
+                g->setTargetPos();
+            }
+
             ghost[i]->Update(deltaTime);
-            
         }
     }
+
 
     for(int i=0; i<4; i++){
         if(ghost[i]){
