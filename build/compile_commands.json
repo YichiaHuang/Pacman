@@ -31,6 +31,12 @@
 },
 {
   "directory": "C:/Users/User/OneDrive/Desktop/Pacman/build",
+  "command": "c:\\llvm-mingw-20240417-msvcrt-x86_64\\bin\\clang++.exe  @CMakeFiles/2025_I2P2_TowerDefense.dir/includes_CXX.rsp -g -o CMakeFiles\\2025_I2P2_TowerDefense.dir\\Dot\\PowerDot.cpp.obj -c C:\\Users\\User\\OneDrive\\Desktop\\Pacman\\Dot\\PowerDot.cpp",
+  "file": "C:/Users/User/OneDrive/Desktop/Pacman/Dot/PowerDot.cpp",
+  "output": "CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/PowerDot.cpp.obj"
+},
+{
+  "directory": "C:/Users/User/OneDrive/Desktop/Pacman/build",
   "command": "c:\\llvm-mingw-20240417-msvcrt-x86_64\\bin\\clang++.exe  @CMakeFiles/2025_I2P2_TowerDefense.dir/includes_CXX.rsp -g -o CMakeFiles\\2025_I2P2_TowerDefense.dir\\Pacman\\Pacman.cpp.obj -c C:\\Users\\User\\OneDrive\\Desktop\\Pacman\\Pacman\\Pacman.cpp",
   "file": "C:/Users/User/OneDrive/Desktop/Pacman/Pacman/Pacman.cpp",
   "output": "CMakeFiles/2025_I2P2_TowerDefense.dir/Pacman/Pacman.cpp.obj"

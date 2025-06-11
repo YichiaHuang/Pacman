@@ -23,6 +23,7 @@
 #include "Dot/Dot.hpp"
 #include "Pacman/Pacman.hpp"
 #include "Dot/NormalDot.hpp"
+#include "Dot/PowerDot.hpp"
 #include "Ghost/Blinky.hpp"
 #include "Ghost/Inky.hpp"
 #include "Ghost/Pinky.hpp"
@@ -431,7 +432,23 @@ void PlayScene::ReadMap() {
         }
         
     }
-    
+
+    int powerRandom[5];
+    for (int i = 0; i < 5; i++) {
+        powerRandom[i] = rand() % total_dot;
+        for (int j = 0; j < i; j++) {
+            if (powerRandom[i] == powerRandom[j] || 
+                powerRandom[i] == random[0] || 
+                powerRandom[i] == random[1] || 
+                powerRandom[i] == random[2]) {
+                i--; // 重新挑一個
+                break;
+            }
+        }
+    }
+
+
+
     int k=0;
     for(int i=0; i<13; i++)
     {
@@ -441,28 +458,37 @@ void PlayScene::ReadMap() {
             
             if(map_dot[i][j] == 1)
             {
-                if(k==random[0]){
-                    DotsGroup->AddNewObject(dot=new Star(j*BlockSize+BlockSize/2, i*BlockSize+BlockSize/2));
-                    
+                bool isPower = false;
+                for (int p = 0; p < 5; p++) {
+                    if (k == powerRandom[p]) {
+                        isPower = true;
+                        break;
+                    }
+                }
+
+                if (isPower) {
+                    DotsGroup->AddNewObject(dot = new PowerDot(j * BlockSize + BlockSize / 2, i * BlockSize + BlockSize / 2));
+                }
+                else if(k==random[0]){
+                    DotsGroup->AddNewObject(dot = new Star(j * BlockSize + BlockSize / 2, i * BlockSize + BlockSize / 2));
                 }
                 else if(k==random[1]){
-                    DotsGroup->AddNewObject(dot=new Speed(j*BlockSize+BlockSize/2, i*BlockSize+BlockSize/2));
-                    
+                    DotsGroup->AddNewObject(dot = new Speed(j * BlockSize + BlockSize / 2, i * BlockSize + BlockSize / 2));
                 }
                 else if(k==random[2]){
-                    DotsGroup->AddNewObject(dot=new Ice(j*BlockSize+BlockSize/2, i*BlockSize+BlockSize/2));
-                   
-                }  
-                else{
-                    DotsGroup->AddNewObject(dot=new NormalDot(j*BlockSize+BlockSize/2, i*BlockSize+BlockSize/2));
+                    DotsGroup->AddNewObject(dot = new Ice(j * BlockSize + BlockSize / 2, i * BlockSize + BlockSize / 2));
                 }
+                else{
+                    DotsGroup->AddNewObject(dot = new NormalDot(j * BlockSize + BlockSize / 2, i * BlockSize + BlockSize / 2));
+                }
+
                 
                 k++;
             }
             
         }   
     }
-    total_dot-=3; // 減去三個item
+    total_dot-=8; // 減去三個item
 
 }
 

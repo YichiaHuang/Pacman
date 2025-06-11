@@ -200,6 +200,30 @@ Dot/NormalDot.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/NormalDot.cpp.s
 .PHONY : Dot/NormalDot.cpp.s
 
+Dot/PowerDot.obj: Dot/PowerDot.cpp.obj
+.PHONY : Dot/PowerDot.obj
+
+# target to build an object file
+Dot/PowerDot.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/PowerDot.cpp.obj
+.PHONY : Dot/PowerDot.cpp.obj
+
+Dot/PowerDot.i: Dot/PowerDot.cpp.i
+.PHONY : Dot/PowerDot.i
+
+# target to preprocess a source file
+Dot/PowerDot.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/PowerDot.cpp.i
+.PHONY : Dot/PowerDot.cpp.i
+
+Dot/PowerDot.s: Dot/PowerDot.cpp.s
+.PHONY : Dot/PowerDot.s
+
+# target to generate assembly for a file
+Dot/PowerDot.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/PowerDot.cpp.s
+.PHONY : Dot/PowerDot.cpp.s
+
 Dot/Speed.obj: Dot/Speed.cpp.obj
 .PHONY : Dot/Speed.obj
 
@@ -1130,6 +1154,9 @@ help:
 	@echo ... Dot/NormalDot.obj
 	@echo ... Dot/NormalDot.i
 	@echo ... Dot/NormalDot.s
+	@echo ... Dot/PowerDot.obj
+	@echo ... Dot/PowerDot.i
+	@echo ... Dot/PowerDot.s
 	@echo ... Dot/Speed.obj
 	@echo ... Dot/Speed.i
 	@echo ... Dot/Speed.s
