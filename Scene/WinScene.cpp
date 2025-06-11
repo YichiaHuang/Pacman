@@ -156,7 +156,7 @@ void WinScene::OnKeyDown(int keyCode) {
     }
 }
 void WinScene::SaveScoreToFile(int score) {
-    std::string filePath = "Resource\\scoreboard.txt";
+    std::string filePath = "Resource/scoreboard.txt";
     std::ofstream scoreFile(filePath, std::ios::app);
 
     // ???嗅???

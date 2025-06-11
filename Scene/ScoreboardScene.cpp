@@ -235,7 +235,7 @@ void ScoreboardScene::NextPage() {
 
 std::vector<std::tuple<std::string, int, std::string>> ScoreboardScene::LoadAndSortScores() {
     std::vector<std::tuple<std::string, int, std::string>> scores;
-    std::ifstream scoreFile("Resource\\scoreboard.txt");
+    std::ifstream scoreFile("Resource/scoreboard.txt");
 
     if (scoreFile.is_open()) {
         std::string line;
