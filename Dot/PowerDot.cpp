@@ -44,7 +44,5 @@ void PowerDot::OnEaten() {
         scene.ghost[i]->spriteSheet = newFrightened;
         scene.ghost[i]->Speed = 80;
         scene.ghost[i]->frightenedTimer = 7.0f;
-
-
     }
 }

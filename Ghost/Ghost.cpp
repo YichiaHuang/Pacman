@@ -246,6 +246,11 @@ void Ghost::setDir() {
         }
     }
 
+    if(isFrightened) {
+        nbrs.emplace_back(prevPos);
+        isFrightened = false;
+    }
+
     int nowDis = INT_MAX;
     Engine::Point chosen(0, 0);
     for (auto& c : nbrs) {
@@ -395,6 +400,10 @@ void Ghost::escape() {
         }
     }
 
+    if(!isFrightened) {
+        candidates.emplace_back(prevPos);
+        isFrightened = true;
+    }
     int maxDist = -1;
     Engine::Point chosen(0, 0);
     for (auto& dir : candidates) {

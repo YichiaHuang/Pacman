@@ -16,6 +16,7 @@ public:
     virtual void Draw() const override;
     void setDir();
     void escape();
+    void reverse();
     void setPacmanPos(const Engine::Point &pos);
     //virtual const char* GetSpriteName() const = 0;
     Engine::Point GetPosition() const { return Position; }
@@ -49,6 +50,7 @@ protected:
     int tickCount_x = 0;
     int tickCount_y = 0;
     int coldown = 200;
+    bool isFrightened = false;
     
 };
 #endif // GHOST_HPP
