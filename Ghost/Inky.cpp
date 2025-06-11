@@ -34,11 +34,6 @@ void Inky::setTargetPos(Engine::Point pacmanDir,
 
     const int MAP_WIDTH = 20;
     const int MAP_HEIGHT = 13;
-<<<<<<< HEAD
-    targetPos.x = std::max(0.0f, std::min(rawTarget.x, float(MAP_WIDTH - 1)));
-    targetPos.y = std::max(0.0f, std::min(rawTarget.y, float(MAP_HEIGHT - 1)));
-=======
     targetPos.x = std::max(1.0f, std::min(rawTarget.x, float(MAP_WIDTH - 1)));
     targetPos.y = std::max(1.0f, std::min(rawTarget.y, float(MAP_HEIGHT - 1)));
->>>>>>> dc5ebb84f56d1c6002ab0e852d1519d2ed5793e3
 }
