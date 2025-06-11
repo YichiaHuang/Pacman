@@ -6,7 +6,8 @@
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_primitives.h>
 #include <iostream>
-
+#include "Dot/PowerDot.hpp"
+#include <iostream>
 Pacman::Pacman(float x, float y)
     : x(x), y(y), Position(x, y), gridX(x / PlayScene::BlockSize), gridY(y / PlayScene::BlockSize), moveDirX(0), moveDirY(0), Speed(150) {
     spriteSheet = al_load_bitmap("Resource/images/pacman/pac.png");
@@ -156,7 +157,15 @@ void Pacman::CheckCollisionWithDots() {
         if (dot && !dot->IsEaten) {
             float dist = std::hypot(Position.x - dot->Position.x, Position.y - dot->Position.y);
             if (dist < 16 && dot->Visible) {
-                dot->OnEaten();
+                PowerDot* pd = dynamic_cast<PowerDot*>(dot);
+                if (pd) {
+                    //std::cout << "[Debug] Eat PowerDot" << std::endl;
+                    pd->OnEaten();
+                } else {
+                    //std::cout << "[Debug] Eat normal dot" << std::endl;
+                    dot->OnEaten();
+                }
+
                 
                 if(dot->effect==0)
                     dotsEaten++;

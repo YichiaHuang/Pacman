@@ -918,6 +918,7 @@ CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/PlayScene.cpp.obj: \
   C:/Users/User/OneDrive/Desktop/Pacman/./Ghost/Ghost.hpp \
   C:/Users/User/OneDrive/Desktop/Pacman/./Dot/Dot.hpp \
   C:/Users/User/OneDrive/Desktop/Pacman/./Dot/NormalDot.hpp \
+  C:/Users/User/OneDrive/Desktop/Pacman/./Dot/PowerDot.hpp \
   C:/Users/User/OneDrive/Desktop/Pacman/./Ghost/Blinky.hpp \
   C:/Users/User/OneDrive/Desktop/Pacman/./Ghost/Inky.hpp \
   C:/Users/User/OneDrive/Desktop/Pacman/./Ghost/Pinky.hpp \

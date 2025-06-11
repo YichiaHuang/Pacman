@@ -10,6 +10,7 @@
 Clyde::Clyde(float x, float y)
     : Ghost(x, y) {
     spriteSheet = al_load_bitmap("Resource/images/ghost/orange_ghost.png");
+    normalSprite = spriteSheet;
 }
 
 void Clyde::setTargetPos() {

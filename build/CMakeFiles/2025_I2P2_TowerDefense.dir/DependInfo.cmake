@@ -11,6 +11,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/User/OneDrive/Desktop/Pacman/Dot/Dot.cpp" "CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/Dot.cpp.obj" "gcc" "CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/Dot.cpp.obj.d"
   "C:/Users/User/OneDrive/Desktop/Pacman/Dot/Ice.cpp" "CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/Ice.cpp.obj" "gcc" "CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/Ice.cpp.obj.d"
   "C:/Users/User/OneDrive/Desktop/Pacman/Dot/NormalDot.cpp" "CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/NormalDot.cpp.obj" "gcc" "CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/NormalDot.cpp.obj.d"
+  "C:/Users/User/OneDrive/Desktop/Pacman/Dot/PowerDot.cpp" "CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/PowerDot.cpp.obj" "gcc" "CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/PowerDot.cpp.obj.d"
   "C:/Users/User/OneDrive/Desktop/Pacman/Dot/Speed.cpp" "CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/Speed.cpp.obj" "gcc" "CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/Speed.cpp.obj.d"
   "C:/Users/User/OneDrive/Desktop/Pacman/Dot/Star.cpp" "CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/Star.cpp.obj" "gcc" "CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/Star.cpp.obj.d"
   "C:/Users/User/OneDrive/Desktop/Pacman/Engine/Allegro5Exception.cpp" "CMakeFiles/2025_I2P2_TowerDefense.dir/Engine/Allegro5Exception.cpp.obj" "gcc" "CMakeFiles/2025_I2P2_TowerDefense.dir/Engine/Allegro5Exception.cpp.obj.d"
