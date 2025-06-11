@@ -12,6 +12,7 @@
 #include "Scene/ScoreboardScene.hpp"
 #include "Scene/MotionScene.hpp"
 #include "Scene/InfoScene.hpp"
+#include "Scene/SecondScene.hpp"
 
 int main(int argc, char **argv) {
 	Engine::LOG::SetConfig(true);
@@ -27,6 +28,8 @@ int main(int argc, char **argv) {
 	game.AddNewScene("scoreboard", new ScoreboardScene());
 	game.AddNewScene("motion", new MotionScene());
 	game.AddNewScene("info", new InfoScene());
+	game.AddNewScene("second", new SecondScene());
+
 
     // TODO HACKATHON-1 (1/1): Change the start scene
 	game.Start("motion", 60, 1600, 832);

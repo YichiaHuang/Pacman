@@ -56,10 +56,10 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\User\OneDrive\Desktop\Pacman
+CMAKE_SOURCE_DIR = C:\2025_I2P2_TowerDefense-main
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\User\OneDrive\Desktop\Pacman\build
+CMAKE_BINARY_DIR = C:\2025_I2P2_TowerDefense-main\build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -86,9 +86,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\User\OneDrive\Desktop\Pacman\build\CMakeFiles C:\Users\User\OneDrive\Desktop\Pacman\build\\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\2025_I2P2_TowerDefense-main\build\CMakeFiles C:\2025_I2P2_TowerDefense-main\build\\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\User\OneDrive\Desktop\Pacman\build\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\2025_I2P2_TowerDefense-main\build\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -680,6 +680,30 @@ Ghost/Pinky.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Ghost/Pinky.cpp.s
 .PHONY : Ghost/Pinky.cpp.s
 
+Pacman/Pac.obj: Pacman/Pac.cpp.obj
+.PHONY : Pacman/Pac.obj
+
+# target to build an object file
+Pacman/Pac.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Pacman/Pac.cpp.obj
+.PHONY : Pacman/Pac.cpp.obj
+
+Pacman/Pac.i: Pacman/Pac.cpp.i
+.PHONY : Pacman/Pac.i
+
+# target to preprocess a source file
+Pacman/Pac.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Pacman/Pac.cpp.i
+.PHONY : Pacman/Pac.cpp.i
+
+Pacman/Pac.s: Pacman/Pac.cpp.s
+.PHONY : Pacman/Pac.s
+
+# target to generate assembly for a file
+Pacman/Pac.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Pacman/Pac.cpp.s
+.PHONY : Pacman/Pac.cpp.s
+
 Pacman/Pacman.obj: Pacman/Pacman.cpp.obj
 .PHONY : Pacman/Pacman.obj
 
@@ -823,6 +847,30 @@ Scene/ScoreboardScene.s: Scene/ScoreboardScene.cpp.s
 Scene/ScoreboardScene.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/ScoreboardScene.cpp.s
 .PHONY : Scene/ScoreboardScene.cpp.s
+
+Scene/SecondScene.obj: Scene/SecondScene.cpp.obj
+.PHONY : Scene/SecondScene.obj
+
+# target to build an object file
+Scene/SecondScene.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/SecondScene.cpp.obj
+.PHONY : Scene/SecondScene.cpp.obj
+
+Scene/SecondScene.i: Scene/SecondScene.cpp.i
+.PHONY : Scene/SecondScene.i
+
+# target to preprocess a source file
+Scene/SecondScene.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/SecondScene.cpp.i
+.PHONY : Scene/SecondScene.cpp.i
+
+Scene/SecondScene.s: Scene/SecondScene.cpp.s
+.PHONY : Scene/SecondScene.s
+
+# target to generate assembly for a file
+Scene/SecondScene.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/SecondScene.cpp.s
+.PHONY : Scene/SecondScene.cpp.s
 
 Scene/SettingsScene.obj: Scene/SettingsScene.cpp.obj
 .PHONY : Scene/SettingsScene.obj
@@ -1214,6 +1262,9 @@ help:
 	@echo ... Ghost/Pinky.obj
 	@echo ... Ghost/Pinky.i
 	@echo ... Ghost/Pinky.s
+	@echo ... Pacman/Pac.obj
+	@echo ... Pacman/Pac.i
+	@echo ... Pacman/Pac.s
 	@echo ... Pacman/Pacman.obj
 	@echo ... Pacman/Pacman.i
 	@echo ... Pacman/Pacman.s
@@ -1232,6 +1283,9 @@ help:
 	@echo ... Scene/ScoreboardScene.obj
 	@echo ... Scene/ScoreboardScene.i
 	@echo ... Scene/ScoreboardScene.s
+	@echo ... Scene/SecondScene.obj
+	@echo ... Scene/SecondScene.i
+	@echo ... Scene/SecondScene.s
 	@echo ... Scene/SettingsScene.obj
 	@echo ... Scene/SettingsScene.i
 	@echo ... Scene/SettingsScene.s

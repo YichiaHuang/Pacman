@@ -31,6 +31,8 @@ add_executable(2025_I2P2_TowerDefense
 
     Pacman/Pacman.cpp
     Pacman/Pacman.hpp
+    Pacman/Pac.cpp
+    Pacman/Pac.hpp
 
     Slot/SlotMachine.cpp
     Slot/SlotMachine.hpp
@@ -91,7 +93,8 @@ add_executable(2025_I2P2_TowerDefense
     Scene/MotionScene.hpp
     Scene/InfoScene.cpp
     Scene/InfoScene.hpp
-
+    Scene/SecondScene.cpp
+    Scene/SecondScene.hpp
     
     
 

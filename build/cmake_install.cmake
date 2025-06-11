@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/User/OneDrive/Desktop/Pacman
+# Install script for directory: C:/2025_I2P2_TowerDefense-main
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/User/OneDrive/Desktop/Pacman/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/2025_I2P2_TowerDefense-main/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
