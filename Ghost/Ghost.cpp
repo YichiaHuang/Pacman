@@ -21,7 +21,10 @@ int bfs(Engine::Point A, Engine::Point B);
 
 Ghost::Ghost(float x, float y)
     : x(x), y(y), Position(x, y), gridX(x / PlayScene::BlockSize),
-     gridY(y / PlayScene::BlockSize), moveDirX(0), moveDirY(0), Speed(100) {}
+     gridY(y / PlayScene::BlockSize), moveDirX(0), moveDirY(0), Speed(100) {
+        spawnPos.x = x;
+        spawnPos.y = y;
+     }
 
 Ghost::~Ghost() {
     if (spriteSheet && spriteSheet != normalSprite) {
@@ -286,11 +289,6 @@ void Ghost::Update(float deltaTime) {
     if(pause_mode){
         return;
     }
-<<<<<<< HEAD
-    // 如果之前是逃跑狀態，改回正常速度與圖示
-=======
-
->>>>>>> 3825f6b3cfca0c0bcc5587f0c4fd649a1066afe5
     if (frightenedTimer <= 0.0f && spriteSheet != normalSprite) {
         Speed = 100;
         spriteSheet = normalSprite;
@@ -309,12 +307,7 @@ void Ghost::Update(float deltaTime) {
             frightenedTimer -= deltaTime;
         } else {
             setDir();
-<<<<<<< HEAD
-        }
-
-=======
             }
->>>>>>> 3825f6b3cfca0c0bcc5587f0c4fd649a1066afe5
         gridX += moveDirX;
         gridY += moveDirY;
     }
@@ -461,4 +454,11 @@ void Ghost::escape() {
     } else if (moveDirX == 0 && moveDirY == -1) {
         faceDir = UP; tickCount_y = 3;
     }
+}
+
+void Ghost::respawn() {
+    Position.x = spawnPos.x;
+    Position.y = spawnPos.y;
+    gridX = static_cast<int>(spawnPos.x / PlayScene::BlockSize);
+    gridY = static_cast<int>(spawnPos.y / PlayScene::BlockSize);
 }
