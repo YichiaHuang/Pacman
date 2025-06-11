@@ -38,11 +38,13 @@ void PowerDot::OnEaten() {
             std::cerr << "[Error] Failed to load ghost_frighten.png!" << std::endl;
             return;
         }
-        if (scene.ghost[i]->spriteSheet && scene.ghost[i]->spriteSheet != scene.ghost[i]->normalSprite) {
-            al_destroy_bitmap(scene.ghost[i]->spriteSheet);
-        }
+        // if (scene.ghost[i]->spriteSheet && scene.ghost[i]->spriteSheet != scene.ghost[i]->normalSprite) {
+        //     al_destroy_bitmap(scene.ghost[i]->spriteSheet);
+        // }
         scene.ghost[i]->spriteSheet = frightenedBmp;
         scene.ghost[i]->Speed = 80;
         scene.ghost[i]->frightenedTimer = 7.0f;
+
+        scene.ghost[i]->tickCount_y = 0;
     }
 }

@@ -63,7 +63,7 @@ void PlayScene::Initialize() {
     opening = true;
     openingTimer = 0;
     startSound = AudioHelper::PlaySample("Pacman/start-game.wav", false, AudioHelper::SFXVolume);
-
+    
     WinTriggered = false;
     mapState.clear();
     keyStrokes.clear();

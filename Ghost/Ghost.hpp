@@ -29,6 +29,8 @@ public:
     float frightenedTimer = 0;
     ALLEGRO_BITMAP* spriteSheet = nullptr;
     ALLEGRO_BITMAP* normalSprite = nullptr;
+    int tickCount_x = 0;
+    int tickCount_y = 0;
 protected:
     Engine::Point Position;
     Engine::Point targetPos;
@@ -47,8 +49,6 @@ protected:
     Direction faceDir = RIGHT;
 
     int tick=0;
-    int tickCount_x = 0;
-    int tickCount_y = 0;
     int coldown = 200;
     bool isFrightened = false;
     
