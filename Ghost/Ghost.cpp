@@ -251,6 +251,7 @@ void Ghost::setDir() {
     for (auto& c : nbrs) {
         Engine::Point nextPos(gridX + c.x, gridY + c.y);
         int d = bfs(nextPos, targetPos);  // pacmanPos 必須已經是 grid 座標
+        //std::cout << "[Clyde] bfs from (" << nextPos.x << "," << nextPos.y << ") to (" << targetPos.x << "," << targetPos.y << ") = " << d << "\n";
         if (d < nowDis) {
             nowDis = d;
             chosen = c;
