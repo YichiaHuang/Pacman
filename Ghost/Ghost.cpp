@@ -302,9 +302,6 @@ void Ghost::Update(float deltaTime) {
             // 如果之前是逃跑狀態，改回正常速度與圖示
             if (frightenedTimer <= 0.0f && spriteSheet != normalSprite) {
                 Speed = 100;
-                if (spriteSheet) {
-                    al_destroy_bitmap(spriteSheet);  // only destroy frighten.png
-                }
                 spriteSheet = normalSprite;
             }
 
