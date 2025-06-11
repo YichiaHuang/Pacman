@@ -192,7 +192,6 @@ void ScoreboardScene::Initialize() {
     AddNewControlObject(btn);
     AddNewObject(new Engine::Label("Prev", "prstartk.ttf", 48, halfW-450, halfH * 7 / 4, 0, 0, 0, 255, 0.5, 0.5));
 
-    // 銝?????
     btn = new Engine::ImageButton( "stage-select/floor.png", "stage-select/bott.png", halfW - 200+450, halfH * 7 / 4 - 50, 400, 100);
     btn->SetOnClickCallback(std::bind(&ScoreboardScene::NextPage, this));
     AddNewControlObject(btn);
@@ -203,16 +202,14 @@ void ScoreboardScene::Terminate() {
 }
 
 void ScoreboardScene::BackOnClick(int stage) {
-    currentPage = 0; // ?蔭?嗅??
+    currentPage = 0; 
     sortedScores.clear();
 
-    // 皜??? Label
     for (auto& label : scoreLabels) {
         RemoveObject(label->GetObjectIterator());
     }
     scoreLabels.clear();
 
-    // 皜????璅?
     if (pageLabel) {
         RemoveObject(pageLabel->GetObjectIterator());
         pageLabel = nullptr;
@@ -238,7 +235,7 @@ void ScoreboardScene::NextPage() {
 
 std::vector<std::tuple<std::string, int, std::string>> ScoreboardScene::LoadAndSortScores() {
     std::vector<std::tuple<std::string, int, std::string>> scores;
-    std::ifstream scoreFile("C:\\2025_I2P2_TowerDefense-main\\Resource\\scoreboard.txt");
+    std::ifstream scoreFile("Resource\\scoreboard.txt");
 
     if (scoreFile.is_open()) {
         std::string line;
@@ -252,14 +249,12 @@ std::vector<std::tuple<std::string, int, std::string>> ScoreboardScene::LoadAndS
                     std::string time = line.substr(secondDelim + 1);
                     scores.emplace_back(name, score, time);
                 } catch (...) {
-                    // 敹賜?澆??航炊??
                 }
             }
         }
         scoreFile.close();
     }
 
-    // ???貊擃雿?摨?
     std::sort(scores.begin(), scores.end(), [](const auto& a, const auto& b) {
         return std::get<1>(a) > std::get<1>(b);
     });
@@ -270,19 +265,16 @@ std::vector<std::tuple<std::string, int, std::string>> ScoreboardScene::LoadAndS
 
 
 void ScoreboardScene::DisplayScores() {
-    // 皜???憿舐內
     for (auto& label : scoreLabels) {
         RemoveObject(label->GetObjectIterator());
     }
     scoreLabels.clear();
 
-    // 皜????璅?
     if (pageLabel) {
         RemoveObject(pageLabel->GetObjectIterator());
         pageLabel = nullptr;
     }
 
-    // 頛銝行?摨???
     
     sortedScores = LoadAndSortScores();
     
@@ -292,13 +284,11 @@ void ScoreboardScene::DisplayScores() {
     int halfW = w / 2;
     int startY = h / 4 + 50;
 
-    // 憿舐內??璅?
     std::string pageInfo = "Page " + std::to_string(currentPage + 1) + 
                          " of " + std::to_string((sortedScores.size() + scoresPerPage - 1) / scoresPerPage);
     pageLabel = new Engine::Label(pageInfo, "prstartk.ttf", 32, halfW, startY - 40, 200, 200, 255, 255, 0.5, 0.5);
     AddNewObject(pageLabel);
 
-    // 憿舐內?嗅???????
     int startIdx = currentPage * scoresPerPage;
     int endIdx = std::min(startIdx + scoresPerPage, (int)sortedScores.size());
 
@@ -319,7 +309,6 @@ void ScoreboardScene::DisplayScores() {
         scoreLabels.push_back(label);
     }
 
-    // 憒?瘝??嚗＊蝷箸?蝷箄???
     if (sortedScores.empty()) {
         AddNewObject(new Engine::Label(
             "No scores recorded yet!", "prstartk.ttf", 36, 
