@@ -112,6 +112,9 @@ void PlayScene::Terminate() {
     IScene::Terminate();
     
 }
+
+
+// to do, some add the endscene if the player loss all the lifes 
 void PlayScene::Update(float deltaTime) {
     if (paused) return;
 
@@ -134,62 +137,126 @@ void PlayScene::Update(float deltaTime) {
     if (player) {
         player->Update(deltaTime);
     }
-    //ghost
+    
+   
     if(ghost_1){
         ghost_1->setPacmanPos(player->GetPosition());
         ghost_1->Update(deltaTime);
+        
+        float distToPacman = std::hypot(ghost_1->GetPosition().x - player->GetPosition().x, 
+                                       ghost_1->GetPosition().y - player->GetPosition().y);
+        if(distToPacman < 32.0f) { 
+            lives--;
+            UILives->Text = std::string("Life ") + std::to_string(lives);
+            if(lives <= 0) {
+                Engine::GameEngine::GetInstance().ChangeScene("lose-scene");
+                return;
+            }
+          
+            delete ghost_1;
+            ghost_1 = new Blinky(1 * BlockSize + BlockSize / 2, 1 * BlockSize + BlockSize / 2);
+            delete player;
+            player = new Pacman(10 * BlockSize + BlockSize / 2, 6 * BlockSize + BlockSize / 2 - 64);
+        }
     }
+    
     if(ghost_2){
         ghost_2->setPacmanPos(player->GetPosition());
         ghost_2->Update(deltaTime);
+        
+        float distToPacman = std::hypot(ghost_2->GetPosition().x - player->GetPosition().x, 
+                                       ghost_2->GetPosition().y - player->GetPosition().y);
+        if(distToPacman < 32.0f) {
+            lives--;
+            UILives->Text = std::string("Life ") + std::to_string(lives);
+            if(lives <= 0) {
+                Engine::GameEngine::GetInstance().ChangeScene("lose-scene");
+                return;
+            }
+            delete ghost_2;
+            ghost_2 = new Pinky(18 * BlockSize + BlockSize / 2, 1 * BlockSize + BlockSize / 2);
+            delete player;
+            player = new Pacman(10 * BlockSize + BlockSize / 2, 6 * BlockSize + BlockSize / 2 - 64);
+        }
     }
+    
     if(ghost_3){
         ghost_3->setPacmanPos(player->GetPosition());
         ghost_3->Update(deltaTime);
+        
+        float distToPacman = std::hypot(ghost_3->GetPosition().x - player->GetPosition().x, 
+                                       ghost_3->GetPosition().y - player->GetPosition().y);
+        if(distToPacman < 32.0f) {
+            lives--;
+            UILives->Text = std::string("Life ") + std::to_string(lives);
+            if(lives <= 0) {
+                Engine::GameEngine::GetInstance().ChangeScene("lose-scene");
+                return;
+            }
+            delete ghost_3;
+            ghost_3 = new Inky(1 * BlockSize + BlockSize / 2, 11 * BlockSize + BlockSize / 2);
+            delete player;
+            player = new Pacman(10 * BlockSize + BlockSize / 2, 6 * BlockSize + BlockSize / 2 - 64);
+        }
     }
+    
     if(ghost_4){
         ghost_4->setPacmanPos(player->GetPosition());
         ghost_4->Update(deltaTime);
-    }
-    //ghost
-
-    // If we use deltaTime directly, then we might have Bullet-through-paper problem.
-    // Reference: Bullet-Through-Paper
-        money = player->money; 
-
-        if(player->dotsEaten==total_dot){
-            WinTriggered=true;
-        }
-
-        UIMoney->Text = std::string("$") + std::to_string(money);
-
-        int dx = 0, dy = 0;
-        if (keyPressed.count(ALLEGRO_KEY_UP)) {
-                dx = 0; dy = -1;
-        } else if (keyPressed.count(ALLEGRO_KEY_DOWN)) {
-                dx = 0; dy = 1;
-        } else if (keyPressed.count(ALLEGRO_KEY_LEFT)) {
-                dx = -1; dy = 0;
-        } else if (keyPressed.count(ALLEGRO_KEY_RIGHT)) {
-                dx = 1; dy = 0;
-        }
-
-        if (dx != 0 || dy != 0) {
-            // 取得目前在地圖上的格子座標
-            int gridX = static_cast<int>(player->GetPosition().y) / PlayScene::BlockSize;
-            int gridY = static_cast<int>(player->GetPosition().x) / PlayScene::BlockSize;
-
-            int targetX = gridX + dy;
-            int targetY = gridY + dx;
-
-            // 檢查是否在邊界內，且不是牆壁
-            if (targetX >= 0 && targetX < PlayScene::MapHeight &&
-                targetY >= 0 && targetY < PlayScene::MapWidth &&
-                map_dot[targetX][targetY] != -1) {
-                player->MoveDirection(dx, dy);
+        
+        float distToPacman = std::hypot(ghost_4->GetPosition().x - player->GetPosition().x, 
+                                       ghost_4->GetPosition().y - player->GetPosition().y);
+        if(distToPacman < 32.0f) {
+            lives--;
+            UILives->Text = std::string("Life ") + std::to_string(lives);
+            if(lives <= 0) {
+                Engine::GameEngine::GetInstance().ChangeScene("lose-scene");
+                return;
             }
+            delete ghost_4;
+            ghost_4 = new Clyde(18 * BlockSize + BlockSize / 2, 11 * BlockSize + BlockSize / 2);
+            delete player;
+            player = new Pacman(10 * BlockSize + BlockSize / 2, 6 * BlockSize + BlockSize / 2 - 64);
         }
-    
+    }
+
+   
+    money = player->money; 
+
+   
+    if(player->dotsEaten==total_dot){
+        WinTriggered=true;
+    }
+
+    UIMoney->Text = std::string("$") + std::to_string(money);
+
+   
+    int dx = 0, dy = 0;
+    if (keyPressed.count(ALLEGRO_KEY_UP)) {
+            dx = 0; dy = -1;
+    } else if (keyPressed.count(ALLEGRO_KEY_DOWN)) {
+            dx = 0; dy = 1;
+    } else if (keyPressed.count(ALLEGRO_KEY_LEFT)) {
+            dx = -1; dy = 0;
+    } else if (keyPressed.count(ALLEGRO_KEY_RIGHT)) {
+            dx = 1; dy = 0;
+    }
+
+    if (dx != 0 || dy != 0) {
+        // 取得目前在地圖上的格子座標
+        int gridX = static_cast<int>(player->GetPosition().y) / PlayScene::BlockSize;
+        int gridY = static_cast<int>(player->GetPosition().x) / PlayScene::BlockSize;
+
+        int targetX = gridX + dy;
+        int targetY = gridY + dx;
+
+        // 檢查是否在邊界內，且不是牆壁
+        if (targetX >= 0 && targetX < PlayScene::MapHeight &&
+            targetY >= 0 && targetY < PlayScene::MapWidth &&
+            map_dot[targetX][targetY] != -1) {
+            player->MoveDirection(dx, dy);
+        }
+    }
 
     DotsGroup->Update(deltaTime);
     if (SpeedMult == 0)
@@ -222,8 +289,6 @@ void PlayScene::Update(float deltaTime) {
         ghost_4= new Clyde(18 * BlockSize + BlockSize / 2, 11 * BlockSize + BlockSize / 2);
         
         //ghost
-     
-    //slot
     }
 
     //slot
@@ -233,13 +298,12 @@ void PlayScene::Update(float deltaTime) {
     {
         if(slotMachine->jackpot){
             player->money+=1000;
-            //UIMoney->Text = std::string("$") + std::to_string(money);
             slotMachine->jackpot=false;
         }
         slot_mode=false;
     }
-   
 }
+
 void PlayScene::Draw() const {
     IScene::Draw();
     //slot
