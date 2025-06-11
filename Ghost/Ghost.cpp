@@ -24,7 +24,7 @@ Ghost::Ghost(float x, float y)
      gridY(y / PlayScene::BlockSize), moveDirX(0), moveDirY(0), Speed(100) {}
 
 Ghost::~Ghost() {
-    if (spriteSheet) {
+    if (spriteSheet && spriteSheet != normalSprite) {
         al_destroy_bitmap(spriteSheet);
         spriteSheet = nullptr;
     }
@@ -288,10 +288,27 @@ void Ghost::Update(float deltaTime) {
     if (distToCenter < 1.5f) {
         Position.x = centerX;
         Position.y = centerY;
-        setDir();
+
+        if (frightenedTimer > 0.0f) {
+            escape();
+            frightenedTimer -= deltaTime;
+        } else {
+            setDir();
+            // 如果之前是逃跑狀態，改回正常速度與圖示
+            if (frightenedTimer <= 0.0f && spriteSheet != normalSprite) {
+                Speed = 100;
+                if (spriteSheet) {
+                    al_destroy_bitmap(spriteSheet);  // only destroy frighten.png
+                }
+                spriteSheet = normalSprite;
+            }
+
+        }
+
         gridX += moveDirX;
         gridY += moveDirY;
     }
+
 
     Position.x += moveDirX * Speed * deltaTime;
     Position.y += moveDirY * Speed * deltaTime;
@@ -345,4 +362,61 @@ void Ghost::Draw() const {
         0,
         0
     );
+}
+
+void Ghost::escape() {
+    auto& scene = dynamic_cast<PlayScene&>(*Engine::GameEngine::GetInstance().GetActiveScene());
+    std::vector<Engine::Point> candidates;
+    static const int dxs[4] = {-1, 1, 0, 0};
+    static const int dys[4] = {0, 0, -1, 1};
+    Engine::Point prevPos(moveDirX, moveDirY);
+
+    for (int i = 0; i < 4; i++) {
+        int nx = gridX + dxs[i];
+        int ny = gridY + dys[i];
+        if (nx < 0 || nx >= PlayScene::MapWidth || ny < 0 || ny >= PlayScene::MapHeight)
+            continue;
+        if (scene.map_dot[ny][nx] != -1) {
+            if (!(dxs[i] == -prevPos.x && dys[i] == -prevPos.y)) {
+                candidates.emplace_back(dxs[i], dys[i]);
+            }
+        }
+    }
+
+    if (candidates.empty()) {
+        for (int i = 0; i < 4; i++) {
+            int nx = gridX + dxs[i];
+            int ny = gridY + dys[i];
+            if (nx < 0 || nx >= PlayScene::MapWidth || ny < 0 || ny >= PlayScene::MapHeight)
+                continue;
+            if (scene.map_dot[ny][nx] != -1) {
+                candidates.emplace_back(dxs[i], dys[i]);
+            }
+        }
+    }
+
+    int maxDist = -1;
+    Engine::Point chosen(0, 0);
+    for (auto& dir : candidates) {
+        Engine::Point nextPos(gridX + dir.x, gridY + dir.y);
+        int d = bfs(nextPos, pacmanPos); // pacmanPos 早已設定為格子座標
+        if (d > maxDist) {
+            maxDist = d;
+            chosen = dir;
+        }
+    }
+
+    moveDirX = chosen.x;
+    moveDirY = chosen.y;
+
+    // 更新動畫方向（可選擇是否照做）
+    if (moveDirX == 1 && moveDirY == 0) {
+        faceDir = RIGHT; tickCount_y = 2;
+    } else if (moveDirX == -1 && moveDirY == 0) {
+        faceDir = LEFT; tickCount_y = 1;
+    } else if (moveDirX == 0 && moveDirY == 1) {
+        faceDir = DOWN; tickCount_y = 0;
+    } else if (moveDirX == 0 && moveDirY == -1) {
+        faceDir = UP; tickCount_y = 3;
+    }
 }

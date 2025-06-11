@@ -23,17 +23,18 @@ public:
 
     bool caughtPacman = false;
     bool pause_mode = false;
-protected:
     float Speed;
     float x, y;
     float frightenedTimer = 0;
+    ALLEGRO_BITMAP* spriteSheet = nullptr;
+    ALLEGRO_BITMAP* normalSprite = nullptr;
+protected:
     Engine::Point Position;
     Engine::Point targetPos;
     Engine::Point pacmanPos;
     int moveDirX, moveDirY;
     int gridX, gridY;
 
-    ALLEGRO_BITMAP* spriteSheet = nullptr;
     int animationFrame = 0;
     float animationTimer = 0;
     const int totalFrames = 2;
