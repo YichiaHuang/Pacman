@@ -95,10 +95,10 @@ void SecondScene::Initialize() {
     keyPressed.clear();
     slot_yet=1;
     //timer
-    remainingTime = 90.0f; // 從 60 秒開始
+    remainingTime = 10.0f; // 從 60 秒開始
 
     // 建立 Timer Label
-    timerLabel = new Engine::Label("1:30", "prstartk.ttf", 28, 1294, 128, 255, 255, 255, 255);
+    timerLabel = new Engine::Label("0:10", "prstartk.ttf", 28, 1294, 128, 255, 255, 255, 255);
     UIGroup->AddNewObject(timerLabel);
 }
 
@@ -222,7 +222,7 @@ void SecondScene::Update(float deltaTime) {
 
     if (WinTriggered) {
         Engine::LOG(Engine::INFO) << "WinTriggered = true, switching to win-scene.";
-        Engine::GameEngine::GetInstance().ChangeScene("win-scene");
+        Engine::GameEngine::GetInstance().ChangeScene("win_second");
         return;
     }
 
@@ -414,7 +414,7 @@ void SecondScene::ReadMap() {
             
         }   
     }
-    total_dot-=3; // 減去三個item
+    
     GenerateMiniMap();
 
 }

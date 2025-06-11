@@ -55,6 +55,8 @@ public:
     void PlayOnClick(int stage);
     void SettingsOnClick(int stage);
     void BackOnClick(int stage);
+    void ChangeOnClick(int stage);
+    
     //newwwww
     std::vector<std::tuple<std::string, int, std::string>> sortedScores;
     std::vector<Engine::Label*> scoreLabels;

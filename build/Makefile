@@ -752,6 +752,30 @@ Pacman/Pacman.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Pacman/Pacman.cpp.s
 .PHONY : Pacman/Pacman.cpp.s
 
+Scene/BoardSecond.obj: Scene/BoardSecond.cpp.obj
+.PHONY : Scene/BoardSecond.obj
+
+# target to build an object file
+Scene/BoardSecond.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/BoardSecond.cpp.obj
+.PHONY : Scene/BoardSecond.cpp.obj
+
+Scene/BoardSecond.i: Scene/BoardSecond.cpp.i
+.PHONY : Scene/BoardSecond.i
+
+# target to preprocess a source file
+Scene/BoardSecond.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/BoardSecond.cpp.i
+.PHONY : Scene/BoardSecond.cpp.i
+
+Scene/BoardSecond.s: Scene/BoardSecond.cpp.s
+.PHONY : Scene/BoardSecond.s
+
+# target to generate assembly for a file
+Scene/BoardSecond.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/BoardSecond.cpp.s
+.PHONY : Scene/BoardSecond.cpp.s
+
 Scene/InfoScene.obj: Scene/InfoScene.cpp.obj
 .PHONY : Scene/InfoScene.obj
 
@@ -967,6 +991,30 @@ Scene/StartScene.s: Scene/StartScene.cpp.s
 Scene/StartScene.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/StartScene.cpp.s
 .PHONY : Scene/StartScene.cpp.s
+
+Scene/Win.obj: Scene/Win.cpp.obj
+.PHONY : Scene/Win.obj
+
+# target to build an object file
+Scene/Win.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/Win.cpp.obj
+.PHONY : Scene/Win.cpp.obj
+
+Scene/Win.i: Scene/Win.cpp.i
+.PHONY : Scene/Win.i
+
+# target to preprocess a source file
+Scene/Win.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/Win.cpp.i
+.PHONY : Scene/Win.cpp.i
+
+Scene/Win.s: Scene/Win.cpp.s
+.PHONY : Scene/Win.s
+
+# target to generate assembly for a file
+Scene/Win.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/Win.cpp.s
+.PHONY : Scene/Win.cpp.s
 
 Scene/WinScene.obj: Scene/WinScene.cpp.obj
 .PHONY : Scene/WinScene.obj
@@ -1295,6 +1343,9 @@ help:
 	@echo ... Pacman/Pacman.obj
 	@echo ... Pacman/Pacman.i
 	@echo ... Pacman/Pacman.s
+	@echo ... Scene/BoardSecond.obj
+	@echo ... Scene/BoardSecond.i
+	@echo ... Scene/BoardSecond.s
 	@echo ... Scene/InfoScene.obj
 	@echo ... Scene/InfoScene.i
 	@echo ... Scene/InfoScene.s
@@ -1322,6 +1373,9 @@ help:
 	@echo ... Scene/StartScene.obj
 	@echo ... Scene/StartScene.i
 	@echo ... Scene/StartScene.s
+	@echo ... Scene/Win.obj
+	@echo ... Scene/Win.i
+	@echo ... Scene/Win.s
 	@echo ... Scene/WinScene.obj
 	@echo ... Scene/WinScene.i
 	@echo ... Scene/WinScene.s

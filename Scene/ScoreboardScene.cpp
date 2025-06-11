@@ -173,7 +173,7 @@ void ScoreboardScene::Initialize() {
     int halfH = h / 2;
     Engine::ImageButton *btn;
 
-    AddNewObject(new Engine::Label("ScoreBoard", "prstartk.ttf", 80, halfW, halfH / 5 + 50, 10, 155, 155, 255, 0.5, 0.5));
+    AddNewObject(new Engine::Label("ScoreBoard--      ", "prstartk.ttf", 80, halfW, halfH / 5 + 50, 10, 155, 155, 255, 0.5, 0.5));
     
 
    
@@ -196,6 +196,11 @@ void ScoreboardScene::Initialize() {
     btn->SetOnClickCallback(std::bind(&ScoreboardScene::NextPage, this));
     AddNewControlObject(btn);
     AddNewObject(new Engine::Label("Next", "prstartk.ttf", 48, halfW+450, halfH * 7 / 4, 0, 0, 0, 255, 0.5, 0.5));
+
+    btn = new Engine::ImageButton( "stage-select/floor.png", "stage-select/bott.png", halfW - 200+450, halfH * 1 / 4 - 50+30, 400, 100);
+    btn->SetOnClickCallback(std::bind(&ScoreboardScene::ChangeOnClick, this, 1));
+    AddNewControlObject(btn);
+    AddNewObject(new Engine::Label("Stage1", "prstartk.ttf", 48, halfW+450, halfH * 1 / 4+30, 0, 0, 0, 255, 0.5, 0.5));
 }
 void ScoreboardScene::Terminate() {
     IScene::Terminate();
@@ -216,6 +221,23 @@ void ScoreboardScene::BackOnClick(int stage) {
     }
     Engine::GameEngine::GetInstance().ChangeScene("stage-select");
 }
+
+void ScoreboardScene::ChangeOnClick(int stage){
+    currentPage = 0; 
+    sortedScores.clear();
+
+    for (auto& label : scoreLabels) {
+        RemoveObject(label->GetObjectIterator());
+    }
+    scoreLabels.clear();
+
+    if (pageLabel) {
+        RemoveObject(pageLabel->GetObjectIterator());
+        pageLabel = nullptr;
+    }
+    Engine::GameEngine::GetInstance().ChangeScene("score_second");
+}
+
 //newwwww
 void ScoreboardScene::PrevPage() {
     if (currentPage > 0) {
@@ -223,6 +245,7 @@ void ScoreboardScene::PrevPage() {
         DisplayScores();
     }
 }
+
 
 void ScoreboardScene::NextPage() {
     if ((currentPage + 1) * scoresPerPage < sortedScores.size()) {

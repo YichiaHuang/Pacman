@@ -924,4 +924,6 @@ CMakeFiles/2025_I2P2_TowerDefense.dir/main.cpp.obj: \
   C:/2025_I2P2_TowerDefense-main/Scene/MotionScene.hpp \
   C:/2025_I2P2_TowerDefense-main/Scene/InfoScene.hpp \
   C:/2025_I2P2_TowerDefense-main/Scene/SecondScene.hpp \
-  C:/2025_I2P2_TowerDefense-main/./Pacman/Pac.hpp
+  C:/2025_I2P2_TowerDefense-main/./Pacman/Pac.hpp \
+  C:/2025_I2P2_TowerDefense-main/Scene/Win.hpp \
+  C:/2025_I2P2_TowerDefense-main/Scene/BoardSecond.hpp

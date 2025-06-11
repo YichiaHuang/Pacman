@@ -90,7 +90,11 @@ add_executable(2025_I2P2_TowerDefense
     Scene/SettingsScene.hpp
     Scene/ScoreboardScene.cpp
     Scene/ScoreboardScene.hpp
-    
+    Scene/Win.cpp
+    Scene/Win.hpp
+    Scene/BoardSecond.cpp
+    Scene/BoardSecond.hpp
+
     Scene/MotionScene.cpp
     Scene/MotionScene.hpp
     Scene/InfoScene.cpp

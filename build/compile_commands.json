@@ -205,6 +205,18 @@
 },
 {
   "directory": "C:/2025_I2P2_TowerDefense-main/build",
+  "command": "C:\\llvm-mingw-20240417-msvcrt-x86_64\\bin\\clang++.exe  @CMakeFiles/2025_I2P2_TowerDefense.dir/includes_CXX.rsp -g -o CMakeFiles\\2025_I2P2_TowerDefense.dir\\Scene\\Win.cpp.obj -c C:\\2025_I2P2_TowerDefense-main\\Scene\\Win.cpp",
+  "file": "C:/2025_I2P2_TowerDefense-main/Scene/Win.cpp",
+  "output": "CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/Win.cpp.obj"
+},
+{
+  "directory": "C:/2025_I2P2_TowerDefense-main/build",
+  "command": "C:\\llvm-mingw-20240417-msvcrt-x86_64\\bin\\clang++.exe  @CMakeFiles/2025_I2P2_TowerDefense.dir/includes_CXX.rsp -g -o CMakeFiles\\2025_I2P2_TowerDefense.dir\\Scene\\BoardSecond.cpp.obj -c C:\\2025_I2P2_TowerDefense-main\\Scene\\BoardSecond.cpp",
+  "file": "C:/2025_I2P2_TowerDefense-main/Scene/BoardSecond.cpp",
+  "output": "CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/BoardSecond.cpp.obj"
+},
+{
+  "directory": "C:/2025_I2P2_TowerDefense-main/build",
   "command": "C:\\llvm-mingw-20240417-msvcrt-x86_64\\bin\\clang++.exe  @CMakeFiles/2025_I2P2_TowerDefense.dir/includes_CXX.rsp -g -o CMakeFiles\\2025_I2P2_TowerDefense.dir\\Scene\\MotionScene.cpp.obj -c C:\\2025_I2P2_TowerDefense-main\\Scene\\MotionScene.cpp",
   "file": "C:/2025_I2P2_TowerDefense-main/Scene/MotionScene.cpp",
   "output": "CMakeFiles/2025_I2P2_TowerDefense.dir/Scene/MotionScene.cpp.obj"
