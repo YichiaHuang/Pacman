@@ -22,9 +22,9 @@
 [INFO] Created<sample_instance>: Resource/audios/Pacman/start-game.wav
 [INFO] Loaded Resource<image>: Resource/images/play/wall_test.png scaled to 64x64
 [INFO] Loaded Resource<image>: Resource/images/play/floor_2.png scaled to 64x64
+[INFO] Loaded Resource<image>: Resource/images/item/star.png scaled to 32x32
 [INFO] Loaded Resource<image>: Resource/images/play/dot.png scaled to 32x32
 [INFO] Loaded Resource<image>: Resource/images/play/PowerDot.png scaled to 32x32
-[INFO] Loaded Resource<image>: Resource/images/item/star.png scaled to 32x32
 [INFO] Loaded Resource<image>: Resource/images/item/ice.png scaled to 32x32
 [INFO] Loaded Resource<image>: Resource/images/item/speed.png scaled to 32x32
 [INFO] Loaded Resource<image>: Resource/images/play/floor.png scaled to 320x832

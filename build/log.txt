@@ -23,10 +23,10 @@
 [INFO] Loaded Resource<image>: Resource/images/play/wall_test.png scaled to 64x64
 [INFO] Loaded Resource<image>: Resource/images/play/floor_2.png scaled to 64x64
 [INFO] Loaded Resource<image>: Resource/images/play/dot.png scaled to 32x32
-[INFO] Loaded Resource<image>: Resource/images/item/ice.png scaled to 32x32
+[INFO] Loaded Resource<image>: Resource/images/item/speed.png scaled to 32x32
 [INFO] Loaded Resource<image>: Resource/images/play/PowerDot.png scaled to 32x32
 [INFO] Loaded Resource<image>: Resource/images/item/star.png scaled to 32x32
-[INFO] Loaded Resource<image>: Resource/images/item/speed.png scaled to 32x32
+[INFO] Loaded Resource<image>: Resource/images/item/ice.png scaled to 32x32
 [INFO] Loaded Resource<image>: Resource/images/play/floor.png scaled to 320x832
 [INFO] Loaded Resource<font>: Resource/fonts/prstartk.ttf with size 32
 [INFO] Loaded Resource<font>: Resource/fonts/prstartk.ttf with size 24
@@ -43,7 +43,6 @@
 [INFO] Game end
 [INFO] Destroyed Resource<image>: stage-select/bott.png
 [INFO] Destroyed Resource<image>: play/floor_test.png
-[INFO] Destroyed Resource<image>: item/speed.png?32x32
 [INFO] Destroyed Resource<image>: play/floor.png?320x832
 [INFO] Destroyed Resource<image>: item/ice.png?32x32
 [INFO] Destroyed Resource<image>: item/star.png?32x32
@@ -58,6 +57,7 @@
 [INFO] Destroyed Resource<image>: play/floor_2.png?64x64
 [INFO] Destroyed Resource<image>: stage-select/dirt.png?400x100
 [INFO] Destroyed Resource<image>: stage-select/dirt.png
+[INFO] Destroyed Resource<image>: item/speed.png?32x32
 [INFO] Destroyed Resource<font>: prstartk.ttf?20
 [INFO] Destroyed Resource<font>: prstartk.ttf?64
 [INFO] Destroyed Resource<font>: prstartk.ttf?72

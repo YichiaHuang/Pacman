@@ -286,7 +286,11 @@ void Ghost::Update(float deltaTime) {
     if(pause_mode){
         return;
     }
+<<<<<<< HEAD
     // 如果之前是逃跑狀態，改回正常速度與圖示
+=======
+
+>>>>>>> 3825f6b3cfca0c0bcc5587f0c4fd649a1066afe5
     if (frightenedTimer <= 0.0f && spriteSheet != normalSprite) {
         Speed = 100;
         spriteSheet = normalSprite;
@@ -305,8 +309,12 @@ void Ghost::Update(float deltaTime) {
             frightenedTimer -= deltaTime;
         } else {
             setDir();
+<<<<<<< HEAD
         }
 
+=======
+            }
+>>>>>>> 3825f6b3cfca0c0bcc5587f0c4fd649a1066afe5
         gridX += moveDirX;
         gridY += moveDirY;
     }
@@ -316,10 +324,25 @@ void Ghost::Update(float deltaTime) {
     Position.y += moveDirY * Speed * deltaTime;
 
     tick++;
-    if(tick >= 10) {
+    if (tick >= 10) {
         tick = 0;
         tickCount_x = (tickCount_x + 1) % 2;
+
+        if (frightenedTimer > 0.0f) {
+            tickCount_x = tickCount_x % 2;  // 保險：強制 0,1 間循環
+            tickCount_y = 0;
+        }
     }
+    if (frightenedTimer > 0.0f) {
+        frightenedTimer -= deltaTime;
+        if (frightenedTimer <= 0.0f) {
+            Speed = 100;
+            spriteSheet = normalSprite;
+            setDir();  // 立刻重新設定方向
+        }
+    }
+
+
 
     // 檢查是否與 Pacman 接觸
     auto& scene = dynamic_cast<PlayScene&>(*Engine::GameEngine::GetInstance().GetActiveScene());
@@ -347,8 +370,19 @@ void Ghost::setPacmanPos(const Engine::Point &pos) {
 
 
 void Ghost::Draw() const {
-    
-    
+    if (!spriteSheet) return;
+
+    int bmpW = al_get_bitmap_width(spriteSheet);
+    int bmpH = al_get_bitmap_height(spriteSheet);
+
+    int sx = tickCount_x * frameW;
+    int sy = (frightenedTimer > 0.0f) ? 0 : tickCount_y * frameH;  // ✅ 核心修正
+
+    if (sx + frameW > bmpW || sy + frameH > bmpH) {
+        std::cerr << "[Ghost::Draw] Frame out of bounds: (" << sx << "," << sy << ")\n";
+        return;
+    }
+
     float cx = frameW / 2.0f;
     float cy = frameH / 2.0f;
     float drawX = Position.x;
@@ -356,15 +390,17 @@ void Ghost::Draw() const {
 
     al_draw_tinted_scaled_rotated_bitmap_region(
         spriteSheet,
-        tickCount_x * frameW, tickCount_y * frameH, frameW, frameH,                       // region in source
-        al_map_rgba(255, 255, 255, 255),              // no tint
-        cx, cy,                                       // rotation center
-        drawX, drawY,                                 // destination
-        3.0, 3.0,                                     // scaleX, scaleY
+        sx, sy, frameW, frameH,
+        al_map_rgba(255, 255, 255, 255),
+        cx, cy,
+        drawX, drawY,
+        3.0, 3.0,
         0,
         0
     );
 }
+
+
 
 void Ghost::escape() {
     auto& scene = dynamic_cast<PlayScene&>(*Engine::GameEngine::GetInstance().GetActiveScene());
