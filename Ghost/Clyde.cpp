@@ -13,6 +13,7 @@ Clyde::Clyde(float x, float y)
 }
 
 void Clyde::setTargetPos() {
+    //std::cout << "[Clyde] setTargetPos called, pacmanPos: (" << pacmanPos.x << "," << pacmanPos.y << ")\n";
     int gx = Position.x / PlayScene::BlockSize;
     int gy = Position.y / PlayScene::BlockSize;
     int px = pacmanPos.x;
@@ -22,6 +23,6 @@ void Clyde::setTargetPos() {
     if (manhattanDis > 8) {
         targetPos = pacmanPos;
     } else {
-        targetPos = Engine::Point(1, 1);
+        targetPos = Engine::Point(0, 0);
     }
 }
