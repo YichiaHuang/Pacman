@@ -156,7 +156,7 @@ void WinScene::OnKeyDown(int keyCode) {
     }
 }
 void WinScene::SaveScoreToFile(int score) {
-    std::string filePath = "C:\\2025_I2P2_TowerDefense-main\\Resource\\scoreboard.txt";
+    std::string filePath = "Resource\\scoreboard.txt";
     std::ofstream scoreFile(filePath, std::ios::app);
 
     // ???嗅???
