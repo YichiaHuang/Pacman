@@ -32,8 +32,8 @@ void Inky::setTargetPos(Engine::Point pacmanDir,
         blinkyPos.y + vec.y * 2
     );
 
-    const int MAP_WIDTH = 32;
-    const int MAP_HEIGHT = 28;
+    const int MAP_WIDTH = 20;
+    const int MAP_HEIGHT = 13;
     targetPos.x = std::max(0.0f, std::min(rawTarget.x, float(MAP_WIDTH - 1)));
     targetPos.y = std::max(0.0f, std::min(rawTarget.y, float(MAP_HEIGHT - 1)));
 }
