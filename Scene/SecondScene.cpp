@@ -31,6 +31,7 @@
 #include "Dot/Ice.hpp"
 #include "Dot/Speed.hpp"
 #include "Dot/Star.hpp"
+#include "Dot/Scroll.hpp"
 #include <allegro5/allegro_primitives.h>
 
 bool SecondScene::DebugMode = false;
@@ -93,8 +94,12 @@ void SecondScene::Initialize() {
     UIGroup->AddNewObject(imgTarget);
     keyPressed.clear();
     slot_yet=1;
-    
+    //timer
+    remainingTime = 90.0f; // 從 60 秒開始
 
+    // 建立 Timer Label
+    timerLabel = new Engine::Label("1:30", "prstartk.ttf", 28, 1294, 128, 255, 255, 255, 255);
+    UIGroup->AddNewObject(timerLabel);
 }
 
 
@@ -110,6 +115,29 @@ void SecondScene::Terminate() {
 }
 void SecondScene::Update(float deltaTime) {
     if (paused) return;
+    
+    if (!WinTriggered && !opening) {
+        remainingTime -= deltaTime;
+        if (remainingTime <= 0) {
+            remainingTime = 0;
+            WinTriggered = true;
+        }
+
+        int seconds = static_cast<int>(remainingTime);
+        int minutes = seconds / 60;
+        seconds = seconds % 60;
+
+        char buffer[8];
+        std::snprintf(buffer, sizeof(buffer), "%d:%02d", minutes, seconds);
+        timerLabel->Text = buffer;
+    }
+    
+    
+    
+    
+    
+    
+    
     if(!opening){
         money = player->money;
         UIMoney->Text = std::string("$") + std::to_string(money);
@@ -139,62 +167,58 @@ void SecondScene::Update(float deltaTime) {
         int screenW = Engine::GameEngine::GetInstance().GetScreenSize().x;
         int screenH = Engine::GameEngine::GetInstance().GetScreenSize().y;
 
-        cameraPos.x = playerPos.x - screenW / 2;
+        cameraPos.x = playerPos.x - screenW / 2+ 2 * BlockSize;;
         cameraPos.y = playerPos.y - screenH / 2;
 
         // 限制攝影機不超出地圖邊界
         // 限制攝影機不超出地圖邊界（只在地圖大於畫面時才限制）
-    // 否則自動置中地圖
-    int gameScreenW = 64*20; // 左邊地圖的畫面寬度
+        // 否則自動置中地圖
+        int gameScreenW = 64*20; // 左邊地圖的畫面寬度
 
-    // 攝影機限制在地圖內，但只考慮左邊地圖畫面寬度
-    if (MapWidth * BlockSize > gameScreenW)
-        cameraPos.x = std::max(0.0f, std::min<float>(cameraPos.x, MapWidth * BlockSize - gameScreenW));
-    else
-        cameraPos.x = (MapWidth * BlockSize - gameScreenW) / 2;
+        // 攝影機限制在地圖內，但只考慮左邊地圖畫面寬度
+        if (MapWidth * BlockSize > gameScreenW)
+            cameraPos.x = std::max(0.0f, std::min<float>(cameraPos.x, MapWidth * BlockSize - gameScreenW));
+        else
+            cameraPos.x = (MapWidth * BlockSize - gameScreenW) / 2;
 
-    if (MapHeight * BlockSize > screenH)
-        cameraPos.y = std::max(0.0f, std::min<float>(cameraPos.y, MapHeight * BlockSize - screenH));
-    else
-        cameraPos.y = (MapHeight * BlockSize - screenH) / 2;
+        if (MapHeight * BlockSize > screenH)
+            cameraPos.y = std::max(0.0f, std::min<float>(cameraPos.y, MapHeight * BlockSize - screenH));
+        else
+            cameraPos.y = (MapHeight * BlockSize - screenH) / 2;
 
     
 
-    int dx = 0, dy = 0;
-    if (keyPressed.count(ALLEGRO_KEY_UP)) {
-            dx = 0; dy = -1;
-    } else if (keyPressed.count(ALLEGRO_KEY_DOWN)) {
-            dx = 0; dy = 1;
-    } else if (keyPressed.count(ALLEGRO_KEY_LEFT)) {
-            dx = -1; dy = 0;
-    } else if (keyPressed.count(ALLEGRO_KEY_RIGHT)) {
-            dx = 1; dy = 0;
-    }
+        int dx = 0, dy = 0;
+        if (keyPressed.count(ALLEGRO_KEY_UP)) {
+                dx = 0; dy = -1;
+        } else if (keyPressed.count(ALLEGRO_KEY_DOWN)) {
+                dx = 0; dy = 1;
+        } else if (keyPressed.count(ALLEGRO_KEY_LEFT)) {
+                dx = -1; dy = 0;
+        } else if (keyPressed.count(ALLEGRO_KEY_RIGHT)) {
+                dx = 1; dy = 0;
+        }
 
-    if (dx != 0 || dy != 0) {
+        if (dx != 0 || dy != 0) {
         // 取得目前在地圖上的格子座標
-        int gridX = static_cast<int>(player->GetPosition().y) / SecondScene::BlockSize;
-        int gridY = static_cast<int>(player->GetPosition().x) / SecondScene::BlockSize;
+            int gridX = static_cast<int>(player->GetPosition().y) / SecondScene::BlockSize;
+            int gridY = static_cast<int>(player->GetPosition().x) / SecondScene::BlockSize;
 
-        int targetX = gridX + dy;
-        int targetY = gridY + dx;
+            int targetX = gridX + dy;
+            int targetY = gridY + dx;
 
-        // 檢查是否在邊界內，且不是牆壁
-        if (/*targetX >= 0 && targetX < SecondScene::MapHeight &&
-            targetY >= 0 && targetY < SecondScene::MapWidth &&*/
-            map_dot[targetX][targetY] != -1) {
-            player->MoveDirection(dx, dy);
-            map_dot[targetX][targetY]=0;
-            UpdateMiniMapCell(targetX, targetY);
+            // 檢查是否在邊界內，且不是牆壁
+            if (/*targetX >= 0 && targetX < SecondScene::MapHeight &&
+                targetY >= 0 && targetY < SecondScene::MapWidth &&*/                    map_dot[targetX][targetY] != -1) {
+                player->MoveDirection(dx, dy);
+                map_dot[targetX][targetY]=0;
+                UpdateMiniMapCell(targetX, targetY);
+            }
         }
     }
-}
 
     DotsGroup->Update(deltaTime);
-    if (SpeedMult == 0)
-        deathCountDown = -1;
-    else if (deathCountDown != -1)
-        SpeedMult = 1;
+    
 
     if (WinTriggered) {
         Engine::LOG(Engine::INFO) << "WinTriggered = true, switching to win-scene.";
@@ -309,7 +333,7 @@ void SecondScene::ReadMap() {
     }
     Dot* dot;
     
-    for(int i=0; i<3; i++)
+    for(int i=0; i<14; i++)
     {
         random[i]=rand()%total_dot;
         
@@ -364,16 +388,20 @@ void SecondScene::ReadMap() {
                     DotsGroup->AddNewObject(dot = new PowerDot(j * BlockSize + BlockSize / 2, i * BlockSize + BlockSize / 2));
                     map_dot[i][j]=2;
                 }
-                else */if(k==random[0]){
+                else */if(k==random[0]||k==random[1]||k==random[2]){
                     DotsGroup->AddNewObject(dot = new Star(j * BlockSize + BlockSize / 2, i * BlockSize + BlockSize / 2));
                     map_dot[i][j]=2;//item
                 }
-                else if(k==random[1]){
+                else if(k==random[3]||k==random[4]||k==random[5]){
                     DotsGroup->AddNewObject(dot = new Speed(j * BlockSize + BlockSize / 2, i * BlockSize + BlockSize / 2));
                     map_dot[i][j]=2;
                 }
-                else if(k==random[2]){
+                else if(k==random[6]||k==random[7]||k==random[8]){
                     DotsGroup->AddNewObject(dot = new Ice(j * BlockSize + BlockSize / 2, i * BlockSize + BlockSize / 2));
+                    map_dot[i][j]=2;
+                }
+                else if(k==random[9]||k==random[10]||k==random[11]||k==random[12]||k==random[13]){
+                    DotsGroup->AddNewObject(dot = new Scroll(j * BlockSize + BlockSize / 2, i * BlockSize + BlockSize / 2));
                     map_dot[i][j]=2;
                 }
                 else{

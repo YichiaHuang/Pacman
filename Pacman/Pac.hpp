@@ -42,7 +42,8 @@ private:
     int Speed_coldown=0;
     bool speed_mode = false;
     bool boundary=false;
-    
+    bool scroll_mode=false;
+    int scroll_coldown=0;
 };
 
 #endif

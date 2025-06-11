@@ -113,10 +113,12 @@ public:
     Ghost* ghost[4];
     int red_coldown = 0;
     int pause_coldown = 0;
-    int random[3];
+    int random[14];
     ALLEGRO_BITMAP* miniMapBitmap = nullptr;
     const int MiniMapSize = 150; // 小地圖的像素寬高（正方形）
     void GenerateMiniMap();
     void UpdateMiniMapCell(int i, int j);
+    float remainingTime; // 剩餘時間（秒）
+    Engine::Label* timerLabel; // 顯示用的UI Label
 };
 #endif   // PLAYSCENE_HPP

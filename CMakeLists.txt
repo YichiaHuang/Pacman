@@ -28,6 +28,8 @@ add_executable(2025_I2P2_TowerDefense
     Dot/Star.hpp
     Dot/PowerDot.cpp
     Dot/PowerDot.hpp
+    Dot/Scroll.cpp
+    Dot/Scroll.hpp
 
     Pacman/Pacman.cpp
     Pacman/Pacman.hpp

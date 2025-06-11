@@ -24,6 +24,12 @@ Pac::~Pac() {
 }
 
 void Pac::Update(float deltaTime) {
+    if(scroll_mode)
+        scroll_coldown++;
+    if(scroll_mode&&scroll_coldown>100){
+        Speed_coldown=0;
+        scroll_mode=false;
+    }
     if(speed_mode)
         Speed_coldown++;
     if(speed_mode&&Speed_coldown>100){
@@ -147,7 +153,8 @@ void Pac::MoveDirection(int dx, int dy) {
         // 直接瞬移到 target
         Position = targetPosition;
         moving = false;
-        boundary=false;
+        if(!scroll_mode)
+            boundary=false;
     } else {
         moving = true;
     }
@@ -186,6 +193,12 @@ void Pac::CheckCollisionWithDots() {
                 }
                 else if(dot->effect==2){
                     pause=true;
+                }
+                else if(dot->effect==3)
+                {
+                    scroll_mode=true;
+                    scroll_coldown=0;
+                    boundary=true;
                 }
             }
         }

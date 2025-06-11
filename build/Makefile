@@ -224,6 +224,30 @@ Dot/PowerDot.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/PowerDot.cpp.s
 .PHONY : Dot/PowerDot.cpp.s
 
+Dot/Scroll.obj: Dot/Scroll.cpp.obj
+.PHONY : Dot/Scroll.obj
+
+# target to build an object file
+Dot/Scroll.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/Scroll.cpp.obj
+.PHONY : Dot/Scroll.cpp.obj
+
+Dot/Scroll.i: Dot/Scroll.cpp.i
+.PHONY : Dot/Scroll.i
+
+# target to preprocess a source file
+Dot/Scroll.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/Scroll.cpp.i
+.PHONY : Dot/Scroll.cpp.i
+
+Dot/Scroll.s: Dot/Scroll.cpp.s
+.PHONY : Dot/Scroll.s
+
+# target to generate assembly for a file
+Dot/Scroll.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\2025_I2P2_TowerDefense.dir\build.make CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/Scroll.cpp.s
+.PHONY : Dot/Scroll.cpp.s
+
 Dot/Speed.obj: Dot/Speed.cpp.obj
 .PHONY : Dot/Speed.obj
 
@@ -1205,6 +1229,9 @@ help:
 	@echo ... Dot/PowerDot.obj
 	@echo ... Dot/PowerDot.i
 	@echo ... Dot/PowerDot.s
+	@echo ... Dot/Scroll.obj
+	@echo ... Dot/Scroll.i
+	@echo ... Dot/Scroll.s
 	@echo ... Dot/Speed.obj
 	@echo ... Dot/Speed.i
 	@echo ... Dot/Speed.s

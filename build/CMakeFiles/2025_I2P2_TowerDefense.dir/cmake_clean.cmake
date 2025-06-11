@@ -10,6 +10,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/NormalDot.cpp.obj.d"
   "CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/PowerDot.cpp.obj"
   "CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/PowerDot.cpp.obj.d"
+  "CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/Scroll.cpp.obj"
+  "CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/Scroll.cpp.obj.d"
   "CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/Speed.cpp.obj"
   "CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/Speed.cpp.obj.d"
   "CMakeFiles/2025_I2P2_TowerDefense.dir/Dot/Star.cpp.obj"
