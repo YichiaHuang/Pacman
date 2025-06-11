@@ -39,6 +39,7 @@ protected:
     int money;
     int SpeedMult;
     std::set<int> keyPressed; 
+    
 public:
     enum TileType {
             TILE_DIRT,
@@ -53,6 +54,7 @@ public:
     static const Engine::Point SpawnGridPoint;
     static const Engine::Point EndGridPoint;
     static const std::vector<int> code;
+    static ALLEGRO_BITMAP* frightenedBitmap;
     int MapId;
     float ticks;
     float deathCountDown;

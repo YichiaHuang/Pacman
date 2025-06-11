@@ -56,6 +56,8 @@ Engine::Point PlayScene::GetClientSize() {
 
 std::vector<Ghost*> ghostList;
 
+ALLEGRO_BITMAP* PlayScene::frightenedBitmap = nullptr;
+
 void PlayScene::Initialize() {
     std::srand(std::time(nullptr)); 
     opening = true;
@@ -71,6 +73,9 @@ void PlayScene::Initialize() {
     money = 0;
     SpeedMult = 1;
     total_dot = 0;
+
+    if (!frightenedBitmap)
+        frightenedBitmap = al_load_bitmap("Resource/images/ghost/ghost_frighten.png");
     AddNewObject(TileMapGroup = new Group());
     AddNewObject(GroundEffectGroup = new Group());
     AddNewObject(DebugIndicatorGroup = new Group());

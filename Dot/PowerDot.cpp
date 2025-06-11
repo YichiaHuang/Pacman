@@ -33,15 +33,15 @@ void PowerDot::OnEaten() {
     auto& scene = dynamic_cast<PlayScene&>(*Engine::GameEngine::GetInstance().GetActiveScene());
 
     for (int i = 0; i < 4; i++) {
-        ALLEGRO_BITMAP* newFrightened = al_load_bitmap("Resource/images/ghost/ghost_frighten.png");
-        if (!newFrightened) {
+        ALLEGRO_BITMAP* frightenedBmp = PlayScene::frightenedBitmap;
+        if (!frightenedBmp) {
             std::cerr << "[Error] Failed to load ghost_frighten.png!" << std::endl;
-            continue;
+            return;
         }
         if (scene.ghost[i]->spriteSheet && scene.ghost[i]->spriteSheet != scene.ghost[i]->normalSprite) {
             al_destroy_bitmap(scene.ghost[i]->spriteSheet);
         }
-        scene.ghost[i]->spriteSheet = newFrightened;
+        scene.ghost[i]->spriteSheet = frightenedBmp;
         scene.ghost[i]->Speed = 80;
         scene.ghost[i]->frightenedTimer = 7.0f;
     }
