@@ -102,13 +102,8 @@ void PlayScene::Initialize() {
     UIGroup->AddNewObject(imgTarget);
     keyPressed.clear();
     slot_yet=1;
-    /*
-    // Add four ghosts in the corners
-    AddNewObject(new Blinky(1 * BlockSize + BlockSize / 2, 1 * BlockSize + BlockSize / 2)); // top-left
-    AddNewObject(new Pinky(18 * BlockSize + BlockSize / 2, 1 * BlockSize + BlockSize / 2)); // top-right
-    AddNewObject(new Inky(1 * BlockSize + BlockSize / 2, 11 * BlockSize + BlockSize / 2));  // bottom-left
-    AddNewObject(new Clyde(18 * BlockSize + BlockSize / 2, 11 * BlockSize + BlockSize / 2)); // bottom-right
-    for (auto g : ghostList) AddNewObject(g);*/
+    
+
 }
 
 
@@ -298,6 +293,11 @@ void PlayScene::Update(float deltaTime) {
         ghost[1]= new Pinky(18 * BlockSize + BlockSize / 2, 1 * BlockSize + BlockSize / 2);
         ghost[2]= new Inky(1 * BlockSize + BlockSize / 2, 11 * BlockSize + BlockSize / 2);
         ghost[3]= new Clyde(18 * BlockSize + BlockSize / 2, 11 * BlockSize + BlockSize / 2);
+
+        for (int i = 0; i < 4; i++) {
+            ghost[i]->normalSprite = ghost[i]->spriteSheet;  // 記住鬼的初始圖片
+        }
+
         
         //ghost
      

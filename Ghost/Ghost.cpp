@@ -286,6 +286,12 @@ void Ghost::Update(float deltaTime) {
     if(pause_mode){
         return;
     }
+
+    if (frightenedTimer <= 0.0f && spriteSheet != normalSprite) {
+        Speed = 100;
+        spriteSheet = normalSprite;
+    }
+
     float centerX = gridX * PlayScene::BlockSize + PlayScene::BlockSize / 2;
     float centerY = gridY * PlayScene::BlockSize + PlayScene::BlockSize / 2;
     float distToCenter = std::hypot(Position.x - centerX, Position.y - centerY);
@@ -299,17 +305,7 @@ void Ghost::Update(float deltaTime) {
             frightenedTimer -= deltaTime;
         } else {
             setDir();
-            // ✅ 切換回正常圖片（但不要釋放共用圖片）
-            if (spriteSheet != normalSprite) {
-                Speed = 100;
-                if (spriteSheet && spriteSheet != PlayScene::frightenedBitmap) {
-                    al_destroy_bitmap(spriteSheet);
-                }
-                spriteSheet = normalSprite;
             }
-        }
-
-
         gridX += moveDirX;
         gridY += moveDirY;
     }
@@ -323,10 +319,17 @@ void Ghost::Update(float deltaTime) {
         tick = 0;
         tickCount_x = (tickCount_x + 1) % 2;
 
-        // ✅ 保險：如果是 frightened 模式，tickCount_x 最多只能是 1
         if (frightenedTimer > 0.0f) {
             tickCount_x = tickCount_x % 2;  // 保險：強制 0,1 間循環
             tickCount_y = 0;
+        }
+    }
+    if (frightenedTimer > 0.0f) {
+        frightenedTimer -= deltaTime;
+        if (frightenedTimer <= 0.0f) {
+            Speed = 100;
+            spriteSheet = normalSprite;
+            setDir();  // 立刻重新設定方向
         }
     }
 
