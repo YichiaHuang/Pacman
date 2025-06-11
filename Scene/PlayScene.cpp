@@ -219,40 +219,46 @@ void PlayScene::Update(float deltaTime) {
 
     // If we use deltaTime directly, then we might have Bullet-through-paper problem.
     // Reference: Bullet-Through-Paper
-        money = player->money; 
+    money = player->money; 
 
-        if(player->dotsEaten==total_dot){
-            WinTriggered=true;
+    if (player->dotsEaten >= total_dot) {
+        if (!WinTriggered) {
+            WinTriggered = true;
+            Engine::LOG(Engine::INFO) << "All dots eaten! Switching to WinScene.";
+            Engine::GameEngine::GetInstance().ChangeScene("win-scene");
+            return;
         }
+    }
 
-        UIMoney->Text = std::string("$") + std::to_string(money);
 
-        int dx = 0, dy = 0;
-        if (keyPressed.count(ALLEGRO_KEY_UP)) {
-                dx = 0; dy = -1;
-        } else if (keyPressed.count(ALLEGRO_KEY_DOWN)) {
-                dx = 0; dy = 1;
-        } else if (keyPressed.count(ALLEGRO_KEY_LEFT)) {
-                dx = -1; dy = 0;
-        } else if (keyPressed.count(ALLEGRO_KEY_RIGHT)) {
-                dx = 1; dy = 0;
+    UIMoney->Text = std::string("$") + std::to_string(money);
+
+    int dx = 0, dy = 0;
+    if (keyPressed.count(ALLEGRO_KEY_UP)) {
+            dx = 0; dy = -1;
+    } else if (keyPressed.count(ALLEGRO_KEY_DOWN)) {
+            dx = 0; dy = 1;
+    } else if (keyPressed.count(ALLEGRO_KEY_LEFT)) {
+            dx = -1; dy = 0;
+    } else if (keyPressed.count(ALLEGRO_KEY_RIGHT)) {
+            dx = 1; dy = 0;
+    }
+
+    if (dx != 0 || dy != 0) {
+        // 取得目前在地圖上的格子座標
+        int gridX = static_cast<int>(player->GetPosition().y) / PlayScene::BlockSize;
+        int gridY = static_cast<int>(player->GetPosition().x) / PlayScene::BlockSize;
+
+        int targetX = gridX + dy;
+        int targetY = gridY + dx;
+
+        // 檢查是否在邊界內，且不是牆壁
+        if (targetX >= 0 && targetX < PlayScene::MapHeight &&
+            targetY >= 0 && targetY < PlayScene::MapWidth &&
+            map_dot[targetX][targetY] != -1) {
+            player->MoveDirection(dx, dy);
         }
-
-        if (dx != 0 || dy != 0) {
-            // 取得目前在地圖上的格子座標
-            int gridX = static_cast<int>(player->GetPosition().y) / PlayScene::BlockSize;
-            int gridY = static_cast<int>(player->GetPosition().x) / PlayScene::BlockSize;
-
-            int targetX = gridX + dy;
-            int targetY = gridY + dx;
-
-            // 檢查是否在邊界內，且不是牆壁
-            if (targetX >= 0 && targetX < PlayScene::MapHeight &&
-                targetY >= 0 && targetY < PlayScene::MapWidth &&
-                map_dot[targetX][targetY] != -1) {
-                player->MoveDirection(dx, dy);
-            }
-        }
+    }
     
 
     DotsGroup->Update(deltaTime);
