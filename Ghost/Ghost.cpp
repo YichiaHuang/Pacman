@@ -260,7 +260,7 @@ void Ghost::setDir() {
         Engine::Point nextPos(gridX + c.x, gridY + c.y);
         int d = bfs(nextPos, targetPos);  // pacmanPos 必須已經是 grid 座標
         //std::cout << "[Clyde] bfs from (" << nextPos.x << "," << nextPos.y << ") to (" << targetPos.x << "," << targetPos.y << ") = " << d << "\n";
-        if (d < nowDis) {
+        if (d < nowDis && d != INT_MAX) {
             nowDis = d;
             chosen = c;
         }
@@ -322,7 +322,7 @@ void Ghost::Update(float deltaTime) {
     float maxY = (PlayScene::MapHeight - 0.5f) * PlayScene::BlockSize;
     Position.x = std::max(minX, std::min(Position.x, maxX));
     Position.y = std::max(minY, std::min(Position.y, maxY));
-    
+
     tick++;
     if (tick >= 10) {
         tick = 0;
@@ -442,7 +442,7 @@ void Ghost::escape() {
     for (auto& dir : candidates) {
         Engine::Point nextPos(gridX + dir.x, gridY + dir.y);
         int d = bfs(nextPos, pacmanPos); // pacmanPos 早已設定為格子座標
-        if (d > maxDist) {
+        if (d > maxDist && d != INT_MAX) {
             maxDist = d;
             chosen = dir;
         }
