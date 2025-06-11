@@ -296,8 +296,6 @@ void Ghost::Update(float deltaTime) {
 
     float centerX = gridX * PlayScene::BlockSize + PlayScene::BlockSize / 2;
     float centerY = gridY * PlayScene::BlockSize + PlayScene::BlockSize / 2;
-    gridX = static_cast<int>((Position.x - PlayScene::BlockSize / 2) / PlayScene::BlockSize);
-    gridY = static_cast<int>((Position.y - PlayScene::BlockSize / 2) / PlayScene::BlockSize);
     float distToCenter = std::hypot(Position.x - centerX, Position.y - centerY);
 
     if (distToCenter < 1.5f) {
@@ -309,18 +307,31 @@ void Ghost::Update(float deltaTime) {
             frightenedTimer -= deltaTime;
         } else {
             setDir();
-            }
-        gridX += moveDirX;
-        gridY += moveDirY;
+        }
+        int nextGridX = gridX + moveDirX;
+        int nextGridY = gridY + moveDirY;
+        auto& scene = dynamic_cast<PlayScene&>(*Engine::GameEngine::GetInstance().GetActiveScene());
+        if (nextGridX >= 0 && nextGridX < PlayScene::MapWidth &&
+            nextGridY >= 0 && nextGridY < PlayScene::MapHeight &&
+            scene.map_dot[nextGridY][nextGridX] != -1) {
+            gridX = nextGridX;
+            gridY = nextGridY;
+        }
+        // 移動到新格子中心
+        Position.x = gridX * PlayScene::BlockSize + PlayScene::BlockSize / 2;
+        Position.y = gridY * PlayScene::BlockSize + PlayScene::BlockSize / 2;
+    } else {
+        // 只做像素移動
+        Position.x += moveDirX * Speed * deltaTime;
+        Position.y += moveDirY * Speed * deltaTime;
     }
 
-
-    Position.x += moveDirX * Speed * deltaTime;
-    Position.y += moveDirY * Speed * deltaTime;
-    gridX = static_cast<int>((Position.x - PlayScene::BlockSize / 2) / PlayScene::BlockSize);
-    gridY = static_cast<int>((Position.y - PlayScene::BlockSize / 2) / PlayScene::BlockSize);
-    gridX = std::max(0, std::min(gridX, PlayScene::MapWidth - 1));
-    gridY = std::max(0, std::min(gridY, PlayScene::MapHeight - 1));
+    float minX = PlayScene::BlockSize / 2;
+    float maxX = (PlayScene::MapWidth - 0.5f) * PlayScene::BlockSize;
+    float minY = PlayScene::BlockSize / 2;
+    float maxY = (PlayScene::MapHeight - 0.5f) * PlayScene::BlockSize;
+    Position.x = std::max(minX, std::min(Position.x, maxX));
+    Position.y = std::max(minY, std::min(Position.y, maxY));
 
     tick++;
     if (tick >= 10) {
