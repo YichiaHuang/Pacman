@@ -316,6 +316,13 @@ void Ghost::Update(float deltaTime) {
     Position.x += moveDirX * Speed * deltaTime;
     Position.y += moveDirY * Speed * deltaTime;
 
+    float minX = PlayScene::BlockSize / 2;
+    float maxX = (PlayScene::MapWidth - 0.5f) * PlayScene::BlockSize;
+    float minY = PlayScene::BlockSize / 2;
+    float maxY = (PlayScene::MapHeight - 0.5f) * PlayScene::BlockSize;
+    Position.x = std::max(minX, std::min(Position.x, maxX));
+    Position.y = std::max(minY, std::min(Position.y, maxY));
+    
     tick++;
     if (tick >= 10) {
         tick = 0;
