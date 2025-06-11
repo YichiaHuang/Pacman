@@ -286,6 +286,12 @@ void Ghost::Update(float deltaTime) {
     if(pause_mode){
         return;
     }
+    // 如果之前是逃跑狀態，改回正常速度與圖示
+    if (frightenedTimer <= 0.0f && spriteSheet != normalSprite) {
+        Speed = 100;
+        spriteSheet = normalSprite;
+    }
+
     float centerX = gridX * PlayScene::BlockSize + PlayScene::BlockSize / 2;
     float centerY = gridY * PlayScene::BlockSize + PlayScene::BlockSize / 2;
     float distToCenter = std::hypot(Position.x - centerX, Position.y - centerY);
@@ -299,12 +305,6 @@ void Ghost::Update(float deltaTime) {
             frightenedTimer -= deltaTime;
         } else {
             setDir();
-            // 如果之前是逃跑狀態，改回正常速度與圖示
-            if (frightenedTimer <= 0.0f && spriteSheet != normalSprite) {
-                Speed = 100;
-                spriteSheet = normalSprite;
-            }
-
         }
 
         gridX += moveDirX;
