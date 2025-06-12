@@ -143,7 +143,7 @@ void Ghost::Update(float deltaTime) {
     float centerY = gridY * PlayScene::BlockSize + PlayScene::BlockSize / 2;
     float distToCenter = std::hypot(Position.x - centerX, Position.y - centerY);
 
-    if (distToCenter < 1.5f) {
+    if (distToCenter < 5.0f) {
         Position.x = centerX;
         Position.y = centerY;
 
