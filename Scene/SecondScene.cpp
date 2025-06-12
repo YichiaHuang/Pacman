@@ -109,7 +109,19 @@ void SecondScene::Terminate() {
     //AudioHelper::StopBGM(bgmId);
     //AudioHelper::StopSample(deathBGMInstance);
     //deathBGMInstance = std::shared_ptr<ALLEGRO_SAMPLE_INSTANCE>();
-    
+    if (frightenedBitmap) {
+        al_destroy_bitmap(frightenedBitmap);
+        frightenedBitmap = nullptr;
+    }
+    if (player) {
+        delete player;
+        player = nullptr;
+    }
+    if (miniMapBitmap) {
+        al_destroy_bitmap(miniMapBitmap);
+        miniMapBitmap = nullptr;
+    }
+
     IScene::Terminate();
     
 }
@@ -131,12 +143,7 @@ void SecondScene::Update(float deltaTime) {
         std::snprintf(buffer, sizeof(buffer), "%d:%02d", minutes, seconds);
         timerLabel->Text = buffer;
     }
-    
-    
-    
-    
-    
-    
+        
     
     if(!opening){
         money = player->money;
@@ -223,6 +230,11 @@ void SecondScene::Update(float deltaTime) {
     if (WinTriggered) {
         Engine::LOG(Engine::INFO) << "WinTriggered = true, switching to win-scene.";
         Engine::GameEngine::GetInstance().ChangeScene("win_second");
+        return;
+    }
+    if (replayRequested) {
+        replayRequested = false;
+        Engine::GameEngine::GetInstance().ChangeScene("second");
         return;
     }
 
@@ -436,6 +448,13 @@ void SecondScene::ConstructUI() {
     UIGroup->AddNewObject(pauseLabel);
 
 
+    Engine::ImageButton* replayBtn = new Engine::ImageButton(
+        "play/replay_button.png", "play/replay_button_hover.png", 
+        1450, 20, 130, 140
+    );
+    replayBtn->SetOnClickCallback(std::bind(&SecondScene::ReplayOnClick, this));
+    UIGroup->AddNewObject(replayBtn);
+    AddNewControlObject(replayBtn);
 
 }
 
@@ -512,4 +531,25 @@ void SecondScene::UpdateMiniMapCell(int i, int j) {
                              color);
 
     al_set_target_bitmap(oldTarget);
+}
+void SecondScene::ReplayOnClick() {
+    replayRequested = true;
+}
+
+void SecondScene::OnMouseDown(int button, int mx, int my) {
+    IScene::OnMouseDown(button, mx, my);
+    if (UIGroup)
+        UIGroup->OnMouseDown(button, mx, my);
+}
+
+void SecondScene::OnMouseMove(int mx, int my) {
+    IScene::OnMouseMove(mx, my);
+    if (UIGroup)
+        UIGroup->OnMouseMove(mx, my);
+}
+
+void SecondScene::OnMouseUp(int button, int mx, int my) {
+    IScene::OnMouseUp(button, mx, my);
+    if (UIGroup)
+        UIGroup->OnMouseUp(button, mx, my);
 }
