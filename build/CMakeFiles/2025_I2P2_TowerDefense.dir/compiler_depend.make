@@ -20052,6 +20052,7 @@ CMakeFiles/2025_I2P2_TowerDefense.dir/Ghost/Pinky.cpp.obj: C:/Users/User/OneDriv
 CMakeFiles/2025_I2P2_TowerDefense.dir/Pacman/Pac.cpp.obj: C:/Users/User/OneDrive/Desktop/Pacman/Pacman/Pac.cpp \
   C:/Users/User/OneDrive/Desktop/Pacman/Dot/Dot.hpp \
   C:/Users/User/OneDrive/Desktop/Pacman/Dot/PowerDot.hpp \
+  C:/Users/User/OneDrive/Desktop/Pacman/Engine/AudioHelper.hpp \
   C:/Users/User/OneDrive/Desktop/Pacman/Engine/GameEngine.hpp \
   C:/Users/User/OneDrive/Desktop/Pacman/Engine/Group.hpp \
   C:/Users/User/OneDrive/Desktop/Pacman/Engine/IControl.hpp \

@@ -116,7 +116,7 @@ namespace Engine {
         std::string samplePath = samplePathPrefix + name;
         if (!sample_instance)
             throw Allegro5Exception(("failed to create sample instance: " + samplePath).c_str());
-        LOG(INFO) << "Created<sample_instance>: " << samplePath;
+        //LOG(INFO) << "Created<sample_instance>: " << samplePath;
         std::shared_ptr<ALLEGRO_SAMPLE_INSTANCE> ptr = std::shared_ptr<ALLEGRO_SAMPLE_INSTANCE>(sample_instance, al_destroy_sample_instance);
         sample_instance_pairs[name] = std::make_pair(ptr, sample);
         return ptr;

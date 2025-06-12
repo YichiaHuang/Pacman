@@ -31,6 +31,7 @@ public:
     ALLEGRO_BITMAP* normalSprite = nullptr;
     int tickCount_x = 0;
     int tickCount_y = 0;
+    void Reset();
 protected:
     Engine::Point Position;
     Engine::Point targetPos;

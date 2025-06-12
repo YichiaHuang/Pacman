@@ -15,18 +15,16 @@
 [INFO] Changed to start scene
 [INFO] Loaded Resource<font>: Resource/fonts/prstartk.ttf with size 40
 [INFO] Loaded Resource<audio>: Resource/audios/Pacman/intermission.wav
-[INFO] Created<sample_instance>: Resource/audios/Pacman/intermission.wav
 [INFO] Changed to stage-select scene
 [INFO] stopped audio (sample)
 [INFO] Loaded Resource<audio>: Resource/audios/Pacman/start-game.wav
-[INFO] Created<sample_instance>: Resource/audios/Pacman/start-game.wav
 [INFO] Loaded Resource<image>: Resource/images/play/wall_test.png scaled to 64x64
 [INFO] Loaded Resource<image>: Resource/images/play/floor_2.png scaled to 64x64
 [INFO] Loaded Resource<image>: Resource/images/play/dot.png scaled to 32x32
 [INFO] Loaded Resource<image>: Resource/images/item/scroll.png scaled to 32x32
 [INFO] Loaded Resource<image>: Resource/images/item/speed.png scaled to 32x32
-[INFO] Loaded Resource<image>: Resource/images/item/star.png scaled to 32x32
 [INFO] Loaded Resource<image>: Resource/images/item/ice.png scaled to 32x32
+[INFO] Loaded Resource<image>: Resource/images/item/star.png scaled to 32x32
 [INFO] Loaded Resource<image>: Resource/images/play/floor.png scaled to 320x832
 [INFO] Loaded Resource<font>: Resource/fonts/prstartk.ttf with size 32
 [INFO] Loaded Resource<font>: Resource/fonts/prstartk.ttf with size 24
@@ -35,6 +33,7 @@
 [INFO] Loaded Resource<image>: Resource/images/play/target.png
 [INFO] Loaded Resource<font>: Resource/fonts/prstartk.ttf with size 28
 [INFO] Changed to second scene
+[INFO] Loaded Resource<audio>: Resource/audios/Pacman/pacman_chomp.wav
 [INFO] WinTriggered = true, switching to win-scene.
 [INFO] Loaded Resource<image>: Resource/images/ghost/pacman-ghosts.png
 [INFO] Loaded Resource<image>: Resource/images/win/dirt.png scaled to 400x100
@@ -49,8 +48,8 @@
 [INFO] Destroyed Resource<image>: win/dirt.png?400x100
 [INFO] Destroyed Resource<image>: ghost/pacman-ghosts.png
 [INFO] Destroyed Resource<image>: play/floor.png?320x832
-[INFO] Destroyed Resource<image>: item/ice.png?32x32
 [INFO] Destroyed Resource<image>: item/star.png?32x32
+[INFO] Destroyed Resource<image>: item/ice.png?32x32
 [INFO] Destroyed Resource<image>: play/target.png
 [INFO] Destroyed Resource<image>: icon.jpg
 [INFO] Destroyed Resource<image>: stage-select/floor.png
@@ -71,7 +70,9 @@
 [INFO] Destroyed Resource<font>: prstartk.ttf?40
 [INFO] Destroyed Resource<font>: prstartk.ttf?48
 [INFO] Destroyed Resource<font>: prstartk.ttf?80
+[INFO] Destroyed<sample_instance>: Pacman/pacman_chomp.wav
 [INFO] Destroyed<sample_instance>: Pacman/start-game.wav
 [INFO] Destroyed<sample_instance>: Pacman/intermission.wav
+[INFO] Destroyed Resource<audio>: Pacman/pacman_chomp.wav
 [INFO] Destroyed Resource<audio>: Pacman/start-game.wav
 [INFO] Destroyed Resource<audio>: Pacman/intermission.wav
