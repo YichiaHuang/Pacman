@@ -317,13 +317,15 @@ void Ghost::Update(float deltaTime) {
             gridX = nextGridX;
             gridY = nextGridY;
         }
-        // 移動到新格子中心
+        
         Position.x = gridX * PlayScene::BlockSize + PlayScene::BlockSize / 2;
         Position.y = gridY * PlayScene::BlockSize + PlayScene::BlockSize / 2;
     } else {
-        // 只做像素移動
-        Position.x += moveDirX * Speed * deltaTime;
-        Position.y += moveDirY * Speed * deltaTime;
+        float moveSpeed = Speed * deltaTime;
+        moveSpeed = std::min(moveSpeed, static_cast<float>(PlayScene::BlockSize) / 4);
+        
+        Position.x += moveDirX * moveSpeed;
+        Position.y += moveDirY * moveSpeed;
     }
 
     float minX = PlayScene::BlockSize / 2;
