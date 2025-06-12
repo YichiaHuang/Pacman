@@ -17,7 +17,6 @@ public:
     void setDir();
     void escape();
     void reverse();
-    void respawn();
     void setPacmanPos(const Engine::Point &pos);
     //virtual const char* GetSpriteName() const = 0;
     Engine::Point GetPosition() const { return Position; }
@@ -36,7 +35,6 @@ protected:
     Engine::Point Position;
     Engine::Point targetPos;
     Engine::Point pacmanPos;
-    Engine::Point spawnPos;
     int moveDirX, moveDirY;
     int gridX, gridY;
 

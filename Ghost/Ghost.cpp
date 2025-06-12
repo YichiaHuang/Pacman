@@ -21,10 +21,7 @@ int bfs(Engine::Point A, Engine::Point B);
 
 Ghost::Ghost(float x, float y)
     : x(x), y(y), Position(x, y), gridX(x / PlayScene::BlockSize),
-     gridY(y / PlayScene::BlockSize), moveDirX(0), moveDirY(0), Speed(100) {
-        spawnPos.x = x;
-        spawnPos.y = y;
-     }
+     gridY(y / PlayScene::BlockSize), moveDirX(0), moveDirY(0), Speed(100) {}
 
 Ghost::~Ghost() {
     if (spriteSheet && spriteSheet != normalSprite) {
@@ -260,7 +257,7 @@ void Ghost::setDir() {
         Engine::Point nextPos(gridX + c.x, gridY + c.y);
         int d = bfs(nextPos, targetPos);  // pacmanPos 必須已經是 grid 座標
         //std::cout << "[Clyde] bfs from (" << nextPos.x << "," << nextPos.y << ") to (" << targetPos.x << "," << targetPos.y << ") = " << d << "\n";
-        if (d < nowDis && d != INT_MAX) {
+        if (d < nowDis) {
             nowDis = d;
             chosen = c;
         }
@@ -289,6 +286,7 @@ void Ghost::Update(float deltaTime) {
     if(pause_mode){
         return;
     }
+
     if (frightenedTimer <= 0.0f && spriteSheet != normalSprite) {
         Speed = 100;
         spriteSheet = normalSprite;
@@ -307,33 +305,14 @@ void Ghost::Update(float deltaTime) {
             frightenedTimer -= deltaTime;
         } else {
             setDir();
-        }
-        int nextGridX = gridX + moveDirX;
-        int nextGridY = gridY + moveDirY;
-        auto& scene = dynamic_cast<PlayScene&>(*Engine::GameEngine::GetInstance().GetActiveScene());
-        if (nextGridX >= 0 && nextGridX < PlayScene::MapWidth &&
-            nextGridY >= 0 && nextGridY < PlayScene::MapHeight &&
-            scene.map_dot[nextGridY][nextGridX] != -1) {
-            gridX = nextGridX;
-            gridY = nextGridY;
-        }
-        
-        Position.x = gridX * PlayScene::BlockSize + PlayScene::BlockSize / 2;
-        Position.y = gridY * PlayScene::BlockSize + PlayScene::BlockSize / 2;
-    } else {
-        float moveSpeed = Speed * deltaTime;
-        moveSpeed = std::min(moveSpeed, static_cast<float>(PlayScene::BlockSize) / 4);
-        
-        Position.x += moveDirX * moveSpeed;
-        Position.y += moveDirY * moveSpeed;
+            }
+        gridX += moveDirX;
+        gridY += moveDirY;
     }
 
-    float minX = PlayScene::BlockSize / 2;
-    float maxX = (PlayScene::MapWidth - 0.5f) * PlayScene::BlockSize;
-    float minY = PlayScene::BlockSize / 2;
-    float maxY = (PlayScene::MapHeight - 0.5f) * PlayScene::BlockSize;
-    Position.x = std::max(minX, std::min(Position.x, maxX));
-    Position.y = std::max(minY, std::min(Position.y, maxY));
+
+    Position.x += moveDirX * Speed * deltaTime;
+    Position.y += moveDirY * Speed * deltaTime;
 
     tick++;
     if (tick >= 10) {
@@ -454,7 +433,7 @@ void Ghost::escape() {
     for (auto& dir : candidates) {
         Engine::Point nextPos(gridX + dir.x, gridY + dir.y);
         int d = bfs(nextPos, pacmanPos); // pacmanPos 早已設定為格子座標
-        if (d > maxDist && d != INT_MAX) {
+        if (d > maxDist) {
             maxDist = d;
             chosen = dir;
         }
@@ -473,11 +452,4 @@ void Ghost::escape() {
     } else if (moveDirX == 0 && moveDirY == -1) {
         faceDir = UP; tickCount_y = 3;
     }
-}
-
-void Ghost::respawn() {
-    Position.x = spawnPos.x;
-    Position.y = spawnPos.y;
-    gridX = static_cast<int>(spawnPos.x / PlayScene::BlockSize);
-    gridY = static_cast<int>(spawnPos.y / PlayScene::BlockSize);
 }
