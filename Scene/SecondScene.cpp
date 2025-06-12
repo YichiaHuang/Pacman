@@ -101,35 +101,23 @@ void SecondScene::Initialize() {
     keyPressed.clear();
     slot_yet=1;
     //timer
-<<<<<<< HEAD
-    remainingTime = 70.0f; // 從 60 秒開始
-
-    // 建立 Timer Label
-    timerLabel = new Engine::Label("1:10", "prstartk.ttf", 28, 1294, 128, 255, 255, 255, 255);
-    UIGroup->AddNewObject(timerLabel);
-    red_coldown=0;
-=======
     remainingTime = 60.0f; // 從 60 秒開始
 
     // 建立 Timer Label
     timerLabel = new Engine::Label("1:00", "prstartk.ttf", 28, 1294, 128, 255, 255, 255, 255);
     UIGroup->AddNewObject(timerLabel);
     
->>>>>>> a4c091ba2dba9fb3118604cba473bda97014b908
 }
 
 
 
 
 void SecondScene::Terminate() {
-<<<<<<< HEAD
     //AudioHelper::StopBGM(bgmId);
     //AudioHelper::StopSample(deathBGMInstance);
     //deathBGMInstance = std::shared_ptr<ALLEGRO_SAMPLE_INSTANCE>();
     
     
-=======
->>>>>>> a4c091ba2dba9fb3118604cba473bda97014b908
     IScene::Terminate();
 }
 void SecondScene::Update(float deltaTime) {
@@ -192,7 +180,7 @@ void SecondScene::Update(float deltaTime) {
         }
         if(red_coldown < 10)
             red_coldown++;
-        if(red_coldown==5)
+        if(red_coldown==7)
             player->get_hit=false;
         
         UILives ->Text =std::string("Life ") + std::to_string(lives);

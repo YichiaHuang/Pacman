@@ -44,8 +44,8 @@ int GhostSecond::bfs(Engine::Point A, Engine::Point B) {
     int bx = static_cast<int>(B.x);
     int by = static_cast<int>(B.y);
 
-    if (ax < 0 || ax >= W || ay < 0 || ay >= H || bx < 0 || bx >= W || by < 0 || by >= H)
-        return INT_MAX;
+    //if (ax < 0 || ax >= W || ay < 0 || ay >= H || bx < 0 || bx >= W || by < 0 || by >= H)
+        //return INT_MAX;
 
     dist[ay][ax] = 0;
     std::queue<std::pair<int, int>> q;
@@ -65,7 +65,10 @@ int GhostSecond::bfs(Engine::Point A, Engine::Point B) {
         for (int i = 0; i < 4; i++) {
             int nx = cx + dx[i];
             int ny = cy + dy[i];
-            if (nx < 0 || nx >= W || ny < 0 || ny >= H) continue;
+            //if (nx < 0 || nx >= W || ny < 0 || ny >= H) continue;
+            nx=(nx+30)%30;
+            ny=(ny+30)%30;
+
             if (scene.map_dot[ny][nx] == -1) continue;
             if (!vis[ny][nx]) {
                 dist[ny][nx] = dist[cy][cx] + 1;
@@ -85,8 +88,11 @@ void GhostSecond::setDir() {
     for (int i = 0; i < 4; i++) {
         int nx = gridX + dxs[i];
         int ny = gridY + dys[i];
-        if (nx < 0 || nx >= SecondScene::MapWidth || ny < 0 || ny >= SecondScene::MapHeight)
-            continue;
+        //if (nx < 0 || nx >= SecondScene::MapWidth || ny < 0 || ny >= SecondScene::MapHeight)
+            //continue;
+        nx=(nx+30)%30;
+        ny=(ny+30)%30;
+        
         if (scene.map_dot[ny][nx] != -1&&!frighten) {
             if (!(dxs[i] == -prevPos.x && dys[i] == -prevPos.y)) {
                 nbrs.emplace_back(dxs[i], dys[i]);
@@ -98,8 +104,11 @@ void GhostSecond::setDir() {
         for (int i = 0; i < 4; i++) {
             int nx = gridX + dxs[i];
             int ny = gridY + dys[i];
-            if (nx < 0 || nx >= SecondScene::MapWidth || ny < 0 || ny >= SecondScene::MapHeight)
-                continue;
+            //if (nx < 0 || nx >= SecondScene::MapWidth || ny < 0 || ny >= SecondScene::MapHeight)
+                //continue;
+            nx=(nx+30)%30;
+            ny=(ny+30)%30;
+
             if (scene.map_dot[ny][nx] != -1) {
                 nbrs.emplace_back(dxs[i], dys[i]);
             }
@@ -169,10 +178,20 @@ void GhostSecond::Update(float deltaTime) {
         setDir();
         gridX += moveDirX;
         gridY += moveDirY;
+
+        gridX=(gridX+30)%30;
+        gridY=(gridY+30)%30;
     }
 
     Position.x += moveDirX * Speed * deltaTime;
     Position.y += moveDirY * Speed * deltaTime;
+
+    if (Position.x < 0) Position.x = SecondScene::MapWidth * SecondScene::BlockSize-SecondScene::BlockSize/2;
+    if (Position.y < 0) Position.y = SecondScene::MapHeight * SecondScene::BlockSize-SecondScene::BlockSize/2;
+    if (Position.x >= SecondScene::MapWidth * SecondScene::BlockSize) 
+        Position.x = SecondScene::BlockSize/2;
+    if (Position.y >= SecondScene::MapHeight * SecondScene::BlockSize)
+        Position.y = SecondScene::BlockSize/2;
 
     tick++;
     if(tick >= 10) {
