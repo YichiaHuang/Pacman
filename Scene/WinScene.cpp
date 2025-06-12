@@ -101,6 +101,11 @@ void WinScene::Initialize() {
     AddNewObject(new Engine::Label("Back", "pirulen.ttf", 48, halfW, halfH * 7 / 4, 0, 0, 0, 255, 0.5, 0.5));
     bgmId = AudioHelper::PlayAudio("win.wav");*/
 
+    btn = new Engine::ImageButton("win/dirt.png", "win/floor.png", halfW - 200, halfH * 7 / 4 + 100, 400, 100);
+    btn->SetOnClickCallback(std::bind(&WinScene::ReplayOnClick, this, 2));
+    AddNewControlObject(btn);
+    AddNewObject(new Engine::Label("Replay", "prstartk.ttf", 48, halfW, halfH * 7 / 4 + 100, 0, 0, 0, 255, 0.5, 0.5));
+
     playerName = "";
     int nameInputY = halfH / 4 + 60;    
     nameLabel = new Engine::Label("Name: ", "prstartk.ttf", 36, halfW, nameInputY, 255, 255, 150, 255, 0.5, 0.5);
@@ -123,9 +128,6 @@ void WinScene::Update(float deltaTime) {
     // Change to select scene.
     Engine::GameEngine::GetInstance().ChangeScene("stage-select");
 }*/
-
-
-
 
 void WinScene::OnKeyDown(int keyCode) {
     // ?望?憭批?撖怠?瘥摮?
@@ -171,4 +173,9 @@ void WinScene::SaveScoreToFile(int score) {
     scoreFile.close();
 
     std::cout << "[SaveScoreToFile] Score saved: " << nameToSave << " " << score << " at " << timeStr << std::endl;
+}
+
+void WinScene::ReplayOnClick(int stage) {
+    this->SaveScoreToFile(score);
+    Engine::GameEngine::GetInstance().ChangeScene("play");
 }

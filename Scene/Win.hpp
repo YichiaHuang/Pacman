@@ -29,6 +29,7 @@ public:
     void Terminate() override;
     void Update(float deltaTime) override;
     void BackOnClick(int stage);
+    void ReplayOnClick(int stage);
     void SaveScoreToFile(int score);
     int score=0;
     std::string playerName;
