@@ -13,6 +13,7 @@ public:
     void Initialize() override;
     void Terminate() override;
     void BackOnClick(int stage);
+    void ReplayOnClick();
 };
 
 #endif   // LOSESCENE_HPP
