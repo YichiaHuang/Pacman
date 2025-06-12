@@ -113,5 +113,6 @@ public:
     int red_coldown = 0;
     int pause_coldown = 0;
     int random[3];
+    void ReplayOnClick();
 };
 #endif   // PLAYSCENE_HPP

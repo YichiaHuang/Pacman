@@ -513,7 +513,12 @@ void PlayScene::ConstructUI() {
     pauseLabel->Visible = false;
     UIGroup->AddNewObject(pauseLabel);
 
-
+    Engine::ImageButton* replayBtn = new Engine::ImageButton(
+        "play/replay_button.png", "play/replay_button_hover.png", 
+        1450, 20, 130, 140
+    );
+    replayBtn->SetOnClickCallback(std::bind(&PlayScene::ReplayOnClick, this));
+    AddNewControlObject(replayBtn);
 
 }
 
@@ -542,6 +547,8 @@ void PlayScene::SlotOnClick(int stage){
             slot_mode= true;
         } 
     }
-    
-    
+}
+
+void PlayScene::ReplayOnClick() {
+    Engine::GameEngine::GetInstance().ChangeScene("play");
 }

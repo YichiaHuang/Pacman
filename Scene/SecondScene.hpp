@@ -120,5 +120,12 @@ public:
     void UpdateMiniMapCell(int i, int j);
     float remainingTime; // 剩餘時間（秒）
     Engine::Label* timerLabel; // 顯示用的UI Label
+    void ReplayOnClick();
+    void OnMouseDown(int button, int mx, int my) override;
+    void OnMouseMove(int mx, int my) override;
+    void OnMouseUp(int button, int mx, int my) override;
+    bool replayRequested = false;
+
+
 };
 #endif   // PLAYSCENE_HPP
