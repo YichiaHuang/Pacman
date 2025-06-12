@@ -7,6 +7,11 @@ set(CMAKE_DEPENDS_GENERATOR "MinGW Makefiles")
 # The top level Makefile was generated from the following files:
 set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
+  "C:/2025_I2P2_TowerDefense-main/CMakeLists.txt"
+  "CMakeFiles/3.29.2/CMakeCCompiler.cmake"
+  "CMakeFiles/3.29.2/CMakeCXXCompiler.cmake"
+  "CMakeFiles/3.29.2/CMakeRCCompiler.cmake"
+  "CMakeFiles/3.29.2/CMakeSystem.cmake"
   "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeCCompiler.cmake.in"
   "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeCCompilerABI.c"
   "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeCInformation.cmake"
@@ -112,11 +117,6 @@ set(CMAKE_MAKEFILE_DEPENDS
   "C:/Program Files/CMake/share/cmake-3.29/Modules/Platform/Windows-windres.cmake"
   "C:/Program Files/CMake/share/cmake-3.29/Modules/Platform/Windows.cmake"
   "C:/Program Files/CMake/share/cmake-3.29/Modules/Platform/WindowsPaths.cmake"
-  "C:/Users/User/OneDrive/Desktop/Pacman/CMakeLists.txt"
-  "CMakeFiles/3.29.2/CMakeCCompiler.cmake"
-  "CMakeFiles/3.29.2/CMakeCXXCompiler.cmake"
-  "CMakeFiles/3.29.2/CMakeRCCompiler.cmake"
-  "CMakeFiles/3.29.2/CMakeSystem.cmake"
   )
 
 # The corresponding makefile is:
