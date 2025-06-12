@@ -31,6 +31,12 @@ void Pacman::Update(float deltaTime) {
         Speed_coldown=0;
         speed_mode=false;
     }
+    if (isPowerMode) {
+        powerTimer -= deltaTime;
+        if (powerTimer <= 0) {
+            isPowerMode = false;
+        }
+    }
     if (moving) {
         Engine::Point direction = targetPosition - Position;
         float distance = direction.Magnitude();
@@ -162,6 +168,8 @@ void Pacman::CheckCollisionWithDots() {
                 if (pd) {
                     //std::cout << "[Debug] Eat PowerDot" << std::endl;
                     pd->OnEaten();
+                    isPowerMode = true;
+                    powerTimer = 7.0f;
                 } else {
                     //std::cout << "[Debug] Eat normal dot" << std::endl;
                     dot->OnEaten();

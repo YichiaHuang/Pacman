@@ -198,7 +198,13 @@ void Ghost::Update(float deltaTime) {
     float distToPacman = std::hypot(Position.x - pacX, Position.y - pacY);
 
     if (distToPacman < 16.0f && coldown > 100) {
-        caughtPacman = true;
+        if (scene.player->isPowerMode) {
+            Reset();  // 被吃回初始點
+            scene.player->money += 200;
+            AudioHelper::PlaySample("Pacman/siren.wav");  // 可選
+        } else {
+            caughtPacman = true;
+        }
         coldown = 0;
     }
     coldown++;
@@ -318,4 +324,16 @@ void Ghost::setPacmanPos(const Engine::Point& pos) {
         static_cast<int>(pos.x) / PlayScene::BlockSize,
         static_cast<int>(pos.y) / PlayScene::BlockSize
     );
+}
+
+void Ghost::Reset() {
+    Position = Engine::Point(x, y); // 原始建構座標
+    gridX = x / PlayScene::BlockSize;
+    gridY = y / PlayScene::BlockSize;
+    moveDirX = moveDirY = 0;
+    frightenedTimer = 0;
+    Speed = 100;
+    spriteSheet = normalSprite;
+    caughtPacman = false;
+    coldown = 0;
 }
