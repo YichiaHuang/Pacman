@@ -19,6 +19,7 @@ public:
 
     void BGMSlideOnValueChanged(float value);
     void SFXSlideOnValueChanged(float value);
+    void SecondOnClick(int stage);
 };
 
 #endif   // STAGESELECTSCENE_HPP

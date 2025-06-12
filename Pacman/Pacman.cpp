@@ -2,17 +2,20 @@
 #include "Scene/PlayScene.hpp"
 #include "Dot/Dot.hpp"
 #include "Engine/GameEngine.hpp"
+#include "Engine/AudioHelper.hpp"
 #include <cmath>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_primitives.h>
 #include <iostream>
-
+#include "Dot/PowerDot.hpp"
+#include <iostream>
 Pacman::Pacman(float x, float y)
     : x(x), y(y), Position(x, y), gridX(x / PlayScene::BlockSize), gridY(y / PlayScene::BlockSize), moveDirX(0), moveDirY(0), Speed(150) {
     spriteSheet = al_load_bitmap("Resource/images/pacman/pac.png");
     if (!spriteSheet) {
         std::cerr << "Failed to load pac.png\n";
     }
+    get_hit=false;
 }
 
 Pacman::~Pacman() {
@@ -21,6 +24,19 @@ Pacman::~Pacman() {
 }
 
 void Pacman::Update(float deltaTime) {
+    if(speed_mode)
+        Speed_coldown++;
+    if(speed_mode&&Speed_coldown>100){
+        Speed=150;
+        Speed_coldown=0;
+        speed_mode=false;
+    }
+    if (isPowerMode) {
+        powerTimer -= deltaTime;
+        if (powerTimer <= 0) {
+            isPowerMode = false;
+        }
+    }
     if (moving) {
         Engine::Point direction = targetPosition - Position;
         float distance = direction.Magnitude();
@@ -83,17 +99,30 @@ void Pacman::Draw() const {
         default:
             break;
     }
-
-    al_draw_tinted_scaled_rotated_bitmap_region(
+    if(!get_hit){
+        al_draw_tinted_scaled_rotated_bitmap_region(
+            spriteSheet,
+            sx, sy, frameW, frameH,                       // region in source
+            al_map_rgba(255, 255, 255, 255),              // no tint
+            cx, cy,                                       // rotation center
+            drawX, drawY,                                 // destination
+            1.0, 1.0,                                     // scaleX, scaleY
+           angle,
+            flags
+        );
+    }
+    else{
+        al_draw_tinted_scaled_rotated_bitmap_region(
         spriteSheet,
         sx, sy, frameW, frameH,                       // region in source
-        al_map_rgba(255, 255, 255, 255),              // no tint
+        al_map_rgba(255, 0, 0, 255),              // no tint
         cx, cy,                                       // rotation center
         drawX, drawY,                                 // destination
         1.0, 1.0,                                     // scaleX, scaleY
         angle,
         flags
     );
+    }
 }
 
 
@@ -125,6 +154,7 @@ void Pacman::MoveDirection(int dx, int dy) {
     else if (dy == -1) faceDir = DOWN;
 
     moving = true;
+    
 }
 
 void Pacman::CheckCollisionWithDots() {
@@ -134,10 +164,34 @@ void Pacman::CheckCollisionWithDots() {
         if (dot && !dot->IsEaten) {
             float dist = std::hypot(Position.x - dot->Position.x, Position.y - dot->Position.y);
             if (dist < 16 && dot->Visible) {
-                dot->OnEaten();
-                dotsEaten++;
-                money++;
+                PowerDot* pd = dynamic_cast<PowerDot*>(dot);
+                if (pd) {
+                    //std::cout << "[Debug] Eat PowerDot" << std::endl;
+                    pd->OnEaten();
+                    isPowerMode = true;
+                    powerTimer = 7.0f;
+                } else {
+                    //std::cout << "[Debug] Eat normal dot" << std::endl;
+                    dot->OnEaten();
+                }
+                AudioHelper::PlaySample("Pacman/pacman_chomp.wav", false, AudioHelper::SFXVolume);
+                
+                if(dot->effect==0)
+                    dotsEaten++;
+                
+                money+= dot->money;
+                
+                if(dot->effect==1){
+                    Speed=200;
+                    Speed_coldown=0;
+                    speed_mode=true;
+                }
+                else if(dot->effect==2){
+                    pause=true;
+                }
+                 
             }
         }
     }
+    
 }

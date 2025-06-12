@@ -25,7 +25,7 @@ void StageSelectScene::Initialize() {
     AddNewControlObject(btn);
     AddNewObject(new Engine::Label("Stage 1", "prstartk.ttf", 48, halfW, halfH / 2, 0, 0, 0, 255, 0.5, 0.5));
     btn = new Engine::ImageButton("stage-select/dirt.png", "stage-select/floor.png", halfW - 200, halfH / 2 + 100, 400, 100);
-    btn->SetOnClickCallback(std::bind(&StageSelectScene::PlayOnClick, this, 2));
+    btn->SetOnClickCallback(std::bind(&StageSelectScene::SecondOnClick, this, 2));
     AddNewControlObject(btn);
     AddNewObject(new Engine::Label("Stage 2", "prstartk.ttf", 48, halfW, halfH / 2 + 150, 0, 0, 0, 255, 0.5, 0.5));
 
@@ -58,4 +58,7 @@ void StageSelectScene::PlayOnClick(int stage) {
 }
 void StageSelectScene::ScoreboardOnClick() {
     Engine::GameEngine::GetInstance().ChangeScene("scoreboard");
+}
+void StageSelectScene::SecondOnClick(int stage){
+    Engine::GameEngine::GetInstance().ChangeScene("second");
 }

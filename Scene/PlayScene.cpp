@@ -23,10 +23,14 @@
 #include "Dot/Dot.hpp"
 #include "Pacman/Pacman.hpp"
 #include "Dot/NormalDot.hpp"
+#include "Dot/PowerDot.hpp"
 #include "Ghost/Blinky.hpp"
 #include "Ghost/Inky.hpp"
 #include "Ghost/Pinky.hpp"
 #include "Ghost/Clyde.hpp"
+#include "Dot/Ice.hpp"
+#include "Dot/Speed.hpp"
+#include "Dot/Star.hpp"
 
 // TODO HACKATHON-4 (1/3): Trace how the game handles keyboard input.
 // TODO HACKATHON-4 (2/3): Find the cheat code sequence in this file.
@@ -52,20 +56,26 @@ Engine::Point PlayScene::GetClientSize() {
 
 std::vector<Ghost*> ghostList;
 
+ALLEGRO_BITMAP* PlayScene::frightenedBitmap = nullptr;
+
 void PlayScene::Initialize() {
+    std::srand(std::time(nullptr)); 
     opening = true;
     openingTimer = 0;
     startSound = AudioHelper::PlaySample("Pacman/start-game.wav", false, AudioHelper::SFXVolume);
-
+    
     WinTriggered = false;
     mapState.clear();
     keyStrokes.clear();
     ticks = 0;
     deathCountDown = -1;
-    lives = 10;
+    lives = 3;
     money = 0;
     SpeedMult = 1;
     total_dot = 0;
+
+    if (!frightenedBitmap)
+        frightenedBitmap = al_load_bitmap("Resource/images/ghost/ghost_frighten.png");
     AddNewObject(TileMapGroup = new Group());
     AddNewObject(GroundEffectGroup = new Group());
     AddNewObject(DebugIndicatorGroup = new Group());
@@ -92,13 +102,8 @@ void PlayScene::Initialize() {
     UIGroup->AddNewObject(imgTarget);
     keyPressed.clear();
     slot_yet=1;
-    /*
-    // Add four ghosts in the corners
-    AddNewObject(new Blinky(1 * BlockSize + BlockSize / 2, 1 * BlockSize + BlockSize / 2)); // top-left
-    AddNewObject(new Pinky(18 * BlockSize + BlockSize / 2, 1 * BlockSize + BlockSize / 2)); // top-right
-    AddNewObject(new Inky(1 * BlockSize + BlockSize / 2, 11 * BlockSize + BlockSize / 2));  // bottom-left
-    AddNewObject(new Clyde(18 * BlockSize + BlockSize / 2, 11 * BlockSize + BlockSize / 2)); // bottom-right
-    for (auto g : ghostList) AddNewObject(g);*/
+    
+
 }
 
 
@@ -118,6 +123,31 @@ void PlayScene::Terminate() {
 void PlayScene::Update(float deltaTime) {
     if (paused) return;
 
+    if(!opening){
+        if(player->pause)
+        {
+            for(int i = 0; i < 4; i++) {
+                if (ghost[i]) {
+                    ghost[i]->pause_mode = true;
+                }
+            }
+            player->pause = false;
+            pause_coldown = 0;
+        }
+        if(pause_coldown < 110)
+        {
+            pause_coldown++;
+        }
+        if(pause_coldown > 100 && ghost[0]->pause_mode)
+        {
+            for(int i = 0; i < 4; i++) {
+               if (ghost[i]) {
+                    ghost[i]->pause_mode = false;
+                }
+            }
+        }
+    }
+    
     if (opening) {
         openingTimer += deltaTime;
         if (openingTimer >= 2.0f) {
@@ -138,99 +168,75 @@ void PlayScene::Update(float deltaTime) {
         player->Update(deltaTime);
     }
     
-   
-    if(ghost_1){
-        ghost_1->setPacmanPos(player->GetPosition());
-        ghost_1->Update(deltaTime);
-        
-        float distToPacman = std::hypot(ghost_1->GetPosition().x - player->GetPosition().x, 
-                                       ghost_1->GetPosition().y - player->GetPosition().y);
-        if(distToPacman < 32.0f) { 
-            lives--;
-            UILives->Text = std::string("Life ") + std::to_string(lives);
-            if(lives <= 0) {
-                Engine::GameEngine::GetInstance().ChangeScene("lose-scene");
-                return;
-            }
-          
-            delete ghost_1;
-            ghost_1 = new Blinky(1 * BlockSize + BlockSize / 2, 1 * BlockSize + BlockSize / 2);
-            delete player;
-            player = new Pacman(10 * BlockSize + BlockSize / 2, 6 * BlockSize + BlockSize / 2 - 64);
-        }
+    if(player->get_hit&&red_coldown>5)
+    {
+        player->get_hit=false;
     }
-    
-    if(ghost_2){
-        ghost_2->setPacmanPos(player->GetPosition());
-        ghost_2->Update(deltaTime);
-        
-        float distToPacman = std::hypot(ghost_2->GetPosition().x - player->GetPosition().x, 
-                                       ghost_2->GetPosition().y - player->GetPosition().y);
-        if(distToPacman < 32.0f) {
-            lives--;
-            UILives->Text = std::string("Life ") + std::to_string(lives);
-            if(lives <= 0) {
-                Engine::GameEngine::GetInstance().ChangeScene("lose-scene");
-                return;
+    for (int i = 0; i < 4; i++) {
+        if (ghost[i]) {
+            ghost[i]->setPacmanPos(player->GetPosition());
+
+            Engine::Point pacmanDir(0, 0);
+            if (keyPressed.count(ALLEGRO_KEY_UP)) pacmanDir = Engine::Point(0, -1);
+            else if (keyPressed.count(ALLEGRO_KEY_DOWN)) pacmanDir = Engine::Point(0, 1);
+            else if (keyPressed.count(ALLEGRO_KEY_LEFT)) pacmanDir = Engine::Point(-1, 0);
+            else if (keyPressed.count(ALLEGRO_KEY_RIGHT)) pacmanDir = Engine::Point(1, 0);
+
+            // 分別呼叫各自的 setTargetPos
+            if (auto* g = dynamic_cast<Blinky*>(ghost[i])) {
+                g->setTargetPos();
+            } else if (auto* g = dynamic_cast<Pinky*>(ghost[i])) {
+                g->setTargetPos(pacmanDir);
+            } else if (auto* g = dynamic_cast<Inky*>(ghost[i])) {
+                if (ghost[0])
+                    g->setTargetPos(pacmanDir, ghost[0]->GetPosition());
+            } else if (auto* g = dynamic_cast<Clyde*>(ghost[i])) {
+                g->setTargetPos();
             }
-            delete ghost_2;
-            ghost_2 = new Pinky(18 * BlockSize + BlockSize / 2, 1 * BlockSize + BlockSize / 2);
-            delete player;
-            player = new Pacman(10 * BlockSize + BlockSize / 2, 6 * BlockSize + BlockSize / 2 - 64);
-        }
-    }
-    
-    if(ghost_3){
-        ghost_3->setPacmanPos(player->GetPosition());
-        ghost_3->Update(deltaTime);
-        
-        float distToPacman = std::hypot(ghost_3->GetPosition().x - player->GetPosition().x, 
-                                       ghost_3->GetPosition().y - player->GetPosition().y);
-        if(distToPacman < 32.0f) {
-            lives--;
-            UILives->Text = std::string("Life ") + std::to_string(lives);
-            if(lives <= 0) {
-                Engine::GameEngine::GetInstance().ChangeScene("lose-scene");
-                return;
-            }
-            delete ghost_3;
-            ghost_3 = new Inky(1 * BlockSize + BlockSize / 2, 11 * BlockSize + BlockSize / 2);
-            delete player;
-            player = new Pacman(10 * BlockSize + BlockSize / 2, 6 * BlockSize + BlockSize / 2 - 64);
-        }
-    }
-    
-    if(ghost_4){
-        ghost_4->setPacmanPos(player->GetPosition());
-        ghost_4->Update(deltaTime);
-        
-        float distToPacman = std::hypot(ghost_4->GetPosition().x - player->GetPosition().x, 
-                                       ghost_4->GetPosition().y - player->GetPosition().y);
-        if(distToPacman < 32.0f) {
-            lives--;
-            UILives->Text = std::string("Life ") + std::to_string(lives);
-            if(lives <= 0) {
-                Engine::GameEngine::GetInstance().ChangeScene("lose-scene");
-                return;
-            }
-            delete ghost_4;
-            ghost_4 = new Clyde(18 * BlockSize + BlockSize / 2, 11 * BlockSize + BlockSize / 2);
-            delete player;
-            player = new Pacman(10 * BlockSize + BlockSize / 2, 6 * BlockSize + BlockSize / 2 - 64);
+
+            ghost[i]->Update(deltaTime);
         }
     }
 
-   
+
+    for(int i=0; i<4; i++){
+        if(ghost[i]){
+            if(ghost[i]->caughtPacman==true){
+                ghost[i]->caughtPacman=false;
+                lives--;
+                player->get_hit=true;
+                red_coldown=0;
+            }
+            
+        }
+    }
+    if(red_coldown < 10)
+        red_coldown++;
+        
+    UILives ->Text =std::string("Life ") + std::to_string(lives);
+    if(lives == 0) {
+        Engine::LOG(Engine::INFO) << "Game Over, switching to game-over scene.";
+        Engine::GameEngine::GetInstance().ChangeScene("lose");
+        return;
+    }
+    //ghost
+
+    // If we use deltaTime directly, then we might have Bullet-through-paper problem.
+    // Reference: Bullet-Through-Paper
     money = player->money; 
 
-   
-    if(player->dotsEaten==total_dot){
-        WinTriggered=true;
+    if (player->dotsEaten >= total_dot) {
+        if (!WinTriggered) {
+            WinTriggered = true;
+            Engine::LOG(Engine::INFO) << "All dots eaten! Switching to WinScene.";
+            Engine::GameEngine::GetInstance().ChangeScene("win-scene");
+            return;
+        }
     }
+
 
     UIMoney->Text = std::string("$") + std::to_string(money);
 
-   
     int dx = 0, dy = 0;
     if (keyPressed.count(ALLEGRO_KEY_UP)) {
             dx = 0; dy = -1;
@@ -257,6 +263,7 @@ void PlayScene::Update(float deltaTime) {
             player->MoveDirection(dx, dy);
         }
     }
+    
 
     DotsGroup->Update(deltaTime);
     if (SpeedMult == 0)
@@ -269,6 +276,8 @@ void PlayScene::Update(float deltaTime) {
         Engine::GameEngine::GetInstance().ChangeScene("win-scene");
         return;
     }
+
+    
 
     if(slot_yet&&!opening)
     {
@@ -283,10 +292,15 @@ void PlayScene::Update(float deltaTime) {
         slotMachine = new SlotMachine(1345, 600);
         
         //ghost
-        ghost_1= new Blinky(1 * BlockSize + BlockSize / 2, 1 * BlockSize + BlockSize / 2);
-        ghost_2= new Pinky(18 * BlockSize + BlockSize / 2, 1 * BlockSize + BlockSize / 2);
-        ghost_3= new Inky(1 * BlockSize + BlockSize / 2, 11 * BlockSize + BlockSize / 2);
-        ghost_4= new Clyde(18 * BlockSize + BlockSize / 2, 11 * BlockSize + BlockSize / 2);
+        ghost[0]= new Blinky(1 * BlockSize + BlockSize / 2, 1 * BlockSize + BlockSize / 2);
+        ghost[1]= new Pinky(18 * BlockSize + BlockSize / 2, 1 * BlockSize + BlockSize / 2);
+        ghost[2]= new Inky(1 * BlockSize + BlockSize / 2, 11 * BlockSize + BlockSize / 2);
+        ghost[3]= new Clyde(18 * BlockSize + BlockSize / 2, 11 * BlockSize + BlockSize / 2);
+
+        for (int i = 0; i < 4; i++) {
+            ghost[i]->normalSprite = ghost[i]->spriteSheet;  // 記住鬼的初始圖片
+        }
+
         
         //ghost
     }
@@ -313,10 +327,10 @@ void PlayScene::Draw() const {
         slotMachine->Draw();
     
     if(!opening) {
-        ghost_1->Draw(); 
-        ghost_2->Draw();
-        ghost_3->Draw();
-        ghost_4->Draw();
+        for(int i=0; i<4; i++){
+            ghost[i]->Draw();
+        }
+       
     }
     
     if (!opening && player) {
@@ -405,17 +419,81 @@ void PlayScene::ReadMap() {
         }
     }
     Dot* dot;
+    
+    for(int i=0; i<3; i++)
+    {
+        random[i]=rand()%total_dot;
+        
+        if(i>0)
+        {
+            for(int j=0; j<i; j++)
+            {
+                if(random[i]==random[j]){
+                    i--;
+                    break;
+                }
+            }
+            
+        }
+        
+    }
+
+    int powerRandom[5];
+    for (int i = 0; i < 5; i++) {
+        powerRandom[i] = rand() % total_dot;
+        for (int j = 0; j < i; j++) {
+            if (powerRandom[i] == powerRandom[j] || 
+                powerRandom[i] == random[0] || 
+                powerRandom[i] == random[1] || 
+                powerRandom[i] == random[2]) {
+                i--; // 重新挑一個
+                break;
+            }
+        }
+    }
+
+
+
+    int k=0;
     for(int i=0; i<13; i++)
     {
         for(int j=0; j<20; j++)
         {
+            
+            
             if(map_dot[i][j] == 1)
             {
-                DotsGroup->AddNewObject(dot=new NormalDot(j*BlockSize+BlockSize/2, i*BlockSize+BlockSize/2));
+                bool isPower = false;
+                for (int p = 0; p < 5; p++) {
+                    if (k == powerRandom[p]) {
+                        isPower = true;
+                        break;
+                    }
+                }
+
+                if (isPower) {
+                    DotsGroup->AddNewObject(dot = new PowerDot(j * BlockSize + BlockSize / 2, i * BlockSize + BlockSize / 2));
+                }
+                else if(k==random[0]){
+                    DotsGroup->AddNewObject(dot = new Star(j * BlockSize + BlockSize / 2, i * BlockSize + BlockSize / 2));
+                }
+                else if(k==random[1]){
+                    DotsGroup->AddNewObject(dot = new Speed(j * BlockSize + BlockSize / 2, i * BlockSize + BlockSize / 2));
+                }
+                else if(k==random[2]){
+                    DotsGroup->AddNewObject(dot = new Ice(j * BlockSize + BlockSize / 2, i * BlockSize + BlockSize / 2));
+                }
+                else{
+                    DotsGroup->AddNewObject(dot = new NormalDot(j * BlockSize + BlockSize / 2, i * BlockSize + BlockSize / 2));
+                }
+
+                
+                k++;
             }
             
         }   
     }
+    total_dot-=3; // 減去三個item
 
 }
 

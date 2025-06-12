@@ -39,6 +39,7 @@ protected:
     int money;
     int SpeedMult;
     std::set<int> keyPressed; 
+    
 public:
     enum TileType {
             TILE_DIRT,
@@ -53,6 +54,7 @@ public:
     static const Engine::Point SpawnGridPoint;
     static const Engine::Point EndGridPoint;
     static const std::vector<int> code;
+    static ALLEGRO_BITMAP* frightenedBitmap;
     int MapId;
     float ticks;
     float deathCountDown;
@@ -107,9 +109,9 @@ public:
     SlotMachine* slotMachine;
     bool slot_mode=false;
     bool slot_yet=true;
-    Ghost* ghost_1;
-    Ghost* ghost_2;
-    Ghost* ghost_3;
-    Ghost* ghost_4;
+    Ghost* ghost[4];
+    int red_coldown = 0;
+    int pause_coldown = 0;
+    int random[3];
 };
 #endif   // PLAYSCENE_HPP

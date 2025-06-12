@@ -16,22 +16,29 @@ public:
     virtual void Draw() const override;
     void setDir();
     void escape();
+    void reverse();
     void setPacmanPos(const Engine::Point &pos);
     //virtual const char* GetSpriteName() const = 0;
     Engine::Point GetPosition() const { return Position; }
     int animationDirection = 1;
 
-protected:
+    bool caughtPacman = false;
+    bool pause_mode = false;
     float Speed;
     float x, y;
     float frightenedTimer = 0;
+    ALLEGRO_BITMAP* spriteSheet = nullptr;
+    ALLEGRO_BITMAP* normalSprite = nullptr;
+    int tickCount_x = 0;
+    int tickCount_y = 0;
+    void Reset();
+protected:
     Engine::Point Position;
     Engine::Point targetPos;
     Engine::Point pacmanPos;
     int moveDirX, moveDirY;
     int gridX, gridY;
 
-    ALLEGRO_BITMAP* spriteSheet = nullptr;
     int animationFrame = 0;
     float animationTimer = 0;
     const int totalFrames = 2;
@@ -43,7 +50,8 @@ protected:
     Direction faceDir = RIGHT;
 
     int tick=0;
-    int tickCount_x = 0;
-    int tickCount_y = 0;
+    int coldown = 200;
+    bool isFrightened = false;
+    
 };
 #endif // GHOST_HPP

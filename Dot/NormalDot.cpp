@@ -13,7 +13,7 @@
 
 
 NormalDot::NormalDot(float x, float y) :
-    Dot("play/dot.png", x, y),
+    Dot("play/dot.png", x, y, 1, 0),
     IsEaten(false),
     time(0.0f),
     baseY(y) {

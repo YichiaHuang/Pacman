@@ -9,6 +9,7 @@
 Pinky::Pinky(float x, float y)
     : Ghost(x, y) {
     spriteSheet = al_load_bitmap("Resource/images/ghost/pink_ghost.png");
+    normalSprite = spriteSheet;
     if (!spriteSheet) {
         std::cerr << "Failed to load pinky.png\n";
     }

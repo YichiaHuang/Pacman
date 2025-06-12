@@ -17,11 +17,15 @@ public:
     int dotsEaten = 0;
     int money=0;
 
-    
+    Engine::Point Position;
+    bool get_hit=false;
+    bool pause = false;
+    bool isPowerMode = false;
+    float powerTimer = 0;
 private:
     float Speed;
     float x, y;
-    Engine::Point Position;
+    
     Engine::Point targetPosition;
     int gridX, gridY;
     int moveDirX, moveDirY;
@@ -37,6 +41,8 @@ private:
 
     enum Direction { RIGHT = 0, LEFT, UP, DOWN };
     Direction faceDir = RIGHT;
+    int Speed_coldown=0;
+    bool speed_mode = false;
     
 };
 

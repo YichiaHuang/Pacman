@@ -20,9 +20,21 @@ add_executable(2025_I2P2_TowerDefense
     Dot/Dot.hpp
     Dot/NormalDot.cpp
     Dot/NormalDot.hpp
-    
+    Dot/Ice.cpp
+    Dot/Ice.hpp
+    Dot/Speed.cpp
+    Dot/Speed.hpp
+    Dot/Star.cpp
+    Dot/Star.hpp
+    Dot/PowerDot.cpp
+    Dot/PowerDot.hpp
+    Dot/Scroll.cpp
+    Dot/Scroll.hpp
+
     Pacman/Pacman.cpp
     Pacman/Pacman.hpp
+    Pacman/Pac.cpp
+    Pacman/Pac.hpp
 
     Slot/SlotMachine.cpp
     Slot/SlotMachine.hpp
@@ -78,12 +90,17 @@ add_executable(2025_I2P2_TowerDefense
     Scene/SettingsScene.hpp
     Scene/ScoreboardScene.cpp
     Scene/ScoreboardScene.hpp
-    
+    Scene/Win.cpp
+    Scene/Win.hpp
+    Scene/BoardSecond.cpp
+    Scene/BoardSecond.hpp
+
     Scene/MotionScene.cpp
     Scene/MotionScene.hpp
     Scene/InfoScene.cpp
     Scene/InfoScene.hpp
-
+    Scene/SecondScene.cpp
+    Scene/SecondScene.hpp
     
     
 
