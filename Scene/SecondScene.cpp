@@ -66,8 +66,8 @@ void SecondScene::Initialize() {
     SpeedMult = 1;
     total_dot = 0;
 
-    if (!frightenedBitmap)
-        frightenedBitmap = al_load_bitmap("Resource/images/ghost/ghost_frighten.png");
+    /*if (!frightenedBitmap)
+        frightenedBitmap = al_load_bitmap("Resource/images/ghost/ghost_frighten.png");*/
     AddNewObject(TileMapGroup = new Group());
     AddNewObject(GroundEffectGroup = new Group());
     AddNewObject(DebugIndicatorGroup = new Group());
@@ -95,35 +95,19 @@ void SecondScene::Initialize() {
     keyPressed.clear();
     slot_yet=1;
     //timer
-    remainingTime = 10.0f; // 從 60 秒開始
+    remainingTime = 60.0f; // 從 60 秒開始
 
     // 建立 Timer Label
-    timerLabel = new Engine::Label("0:10", "prstartk.ttf", 28, 1294, 128, 255, 255, 255, 255);
+    timerLabel = new Engine::Label("1:00", "prstartk.ttf", 28, 1294, 128, 255, 255, 255, 255);
     UIGroup->AddNewObject(timerLabel);
+    
 }
 
 
 
 
 void SecondScene::Terminate() {
-    //AudioHelper::StopBGM(bgmId);
-    //AudioHelper::StopSample(deathBGMInstance);
-    //deathBGMInstance = std::shared_ptr<ALLEGRO_SAMPLE_INSTANCE>();
-    if (frightenedBitmap) {
-        al_destroy_bitmap(frightenedBitmap);
-        frightenedBitmap = nullptr;
-    }
-    if (player) {
-        delete player;
-        player = nullptr;
-    }
-    if (miniMapBitmap) {
-        al_destroy_bitmap(miniMapBitmap);
-        miniMapBitmap = nullptr;
-    }
-
     IScene::Terminate();
-    
 }
 void SecondScene::Update(float deltaTime) {
     if (paused) return;
@@ -257,6 +241,9 @@ void SecondScene::Draw() const {
     al_use_transform(&transform);
 
     if (UIGroup) UIGroup->Draw();
+
+
+    
 
     if (miniMapBitmap&&!opening) {
     float scale = 1.0;
@@ -447,14 +434,13 @@ void SecondScene::ConstructUI() {
     pauseLabel->Visible = false;
     UIGroup->AddNewObject(pauseLabel);
 
-
+    
     Engine::ImageButton* replayBtn = new Engine::ImageButton(
         "play/replay_button.png", "play/replay_button_hover.png", 
         1450, 20, 130, 140
     );
     replayBtn->SetOnClickCallback(std::bind(&SecondScene::ReplayOnClick, this));
-    UIGroup->AddNewObject(replayBtn);
-    AddNewControlObject(replayBtn);
+    UIGroup->AddNewControlObject(replayBtn);
 
 }
 
