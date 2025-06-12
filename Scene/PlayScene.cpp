@@ -493,7 +493,7 @@ void PlayScene::ReadMap() {
             
         }   
     }
-    total_dot-=8; // 減去三個item
+    total_dot-=3; // 減去三個item
 
 }
 
