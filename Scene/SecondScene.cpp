@@ -109,21 +109,61 @@ void SecondScene::Terminate() {
     //AudioHelper::StopBGM(bgmId);
     //AudioHelper::StopSample(deathBGMInstance);
     //deathBGMInstance = std::shared_ptr<ALLEGRO_SAMPLE_INSTANCE>();
-    if (frightenedBitmap) {
-        al_destroy_bitmap(frightenedBitmap);
-        frightenedBitmap = nullptr;
+    // 釋放 miniMapBitmap（如果有分配）
+    if (miniMapBitmap) {
+        al_destroy_bitmap(miniMapBitmap);
+        miniMapBitmap = nullptr;
+    }
+    
+    // 釋放各個 Group 物件
+    if (UIGroup) {
+        delete UIGroup;
+        UIGroup = nullptr;
+    }
+    if (TileMapGroup) {
+        delete TileMapGroup;
+        TileMapGroup = nullptr;
+    }
+    if (GroundEffectGroup) {
+        delete GroundEffectGroup;
+        GroundEffectGroup = nullptr;
+    }
+    if (DebugIndicatorGroup) {
+        delete DebugIndicatorGroup;
+        DebugIndicatorGroup = nullptr;
+    }
+    if (DotsGroup) {
+        delete DotsGroup;
+        DotsGroup = nullptr;
+    }
+    if (EnemyGroup) {
+        delete EnemyGroup;
+        EnemyGroup = nullptr;
+    }
+    if (EffectGroup) {
+        delete EffectGroup;
+        EffectGroup = nullptr;
+    }
+    
+    // 釋放玩家和其他分配的物件（例如 timerLabel、playerOneLabel、readyLabel 等）
+    if (timerLabel) {
+        delete timerLabel;
+        timerLabel = nullptr;
     }
     if (player) {
         delete player;
         player = nullptr;
     }
-    if (miniMapBitmap) {
-        al_destroy_bitmap(miniMapBitmap);
-        miniMapBitmap = nullptr;
+    if (playerOneLabel) {
+        delete playerOneLabel;
+        playerOneLabel = nullptr;
     }
-
-    IScene::Terminate();
+    if (readyLabel) {
+        delete readyLabel;
+        readyLabel = nullptr;
+    }
     
+    IScene::Terminate();
 }
 void SecondScene::Update(float deltaTime) {
     if (paused) return;
