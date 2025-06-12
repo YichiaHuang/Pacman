@@ -21,12 +21,19 @@ public:
 
     ALLEGRO_BITMAP* animationBitmap = nullptr;
     int totalFrames = 5;        // 幀數
-int frameWidth = 160;       // 每幀寬
-int frameHeight = 160;       // 每幀高
-float frameDuration = 1.5; // 每幀持續時間
-void Draw() const override;
-int animationFrame=2;
-int frameCount = 0; // 當前幀數
+    int frameWidth = 160;       // 每幀寬
+    int frameHeight = 160;       // 每幀高
+    float frameDuration = 1.5; // 每幀持續時間
+    void Draw() const override;
+    int animationFrame=2;
+    int frameCount = 0; // 當前幀數
+    bool transitionStarted = false;
+    float transitionTimer = 0.0f;
+    const float ghostDelay = 0.5f;
+    const float ghostSpeed = 300.0f;
+    mutable std::vector<float> ghostX = { -100, -100, -100, -100 };
+    mutable std::vector<bool> ghostDone = { false, false, false, false };
+    mutable ALLEGRO_BITMAP* ghostBitmap = nullptr;
+
 };
-#endif   // INC_2025_I2P2_TOWERDEFENSE_WITH_ANSWER_STARTSCENE_H
-   // SettingsScene_HPP
+#endif
