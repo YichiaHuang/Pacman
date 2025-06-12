@@ -2,6 +2,7 @@
 #include "Scene/SecondScene.hpp"
 #include "Dot/Dot.hpp"
 #include "Engine/GameEngine.hpp"
+#include "Engine/AudioHelper.hpp"
 #include <cmath>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_primitives.h>
@@ -180,7 +181,8 @@ void Pac::CheckCollisionWithDots() {
                 } else {
                     dot->OnEaten();
                 }
-
+                AudioHelper::PlaySample("Pacman/pacman_chomp.wav", false, AudioHelper::SFXVolume);
+                
                 if(dot->effect==0)
                     dotsEaten++;
                 
