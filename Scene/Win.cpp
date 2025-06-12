@@ -101,11 +101,13 @@ void Win::Initialize() {
     AddNewObject(new Engine::Label("Back", "pirulen.ttf", 48, halfW, halfH * 7 / 4, 0, 0, 0, 255, 0.5, 0.5));
     bgmId = AudioHelper::PlayAudio("win.wav");*/
 
+    /*
     btn = new Engine::ImageButton("win/dirt.png", "win/floor.png", halfW - 200, halfH * 7 / 4 + 100, 400, 100);
     btn->SetOnClickCallback(std::bind(&Win::ReplayOnClick, this, 2));
     AddNewControlObject(btn);
     AddNewObject(new Engine::Label("Replay", "prstartk.ttf", 48, halfW, halfH * 7 / 4 + 100, 0, 0, 0, 255, 0.5, 0.5));
-
+    */
+   
     playerName = "";
     int nameInputY = halfH / 4 + 60;    
     nameLabel = new Engine::Label("Name: ", "prstartk.ttf", 36, halfW, nameInputY, 255, 255, 150, 255, 0.5, 0.5);
