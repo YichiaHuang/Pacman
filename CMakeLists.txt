@@ -16,6 +16,17 @@ add_executable(2025_I2P2_TowerDefense
     
 
     # TODO HACKATHON-3 (3/3): Add the new enemy source files here
+    GhostSecond/GhostSecond.cpp
+    GhostSecond/GhostSecond.hpp
+    GhostSecond/Blin.cpp
+    GhostSecond/Blin.hpp
+    GhostSecond/Cly.cpp
+    GhostSecond/Cly.hpp
+    GhostSecond/Ink.cpp
+    GhostSecond/Ink.hpp
+    GhostSecond/Pink.cpp
+    GhostSecond/Pink.hpp
+    
     Dot/Dot.cpp
     Dot/Dot.hpp
     Dot/NormalDot.cpp
@@ -30,6 +41,8 @@ add_executable(2025_I2P2_TowerDefense
     Dot/PowerDot.hpp
     Dot/Scroll.cpp
     Dot/Scroll.hpp
+    Dot/PD.cpp
+    Dot/PD.hpp
 
     Pacman/Pacman.cpp
     Pacman/Pacman.hpp
@@ -101,7 +114,8 @@ add_executable(2025_I2P2_TowerDefense
     Scene/InfoScene.hpp
     Scene/SecondScene.cpp
     Scene/SecondScene.hpp
-    
+    Scene/Lose.cpp
+    Scene/Lose.hpp
     
 
     UI/Animation/DirtyEffect.cpp

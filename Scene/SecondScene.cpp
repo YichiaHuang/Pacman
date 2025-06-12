@@ -23,7 +23,7 @@
 #include "Dot/Dot.hpp"
 #include "Pacman/Pac.hpp"
 #include "Dot/NormalDot.hpp"
-#include "Dot/PowerDot.hpp"
+#include "Dot/PD.hpp"
 #include "Ghost/Blinky.hpp"
 #include "Ghost/Inky.hpp"
 #include "Ghost/Pinky.hpp"
@@ -33,6 +33,12 @@
 #include "Dot/Star.hpp"
 #include "Dot/Scroll.hpp"
 #include <allegro5/allegro_primitives.h>
+#include "GhostSecond/Blin.hpp"
+#include "GhostSecond/GhostSecond.hpp"
+#include "GhostSecond/Cly.hpp"
+#include "GhostSecond/Pink.hpp"
+#include "GhostSecond/Ink.hpp"
+
 
 bool SecondScene::DebugMode = false;
 const std::vector<Engine::Point> SecondScene::directions = { Engine::Point(-1, 0), Engine::Point(0, -1), Engine::Point(1, 0), Engine::Point(0, 1) };
@@ -95,12 +101,12 @@ void SecondScene::Initialize() {
     keyPressed.clear();
     slot_yet=1;
     //timer
-    remainingTime = 10.0f; // 從 60 秒開始
+    remainingTime = 70.0f; // 從 60 秒開始
 
     // 建立 Timer Label
-    timerLabel = new Engine::Label("0:10", "prstartk.ttf", 28, 1294, 128, 255, 255, 255, 255);
+    timerLabel = new Engine::Label("1:10", "prstartk.ttf", 28, 1294, 128, 255, 255, 255, 255);
     UIGroup->AddNewObject(timerLabel);
-    
+    red_coldown=0;
 }
 
 
@@ -110,59 +116,7 @@ void SecondScene::Terminate() {
     //AudioHelper::StopBGM(bgmId);
     //AudioHelper::StopSample(deathBGMInstance);
     //deathBGMInstance = std::shared_ptr<ALLEGRO_SAMPLE_INSTANCE>();
-    // 釋放 miniMapBitmap（如果有分配）
-    /*if (miniMapBitmap) {
-        al_destroy_bitmap(miniMapBitmap);
-        miniMapBitmap = nullptr;
-    }
     
-    // 釋放各個 Group 物件
-    if (UIGroup) {
-        delete UIGroup;
-        UIGroup = nullptr;
-    }
-    if (TileMapGroup) {
-        delete TileMapGroup;
-        TileMapGroup = nullptr;
-    }
-    if (GroundEffectGroup) {
-        delete GroundEffectGroup;
-        GroundEffectGroup = nullptr;
-    }
-    if (DebugIndicatorGroup) {
-        delete DebugIndicatorGroup;
-        DebugIndicatorGroup = nullptr;
-    }
-    if (DotsGroup) {
-        delete DotsGroup;
-        DotsGroup = nullptr;
-    }
-    if (EnemyGroup) {
-        delete EnemyGroup;
-        EnemyGroup = nullptr;
-    }
-    if (EffectGroup) {
-        delete EffectGroup;
-        EffectGroup = nullptr;
-    }
-    
-    // 釋放玩家和其他分配的物件（例如 timerLabel、playerOneLabel、readyLabel 等）
-    if (timerLabel) {
-        delete timerLabel;
-        timerLabel = nullptr;
-    }
-    if (player) {
-        delete player;
-        player = nullptr;
-    }
-    if (playerOneLabel) {
-        delete playerOneLabel;
-        playerOneLabel = nullptr;
-    }
-    if (readyLabel) {
-        delete readyLabel;
-        readyLabel = nullptr;
-    }*/
     
     IScene::Terminate();
 }
@@ -189,6 +143,54 @@ void SecondScene::Update(float deltaTime) {
     if(!opening){
         money = player->money;
         UIMoney->Text = std::string("$") + std::to_string(money);
+        if(player){
+            if(player->power_mode){
+                for(int i=0; i<4; i++){
+                    ghost[i]->frighten=true;
+                    ghost[i]->frightenedTimer=0;
+                    ghost[i]->Speed=80;
+                }
+                player->power_mode=false;
+            }
+            
+            if(player->pause){
+                for(int i=0; i<4; i++)
+                    ghost[i]->pause=true;
+                freeze_coldown=0;
+                player->pause=false;
+                freeze_mode=true;
+            }
+            if(freeze_mode&&freeze_coldown>100){
+                for(int i=0; i<4; i++)
+                    ghost[i]->pause=false;
+            }
+            if(freeze_mode)
+                freeze_coldown++;
+
+            for(int i=0; i<4; i++){
+                if(ghost[i]){
+                    if(ghost[i]->caught==true){
+                        ghost[i]->caught=false;
+                        lives--;
+                        player->get_hit=true;
+                        red_coldown=0;
+                }
+            
+            }
+        }
+        if(red_coldown < 10)
+            red_coldown++;
+        if(red_coldown==5)
+            player->get_hit=false;
+        
+        UILives ->Text =std::string("Life ") + std::to_string(lives);
+        if(lives == 0) {
+            Engine::LOG(Engine::INFO) << "Game Over, switching to game-over scene.";
+            Engine::GameEngine::GetInstance().ChangeScene("lose_second");
+            return;
+        }
+    }
+
     }
     
 
@@ -203,6 +205,10 @@ void SecondScene::Update(float deltaTime) {
             if (readyLabel)
                 UIGroup->RemoveObject(readyLabel->GetObjectIterator());
             player = new Pac(10 * BlockSize + BlockSize / 2, 7 * BlockSize + BlockSize / 2 - 64);
+            ghost[0]=new Blin(1 * BlockSize + BlockSize / 2, 1 * BlockSize + BlockSize / 2);
+            ghost[1]=new Pink(1 * BlockSize + BlockSize / 2, 18 * BlockSize + BlockSize / 2);
+            ghost[2]=new Ink(11 * BlockSize + BlockSize / 2, 16 * BlockSize + BlockSize / 2);
+            ghost[3]=new Cly(11 * BlockSize + BlockSize / 2, 13 * BlockSize + BlockSize / 2);
         } else {
             return;
         }
@@ -217,7 +223,7 @@ void SecondScene::Update(float deltaTime) {
 
         cameraPos.x = playerPos.x - screenW / 2+ 2 * BlockSize;;
         cameraPos.y = playerPos.y - screenH / 2;
-
+        GhostSecond::CameraPos = cameraPos;
         // 限制攝影機不超出地圖邊界
         // 限制攝影機不超出地圖邊界（只在地圖大於畫面時才限制）
         // 否則自動置中地圖
@@ -270,7 +276,7 @@ void SecondScene::Update(float deltaTime) {
 
     if (WinTriggered) {
         Engine::LOG(Engine::INFO) << "WinTriggered = true, switching to win-scene.";
-        Engine::GameEngine::GetInstance().ChangeScene("stage-select");
+        Engine::GameEngine::GetInstance().ChangeScene("win_second");
         return;
     }
     if (replayRequested) {
@@ -278,6 +284,14 @@ void SecondScene::Update(float deltaTime) {
         Engine::GameEngine::GetInstance().ChangeScene("second");
         return;
     }
+    for(int i=0; i<4; i++)
+    {
+        if(ghost[i]){
+        ghost[i]->setPacmanPos(player->Position);
+        ghost[i]->Update(deltaTime);
+    }
+    }
+    
 
     
 }
@@ -293,6 +307,13 @@ void SecondScene::Draw() const {
     if (DotsGroup) DotsGroup->Draw();
     if (player) player->Draw();
 
+    for(int i=0; i<4; i++){
+        if(ghost[i]){
+        
+        ghost[i]->Draw();
+    }
+    }
+    
     // 恢復 transform 為預設，繪製 UI (不受攝影機影響)
     al_identity_transform(&transform);
     al_use_transform(&transform);
@@ -319,6 +340,7 @@ void SecondScene::Draw() const {
                              x + (gridX + 1) * cellSize, y + (gridY + 1) * cellSize,
                              al_map_rgb(255, 0, 0));
 }
+    
 }
 
 
@@ -440,11 +462,11 @@ void SecondScene::ReadMap() {
                     }
                 }
 
-                /*if (isPower) {
-                    DotsGroup->AddNewObject(dot = new PowerDot(j * BlockSize + BlockSize / 2, i * BlockSize + BlockSize / 2));
+                if (isPower) {
+                    DotsGroup->AddNewObject(dot = new PD(j * BlockSize + BlockSize / 2, i * BlockSize + BlockSize / 2));
                     map_dot[i][j]=2;
                 }
-                else */if(k==random[0]||k==random[1]||k==random[2]){
+                else if(k==random[0]||k==random[1]||k==random[2]){
                     DotsGroup->AddNewObject(dot = new Star(j * BlockSize + BlockSize / 2, i * BlockSize + BlockSize / 2));
                     map_dot[i][j]=2;//item
                 }

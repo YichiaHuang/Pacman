@@ -15,7 +15,7 @@
 #include "Scene/SecondScene.hpp"
 #include "Scene/Win.hpp"
 #include "Scene/BoardSecond.hpp"
-
+#include "Scene/Lose.hpp"
 int main(int argc, char **argv) {
 	Engine::LOG::SetConfig(true);
 	Engine::GameEngine& game = Engine::GameEngine::GetInstance();
@@ -33,7 +33,7 @@ int main(int argc, char **argv) {
 	game.AddNewScene("second", new SecondScene());
 	game.AddNewScene("win_second", new Win());
 	game.AddNewScene("score_second", new BoardSecond());
-
+	game.AddNewScene("lose_second", new Lose());
 
     // TODO HACKATHON-1 (1/1): Change the start scene
 	//game.Start("motion", 60, 1600, 832);

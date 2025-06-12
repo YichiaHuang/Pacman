@@ -12,7 +12,7 @@
 #include "Slot/SlotMachine.hpp"
 #include "UI/Component/ImageButton.hpp"
 #include "UI/Component/Label.hpp"
-#include "Ghost/Ghost.hpp"
+#include "GhostSecond/GhostSecond.hpp"
 class Turret;
 namespace Engine {
     class Group;
@@ -110,7 +110,7 @@ public:
     SlotMachine* slotMachine;
     bool slot_mode=false;
     bool slot_yet=true;
-    Ghost* ghost[4];
+    GhostSecond* ghost[4];
     int red_coldown = 0;
     int pause_coldown = 0;
     int random[14];
@@ -125,7 +125,8 @@ public:
     void OnMouseMove(int mx, int my) override;
     void OnMouseUp(int button, int mx, int my) override;
     bool replayRequested = false;
-
+    int freeze_coldown;
+    bool freeze_mode=false;
 
 };
 #endif   // PLAYSCENE_HPP

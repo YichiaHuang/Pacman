@@ -202,6 +202,10 @@ void Pac::CheckCollisionWithDots() {
                     scroll_coldown=0;
                     boundary=true;
                 }
+                else if(dot->effect==4){
+                    power_mode=true;
+                    
+                }
             }
         }
     }

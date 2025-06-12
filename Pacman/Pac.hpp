@@ -20,6 +20,7 @@ public:
     Engine::Point Position;
     bool get_hit=false;
     bool pause = false;
+    bool power_mode=false;
 private:
     float Speed;
     float x, y;
