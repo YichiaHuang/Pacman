@@ -134,43 +134,64 @@ void Ghost::setDir() {
 void Ghost::Update(float deltaTime) {
     if (pause_mode) return;
 
+    // 重設驚嚇模式
     if (frightenedTimer <= 0.0f && spriteSheet != normalSprite) {
         Speed = 100;
         spriteSheet = normalSprite;
+        setDir(); // 確保方向在驚嚇模式結束時重設
     }
 
+    // 計算當前網格中心
     float centerX = gridX * PlayScene::BlockSize + PlayScene::BlockSize / 2;
     float centerY = gridY * PlayScene::BlockSize + PlayScene::BlockSize / 2;
     float distToCenter = std::hypot(Position.x - centerX, Position.y - centerY);
 
-    if (distToCenter < 1.5f) {
+    // 計算下一步位置
+    float nextX = Position.x + moveDirX * Speed * deltaTime;
+    float nextY = Position.y + moveDirY * Speed * deltaTime;
+
+    // 檢查下一步是否有效
+    auto& scene = dynamic_cast<PlayScene&>(*Engine::GameEngine::GetInstance().GetActiveScene());
+    int nextGridX = static_cast<int>(std::round(nextX / PlayScene::BlockSize));
+    int nextGridY = static_cast<int>(std::round(nextY / PlayScene::BlockSize));
+    bool canMove = nextGridX >= 0 && nextGridX < PlayScene::MapWidth &&
+                   nextGridY >= 0 && nextGridY < PlayScene::MapHeight &&
+                   scene.map_dot[nextGridY][nextGridX] != -1;
+
+    // 在網格中心或無法移動時更新方向
+    if (distToCenter < 1.5f || !canMove) {
+        // 對齊網格中心
         Position.x = centerX;
         Position.y = centerY;
+        gridX = static_cast<int>(std::round(Position.x / PlayScene::BlockSize));
+        gridY = static_cast<int>(std::round(Position.y / PlayScene::BlockSize));
 
+        // 更新方向
         if (frightenedTimer > 0.0f) {
             escape();
-            frightenedTimer -= deltaTime;
         } else {
             setDir();
         }
 
-        int nextX = gridX + moveDirX;
-        int nextY = gridY + moveDirY;
-
-        auto& scene = dynamic_cast<PlayScene&>(*Engine::GameEngine::GetInstance().GetActiveScene());
-        if (nextX >= 0 && nextX < PlayScene::MapWidth &&
-            nextY >= 0 && nextY < PlayScene::MapHeight &&
-            scene.map_dot[nextY][nextX] != -1) {
-            gridX = nextX;
-            gridY = nextY;
-        } else {
-            moveDirX = moveDirY = 0;
-            return;
-        }
+        // 重新計算下一步位置（基於新方向）
+        nextX = Position.x + moveDirX * Speed * deltaTime;
+        nextY = Position.y + moveDirY * Speed * deltaTime;
+        nextGridX = static_cast<int>(std::round(nextX / PlayScene::BlockSize));
+        nextGridY = static_cast<int>(std::round(nextY / PlayScene::BlockSize));
+        canMove = nextGridX >= 0 && nextGridX < PlayScene::MapWidth &&
+                  nextGridY >= 0 && nextGridY < PlayScene::MapHeight &&
+                  scene.map_dot[nextGridY][nextGridX] != -1;
     }
 
-    Position.x += moveDirX * Speed * deltaTime;
-    Position.y += moveDirY * Speed * deltaTime;
+    // 移動（如果可以）
+    if (canMove) {
+        Position.x = nextX;
+        Position.y = nextY;
+    } else {
+        // 若仍無法移動，停止並記錄
+        moveDirX = moveDirY = 0;
+        Engine::LOG(Engine::INFO) << "[Ghost::Update] Cannot move at (" << Position.x << "," << Position.y << "), stopping";
+    }
 
     tick++;
     if (tick >= 10) {
