@@ -20,7 +20,7 @@ public:
     Engine::Point GetPosition() const { return Position; }
     int animationDirection = 1;
     int bfs(Engine::Point A, Engine::Point B);
-    static Engine::Point CameraPos;
+    //static Engine::Point CameraPos;
     bool pause=false;
     bool caught=false;
     void Reset();

@@ -10,7 +10,7 @@
 Clyde::Clyde(float x, float y)
     : Ghost(x, y) {
     spriteSheet = al_load_bitmap("Resource/images/ghost/orange_ghost.png");
-    normalSprite = spriteSheet;
+    //normalSprite = spriteSheet;
 }
 
 void Clyde::setTargetPos() {
@@ -24,6 +24,7 @@ void Clyde::setTargetPos() {
     if (manhattanDis > 8) {
         targetPos = pacmanPos;
     } else {
-        targetPos = Engine::Point(0, 0);
+        //targetPos = Engine::Point(0, 0);
+        pacmanPos=Engine::Point(1, 1);
     }
 }

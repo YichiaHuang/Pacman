@@ -9,7 +9,7 @@
 Inky::Inky(float x, float y)
     : Ghost(x, y) {
     spriteSheet = al_load_bitmap("Resource/images/ghost/blue_ghost.png");
-    normalSprite = spriteSheet;
+    //normalSprite = spriteSheet;
     if (!spriteSheet) {
         std::cerr << "Failed to load inky.png\n";
     }
@@ -18,7 +18,7 @@ Inky::Inky(float x, float y)
 void Inky::setTargetPos(Engine::Point pacmanDir,
     Engine::Point blinkyPos) {
 
-    Engine::Point pacmanFront(
+    /*Engine::Point pacmanFront(
         pacmanPos.x + pacmanDir.x * 2,
         pacmanPos.y + pacmanDir.y * 2
     );
@@ -36,5 +36,5 @@ void Inky::setTargetPos(Engine::Point pacmanDir,
     const int MAP_WIDTH = 20;
     const int MAP_HEIGHT = 13;
     targetPos.x = std::max(1.0f, std::min(rawTarget.x, float(MAP_WIDTH - 1)));
-    targetPos.y = std::max(1.0f, std::min(rawTarget.y, float(MAP_HEIGHT - 1)));
+    targetPos.y = std::max(1.0f, std::min(rawTarget.y, float(MAP_HEIGHT - 1)));*/
 }

@@ -223,7 +223,7 @@ void SecondScene::Update(float deltaTime) {
 
         cameraPos.x = playerPos.x - screenW / 2+ 2 * BlockSize;;
         cameraPos.y = playerPos.y - screenH / 2;
-        GhostSecond::CameraPos = cameraPos;
+        //GhostSecond::CameraPos = cameraPos;
         // 限制攝影機不超出地圖邊界
         // 限制攝影機不超出地圖邊界（只在地圖大於畫面時才限制）
         // 否則自動置中地圖

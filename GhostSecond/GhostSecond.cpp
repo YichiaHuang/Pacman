@@ -16,7 +16,7 @@
 
 using namespace std;
 using namespace Engine;
-Engine::Point GhostSecond::CameraPos;
+//Engine::Point GhostSecond::CameraPos;
 int bfs(Engine::Point A, Engine::Point B);
 
 GhostSecond::GhostSecond(float x, float y)
