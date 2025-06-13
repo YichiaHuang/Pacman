@@ -110,7 +110,7 @@ public:
     SlotMachine* slotMachine;
     bool slot_mode=false;
     bool slot_yet=true;
-    GhostSecond* ghost[4];
+    GhostSecond* ghost[8];
     int red_coldown = 0;
     int pause_coldown = 0;
     int random[14];

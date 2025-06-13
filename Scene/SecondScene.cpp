@@ -145,7 +145,7 @@ void SecondScene::Update(float deltaTime) {
         UIMoney->Text = std::string("$") + std::to_string(money);
         if(player){
             if(player->power_mode){
-                for(int i=0; i<4; i++){
+                for(int i=0; i<8; i++){
                     ghost[i]->frighten=true;
                     ghost[i]->frightenedTimer=0;
                     ghost[i]->Speed=80;
@@ -155,20 +155,20 @@ void SecondScene::Update(float deltaTime) {
             }
             
             if(player->pause){
-                for(int i=0; i<4; i++)
+                for(int i=0; i<8; i++)
                     ghost[i]->pause=true;
                 freeze_coldown=0;
                 player->pause=false;
                 freeze_mode=true;
             }
             if(freeze_mode&&freeze_coldown>100){
-                for(int i=0; i<4; i++)
+                for(int i=0; i<8; i++)
                     ghost[i]->pause=false;
             }
             if(freeze_mode)
                 freeze_coldown++;
 
-            for(int i=0; i<4; i++){
+            for(int i=0; i<8; i++){
                 if(ghost[i]){
                     if(ghost[i]->caught==true){
                         ghost[i]->caught=false;
@@ -210,6 +210,10 @@ void SecondScene::Update(float deltaTime) {
             ghost[1]=new Pink(1 * BlockSize + BlockSize / 2, 18 * BlockSize + BlockSize / 2);
             ghost[2]=new Ink(11 * BlockSize + BlockSize / 2, 16 * BlockSize + BlockSize / 2);
             ghost[3]=new Cly(11 * BlockSize + BlockSize / 2, 13 * BlockSize + BlockSize / 2);
+            ghost[4]=new Blin(3 * BlockSize + BlockSize / 2, 21 * BlockSize + BlockSize / 2);
+            ghost[5]=new Pink(21 * BlockSize + BlockSize / 2, 21 * BlockSize + BlockSize / 2);
+            ghost[6]=new Ink(25 * BlockSize + BlockSize / 2, 28 * BlockSize + BlockSize / 2);
+            ghost[7]=new Cly(4 * BlockSize + BlockSize / 2, 28 * BlockSize + BlockSize / 2);
         } else {
             return;
         }
@@ -287,7 +291,7 @@ void SecondScene::Update(float deltaTime) {
         Engine::GameEngine::GetInstance().ChangeScene("second");
         return;
     }
-    for(int i=0; i<4; i++)
+    for(int i=0; i<8; i++)
     {
         if(ghost[i]){
         ghost[i]->setPacmanPos(player->Position);
@@ -310,7 +314,7 @@ void SecondScene::Draw() const {
     if (DotsGroup) DotsGroup->Draw();
     
 
-    for(int i=0; i<4; i++){
+    for(int i=0; i<8; i++){
         if(ghost[i]){
         
         ghost[i]->Draw();
@@ -344,7 +348,7 @@ void SecondScene::Draw() const {
                              al_map_rgb(255, 0, 0));
 
     // 畫出四隻鬼的位置（藍色方塊）
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 8; i++) {
         if (ghost[i]) {
             Engine::Point gpos = ghost[i]->GetPosition();
             int gX = gpos.x / BlockSize;
