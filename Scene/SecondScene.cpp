@@ -341,7 +341,20 @@ void SecondScene::Draw() const {
     al_draw_filled_rectangle(x + gridX * cellSize, y + gridY * cellSize,
                              x + (gridX + 1) * cellSize, y + (gridY + 1) * cellSize,
                              al_map_rgb(255, 0, 0));
-}
+
+    // 畫出四隻鬼的位置（藍色方塊）
+    for (int i = 0; i < 4; i++) {
+        if (ghost[i]) {
+            Engine::Point gpos = ghost[i]->GetPosition();
+            int gX = gpos.x / BlockSize;
+            int gY = gpos.y / BlockSize;
+
+            al_draw_filled_rectangle(x + gX * cellSize, y + gY * cellSize,
+                                     x + (gX + 1) * cellSize, y + (gY + 1) * cellSize,
+                                     al_map_rgb(0, 0, 255));
+        }
+    }
+    }
     
 }
 
