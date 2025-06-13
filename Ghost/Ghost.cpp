@@ -374,6 +374,43 @@ Ghost::~Ghost() {
 
 
 int Ghost::bfs(Engine::Point A, Engine::Point B) {
+    if(predict_mode&&!frighten)
+    {
+        int dx[4] = {1, 0, -1, 0};
+        int dy[4] = {0, 1, 0, -1};
+        auto& scene = dynamic_cast<PlayScene&>(*Engine::GameEngine::GetInstance().GetActiveScene());
+        int xx=pacmanPos.x;
+        int yy=pacmanPos.y;
+        int flag=0;
+        for(int i=0; i<4; i++){
+            int nx=xx+dx[i];
+            int ny=yy+dy[i];
+            if (nx < 0 || nx >= PlayScene::MapWidth || ny < 0 || ny >= PlayScene::MapHeight)
+                continue;
+            
+            if(scene.map_dot[nx][ny]!=-1)
+            {
+                for(int i=0; i<4; i++){
+                    int nnx=nx+dx[i];
+                    int nny=ny+dy[i];
+                    if(scene.map_dot[nnx][nny]!=-1)
+                    {
+                        pacmanPos = Engine::Point(nnx, nny);
+                        flag=1;
+                        break;
+                    }
+                }
+            }
+            if(flag)
+                break;
+        }
+    }
+    
+    
+    
+    
+    
+    
     auto& scene = dynamic_cast<PlayScene&>(*Engine::GameEngine::GetInstance().GetActiveScene());
 
     int W = 20;//PlayScene::MapWidth;
@@ -516,8 +553,24 @@ void Ghost::setDir() {
 
 
 void Ghost::Update(float deltaTime) {
-    if(pause)
-        return;
+    auto& scene = dynamic_cast<PlayScene&>(*Engine::GameEngine::GetInstance().GetActiveScene());
+    float pacX = scene.player->Position.x;
+    float pacY = scene.player->Position.y;
+    float distToPacman = std::hypot(Position.x - pacX, Position.y - pacY);
+
+    if (distToPacman < 16.0f && cold > 100) {
+        if(!frighten){
+        caught = true;
+        cold = 0;
+        }
+        else if(frighten){
+            Reset();
+            scene.player->money+=200;
+            cold = 0;
+        }
+    }
+    cold++;
+    
 
     if(frighten){
         frightenedTimer++;
@@ -527,6 +580,9 @@ void Ghost::Update(float deltaTime) {
         Speed=100;
         first_step=true;
     }
+
+    if(pause)
+        return;
 
     float centerX = gridX * PlayScene::BlockSize + PlayScene::BlockSize / 2;
     float centerY = gridY * PlayScene::BlockSize + PlayScene::BlockSize / 2;
@@ -559,30 +615,18 @@ void Ghost::Update(float deltaTime) {
         tickCount_x = (tickCount_x + 1) % 2;
     }
 
-    auto& scene = dynamic_cast<PlayScene&>(*Engine::GameEngine::GetInstance().GetActiveScene());
-    float pacX = scene.player->Position.x;
-    float pacY = scene.player->Position.y;
-    float distToPacman = std::hypot(Position.x - pacX, Position.y - pacY);
-
-    if (distToPacman < 16.0f && cold > 100) {
-        if(!frighten){
-        caught = true;
-        cold = 0;
-        }
-        else if(frighten){
-            Reset();
-            scene.player->money+=200;
-            cold = 0;
-        }
-    }
-    cold++;
+    
+    
 }
 void Ghost::setPacmanPos(const Engine::Point &pos) {
     // 傳入前請確保 pacmanPos 是格子座標
+    
+    
     pacmanPos = Engine::Point(
         static_cast<int>(pos.x) / PlayScene::BlockSize,
         static_cast<int>(pos.y) / PlayScene::BlockSize
     );
+    
 }
 
 

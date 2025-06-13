@@ -78,6 +78,7 @@ public:
     bool first_step=false;
     bool flee=false;
     bool random_mode=false;
+    bool predict_mode=false;
 protected:
     
     float x, y;
