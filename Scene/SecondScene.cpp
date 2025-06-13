@@ -208,7 +208,7 @@ void SecondScene::Update(float deltaTime) {
             player = new Pac(10 * BlockSize + BlockSize / 2, 7 * BlockSize + BlockSize / 2 - 64);
             ghost[0]=new Blin(1 * BlockSize + BlockSize / 2, 1 * BlockSize + BlockSize / 2);
             ghost[1]=new Pink(1 * BlockSize + BlockSize / 2, 18 * BlockSize + BlockSize / 2);
-            ghost[2]=new Ink(11 * BlockSize + BlockSize / 2, 16 * BlockSize + BlockSize / 2);
+            ghost[2]=new Ink(11 * BlockSize + BlockSize / 2, 17 * BlockSize + BlockSize / 2);
             ghost[3]=new Cly(11 * BlockSize + BlockSize / 2, 13 * BlockSize + BlockSize / 2);
             ghost[4]=new Blin(3 * BlockSize + BlockSize / 2, 21 * BlockSize + BlockSize / 2);
             ghost[5]=new Pink(21 * BlockSize + BlockSize / 2, 21 * BlockSize + BlockSize / 2);
