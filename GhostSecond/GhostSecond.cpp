@@ -93,7 +93,7 @@ void GhostSecond::setDir() {
         nx=(nx+30)%30;
         ny=(ny+30)%30;
         
-        if (scene.map_dot[ny][nx] != -1&&!frighten) {
+        if (scene.map_dot[ny][nx] != -1&&!!f_firststep) {
             if (!(dxs[i] == -prevPos.x && dys[i] == -prevPos.y)) {
                 nbrs.emplace_back(dxs[i], dys[i]);
             }
@@ -112,6 +112,8 @@ void GhostSecond::setDir() {
             if (scene.map_dot[ny][nx] != -1) {
                 nbrs.emplace_back(dxs[i], dys[i]);
             }
+            if(f_firststep)
+                f_firststep=false;
         }
     }
     Engine::Point chosen(0, 0);
@@ -289,7 +291,7 @@ void GhostSecond::Reset() {
     gridX = x / SecondScene::BlockSize;
     gridY = y / SecondScene::BlockSize;
     moveDirX = moveDirY = 0;
-    frightenedTimer = 0;
+    //frightenedTimer = 0;
     Speed = 100;
     //spriteSheet = normalSprite;
     caught = false;

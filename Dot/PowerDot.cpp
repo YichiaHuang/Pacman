@@ -42,7 +42,7 @@ void PowerDot::OnEaten() {
         scene.ghost[i]->Speed = 80;
         scene.ghost[i]->frighten = true;
         scene.ghost[i]->frightenedTimer = 0;
-
+        scene.ghost[i]->f_firststep=true;
         //scene.ghost[i]->tickCount_y = 0;
     }
 }

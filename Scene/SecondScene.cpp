@@ -149,6 +149,7 @@ void SecondScene::Update(float deltaTime) {
                     ghost[i]->frighten=true;
                     ghost[i]->frightenedTimer=0;
                     ghost[i]->Speed=80;
+                    ghost[i]->f_firststep=true;
                 }
                 player->power_mode=false;
             }
@@ -307,7 +308,7 @@ void SecondScene::Draw() const {
 
     if (TileMapGroup) TileMapGroup->Draw();
     if (DotsGroup) DotsGroup->Draw();
-    if (player) player->Draw();
+    
 
     for(int i=0; i<4; i++){
         if(ghost[i]){
@@ -315,7 +316,7 @@ void SecondScene::Draw() const {
         ghost[i]->Draw();
     }
     }
-    
+    if (player) player->Draw();
     // 恢復 transform 為預設，繪製 UI (不受攝影機影響)
     al_identity_transform(&transform);
     al_use_transform(&transform);

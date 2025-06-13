@@ -27,6 +27,7 @@ public:
     int frightenedTimer;
     bool frighten=false;
     float Speed;
+    bool f_firststep=false;
 protected:
     
     float x, y;
