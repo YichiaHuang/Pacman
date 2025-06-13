@@ -5,7 +5,8 @@
 
 #include "Inky.hpp"
 #include "Engine/Point.hpp"
-
+#include "Scene/PlayScene.hpp"
+#include "Engine/GameEngine.hpp"
 Inky::Inky(float x, float y)
     : Ghost(x, y) {
     spriteSheet = al_load_bitmap("Resource/images/ghost/blue_ghost.png");
@@ -16,9 +17,25 @@ Inky::Inky(float x, float y)
     }
 }
 
-void Inky::setTargetPos(Engine::Point pacmanDir,
-    Engine::Point blinkyPos) {
+void Inky::setTargetPos(/*Engine::Point pacmanDir,
+    Engine::Point blinkyPos*/) {
+    int gx = Position.x / PlayScene::BlockSize;
+    int gy = Position.y / PlayScene::BlockSize;
+    int px = pacmanPos.x;
+    int py = pacmanPos.y;
 
+    int manhattanDis = abs(px - gx) + abs(py - gy);
+    if (manhattanDis > 4) {
+        
+        predict_mode=true;
+    } else {
+        //targetPos = Engine::Point(0, 0);
+        //pacmanPos=Engine::Point(1, 1);
+        predict_mode=false;
+        
+    }
+    
+    
     /*Engine::Point pacmanFront(
         pacmanPos.x + pacmanDir.x * 2,
         pacmanPos.y + pacmanDir.y * 2

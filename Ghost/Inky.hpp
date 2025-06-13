@@ -11,7 +11,7 @@
 class Inky: public Ghost {
     public:
         Inky(float x, float y);
-        void setTargetPos(Engine::Point PacmanDir,
-             Engine::Point BlinkyPos);
+        void setTargetPos(/*Engine::Point PacmanDir,
+             Engine::Point BlinkyPos*/);
 };
 #endif

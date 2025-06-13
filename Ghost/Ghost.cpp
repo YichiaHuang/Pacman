@@ -374,7 +374,7 @@ Ghost::~Ghost() {
 
 
 int Ghost::bfs(Engine::Point A, Engine::Point B) {
-    if(predict_mode&&!frighten)
+    /*if(predict_mode&&!frighten)
     {
         int dx[4] = {1, 0, -1, 0};
         int dy[4] = {0, 1, 0, -1};
@@ -405,7 +405,7 @@ int Ghost::bfs(Engine::Point A, Engine::Point B) {
                 break;
         }
     }
-    
+    */
     
     
     
@@ -510,7 +510,7 @@ void Ghost::setDir() {
         }
     }
 
-    if(nowDis>10||random_mode){
+    if(nowDis>20||random_mode){
         int size=nbrs.size();
         int r=rand();
         r=r%size;

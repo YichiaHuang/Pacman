@@ -19,15 +19,28 @@ void Clyde::setTargetPos() {
     int gy = Position.y / PlayScene::BlockSize;
     int px = pacmanPos.x;
     int py = pacmanPos.y;
+    if(flee){
+        flee_timer++;
+    }
+    if(flee&&flee_timer>300){
+        flee=false;
+        first_step=true;
+    }
+        
 
     int manhattanDis = abs(px - gx) + abs(py - gy);
     if (manhattanDis > 4) {
-        targetPos = pacmanPos;
-        flee=false;
+        //targetPos = pacmanPos;
+        //flee=false;
+        flag=1;
     } else {
         //targetPos = Engine::Point(0, 0);
         //pacmanPos=Engine::Point(1, 1);
+        if(flag){
         flee=true;
         first_step=true;
+        flag=0;
+        flee_timer=0;
+        }
     }
 }

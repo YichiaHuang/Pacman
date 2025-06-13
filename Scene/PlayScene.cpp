@@ -187,10 +187,10 @@ void PlayScene::Update(float deltaTime) {
                 g->setTargetPos();
             } /*else if (auto* g = dynamic_cast<Pinky*>(ghost[i])) {
                 g->setTargetPos(pacmanDir);
-            } else if (auto* g = dynamic_cast<Inky*>(ghost[i])) {
-                if (ghost[0])
-                    g->setTargetPos(pacmanDir, ghost[0]->GetPosition());
-            } */else if (auto* g = dynamic_cast<Clyde*>(ghost[i])) {
+            } */else if (auto* g = dynamic_cast<Inky*>(ghost[i])) {
+                //if (ghost[0])
+                    g->setTargetPos(/*pacmanDir, ghost[0]->GetPosition()*/);
+            } else if (auto* g = dynamic_cast<Clyde*>(ghost[i])) {
                 g->setTargetPos();
             }
 
