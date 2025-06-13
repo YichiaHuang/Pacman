@@ -75,6 +75,7 @@ public:
     bool frighten=false;
     float Speed;
     bool f_firststep=false;
+    bool first_step=false;
 protected:
     
     float x, y;
