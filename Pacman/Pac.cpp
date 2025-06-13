@@ -141,7 +141,8 @@ void Pac::MoveDirection(int dx, int dy) {
         boundary=true;
 
     }
-
+    //nextGridX=(nextGridX+30)%30;
+    //nextGridY=(nextGridY+30)%30;
     auto& scene = dynamic_cast<SecondScene&>(*Engine::GameEngine::GetInstance().GetActiveScene());
     if (scene.map_dot[nextGridY][nextGridX] == -1)
         return;

@@ -260,10 +260,12 @@ void SecondScene::Update(float deltaTime) {
 
             int targetX = gridX + dy;
             int targetY = gridY + dx;
+            targetX = (targetX+30)%30;
+            targetY = (targetY+30)%30;
 
             // 檢查是否在邊界內，且不是牆壁
             if (/*targetX >= 0 && targetX < SecondScene::MapHeight &&
-                targetY >= 0 && targetY < SecondScene::MapWidth &&*/                    map_dot[targetX][targetY] != -1) {
+                targetY >= 0 && targetY < SecondScene::MapWidth &&*/map_dot[targetX][targetY] != -1) {
                 player->MoveDirection(dx, dy);
                 map_dot[targetX][targetY]=0;
                 UpdateMiniMapCell(targetX, targetY);

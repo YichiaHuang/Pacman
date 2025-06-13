@@ -126,6 +126,19 @@ void GhostSecond::setDir() {
             chosen = c;
         }
     }
+
+    if(nowDis>15){
+        int size=nbrs.size();
+        int r=rand();
+        r=r%size;
+        int i=0;
+        for (auto& c : nbrs) {
+            i++;
+            if(r==i){
+                chosen = c;
+            }
+        }
+    }
     }
     else if(frighten){
         int nowDis = -1;
