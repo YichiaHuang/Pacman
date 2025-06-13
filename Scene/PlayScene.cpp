@@ -214,7 +214,7 @@ void PlayScene::Update(float deltaTime) {
         red_coldown++;
         
     UILives ->Text =std::string("Life ") + std::to_string(lives);
-    if(lives == 0) {
+    if(lives <= 0) {
         Engine::LOG(Engine::INFO) << "Game Over, switching to game-over scene.";
         Engine::GameEngine::GetInstance().ChangeScene("lose");
         return;

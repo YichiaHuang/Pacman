@@ -21,7 +21,11 @@ int bfs(Engine::Point A, Engine::Point B);
 
 GhostSecond::GhostSecond(float x, float y)
     : x(x), y(y), Position(x, y), gridX(x / SecondScene::BlockSize),
-     gridY(y / SecondScene::BlockSize), moveDirX(0), moveDirY(0), Speed(100) {}
+     gridY(y / SecondScene::BlockSize), moveDirX(0), moveDirY(0), Speed(100) {
+    originX=x / SecondScene::BlockSize;
+    originY=y / SecondScene::BlockSize;
+    origin=Engine::Point(originX, originY);
+     }
 
 GhostSecond::~GhostSecond() {
     if (spriteSheet) {
@@ -119,7 +123,22 @@ void GhostSecond::setDir() {
         }
     }
     Engine::Point chosen(0, 0);
-    if(!frighten){
+    if(return_mode){
+        int nowDis = INT_MAX;
+    
+    for (auto& c : nbrs) {
+        Engine::Point nextPos(gridX + c.x, gridY + c.y);
+        int d;
+        if(return_mode)
+            d=bfs(nextPos, origin);
+        
+        if (d < nowDis) {
+            nowDis = d;
+            chosen = c;
+        }
+    }
+    }
+    else if(!frighten){
     int nowDis = INT_MAX;
     
     for (auto& c : nbrs) {
@@ -131,7 +150,7 @@ void GhostSecond::setDir() {
         }
     }
 
-    if(nowDis>15){
+    if(nowDis>10){
         int size=nbrs.size();
         int r=rand();
         r=r%size;
@@ -160,6 +179,18 @@ void GhostSecond::setDir() {
     moveDirX = chosen.x;
     moveDirY = chosen.y;
 
+    if(return_mode){
+        if (moveDirX == 1 && moveDirY == 0) {
+        faceDir = RIGHT; tickCount_y = 1;tickCount_x = 0;
+    } else if (moveDirX == -1 && moveDirY == 0) {
+        faceDir = LEFT; tickCount_y = 0;tickCount_x = 1;
+    } else if (moveDirX == 0 && moveDirY == 1) {
+        faceDir = DOWN; tickCount_y = 0;tickCount_x = 0;
+    } else if (moveDirX == 0 && moveDirY == -1) {
+        faceDir = UP; tickCount_y = 1;tickCount_x = 1;
+    }
+    }
+    else{
     if (moveDirX == 1 && moveDirY == 0) {
         faceDir = RIGHT; tickCount_y = 2;
     } else if (moveDirX == -1 && moveDirY == 0) {
@@ -169,18 +200,49 @@ void GhostSecond::setDir() {
     } else if (moveDirX == 0 && moveDirY == -1) {
         faceDir = UP; tickCount_y = 3;
     }
+    }
 }
 
 
 
 void GhostSecond::Update(float deltaTime) {
+    
+        auto& scene = dynamic_cast<SecondScene&>(*Engine::GameEngine::GetInstance().GetActiveScene());
+    float pacX = scene.player->Position.x;
+    float pacY = scene.player->Position.y;
+    float distToPacman = std::hypot(Position.x - pacX, Position.y - pacY);
+
+    if (distToPacman < 16.0f && cold > 100) {
+        if(!frighten){
+        caught = true;
+        cold = 0;
+        }
+        else if(frighten&&!return_mode){
+            //Reset();
+            return_pre=true;
+            //Speed=300;
+            scene.player->money+=200;
+            cold = 0;
+        }
+    }
+    cold++;
+    
+    if (return_mode && /*Position.x==x && Position.y==y*/gridX==originX&&gridY==originY) {
+        return_mode = false;
+        Speed = 100;
+        Position = Engine::Point(x, y);
+        frighten=false;
+        first_step=true;
+    }
+    
+    
     if(pause)
         return;
 
     if(frighten){
         frightenedTimer++;
     }
-    if(frighten&&frightenedTimer>300){
+    if(frighten&&frightenedTimer>300&&!return_mode&&!return_pre){
         frighten=false;
         Speed=100;
         first_step=true;
@@ -193,6 +255,12 @@ void GhostSecond::Update(float deltaTime) {
     if (distToCenter < 1.5f) {
         Position.x = centerX;
         Position.y = centerY;
+        if(return_pre){
+            return_pre=false;
+            return_mode=true;
+            Speed=300;
+            first_step=true;
+        }
         setDir();
         gridX += moveDirX;
         gridY += moveDirY;
@@ -211,29 +279,15 @@ void GhostSecond::Update(float deltaTime) {
     if (Position.y >= SecondScene::MapHeight * SecondScene::BlockSize)
         Position.y = SecondScene::BlockSize/2;
 
+    if(!return_mode){
     tick++;
     if(tick >= 10) {
         tick = 0;
         tickCount_x = (tickCount_x + 1) % 2;
     }
-
-    auto& scene = dynamic_cast<SecondScene&>(*Engine::GameEngine::GetInstance().GetActiveScene());
-    float pacX = scene.player->Position.x;
-    float pacY = scene.player->Position.y;
-    float distToPacman = std::hypot(Position.x - pacX, Position.y - pacY);
-
-    if (distToPacman < 16.0f && cold > 100) {
-        if(!frighten){
-        caught = true;
-        cold = 0;
-        }
-        else if(frighten){
-            Reset();
-            scene.player->money+=200;
-            cold = 0;
-        }
     }
-    cold++;
+
+
 }
 void GhostSecond::setPacmanPos(const Engine::Point &pos) {
     // 傳入前請確保 pacmanPos 是格子座標
@@ -266,6 +320,18 @@ void GhostSecond::Draw() const {
     if(!frighten){
     al_draw_tinted_scaled_rotated_bitmap_region(
         spriteSheet,
+        tickCount_x * frameW, tickCount_y * frameH, frameW, frameH,
+        al_map_rgba(255, 255, 255, 255), // 無染色
+        cx, cy,                          // 旋轉中心
+        screenX, screenY,                // 屏幕位置
+        3.0f, 3.0f,                      // 縮放
+        0,                               // 旋轉角度
+        0                                // 標誌
+    );
+    }
+    else if(return_mode){
+        al_draw_tinted_scaled_rotated_bitmap_region(
+        ScareSheet,
         tickCount_x * frameW, tickCount_y * frameH, frameW, frameH,
         al_map_rgba(255, 255, 255, 255), // 無染色
         cx, cy,                          // 旋轉中心

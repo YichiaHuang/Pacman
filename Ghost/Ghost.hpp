@@ -35,7 +35,11 @@ public:
     bool predict_mode=false;
     Engine::Point lockedPredictTargetPos;
     int predictTargetTimer = 0;
-    
+    bool return_mode=false;
+    bool return_pre=false;
+    int originX;
+    int originY;
+    Engine::Point origin;
 protected:
     
     float x, y;
@@ -47,6 +51,7 @@ protected:
     
     ALLEGRO_BITMAP* spriteSheet = nullptr;
     ALLEGRO_BITMAP* FrightenSheet = al_load_bitmap("Resource/images/ghost/ghost_frighten.png");
+    ALLEGRO_BITMAP* ScareSheet = al_load_bitmap("Resource/images/ghost/ghost_scared.png");
     int animationFrame = 0;
     float animationTimer = 0;
     const int totalFrames = 2;
@@ -60,7 +65,7 @@ protected:
     int tick=0;
     int tickCount_x = 0;
     int tickCount_y = 0;
-    int cold=100;
+    int cold=101;
     
 };
 #endif // GHOST_HPP

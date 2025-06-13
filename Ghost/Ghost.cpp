@@ -21,7 +21,11 @@ int bfs(Engine::Point A, Engine::Point B);
 
 Ghost::Ghost(float x, float y)
     : x(x), y(y), Position(x, y), gridX(x / PlayScene::BlockSize),
-     gridY(y / PlayScene::BlockSize), moveDirX(0), moveDirY(0), Speed(100) {}
+     gridY(y / PlayScene::BlockSize), moveDirX(0), moveDirY(0), Speed(100) {
+    originX=x / PlayScene::BlockSize;
+    originY=y / PlayScene::BlockSize;
+    origin=Engine::Point(originX, originY);
+     }
 
 Ghost::~Ghost() {
     if (spriteSheet) {
@@ -87,17 +91,17 @@ void Ghost::setDir() {
     
 
 
-    if (predict_mode && !frighten) {
+    if (predict_mode && !frighten&&!return_mode) {
     auto& scene = dynamic_cast<PlayScene&>(*Engine::GameEngine::GetInstance().GetActiveScene());
 
     // 每幀都根據 Pacman 方向預測前方幾格的位置
     int predictSteps = 2; // 預測距離
-    int offset = rand() % 3 - 1; // -1, 0, or 1，讓預測目標微偏移，避免重複走法
-
+    //int offset = rand() % 3 - 1; // -1, 0, or 1，讓預測目標微偏移，避免重複走法
+        int offset=0;
     int pacX = static_cast<int>(scene.player->Position.x) / PlayScene::BlockSize;
     int pacY = static_cast<int>(scene.player->Position.y) / PlayScene::BlockSize;
 
-    int dirX = scene.player->moveDirY;
+    int dirX = scene.player->moveDirX;
     int dirY = scene.player->moveDirY;
 
     int targetX = pacX + dirX * predictSteps + offset;
@@ -161,16 +165,34 @@ void Ghost::setDir() {
         }
     }
     Engine::Point chosen(0, 0);
-    if(!(frighten||flee)){
+
+    if(return_mode){
+        int nowDis = INT_MAX;
+    
+    for (auto& c : nbrs) {
+        Engine::Point nextPos(gridX + c.x, gridY + c.y);
+        int d;
+        if(return_mode)
+            d=bfs(nextPos, origin);
+        
+        if (d < nowDis) {
+            nowDis = d;
+            chosen = c;
+        }
+    }
+    }
+    else if(!(frighten||flee)){
     int nowDis = INT_MAX;
     
     for (auto& c : nbrs) {
         Engine::Point nextPos(gridX + c.x, gridY + c.y);
         int d;
+        
         if(!predict_mode)
             d = bfs(nextPos, pacmanPos);
         else if(predict_mode)
             d = bfs(nextPos, predictTargetPos);  // pacmanPos 必須已經是 grid 座標
+        
         if (d < nowDis) {
             nowDis = d;
             chosen = c;
@@ -205,7 +227,18 @@ void Ghost::setDir() {
 
     moveDirX = chosen.x;
     moveDirY = chosen.y;
-
+    if(return_mode){
+        if (moveDirX == 1 && moveDirY == 0) {
+        faceDir = RIGHT; tickCount_y = 1;tickCount_x = 0;
+    } else if (moveDirX == -1 && moveDirY == 0) {
+        faceDir = LEFT; tickCount_y = 0;tickCount_x = 1;
+    } else if (moveDirX == 0 && moveDirY == 1) {
+        faceDir = DOWN; tickCount_y = 0;tickCount_x = 0;
+    } else if (moveDirX == 0 && moveDirY == -1) {
+        faceDir = UP; tickCount_y = 1;tickCount_x = 1;
+    }
+    }
+    else{
     if (moveDirX == 1 && moveDirY == 0) {
         faceDir = RIGHT; tickCount_y = 2;
     } else if (moveDirX == -1 && moveDirY == 0) {
@@ -215,23 +248,29 @@ void Ghost::setDir() {
     } else if (moveDirX == 0 && moveDirY == -1) {
         faceDir = UP; tickCount_y = 3;
     }
+    }
 }
 
 
 
 void Ghost::Update(float deltaTime) {
+    
+    
     auto& scene = dynamic_cast<PlayScene&>(*Engine::GameEngine::GetInstance().GetActiveScene());
+    
     float pacX = scene.player->Position.x;
     float pacY = scene.player->Position.y;
     float distToPacman = std::hypot(Position.x - pacX, Position.y - pacY);
 
-    if (distToPacman < 16.0f && cold > 100) {
+    if (distToPacman < 16.0f && cold > 50 ) {
         if(!frighten){
         caught = true;
         cold = 0;
         }
-        else if(frighten){
-            Reset();
+        else if(frighten&&!return_mode){
+            //Reset();
+            return_pre=true;
+            //Speed=300;
             scene.player->money+=200;
             cold = 0;
         }
@@ -242,11 +281,22 @@ void Ghost::Update(float deltaTime) {
     if(frighten){
         frightenedTimer++;
     }
-    if(frighten&&frightenedTimer>300){
+    if(frighten&&frightenedTimer>300&&!return_mode&&!return_pre){
         frighten=false;
         Speed=100;
         first_step=true;
     }
+
+
+    if (return_mode && /*Position.x==x && Position.y==y*/gridX==originX&&gridY==originY) {
+        return_mode = false;
+        Speed = 100;
+        Position = Engine::Point(x, y);
+        frighten=false;
+        first_step=true;
+    }
+
+
 
     if(pause)
         return;
@@ -258,6 +308,12 @@ void Ghost::Update(float deltaTime) {
     if (distToCenter < 1.5f) {
         Position.x = centerX;
         Position.y = centerY;
+        if(return_pre){
+            return_pre=false;
+            return_mode=true;
+            Speed=300;
+            first_step=true;
+        }
         setDir();
         gridX += moveDirX;
         gridY += moveDirY;
@@ -275,13 +331,13 @@ void Ghost::Update(float deltaTime) {
         Position.x = PlayScene::BlockSize/2;
     if (Position.y >= PlayScene::MapHeight * PlayScene::BlockSize)
         Position.y = PlayScene::BlockSize/2;
-
+    if(!return_mode){
     tick++;
     if(tick >= 10) {
         tick = 0;
         tickCount_x = (tickCount_x + 1) % 2;
     }
-
+    }
     
     
 }
@@ -328,6 +384,18 @@ void Ghost::Draw() const {
         0                                // 標誌
     );
     }
+    else if(return_mode){
+        al_draw_tinted_scaled_rotated_bitmap_region(
+        ScareSheet,
+        tickCount_x * frameW, tickCount_y * frameH, frameW, frameH,
+        al_map_rgba(255, 255, 255, 255), // 無染色
+        cx, cy,                          // 旋轉中心
+        screenX, screenY,                // 屏幕位置
+        3.0f, 3.0f,                      // 縮放
+        0,                               // 旋轉角度
+        0                                // 標誌
+    );
+    }
     else if(frighten){
         al_draw_tinted_scaled_rotated_bitmap_region(
         FrightenSheet,
@@ -343,14 +411,20 @@ void Ghost::Draw() const {
 }
 
 void Ghost::Reset() {
-    Position = Engine::Point(x, y); // 原始建構座標
+    /*Position = Engine::Point(x, y); // 原始建構座標
     gridX = x / PlayScene::BlockSize;
-    gridY = y / PlayScene::BlockSize;
-    moveDirX = moveDirY = 0;
+    gridY = y / PlayScene::BlockSize;*/
+    //originX=x / PlayScene::BlockSize;
+    //originY=y / PlayScene::BlockSize;
+    //origin=Engine::Point(originX, originY);
+    //return_mode=true;
+    //return_pre=true;
+    //moveDirX = moveDirY = 0;
+    //Speed = 300;
     //frightenedTimer = 0;
-    Speed = 100;
+    //Speed = 100;
     //spriteSheet = normalSprite;
-    caught = false;
-    cold = 0;
-    first_step=true;
+    //caught = false;
+    //cold = 0;
+    //first_step=true;
 }
