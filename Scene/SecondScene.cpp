@@ -185,7 +185,7 @@ void SecondScene::Update(float deltaTime) {
             player->get_hit=false;
         
         UILives ->Text =std::string("Life ") + std::to_string(lives);
-        if(lives == 0) {
+        if(lives <= 0) {
             Engine::LOG(Engine::INFO) << "Game Over, switching to game-over scene.";
             Engine::GameEngine::GetInstance().ChangeScene("lose_second");
             return;
@@ -332,8 +332,8 @@ void SecondScene::Draw() const {
 
     if (miniMapBitmap&&!opening) {
     float scale = 1.0;
-    int x = 1280 + 80; // 根據你右側 UI 位置微調
-    int y = 640;       // 底部空白處
+    int x = 1300 ; // 根據你右側 UI 位置微調
+    int y = 540;       // 底部空白處
     al_draw_scaled_bitmap(miniMapBitmap, 0, 0, MiniMapSize, MiniMapSize,
                           x, y, MiniMapSize * scale, MiniMapSize * scale, 0);
 

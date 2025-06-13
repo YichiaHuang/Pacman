@@ -115,7 +115,7 @@ public:
     int pause_coldown = 0;
     int random[14];
     ALLEGRO_BITMAP* miniMapBitmap = nullptr;
-    const int MiniMapSize = 150; // 小地圖的像素寬高（正方形）
+    const int MiniMapSize = 280; // 小地圖的像素寬高（正方形）
     void GenerateMiniMap();
     void UpdateMiniMapCell(int i, int j);
     float remainingTime; // 剩餘時間（秒）
