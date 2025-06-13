@@ -21,10 +21,13 @@ void Clyde::setTargetPos() {
     int py = pacmanPos.y;
 
     int manhattanDis = abs(px - gx) + abs(py - gy);
-    if (manhattanDis > 8) {
+    if (manhattanDis > 4) {
         targetPos = pacmanPos;
+        flee=false;
     } else {
         //targetPos = Engine::Point(0, 0);
-        pacmanPos=Engine::Point(1, 1);
+        //pacmanPos=Engine::Point(1, 1);
+        flee=true;
+        first_step=true;
     }
 }

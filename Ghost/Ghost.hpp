@@ -76,6 +76,8 @@ public:
     float Speed;
     bool f_firststep=false;
     bool first_step=false;
+    bool flee=false;
+    bool random_mode=false;
 protected:
     
     float x, y;

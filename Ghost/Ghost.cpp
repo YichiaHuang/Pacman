@@ -376,18 +376,18 @@ Ghost::~Ghost() {
 int Ghost::bfs(Engine::Point A, Engine::Point B) {
     auto& scene = dynamic_cast<PlayScene&>(*Engine::GameEngine::GetInstance().GetActiveScene());
 
-    int W = 30;//PlayScene::MapWidth;
-    int H = 30;//PlayScene::MapHeight;
-    int vis[35][35] = {};
-    int dist[35][35] = {};
+    int W = 20;//PlayScene::MapWidth;
+    int H = 13;//PlayScene::MapHeight;
+    int vis[25][20] = {};
+    int dist[25][20] = {};
 
     int ax = static_cast<int>(A.x);
     int ay = static_cast<int>(A.y);
     int bx = static_cast<int>(B.x);
     int by = static_cast<int>(B.y);
 
-    //if (ax < 0 || ax >= W || ay < 0 || ay >= H || bx < 0 || bx >= W || by < 0 || by >= H)
-        //return INT_MAX;
+    if (ax < 0 || ax >= W || ay < 0 || ay >= H || bx < 0 || bx >= W || by < 0 || by >= H)
+        return INT_MAX;
 
     dist[ay][ax] = 0;
     std::queue<std::pair<int, int>> q;
@@ -407,9 +407,9 @@ int Ghost::bfs(Engine::Point A, Engine::Point B) {
         for (int i = 0; i < 4; i++) {
             int nx = cx + dx[i];
             int ny = cy + dy[i];
-            //if (nx < 0 || nx >= W || ny < 0 || ny >= H) continue;
-            nx=(nx+30)%30;
-            ny=(ny+30)%30;
+            if (nx < 0 || nx >= W || ny < 0 || ny >= H) continue;
+            //nx=(nx+30)%20;
+            //ny=(ny+30)%13;
 
             if (scene.map_dot[ny][nx] == -1) continue;
             if (!vis[ny][nx]) {
@@ -430,10 +430,10 @@ void Ghost::setDir() {
     for (int i = 0; i < 4; i++) {
         int nx = gridX + dxs[i];
         int ny = gridY + dys[i];
-        //if (nx < 0 || nx >= SecondScene::MapWidth || ny < 0 || ny >= SecondScene::MapHeight)
-            //continue;
-        nx=(nx+30)%30;
-        ny=(ny+30)%30;
+        if (nx < 0 || nx >= PlayScene::MapWidth || ny < 0 || ny >= PlayScene::MapHeight)
+            continue;
+        //nx=(nx+30)%20;
+        //ny=(ny+30)%13;
         
         if (scene.map_dot[ny][nx] != -1&&!(f_firststep||first_step)) {
             if (!(dxs[i] == -prevPos.x && dys[i] == -prevPos.y)) {
@@ -446,10 +446,10 @@ void Ghost::setDir() {
         for (int i = 0; i < 4; i++) {
             int nx = gridX + dxs[i];
             int ny = gridY + dys[i];
-            //if (nx < 0 || nx >= SecondScene::MapWidth || ny < 0 || ny >= SecondScene::MapHeight)
-                //continue;
-            nx=(nx+30)%30;
-            ny=(ny+30)%30;
+            if (nx < 0 || nx >= PlayScene::MapWidth || ny < 0 || ny >= PlayScene::MapHeight)
+                continue;
+            //nx=(nx+30)%20;
+            //ny=(ny+30)%13;
 
             if (scene.map_dot[ny][nx] != -1) {
                 nbrs.emplace_back(dxs[i], dys[i]);
@@ -461,7 +461,7 @@ void Ghost::setDir() {
         }
     }
     Engine::Point chosen(0, 0);
-    if(!frighten){
+    if(!(frighten||flee)){
     int nowDis = INT_MAX;
     
     for (auto& c : nbrs) {
@@ -473,7 +473,7 @@ void Ghost::setDir() {
         }
     }
 
-    if(nowDis>7){
+    if(nowDis>10||random_mode){
         int size=nbrs.size();
         int r=rand();
         r=r%size;
@@ -486,7 +486,7 @@ void Ghost::setDir() {
         }
     }
     }
-    else if(frighten){
+    else if(frighten||flee){
         int nowDis = -1;
     
     for (auto& c : nbrs) {
@@ -539,8 +539,8 @@ void Ghost::Update(float deltaTime) {
         gridX += moveDirX;
         gridY += moveDirY;
 
-        gridX=(gridX+30)%30;
-        gridY=(gridY+30)%30;
+        //gridX=(gridX+30)%30;
+        //gridY=(gridY+30)%30;
     }
 
     Position.x += moveDirX * Speed * deltaTime;
