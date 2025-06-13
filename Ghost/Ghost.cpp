@@ -64,6 +64,8 @@ int bfs(Engine::Point A, Engine::Point B) {
         for (int i = 0; i < 4; i++) {
             int nx = cx + dx[i];
             int ny = cy + dy[i];
+            nx = (nx + 20) % 20;
+            ny = (ny + 13) % 13;
             if (nx < 0 || nx >= W || ny < 0 || ny >= H) continue;
             if (scene.map_dot[ny][nx] == -1) continue;
             if (!vis[ny][nx]) {
