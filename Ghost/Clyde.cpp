@@ -22,7 +22,7 @@ void Clyde::setTargetPos() {
     if(flee){
         flee_timer++;
     }
-    if(flee&&flee_timer>300){
+    if(flee&&flee_timer>200){
         flee=false;
         first_step=true;
     }

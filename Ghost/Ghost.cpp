@@ -32,39 +32,6 @@ Ghost::~Ghost() {
 
 
 int Ghost::bfs(Engine::Point A, Engine::Point B) {
-    if(predict_mode&&!frighten)
-    {
-        int dx[4] = {1, 0, -1, 0};
-        int dy[4] = {0, 1, 0, -1};
-        auto& scene = dynamic_cast<PlayScene&>(*Engine::GameEngine::GetInstance().GetActiveScene());
-        int xx=pacmanPos.x;
-        int yy=pacmanPos.y;
-        int flag=0;
-        for(int i=0; i<4; i++){
-            int nx=xx+dx[i];
-            int ny=yy+dy[i];
-            if (nx < 0 || nx >= PlayScene::MapWidth || ny < 0 || ny >= PlayScene::MapHeight)
-                continue;
-            
-            if(scene.map_dot[nx][ny]!=-1)
-            {
-                for(int i=0; i<4; i++){
-                    int nnx=nx+dx[i];
-                    int nny=ny+dy[i];
-                    if(scene.map_dot[nnx][nny]!=-1)
-                    {
-                        pacmanPos = Engine::Point(nnx, nny);
-                        flag=1;
-                        break;
-                    }
-                }
-            }
-            if(flag)
-                break;
-        }
-    }
-    
-    
     
     
     
@@ -116,6 +83,44 @@ int Ghost::bfs(Engine::Point A, Engine::Point B) {
     return INT_MAX;
 }
 void Ghost::setDir() {
+    Engine::Point predictTargetPos = pacmanPos;
+    
+
+
+    if (predict_mode && !frighten) {
+    auto& scene = dynamic_cast<PlayScene&>(*Engine::GameEngine::GetInstance().GetActiveScene());
+
+    // 每幀都根據 Pacman 方向預測前方幾格的位置
+    int predictSteps = 2; // 預測距離
+    int offset = rand() % 3 - 1; // -1, 0, or 1，讓預測目標微偏移，避免重複走法
+
+    int pacX = static_cast<int>(scene.player->Position.x) / PlayScene::BlockSize;
+    int pacY = static_cast<int>(scene.player->Position.y) / PlayScene::BlockSize;
+
+    int dirX = scene.player->moveDirY;
+    int dirY = scene.player->moveDirY;
+
+    int targetX = pacX + dirX * predictSteps + offset;
+    int targetY = pacY + dirY * predictSteps + offset;
+
+    // 邊界檢查
+    targetX = std::max(0, std::min(targetX, PlayScene::MapWidth - 1));
+    targetY = std::max(0, std::min(targetY, PlayScene::MapHeight - 1));
+
+    // 如果該位置是牆，就 fallback 回 pacman 目前位置
+    if (scene.map_dot[targetY][targetX] == -1)
+        predictTargetPos = Engine::Point(pacX, pacY);
+    else
+        predictTargetPos = Engine::Point(targetX, targetY);
+}
+
+    
+    
+    
+    
+    
+    
+    
     vector<Engine::Point> nbrs;
     static const int dxs[4] = {-1, 1, 0, 0};
     static const int dys[4] = {0, 0, -1, 1};
@@ -161,7 +166,11 @@ void Ghost::setDir() {
     
     for (auto& c : nbrs) {
         Engine::Point nextPos(gridX + c.x, gridY + c.y);
-        int d = bfs(nextPos, pacmanPos);  // pacmanPos 必須已經是 grid 座標
+        int d;
+        if(!predict_mode)
+            d = bfs(nextPos, pacmanPos);
+        else if(predict_mode)
+            d = bfs(nextPos, predictTargetPos);  // pacmanPos 必須已經是 grid 座標
         if (d < nowDis) {
             nowDis = d;
             chosen = c;

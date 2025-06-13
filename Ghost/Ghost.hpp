@@ -33,6 +33,9 @@ public:
     bool flee=false;
     bool random_mode=false;
     bool predict_mode=false;
+    Engine::Point lockedPredictTargetPos;
+    int predictTargetTimer = 0;
+    
 protected:
     
     float x, y;
