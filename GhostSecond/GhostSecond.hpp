@@ -20,13 +20,20 @@ public:
     Engine::Point GetPosition() const { return Position; }
     int animationDirection = 1;
     int bfs(Engine::Point A, Engine::Point B);
-    static Engine::Point CameraPos;
+    //static Engine::Point CameraPos;
     bool pause=false;
     bool caught=false;
     void Reset();
     int frightenedTimer;
     bool frighten=false;
     float Speed;
+    bool f_firststep=false;
+    bool first_step=false;
+    bool return_mode=false;
+    bool return_pre=false;
+    int originX;
+    int originY;
+    Engine::Point origin;
 protected:
     
     float x, y;
@@ -37,6 +44,7 @@ protected:
     int gridX, gridY;
     
     ALLEGRO_BITMAP* spriteSheet = nullptr;
+    ALLEGRO_BITMAP* ScareSheet = al_load_bitmap("Resource/images/ghost/ghost_scared.png");
     ALLEGRO_BITMAP* FrightenSheet = al_load_bitmap("Resource/images/ghost/ghost_frighten.png");
     int animationFrame = 0;
     float animationTimer = 0;

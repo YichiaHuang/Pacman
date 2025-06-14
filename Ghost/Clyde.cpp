@@ -10,7 +10,7 @@
 Clyde::Clyde(float x, float y)
     : Ghost(x, y) {
     spriteSheet = al_load_bitmap("Resource/images/ghost/orange_ghost.png");
-    normalSprite = spriteSheet;
+    //normalSprite = spriteSheet;
 }
 
 void Clyde::setTargetPos() {
@@ -19,11 +19,28 @@ void Clyde::setTargetPos() {
     int gy = Position.y / PlayScene::BlockSize;
     int px = pacmanPos.x;
     int py = pacmanPos.y;
+    if(flee){
+        flee_timer++;
+    }
+    if(flee&&flee_timer>200){
+        flee=false;
+        first_step=true;
+    }
+        
 
     int manhattanDis = abs(px - gx) + abs(py - gy);
-    if (manhattanDis > 8) {
-        targetPos = pacmanPos;
+    if (manhattanDis > 4) {
+        //targetPos = pacmanPos;
+        //flee=false;
+        flag=1;
     } else {
-        targetPos = Engine::Point(0, 0);
+        //targetPos = Engine::Point(0, 0);
+        //pacmanPos=Engine::Point(1, 1);
+        if(flag){
+        flee=true;
+        first_step=true;
+        flag=0;
+        flee_timer=0;
+        }
     }
 }

@@ -22,13 +22,14 @@ public:
     bool pause = false;
     bool isPowerMode = false;
     float powerTimer = 0;
+    int moveDirX, moveDirY;
 private:
     float Speed;
     float x, y;
     
     Engine::Point targetPosition;
     int gridX, gridY;
-    int moveDirX, moveDirY;
+    
     bool moving = false;
 
     ALLEGRO_BITMAP* spriteSheet = nullptr;

@@ -128,7 +128,7 @@ void PlayScene::Update(float deltaTime) {
         {
             for(int i = 0; i < 4; i++) {
                 if (ghost[i]) {
-                    ghost[i]->pause_mode = true;
+                    ghost[i]->pause = true;
                 }
             }
             player->pause = false;
@@ -138,11 +138,11 @@ void PlayScene::Update(float deltaTime) {
         {
             pause_coldown++;
         }
-        if(pause_coldown > 100 && ghost[0]->pause_mode)
+        if(pause_coldown > 100 && ghost[0]->pause)
         {
             for(int i = 0; i < 4; i++) {
                if (ghost[i]) {
-                    ghost[i]->pause_mode = false;
+                    ghost[i]->pause = false;
                 }
             }
         }
@@ -185,11 +185,11 @@ void PlayScene::Update(float deltaTime) {
             // 分別呼叫各自的 setTargetPos
             if (auto* g = dynamic_cast<Blinky*>(ghost[i])) {
                 g->setTargetPos();
-            } else if (auto* g = dynamic_cast<Pinky*>(ghost[i])) {
+            } /*else if (auto* g = dynamic_cast<Pinky*>(ghost[i])) {
                 g->setTargetPos(pacmanDir);
-            } else if (auto* g = dynamic_cast<Inky*>(ghost[i])) {
-                if (ghost[0])
-                    g->setTargetPos(pacmanDir, ghost[0]->GetPosition());
+            } */else if (auto* g = dynamic_cast<Inky*>(ghost[i])) {
+                //if (ghost[0])
+                    g->setTargetPos(/*pacmanDir, ghost[0]->GetPosition()*/);
             } else if (auto* g = dynamic_cast<Clyde*>(ghost[i])) {
                 g->setTargetPos();
             }
@@ -201,8 +201,8 @@ void PlayScene::Update(float deltaTime) {
 
     for(int i=0; i<4; i++){
         if(ghost[i]){
-            if(ghost[i]->caughtPacman==true){
-                ghost[i]->caughtPacman=false;
+            if(ghost[i]->caught==true){
+                ghost[i]->caught=false;
                 lives--;
                 player->get_hit=true;
                 red_coldown=0;
@@ -214,7 +214,7 @@ void PlayScene::Update(float deltaTime) {
         red_coldown++;
         
     UILives ->Text =std::string("Life ") + std::to_string(lives);
-    if(lives == 0) {
+    if(lives <= 0) {
         Engine::LOG(Engine::INFO) << "Game Over, switching to game-over scene.";
         Engine::GameEngine::GetInstance().ChangeScene("lose");
         return;
@@ -297,9 +297,9 @@ void PlayScene::Update(float deltaTime) {
         ghost[2]= new Inky(1 * BlockSize + BlockSize / 2, 11 * BlockSize + BlockSize / 2);
         ghost[3]= new Clyde(18 * BlockSize + BlockSize / 2, 11 * BlockSize + BlockSize / 2);
 
-        for (int i = 0; i < 4; i++) {
+        /*for (int i = 0; i < 4; i++) {
             ghost[i]->normalSprite = ghost[i]->spriteSheet;  // 記住鬼的初始圖片
-        }
+        }*/
 
         
         //ghost

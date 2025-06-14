@@ -145,29 +145,30 @@ void SecondScene::Update(float deltaTime) {
         UIMoney->Text = std::string("$") + std::to_string(money);
         if(player){
             if(player->power_mode){
-                for(int i=0; i<4; i++){
+                for(int i=0; i<8; i++){
                     ghost[i]->frighten=true;
                     ghost[i]->frightenedTimer=0;
                     ghost[i]->Speed=80;
+                    ghost[i]->f_firststep=true;
                 }
                 player->power_mode=false;
             }
             
             if(player->pause){
-                for(int i=0; i<4; i++)
+                for(int i=0; i<8; i++)
                     ghost[i]->pause=true;
                 freeze_coldown=0;
                 player->pause=false;
                 freeze_mode=true;
             }
             if(freeze_mode&&freeze_coldown>100){
-                for(int i=0; i<4; i++)
+                for(int i=0; i<8; i++)
                     ghost[i]->pause=false;
             }
             if(freeze_mode)
                 freeze_coldown++;
 
-            for(int i=0; i<4; i++){
+            for(int i=0; i<8; i++){
                 if(ghost[i]){
                     if(ghost[i]->caught==true){
                         ghost[i]->caught=false;
@@ -184,7 +185,7 @@ void SecondScene::Update(float deltaTime) {
             player->get_hit=false;
         
         UILives ->Text =std::string("Life ") + std::to_string(lives);
-        if(lives == 0) {
+        if(lives <= 0) {
             Engine::LOG(Engine::INFO) << "Game Over, switching to game-over scene.";
             Engine::GameEngine::GetInstance().ChangeScene("lose_second");
             return;
@@ -207,8 +208,12 @@ void SecondScene::Update(float deltaTime) {
             player = new Pac(10 * BlockSize + BlockSize / 2, 7 * BlockSize + BlockSize / 2 - 64);
             ghost[0]=new Blin(1 * BlockSize + BlockSize / 2, 1 * BlockSize + BlockSize / 2);
             ghost[1]=new Pink(1 * BlockSize + BlockSize / 2, 18 * BlockSize + BlockSize / 2);
-            ghost[2]=new Ink(11 * BlockSize + BlockSize / 2, 16 * BlockSize + BlockSize / 2);
+            ghost[2]=new Ink(11 * BlockSize + BlockSize / 2, 17 * BlockSize + BlockSize / 2);
             ghost[3]=new Cly(11 * BlockSize + BlockSize / 2, 13 * BlockSize + BlockSize / 2);
+            ghost[4]=new Blin(3 * BlockSize + BlockSize / 2, 21 * BlockSize + BlockSize / 2);
+            ghost[5]=new Pink(21 * BlockSize + BlockSize / 2, 21 * BlockSize + BlockSize / 2);
+            ghost[6]=new Ink(25 * BlockSize + BlockSize / 2, 28 * BlockSize + BlockSize / 2);
+            ghost[7]=new Cly(4 * BlockSize + BlockSize / 2, 28 * BlockSize + BlockSize / 2);
         } else {
             return;
         }
@@ -223,7 +228,7 @@ void SecondScene::Update(float deltaTime) {
 
         cameraPos.x = playerPos.x - screenW / 2+ 2 * BlockSize;;
         cameraPos.y = playerPos.y - screenH / 2;
-        GhostSecond::CameraPos = cameraPos;
+        //GhostSecond::CameraPos = cameraPos;
         // 限制攝影機不超出地圖邊界
         // 限制攝影機不超出地圖邊界（只在地圖大於畫面時才限制）
         // 否則自動置中地圖
@@ -260,10 +265,12 @@ void SecondScene::Update(float deltaTime) {
 
             int targetX = gridX + dy;
             int targetY = gridY + dx;
+            targetX = (targetX+30)%30;
+            targetY = (targetY+30)%30;
 
             // 檢查是否在邊界內，且不是牆壁
             if (/*targetX >= 0 && targetX < SecondScene::MapHeight &&
-                targetY >= 0 && targetY < SecondScene::MapWidth &&*/                    map_dot[targetX][targetY] != -1) {
+                targetY >= 0 && targetY < SecondScene::MapWidth &&*/map_dot[targetX][targetY] != -1) {
                 player->MoveDirection(dx, dy);
                 map_dot[targetX][targetY]=0;
                 UpdateMiniMapCell(targetX, targetY);
@@ -284,7 +291,7 @@ void SecondScene::Update(float deltaTime) {
         Engine::GameEngine::GetInstance().ChangeScene("second");
         return;
     }
-    for(int i=0; i<4; i++)
+    for(int i=0; i<8; i++)
     {
         if(ghost[i]){
         ghost[i]->setPacmanPos(player->Position);
@@ -305,15 +312,15 @@ void SecondScene::Draw() const {
 
     if (TileMapGroup) TileMapGroup->Draw();
     if (DotsGroup) DotsGroup->Draw();
-    if (player) player->Draw();
+    
 
-    for(int i=0; i<4; i++){
+    for(int i=0; i<8; i++){
         if(ghost[i]){
         
         ghost[i]->Draw();
     }
     }
-    
+    if (player) player->Draw();
     // 恢復 transform 為預設，繪製 UI (不受攝影機影響)
     al_identity_transform(&transform);
     al_use_transform(&transform);
@@ -325,8 +332,8 @@ void SecondScene::Draw() const {
 
     if (miniMapBitmap&&!opening) {
     float scale = 1.0;
-    int x = 1280 + 80; // 根據你右側 UI 位置微調
-    int y = 640;       // 底部空白處
+    int x = 1300 ; // 根據你右側 UI 位置微調
+    int y = 540;       // 底部空白處
     al_draw_scaled_bitmap(miniMapBitmap, 0, 0, MiniMapSize, MiniMapSize,
                           x, y, MiniMapSize * scale, MiniMapSize * scale, 0);
 
@@ -339,7 +346,20 @@ void SecondScene::Draw() const {
     al_draw_filled_rectangle(x + gridX * cellSize, y + gridY * cellSize,
                              x + (gridX + 1) * cellSize, y + (gridY + 1) * cellSize,
                              al_map_rgb(255, 0, 0));
-}
+
+    // 畫出四隻鬼的位置（藍色方塊）
+    for (int i = 0; i < 8; i++) {
+        if (ghost[i]) {
+            Engine::Point gpos = ghost[i]->GetPosition();
+            int gX = gpos.x / BlockSize;
+            int gY = gpos.y / BlockSize;
+
+            al_draw_filled_rectangle(x + gX * cellSize, y + gY * cellSize,
+                                     x + (gX + 1) * cellSize, y + (gY + 1) * cellSize,
+                                     al_map_rgb(0, 0, 255));
+        }
+    }
+    }
     
 }
 

@@ -8,6 +8,7 @@
 #include "Engine/Sprite.hpp"
 #include "Engine/IObject.hpp"
 
+
 class Ghost : public Engine::IObject{
 public:
     Ghost(float x, float y);
@@ -15,30 +16,42 @@ public:
     virtual void Update(float deltaTime) override;
     virtual void Draw() const override;
     void setDir();
-    void escape();
-    void reverse();
     void setPacmanPos(const Engine::Point &pos);
     //virtual const char* GetSpriteName() const = 0;
     Engine::Point GetPosition() const { return Position; }
     int animationDirection = 1;
-
-    bool caughtPacman = false;
-    bool pause_mode = false;
-    float Speed;
-    float x, y;
-    float frightenedTimer = 0;
-    ALLEGRO_BITMAP* spriteSheet = nullptr;
-    ALLEGRO_BITMAP* normalSprite = nullptr;
-    int tickCount_x = 0;
-    int tickCount_y = 0;
+    int bfs(Engine::Point A, Engine::Point B);
+    //static Engine::Point CameraPos;
+    bool pause=false;
+    bool caught=false;
     void Reset();
+    int frightenedTimer;
+    bool frighten=false;
+    float Speed;
+    bool f_firststep=false;
+    bool first_step=false;
+    bool flee=false;
+    bool random_mode=false;
+    bool predict_mode=false;
+    Engine::Point lockedPredictTargetPos;
+    int predictTargetTimer = 0;
+    bool return_mode=false;
+    bool return_pre=false;
+    int originX;
+    int originY;
+    Engine::Point origin;
 protected:
+    
+    float x, y;
     Engine::Point Position;
     Engine::Point targetPos;
     Engine::Point pacmanPos;
     int moveDirX, moveDirY;
     int gridX, gridY;
-
+    
+    ALLEGRO_BITMAP* spriteSheet = nullptr;
+    ALLEGRO_BITMAP* FrightenSheet = al_load_bitmap("Resource/images/ghost/ghost_frighten.png");
+    ALLEGRO_BITMAP* ScareSheet = al_load_bitmap("Resource/images/ghost/ghost_scared.png");
     int animationFrame = 0;
     float animationTimer = 0;
     const int totalFrames = 2;
@@ -50,8 +63,9 @@ protected:
     Direction faceDir = RIGHT;
 
     int tick=0;
-    int coldown = 200;
-    bool isFrightened = false;
+    int tickCount_x = 0;
+    int tickCount_y = 0;
+    int cold=101;
     
 };
 #endif // GHOST_HPP
