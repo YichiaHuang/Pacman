@@ -29,10 +29,12 @@ void Lose::Initialize() {
     btn->SetOnClickCallback(std::bind(&Lose::BackOnClick, this, 2));
     AddNewControlObject(btn);
     AddNewObject(new Engine::Label("Back", "prstartk.ttf", 48, halfW + 250, halfH * 7 / 4, 0, 0, 0, 255, 0.5, 0.5));
+
+    bgmInstance = AudioHelper::PlaySample("Pacman/pacman-lose.wav", false, AudioHelper::BGMVolume);
 }
 void Lose::Terminate() {
-    //AudioHelper::StopSample(bgmInstance);
-    //bgmInstance = std::shared_ptr<ALLEGRO_SAMPLE_INSTANCE>();
+    AudioHelper::StopSample(bgmInstance);
+    bgmInstance = std::shared_ptr<ALLEGRO_SAMPLE_INSTANCE>();
     IScene::Terminate();
 }
 void Lose::BackOnClick(int stage) {

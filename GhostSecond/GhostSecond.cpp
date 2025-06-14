@@ -252,7 +252,7 @@ void GhostSecond::Update(float deltaTime) {
     float centerY = gridY * SecondScene::BlockSize + SecondScene::BlockSize / 2;
     float distToCenter = std::hypot(Position.x - centerX, Position.y - centerY);
 
-    if (distToCenter < 1.5f) {
+    if (distToCenter < 5.0f) {
         Position.x = centerX;
         Position.y = centerY;
         if(return_pre){

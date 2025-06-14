@@ -62,6 +62,8 @@ void MotionScene::Initialize() {
         std::cerr << "Failed to load ghosts.png\n";
     }
 
+    bgmInstance = AudioHelper::PlaySample("Pacman/intermission.wav", false, AudioHelper::BGMVolume);
+
 }
 void MotionScene::Update(float deltaTime) {
     ticks += deltaTime;
@@ -115,6 +117,8 @@ void MotionScene::Terminate() {
         al_destroy_bitmap(ghostBitmap);
         ghostBitmap = nullptr;
     }
+    AudioHelper::StopSample(bgmInstance);
+    bgmInstance = std::shared_ptr<ALLEGRO_SAMPLE_INSTANCE>();
     IScene::Terminate();
 }
 

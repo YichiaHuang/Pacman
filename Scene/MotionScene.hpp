@@ -34,6 +34,6 @@ public:
     mutable std::vector<float> ghostX = { -100, -100, -100, -100 };
     mutable std::vector<bool> ghostDone = { false, false, false, false };
     mutable ALLEGRO_BITMAP* ghostBitmap = nullptr;
-
+    std::shared_ptr<ALLEGRO_SAMPLE_INSTANCE> bgmInstance;
 };
 #endif

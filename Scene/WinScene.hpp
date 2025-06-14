@@ -21,7 +21,6 @@ class WinScene final : public Engine::IScene {
 private:
     float ticks;
     ALLEGRO_SAMPLE_ID bgmId;
-    
 
 public:
     explicit WinScene() = default;
