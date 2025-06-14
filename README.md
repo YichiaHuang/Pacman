@@ -1,5 +1,5 @@
 ## Features
-[Easy]
+### [Easy]
 - pacman's control
 - ghost's movement
 - frighten mode
@@ -8,7 +8,7 @@
 - powerdot
 - in-game item
 - pacman and ghosts' animation
-[Hard]
+### [Hard]
 - mini map
 - slot machine
 - pause and replay
