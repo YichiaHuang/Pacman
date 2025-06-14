@@ -207,7 +207,7 @@ void GhostSecond::setDir() {
 
 void GhostSecond::Update(float deltaTime) {
     
-        auto& scene = dynamic_cast<SecondScene&>(*Engine::GameEngine::GetInstance().GetActiveScene());
+    auto& scene = dynamic_cast<SecondScene&>(*Engine::GameEngine::GetInstance().GetActiveScene());
     float pacX = scene.player->Position.x;
     float pacY = scene.player->Position.y;
     float distToPacman = std::hypot(Position.x - pacX, Position.y - pacY);
